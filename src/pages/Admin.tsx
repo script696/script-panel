@@ -1,22 +1,15 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
-import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Link, NavLink, NavLink as NavLinkBase } from "react-router-dom";
-import { Button } from "@mui/material";
+import { NavLink } from "react-router-dom";
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
+import Diversity3Icon from "@mui/icons-material/Diversity3";
+import HomeIcon from "@mui/icons-material/Home";
+import { useState } from "react";
+import { Avatar, ListItemAvatar, ListItemText } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -24,23 +17,22 @@ const navItems = [
   {
     title: "Home",
     link: "/",
+    icon: HomeIcon,
   },
   {
-    title: "Panel",
-    link: "/Panel",
+    title: "Users",
+    link: "/users",
+    icon: Diversity3Icon,
   },
   {
-    title: "Love",
+    title: "Projects",
     link: "/Love",
-  },
-  {
-    title: "Test",
-    link: "/test",
+    icon: AccountTreeIcon,
   },
 ];
 
 const Admin = () => {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -48,10 +40,15 @@ const Admin = () => {
 
   const drawer = (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100%" }}>
-      <List>
-        {navItems.map(({ title, link }) => (
+      <List sx={{ px: 2 }}>
+        {navItems.map(({ title, link, icon }) => (
           <ListItemButton component={NavLink} to={link}>
-            {title}
+            <ListItemAvatar>
+              <Avatar>
+                <AccountTreeIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary={title} />
           </ListItemButton>
         ))}
       </List>
@@ -105,7 +102,6 @@ const Admin = () => {
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
