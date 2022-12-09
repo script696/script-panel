@@ -15,53 +15,55 @@ import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { Link, NavLink, NavLink as NavLinkBase } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const drawerWidth = 240;
 
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
-}
+const navItems = [
+  {
+    title: "Home",
+    link: "/",
+  },
+  {
+    title: "Panel",
+    link: "/Panel",
+  },
+  {
+    title: "Love",
+    link: "/Love",
+  },
+  {
+    title: "Test",
+    link: "/test",
+  },
+];
 
-const Admin = (props: Props) => {
-  const { window } = props;
+const Admin = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
-  const drawer = (
-    <List>
-      {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-        <ListItem key={text} disablePadding>
-          <ListItemButton selected={selectedIndex === index}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
-  );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  const drawer = (
+    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100%" }}>
+      <List>
+        {navItems.map(({ title, link }) => (
+          <ListItemButton component={NavLink} to={link}>
+            {title}
+          </ListItemButton>
+        ))}
+      </List>
+      <Box sx={{ flexGrow: 1 }} />
+      <ListItemButton component={NavLink} to={"/"}>
+        test
+      </ListItemButton>
+    </Box>
+  );
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-        }}
-      ></AppBar>
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -69,7 +71,6 @@ const Admin = (props: Props) => {
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
-          container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
