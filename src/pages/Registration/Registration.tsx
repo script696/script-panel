@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import LoadingButton from "@mui/lab/LoadingButton";
 // import LoadingButton from "@mui/lab/LoadingButton";
 
 type FormValues = {
@@ -30,7 +31,10 @@ const Registration = () => {
         .max(30, "common.validations.max")
         .required("common.validations.required"),
     }),
-    onSubmit: (values) => handleRegister(values),
+    onSubmit: (values) => {
+      console.log("here");
+      handleRegister(values);
+    },
   });
 
   const handleRegister = (values: FormValues) => {
@@ -39,7 +43,7 @@ const Registration = () => {
 
   return (
     <AuthLayout>
-      <Box component="form">
+      <Box component="form" noValidate onSubmit={formik.handleSubmit}>
         <Typography component="h2" variant="h4">
           Sign Up
         </Typography>
@@ -56,7 +60,7 @@ const Registration = () => {
           value={formik.values.firstName}
           onChange={formik.handleChange}
           error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-          helperText={formik.touched.firstName && formik.errors.firstName}
+          helperText={formik.touched.email && formik.errors.firstName}
         />{" "}
         <TextField
           margin="normal"
@@ -73,17 +77,32 @@ const Registration = () => {
           error={formik.touched.lastName && Boolean(formik.errors.lastName)}
           helperText={formik.touched.lastName && formik.errors.lastName}
         />
-        {/*<LoadingButton*/}
-        {/*  type="submit"*/}
-        {/*  fullWidth*/}
-        {/*  variant="contained"*/}
-        {/*  color="primary"*/}
-        {/*  disabled={true}*/}
-        {/*  loading={false}*/}
-        {/*  sx={{ mt: 2 }}*/}
-        {/*>*/}
-        {/*  Register*/}
-        {/*</LoadingButton>*/}
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="email"
+          label="Введите email"
+          name="email"
+          autoComplete="family-name"
+          autoFocus
+          disabled={false}
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
+        />
+        <LoadingButton
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          disabled={false}
+          loading={false}
+          sx={{ mt: 2 }}
+        >
+          Register
+        </LoadingButton>
       </Box>
     </AuthLayout>
   );
