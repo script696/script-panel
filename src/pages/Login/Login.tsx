@@ -1,11 +1,12 @@
 import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
-import { Grid, TextField } from "@mui/material";
+import { Button, Grid, TextField } from "@mui/material";
 import { Logo } from "../../components";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { Link } from "react-router-dom";
 
 type FormValues = {
   email: string;
@@ -90,10 +91,18 @@ const Login = () => {
               color="primary"
               disabled={false}
               loading={false}
-              sx={{ mt: 2 }}
+              sx={{ my: 2 }}
             >
               Войти
             </LoadingButton>
+            <Box display="flex" columnGap={2}>
+              <Typography component="span" variant="subtitle1">
+                Еще не зарегестрированы ?
+              </Typography>
+              <Button component={Link} to="/signup">
+                Зарегестрироваться
+              </Button>
+            </Box>
           </Box>
         </Grid>
       </Grid>

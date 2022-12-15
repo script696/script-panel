@@ -2,10 +2,11 @@ import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
 import Box from "@mui/material/Box";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Grid, TextField } from "@mui/material";
+import { Button, Grid, TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Logo } from "../../components";
+import { Link } from "react-router-dom";
 
 type FormValues = {
   email: string;
@@ -100,10 +101,18 @@ const Registration = () => {
             color="primary"
             disabled={false}
             loading={false}
-            sx={{ mt: 2 }}
+            sx={{ my: 2 }}
           >
             Register
           </LoadingButton>
+          <Box display="flex" columnGap={2} justifyContent="center">
+            <Typography component="span" variant="subtitle1">
+              Уже зарегестрированы ?
+            </Typography>
+            <Button component={Link} to="/signin">
+              Войти
+            </Button>
+          </Box>
         </Box>
       </Grid>
     </AuthLayout>
