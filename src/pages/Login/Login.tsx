@@ -50,7 +50,7 @@ const Login = () => {
           maxWidth={450}
         >
           <Logo size={80} />
-          <Typography component="h2" variant="h4" mb={4}>
+          <Typography component="h2" variant="h5" mb={4}>
             Авторизация
           </Typography>
           <Box component="form" noValidate onSubmit={formik.handleSubmit}>
@@ -62,7 +62,6 @@ const Login = () => {
               label="Введите почту"
               name="email"
               autoComplete="family-name"
-              autoFocus
               disabled={false}
               value={formik.values.email}
               onChange={formik.handleChange}
@@ -77,7 +76,6 @@ const Login = () => {
               label="Введите пароль"
               name="password"
               autoComplete="family-name"
-              autoFocus
               disabled={false}
               value={formik.values.password}
               onChange={formik.handleChange}

@@ -11,7 +11,7 @@ const createThemeComponents = (theme: Theme) => ({
   MuiLoadingButton: {
     styleOverrides: {
       root: {
-        padding: "16px 0",
+        padding: "8px 0",
         borderRadius: 16,
       },
     },
@@ -45,6 +45,12 @@ const createThemeComponents = (theme: Theme) => ({
         padding: "0",
         fontSize: "1rem",
         fontWeight: theme.typography.fontWeightRegular,
+        "&.variantOne": {
+          background: theme.palette.grey[600],
+          width: "100%",
+          padding: "10px 0",
+          color: theme.palette.text.primary,
+        },
       },
     },
   },
