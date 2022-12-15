@@ -19,6 +19,7 @@ const typography = {
     fontSize: "1.375rem",
     letterSpacing: 0,
   },
+
   subtitle1: {
     fontWeight: 200,
     fontSize: "1rem",

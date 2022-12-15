@@ -1,5 +1,5 @@
-import { Route, Routes } from "react-router-dom";
-import { Login, Registration } from "../../pages";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { Login, PageNotFound, Registration } from "../../pages";
 import { ProtectedRoutes } from "../index";
 import { MainLayout } from "../../layouts";
 
@@ -11,6 +11,8 @@ const AppRouter = () => {
       </Route>
       <Route path="signup" element={<Registration />} />
       <Route path="signin" element={<Login />} />
+      <Route path="404" element={<PageNotFound />} />
+      <Route path="*" element={<Navigate to={`/404`} replace />} />
     </Routes>
   );
 };
