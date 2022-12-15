@@ -38,6 +38,16 @@ const createThemeComponents = (theme: Theme) => ({
       },
     },
   },
+  MuiButton: {
+    styleOverrides: {
+      root: {
+        textTransform: "none" as any,
+        padding: "0",
+        fontSize: "1rem",
+        fontWeight: theme.typography.fontWeightRegular,
+      },
+    },
+  },
 });
 
 export { createThemeComponents };
