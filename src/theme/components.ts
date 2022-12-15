@@ -1,6 +1,21 @@
 import { Theme } from "@mui/material";
 
 const createThemeComponents = (theme: Theme) => ({
+  MuiOutlinedInput: {
+    styleOverrides: {
+      root: {
+        borderRadius: 16,
+      },
+    },
+  },
+  MuiLoadingButton: {
+    styleOverrides: {
+      root: {
+        padding: "16px 0",
+        borderRadius: 16,
+      },
+    },
+  },
   MuiListItemButton: {
     styleOverrides: {
       root: {

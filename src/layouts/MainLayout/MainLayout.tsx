@@ -46,7 +46,7 @@ const settingItems = [
   },
 ];
 
-const Admin = () => {
+const MainLayout = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -57,7 +57,7 @@ const Admin = () => {
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100%" }}>
       <List sx={{ px: 2 }}>
         {navItems.map(({ title, link, icon: Icon }) => (
-          <ListItemButton component={NavLink} to={link}>
+          <ListItemButton key={link} component={NavLink} to={link}>
             <ListItemAvatar>
               <Avatar>
                 <Icon />
@@ -70,7 +70,7 @@ const Admin = () => {
       <Box sx={{ flexGrow: 1 }} />
       <List sx={{ px: 2 }}>
         {settingItems.map(({ title, link, icon: Icon }) => (
-          <ListItemButton component={NavLink} to={link}>
+          <ListItemButton key={link} component={NavLink} to={link}>
             <ListItemAvatar>
               <Avatar>
                 <Icon />
@@ -164,4 +164,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default MainLayout;
