@@ -29,6 +29,15 @@ const createThemeComponents = (theme: Theme) => ({
       },
     },
   },
+  MuiGrid: {
+    styleOverrides: {
+      root: {
+        "&.login": {
+          background: theme.palette.grey[100],
+        },
+      },
+    },
+  },
 });
 
 export { createThemeComponents };

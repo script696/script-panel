@@ -54,7 +54,14 @@ const MainLayout = () => {
   };
 
   const drawer = (
-    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100%" }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100%",
+        padding: "0",
+      }}
+    >
       <List sx={{ px: 2 }}>
         {navItems.map(({ title, link, icon: Icon }) => (
           <ListItemButton key={link} component={NavLink} to={link}>
