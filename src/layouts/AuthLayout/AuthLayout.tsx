@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material";
 import { ReactNode } from "react";
+import { Logo } from "../../components";
 
 type IAuthLayout = {
   children: ReactNode;
@@ -12,8 +13,8 @@ const AuthLayout = ({ children }: IAuthLayout) => {
       justifyContent="center"
       alignItems="center"
       component="main"
-      maxWidth="xs"
-      style={{ minHeight: "100vh" }}
+      // style={{ minHeight: "100vh" }}
+      sx={{ minHeight: "100vh" }}
     >
       {children}
     </Grid>

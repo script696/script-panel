@@ -29,11 +29,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "PORT=4000 react-scripts start",
+    "dev": "react-scripts start -p 3005",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  
   "eslintConfig": {
     "extends": [
       "react-app",
