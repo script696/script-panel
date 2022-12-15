@@ -21,6 +21,7 @@ const darkPalette = {
   background: {
     paper: palette.grey[900],
     default: palette.grey[800],
+    light: palette.grey[200],
   },
   primary: {
     main: "#64B5F6",
@@ -38,6 +39,7 @@ const lightPalette = {
   background: {
     paper: palette.grey[900],
     default: palette.grey[800],
+    light: palette.grey[200],
   },
 };
 

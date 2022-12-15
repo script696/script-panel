@@ -12,7 +12,12 @@ const SettingsProvider = ({ children }: any) => {
     <SettingsContext.Provider value={{}}>
       <ThemeProvider theme={theme}>
         <GlobalStyles
-          styles={{ body: { backgroundColor: theme.palette.background.paper } }}
+          styles={{
+            body: {
+              backgroundColor: theme.palette.background.paper,
+              margin: "0",
+            },
+          }}
         />
         {children}
       </ThemeProvider>
