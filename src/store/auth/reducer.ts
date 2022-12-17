@@ -1,13 +1,15 @@
 import { Actions, ActionType } from "./actionTypes";
 
 const initialState = {
-  loading: true,
+  loading: false,
   error: "",
+  value: 0,
 };
 
 const LoginReducer = (state = initialState, action: Actions) => {
   switch (action.type) {
     case ActionType.LOGIN_USER:
+      console.log("here im reducer");
       state = {
         ...state,
         loading: true,

@@ -7,6 +7,8 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../store/auth/actions";
 
 type FormValues = {
   email: string;
@@ -14,6 +16,8 @@ type FormValues = {
 };
 
 const Login = () => {
+  const dispatch = useDispatch();
+
   const formik = useFormik<FormValues>({
     initialValues: {
       email: "",
@@ -33,8 +37,10 @@ const Login = () => {
   });
 
   const handleRegister = (values: FormValues) => {
-    console.log(values);
+    dispatch(loginUser(values));
+    // dispatch({ type: "counter/incremented" });
   };
+
   return (
     <AuthLayout>
       <Grid container sx={{ minHeight: "100vh" }}>
