@@ -38,7 +38,6 @@ const Login = () => {
 
   const handleRegister = (values: FormValues) => {
     dispatch(loginUser(values));
-    // dispatch({ type: "counter/incremented" });
   };
 
   return (

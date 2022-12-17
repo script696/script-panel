@@ -1,8 +1,12 @@
-import { takeEvery } from "redux-saga/effects";
+import { call, takeEvery } from "redux-saga/effects";
 import { ActionType, ILoginUser } from "./actionTypes";
+import { AxiosResponse } from "axios";
+import Auth from "./services";
 
-function* loginUser({ payload: { userData } }: ILoginUser) {
+function* loginUser({ payload }: ILoginUser) {
   try {
+    const response: AxiosResponse<any> = yield call(Auth.fetchLogin, payload);
+    console.log(response);
     // const response: IfetchRequestData = yield call(
     //   RequestService.sendFakeRequest,
     //   values

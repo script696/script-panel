@@ -3,7 +3,6 @@ import { Actions, ActionType } from "./actionTypes";
 const initialState = {
   loading: false,
   error: "",
-  value: 0,
 };
 
 const LoginReducer = (state = initialState, action: Actions) => {

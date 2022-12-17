@@ -1,3 +1,5 @@
+import { UserData } from "./types";
+
 export enum ActionType {
   LOGIN_USER = "LOGIN_USER",
   LOGIN_SUCCESS = "LOGIN_SUCCESS",
@@ -6,16 +8,9 @@ export enum ActionType {
   LOGOUT_USER_SUCCESS = "LOGOUT_USER_SUCCESS",
 }
 
-export type UserData = {
-  email: string;
-  password: string;
-};
-
 export type ILoginUser = {
   type: ActionType.LOGIN_USER;
-  payload: {
-    userData: UserData;
-  };
+  payload: UserData;
 };
 
 export type Actions = ILoginUser;

@@ -1,1 +1,4 @@
-export const terest = "";
+export type UserData = {
+  email: string;
+  password: string;
+};
