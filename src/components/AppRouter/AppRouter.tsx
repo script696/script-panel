@@ -6,6 +6,7 @@ import { MainLayout } from "../../layouts";
 const AppRouter = () => {
   return (
     <Routes>
+      <Route path="test" element={<MainLayout />} />
       <Route element={<ProtectedRoutes />}>
         <Route path="admin" element={<MainLayout />} />
       </Route>

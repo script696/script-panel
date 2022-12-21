@@ -1,9 +1,18 @@
-import { ActionType } from "./actionTypes";
-import { UserData } from "./types";
+import { ActionType, LoginData, RegisterData } from "./actionTypes";
+import { NavigateFunction } from "react-router-dom";
 
-export const loginUser = (values: UserData) => {
+const loginUser = (values: LoginData, navigate: NavigateFunction) => {
   return {
     type: ActionType.LOGIN_USER,
-    payload: values,
+    payload: { values, navigate },
   };
 };
+
+const registerUser = (values: RegisterData, navigate: NavigateFunction) => {
+  return {
+    type: ActionType.REGISTER_USER,
+    payload: { values, navigate },
+  };
+};
+
+export { loginUser, registerUser };
