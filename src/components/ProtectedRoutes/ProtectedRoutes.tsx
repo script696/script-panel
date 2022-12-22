@@ -1,9 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { ACCESS_TOKEN } from "../../api/constants/app_constants";
 
 const ProtectedRoutes = () => {
-  const isLogin = false;
+  const { isUserAuth, loading } = useAppSelector((state) => state.LoginReducer);
 
-  if (!isLogin) {
+  if (!localStorage.getItem(ACCESS_TOKEN)) {
     return <Navigate to={`/signin`} />;
   }
 

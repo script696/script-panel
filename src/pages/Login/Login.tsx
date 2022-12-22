@@ -6,7 +6,12 @@ import Box from "@mui/material/Box";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../store/auth/actions";
+import axios from "axios";
+import { ACCESS_TOKEN } from "../../api/constants/app_constants";
+import $api from "../../api/api";
 
 type FormValues = {
   email: string;
@@ -14,6 +19,9 @@ type FormValues = {
 };
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const formik = useFormik<FormValues>({
     initialValues: {
       email: "",
@@ -28,13 +36,30 @@ const Login = () => {
         .required("common.validations.required"),
     }),
     onSubmit: (values) => {
-      handleRegister(values);
+      handleLogin(values);
     },
   });
 
-  const handleRegister = (values: FormValues) => {
-    console.log(values);
+  const handleLogin = (values: FormValues) => {
+    dispatch(loginUser(values, navigate));
   };
+
+  const testFetch = async () => {
+    console.log(localStorage.getItem(ACCESS_TOKEN));
+
+    try {
+      const res = await $api.get("users/all");
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const testRefresh = async () => {
+    const res = axios.get("http://localhost:5000/auth/refresh", {
+      withCredentials: true,
+    });
+  };
+
   return (
     <AuthLayout>
       <Grid container sx={{ minHeight: "100vh" }}>
@@ -100,6 +125,8 @@ const Login = () => {
               <Button component={Link} to="/signup">
                 Зарегестрироваться
               </Button>
+              <Button onClick={testFetch}>Fetch</Button>
+              <Button onClick={testRefresh}>Refresh</Button>
             </Box>
           </Box>
         </Grid>

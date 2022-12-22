@@ -2,13 +2,10 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import HomeIcon from "@mui/icons-material/Home";
-import SettingsIcon from "@mui/icons-material/Settings";
 import PersonIcon from "@mui/icons-material/Person";
 import { useState } from "react";
 import { Avatar, ListItemAvatar, ListItemText } from "@mui/material";
@@ -18,7 +15,7 @@ const drawerWidth = 240;
 const navItems = [
   {
     title: "Home",
-    link: "/",
+    link: "/home",
     icon: HomeIcon,
   },
   {

@@ -1,14 +1,14 @@
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { testAction } from "../../store/auth/actions";
 
-const Home = () => {
-  console.log("here in home");
+const Users = () => {
+  console.log("here in users");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(testAction());
   }, []);
-  return <div style={{ color: "red" }}>Home</div>;
+  return <div style={{ color: "red" }}>Users</div>;
 };
 
-export default Home;
+export default Users;

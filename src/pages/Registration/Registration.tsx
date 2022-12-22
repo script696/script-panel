@@ -6,31 +6,30 @@ import { Button, Grid, TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Logo } from "../../components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../store/auth/actions";
 
 type FormValues = {
+  username: string;
+  password: string;
   email: string;
-  firstName: string;
-  lastName: string;
 };
 
 const Registration = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const formik = useFormik<FormValues>({
     initialValues: {
+      username: "",
       email: "",
-      firstName: "",
-      lastName: "",
+      password: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string()
-        .email("Invalid email address")
-        .required("common.validations.required"),
-      firstName: Yup.string()
-        .max(20, "common.validations.max")
-        .required("common.validations.required"),
-      lastName: Yup.string()
-        .max(30, "common.validations.max")
-        .required("common.validations.required"),
+      username: Yup.string().required("common.validations.required"),
+      email: Yup.string().required("common.validations.required"),
+      password: Yup.string().required("common.validations.required"),
     }),
     onSubmit: (values) => {
       handleRegister(values);
@@ -38,7 +37,7 @@ const Registration = () => {
   });
 
   const handleRegister = (values: FormValues) => {
-    console.log(values);
+    dispatch(registerUser(values, navigate));
   };
 
   return (
@@ -53,46 +52,43 @@ const Registration = () => {
             margin="normal"
             required
             fullWidth
-            id="firstName"
+            id="username"
             label="Введите имя"
-            name="firstName"
-            autoComplete="family-name"
+            name="username"
             autoFocus
             disabled={false}
-            value={formik.values.firstName}
+            value={formik.values.username}
             onChange={formik.handleChange}
-            error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-            helperText={formik.touched.email && formik.errors.firstName}
+            error={formik.touched.username && Boolean(formik.errors.username)}
+            helperText={formik.touched.email && formik.errors.username}
           />{" "}
           <TextField
             margin="normal"
             required
             fullWidth
-            id="lastName"
-            label="Введите фамилию"
-            name="lastName"
-            autoComplete="family-name"
-            autoFocus
-            disabled={false}
-            value={formik.values.lastName}
-            onChange={formik.handleChange}
-            error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-            helperText={formik.touched.lastName && formik.errors.lastName}
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
             id="email"
-            label="Введите email"
+            label="Введите почту"
             name="email"
-            autoComplete="family-name"
             autoFocus
             disabled={false}
             value={formik.values.email}
             onChange={formik.handleChange}
             error={formik.touched.email && Boolean(formik.errors.email)}
             helperText={formik.touched.email && formik.errors.email}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="password"
+            label="Введите пароль"
+            name="password"
+            autoFocus
+            disabled={false}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
           />
           <LoadingButton
             type="submit"
