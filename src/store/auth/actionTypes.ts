@@ -14,11 +14,9 @@ export interface RegisterData {
 export enum ActionType {
   LOGIN_USER = "LOGIN_USER",
   REGISTER_USER = "REGISTER_USER",
-  LOGIN_SUCCESS = "LOGIN_SUCCESS",
-  SUCCESS = "SUCCESS",
   CHECK_AUTH = "CHECK_AUTH",
-  PENDING = "PENDING",
-  TEST_CHECK = "TEST_CHECK",
+  LOADING = "LOADING",
+  FIRST_LOAD = "FIRST_LOAD",
 }
 
 export type ILoginUser = {
@@ -31,16 +29,11 @@ export type IRegisterUser = {
   payload: { values: RegisterData; navigate: NavigateFunction };
 };
 
-export type ILoginSuccess = {
-  type: ActionType.LOGIN_SUCCESS;
+export type ILoading = {
+  type: ActionType.LOADING;
+  payload: boolean;
 };
-
-export type ISuccess = {
-  type: ActionType.SUCCESS;
+export type LoadApp = {
+  type: ActionType.FIRST_LOAD;
 };
-
-export type IPending = {
-  type: ActionType.PENDING;
-};
-
-export type Actions = ILoginUser | ILoginSuccess | IPending | ISuccess;
+export type Actions = ILoginUser | ILoading | LoadApp;

@@ -1,30 +1,24 @@
 import { Actions, ActionType } from "./actionTypes";
 
 const initialState = {
-  loading: false,
+  isLoading: false,
+  isFirstLoad: true,
   error: "",
   isUserAuth: false,
 };
 
 const LoginReducer = (state = initialState, action: Actions) => {
   switch (action.type) {
-    case ActionType.PENDING:
+    case ActionType.LOADING:
       state = {
         ...state,
-        loading: true,
+        isLoading: action.payload,
       };
       break;
-    case ActionType.SUCCESS:
+    case ActionType.FIRST_LOAD:
       state = {
         ...state,
-        loading: false,
-      };
-      break;
-    case ActionType.LOGIN_SUCCESS:
-      state = {
-        ...state,
-        isUserAuth: true,
-        loading: false,
+        isFirstLoad: false,
       };
       break;
     default:
