@@ -18,7 +18,7 @@ class Auth {
   }
 
   static fetchCheckAuth() {
-    return $api.get(`${AUTH_ENDPOINTS.BASE}/${AUTH_ENDPOINTS.REFRESH}`);
+    return $api.get(`${AUTH_ENDPOINTS.BASE}/${AUTH_ENDPOINTS.REFRESH} `);
   }
 
   static fetchTestCheck() {

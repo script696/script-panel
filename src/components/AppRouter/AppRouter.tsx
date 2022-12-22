@@ -1,17 +1,14 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Home, Login, PageNotFound, Registration } from "../../pages";
 import { ProtectedRoutes } from "../index";
-import { MainLayout } from "../../layouts";
 import Users from "../../pages/Users/Users";
 
 const AppRouter = () => {
   return (
     <Routes>
-      <Route element={<MainLayout />}>
-        <Route element={<ProtectedRoutes />}>
-          <Route path="home" element={<Home />} />
-          <Route path="users" element={<Users />} />
-        </Route>
+      <Route element={<ProtectedRoutes />}>
+        <Route path="home" element={<Home />} />
+        <Route path="users" element={<Users />} />
       </Route>
       <Route path="signup" element={<Registration />} />
       <Route path="signin" element={<Login />} />

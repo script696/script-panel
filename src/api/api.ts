@@ -45,6 +45,8 @@ $api.interceptors.response.use(
         localStorage.setItem(ACCESS_TOKEN, response.data.accessToken);
         return $api.request(originalRequest);
       } catch (e) {
+        localStorage.removeItem(ACCESS_TOKEN);
+
         console.log("Not Authotaize");
       }
     }

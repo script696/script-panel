@@ -15,40 +15,16 @@ const registerUser = (values: RegisterData, navigate: NavigateFunction) => {
   };
 };
 
-const loginSuccess = () => {
-  return {
-    type: ActionType.LOGIN_SUCCESS,
-  };
-};
-
-const pending = () => {
-  return {
-    type: ActionType.PENDING,
-  };
-};
-
-const success = () => {
-  return {
-    type: ActionType.SUCCESS,
-  };
-};
-
-const testAction = () => {
-  return {
-    type: ActionType.TEST_CHECK,
-  };
-};
-
 const checkAuth = () => {
   return { type: ActionType.CHECK_AUTH };
 };
 
-export {
-  loginUser,
-  registerUser,
-  loginSuccess,
-  checkAuth,
-  pending,
-  success,
-  testAction,
+const setLoading = (isLoading: boolean) => {
+  return { type: ActionType.LOADING, payload: isLoading };
 };
+
+const setFirstLoad = () => {
+  return { type: ActionType.FIRST_LOAD };
+};
+
+export { loginUser, setFirstLoad, registerUser, checkAuth, setLoading };

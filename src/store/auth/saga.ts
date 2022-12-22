@@ -8,11 +8,12 @@ import {
   ILoginUserResponse,
   IRegisterUserResponse,
 } from "./types";
-import { loginSuccess, pending, success } from "./actions";
+import { setFirstLoad, setLoading } from "./actions";
 
 function* loginUser({ payload }: ILoginUser) {
   const { values, navigate } = payload;
-  yield put(pending());
+  yield put(setLoading(true));
+
   try {
     const response: AxiosResponse<ILoginUserResponse> = yield call(
       Auth.fetchLogin,
@@ -20,19 +21,17 @@ function* loginUser({ payload }: ILoginUser) {
     );
 
     localStorage.setItem(ACCESS_TOKEN, response.data.accessToken);
-    yield put(loginSuccess());
     navigate("/home");
   } catch (error) {
     yield;
   } finally {
-    yield put(success());
-    // yield put(loadJudicialCases(false));
+    yield put(setLoading(false));
   }
 }
 
 function* registerUser({ payload }: IRegisterUser) {
   const { values, navigate } = payload;
-  yield put(pending());
+  yield put(setLoading(true));
 
   try {
     const response: AxiosResponse<IRegisterUserResponse> = yield call(
@@ -45,14 +44,12 @@ function* registerUser({ payload }: IRegisterUser) {
   } catch (error) {
     yield;
   } finally {
-    yield put(success());
-
-    // yield put(loadJudicialCases(false));
+    yield put(setLoading(false));
   }
 }
 
 function* checkAuth() {
-  yield put(pending());
+  yield put(setLoading(true));
 
   try {
     const response: AxiosResponse<ICheckAuthResponse> = yield call(
@@ -60,24 +57,10 @@ function* checkAuth() {
     );
     localStorage.setItem(ACCESS_TOKEN, response.data.accessToken);
   } catch (error) {
-    yield;
+    localStorage.removeItem(ACCESS_TOKEN);
   } finally {
-    yield put(success());
-  }
-}
-
-function* testCheck() {
-  yield put(pending());
-
-  try {
-    const response: AxiosResponse<ICheckAuthResponse> = yield call(
-      Auth.fetchTestCheck
-    );
-    console.log(response);
-  } catch (error) {
-    yield;
-  } finally {
-    yield put(success());
+    yield put(setLoading(false));
+    yield put(setFirstLoad());
   }
 }
 
@@ -85,7 +68,6 @@ function* RequestSaga() {
   yield takeEvery(ActionType.REGISTER_USER, registerUser);
   yield takeEvery(ActionType.LOGIN_USER, loginUser);
   yield takeEvery(ActionType.CHECK_AUTH, checkAuth);
-  yield takeEvery(ActionType.TEST_CHECK, testCheck);
 }
 
 export default RequestSaga;
