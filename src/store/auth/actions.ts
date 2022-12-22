@@ -15,4 +15,40 @@ const registerUser = (values: RegisterData, navigate: NavigateFunction) => {
   };
 };
 
-export { loginUser, registerUser };
+const loginSuccess = () => {
+  return {
+    type: ActionType.LOGIN_SUCCESS,
+  };
+};
+
+const pending = () => {
+  return {
+    type: ActionType.PENDING,
+  };
+};
+
+const success = () => {
+  return {
+    type: ActionType.SUCCESS,
+  };
+};
+
+const testAction = () => {
+  return {
+    type: ActionType.TEST_CHECK,
+  };
+};
+
+const checkAuth = () => {
+  return { type: ActionType.CHECK_AUTH };
+};
+
+export {
+  loginUser,
+  registerUser,
+  loginSuccess,
+  checkAuth,
+  pending,
+  success,
+  testAction,
+};

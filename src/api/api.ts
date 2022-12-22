@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL, ENDPOINTS } from "./constants/api_endpoints";
+import { AUTH_ENDPOINTS, BASE_URL } from "./constants/api_endpoints";
 import { ACCESS_TOKEN } from "./constants/app_constants";
 
 const $api = axios.create({
@@ -9,7 +9,7 @@ const $api = axios.create({
 
 const refresh = async () =>
   await axios.get<{ accessToken: string }>(
-    `${BASE_URL}/${ENDPOINTS.AUTH}/${ENDPOINTS.REFRESH}`,
+    `${BASE_URL}/${AUTH_ENDPOINTS.BASE}/${AUTH_ENDPOINTS.REFRESH}`,
     {
       withCredentials: true,
     }
