@@ -9,9 +9,7 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../store/auth/actions";
-import axios from "axios";
-import { ACCESS_TOKEN } from "../../api/constants/app_constants";
-import $api from "../../api/api";
+import { ReactComponent as InformationSvg } from "../../assets/svg/information.svg";
 
 type FormValues = {
   email: string;
@@ -44,91 +42,124 @@ const Login = () => {
     dispatch(loginUser(values, navigate));
   };
 
-  const testFetch = async () => {
-    console.log(localStorage.getItem(ACCESS_TOKEN));
-
-    try {
-      const res = await $api.get("users/all");
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const testRefresh = async () => {
-    const res = axios.get("http://localhost:5000/auth/refresh", {
-      withCredentials: true,
-    });
-  };
-
   return (
     <AuthLayout>
       <Grid container sx={{ minHeight: "100vh" }}>
-        <Grid item xs={7} className="login"></Grid>
         <Grid
-          container
           item
+          container
+          display={{ xs: "none", sm: "none", md: "flex" }}
+          py={3}
+          md={7}
+          lg={7}
+          xl={9}
+          justifyContent="center"
+          alignItems="center"
+          direction="column"
+          className="login"
+        >
+          <Box flexGrow={1} height="25rem" width="25rem">
+            <InformationSvg height="100%" width="100%" />
+          </Box>
+          <Grid item container justifyContent="center">
+            <Typography component="p" variant="body1">
+              Created by Nikita © 2022
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid
+          item
+          container
           direction="column"
           alignItems="center"
           justifyContent="center"
           p={4}
-          xs={5}
-          maxWidth={450}
+          xs={12}
+          sm={12}
+          md={5}
+          lg={5}
+          xl={3}
         >
-          <Logo size={80} />
-          <Typography component="h2" variant="h5" mb={4}>
-            Авторизация
-          </Typography>
-          <Box component="form" noValidate onSubmit={formik.handleSubmit}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Введите почту"
-              name="email"
-              autoComplete="family-name"
-              disabled={false}
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="password"
-              label="Введите пароль"
-              name="password"
-              autoComplete="family-name"
-              disabled={false}
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              error={formik.touched.password && Boolean(formik.errors.password)}
-              helperText={formik.touched.password && formik.errors.password}
-            />
-            <LoadingButton
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              disabled={false}
-              loading={false}
-              sx={{ my: 2 }}
-            >
+          <Logo size={50} mb={2} />
+          <Grid
+            className="grid_base"
+            container
+            alignItems="center"
+            direction="column"
+            px={4}
+            py={1}
+          >
+            <Typography component="h2" variant="h3" mb={0.5}>
               Войти
-            </LoadingButton>
-            <Box display="flex" columnGap={2}>
-              <Typography component="span" variant="subtitle1">
-                Еще не зарегестрированы ?
-              </Typography>
-              <Button component={Link} to="/signup">
-                Зарегестрироваться
-              </Button>
-              <Button onClick={testFetch}>Fetch</Button>
-              <Button onClick={testRefresh}>Refresh</Button>
+            </Typography>
+            <Box component="form" noValidate onSubmit={formik.handleSubmit}>
+              <TextField
+                size="small"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Введите почту"
+                name="email"
+                autoComplete="family-name"
+                disabled={false}
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+              />
+              <TextField
+                size="small"
+                margin="normal"
+                required
+                fullWidth
+                id="password"
+                label="Введите пароль"
+                name="password"
+                autoComplete="family-name"
+                disabled={false}
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.password && Boolean(formik.errors.password)
+                }
+                helperText={formik.touched.password && formik.errors.password}
+              />
+              <LoadingButton
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                disabled={false}
+                loading={false}
+                sx={{ my: 2 }}
+              >
+                Войти
+              </LoadingButton>
+              <Box display="flex" columnGap={2}></Box>
             </Box>
-          </Box>
+          </Grid>
+          <Box flexGrow={1} />
+          <Grid
+            className="grid_base"
+            container
+            direction="column"
+            alignItems="center"
+            px={4}
+            py={3}
+          >
+            <Typography mb={1} component="span" variant="subtitle1">
+              Еще не зарегестрированы ?
+            </Typography>
+            <Button
+              component={Link}
+              to="/signup"
+              className="button_login"
+              fullWidth
+            >
+              Зарегестрироваться
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
     </AuthLayout>
