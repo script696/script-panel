@@ -42,13 +42,20 @@ const Registration = () => {
 
   return (
     <AuthLayout>
-      <Grid container direction="column" alignItems="center" maxWidth={450}>
-        <Logo size={80} />
-        <Typography component="h2" variant="h5" mb={2}>
+      <Grid
+        container
+        p={4}
+        direction="column"
+        alignItems="center"
+        maxWidth={450}
+      >
+        <Logo size={50} />
+        <Typography component="h2" variant="h3" mb={2}>
           Регистрация
         </Typography>
         <Box component="form" noValidate onSubmit={formik.handleSubmit}>
           <TextField
+            size="small"
             margin="normal"
             required
             fullWidth
@@ -61,8 +68,9 @@ const Registration = () => {
             onChange={formik.handleChange}
             error={formik.touched.username && Boolean(formik.errors.username)}
             helperText={formik.touched.email && formik.errors.username}
-          />{" "}
+          />
           <TextField
+            size="small"
             margin="normal"
             required
             fullWidth
@@ -77,6 +85,7 @@ const Registration = () => {
             helperText={formik.touched.email && formik.errors.email}
           />
           <TextField
+            size="small"
             margin="normal"
             required
             fullWidth
@@ -101,14 +110,14 @@ const Registration = () => {
           >
             Register
           </LoadingButton>
-          <Box display="flex" columnGap={2} justifyContent="center">
+          <Grid container alignItems="center" justifyContent="space-between">
             <Typography component="span" variant="subtitle1">
               Уже зарегестрированы ?
             </Typography>
-            <Button component={Link} to="/signin">
+            <Button component={Link} to="/signin" sx={{ width: "40%" }}>
               Войти
             </Button>
-          </Box>
+          </Grid>
         </Box>
       </Grid>
     </AuthLayout>
