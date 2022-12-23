@@ -16,14 +16,19 @@ const typography = {
   },
   h3: {
     fontWeight: 800,
-    fontSize: "1.375rem",
+    fontSize: "1.2rem",
     letterSpacing: 0,
   },
 
   subtitle1: {
     fontWeight: 200,
-    fontSize: "1rem",
+    fontSize: "0.7rem",
     letterSpacing: "0.05rem",
+  },
+  label: {
+    fontWeight: 400,
+    fontSize: "0.9rem",
+    colors: "red",
   },
 };
 
