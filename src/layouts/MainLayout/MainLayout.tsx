@@ -8,7 +8,19 @@ import Diversity3Icon from "@mui/icons-material/Diversity3";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import { useState } from "react";
-import { Avatar, ListItemAvatar, ListItemText } from "@mui/material";
+import {
+  AppBar,
+  Avatar,
+  Button,
+  Grid,
+  IconButton,
+  ListItemAvatar,
+  ListItemText,
+  Toolbar,
+} from "@mui/material";
+import { Logo } from "../../components";
+import Typography from "@mui/material/Typography";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const drawerWidth = 240;
 
@@ -38,7 +50,7 @@ const settingItems = [
   },
   {
     title: "Setting",
-    link: "/users",
+    link: "/settings",
     icon: HomeIcon,
   },
 ];
@@ -51,15 +63,11 @@ const MainLayout = () => {
   };
 
   const drawer = (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100%",
-        padding: "0",
-      }}
-    >
-      <List sx={{ px: 2 }}>
+    <Grid container direction="column" py={2} className="grid_drawer">
+      <Box display="flex" justifyContent="center">
+        <Logo size={50} mb={2} />
+      </Box>
+      <List sx={{ py: 2, pl: 2 }}>
         {navItems.map(({ title, link, icon: Icon }) => (
           <ListItemButton key={link} component={NavLink} to={link}>
             <ListItemAvatar>
@@ -84,14 +92,33 @@ const MainLayout = () => {
           </ListItemButton>
         ))}
       </List>
-    </Box>
+    </Grid>
   );
 
   return (
     <Box sx={{ display: "flex" }}>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              News
+            </Typography>
+            <Button color="inherit">Login</Button>
+          </Toolbar>
+        </AppBar>
+      </Box>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ width: 0, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -105,8 +132,9 @@ const MainLayout = () => {
           sx={{
             display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
+              border: "none",
               boxSizing: "border-box",
-              width: drawerWidth,
+              width: "70vw",
             },
           }}
         >
@@ -115,8 +143,12 @@ const MainLayout = () => {
         <Drawer
           variant="permanent"
           sx={{
-            display: { xs: "none", sm: "block" },
+            display: {
+              xs: "none",
+              sm: "block",
+            },
             "& .MuiDrawer-paper": {
+              border: "none",
               boxSizing: "border-box",
               width: drawerWidth,
             },
@@ -126,44 +158,6 @@ const MainLayout = () => {
           {drawer}
         </Drawer>
       </Box>
-      {/*<Box*/}
-      {/*  component="main"*/}
-      {/*  sx={{*/}
-      {/*    flexGrow: 1,*/}
-      {/*    width: { sm: `calc(100% - ${drawerWidth}px)` },*/}
-      {/*  }}*/}
-      {/*>*/}
-      {/*  <Toolbar />*/}
-      {/*  <Typography paragraph>*/}
-      {/*    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do*/}
-      {/*    eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus*/}
-      {/*    dolor purus non enim praesent elementum facilisis leo vel. Risus at*/}
-      {/*    ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum*/}
-      {/*    quisque non tellus. Convallis convallis tellus id interdum velit*/}
-      {/*    laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed*/}
-      {/*    adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies*/}
-      {/*    integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate*/}
-      {/*    eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo*/}
-      {/*    quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat*/}
-      {/*    vivamus at augue. At augue eget arcu dictum varius duis at consectetur*/}
-      {/*    lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien*/}
-      {/*    faucibus et molestie ac.*/}
-      {/*  </Typography>*/}
-      {/*  <Typography paragraph>*/}
-      {/*    Consequat mauris nunc congue nisi vitae suscipit. Fringilla est*/}
-      {/*    ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar*/}
-      {/*    elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse*/}
-      {/*    sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat*/}
-      {/*    mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis*/}
-      {/*    risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas*/}
-      {/*    purus viverra accumsan in. In hendrerit gravida rutrum quisque non*/}
-      {/*    tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant*/}
-      {/*    morbi tristique senectus et. Adipiscing elit duis tristique*/}
-      {/*    sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis*/}
-      {/*    eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla*/}
-      {/*    posuere sollicitudin aliquam ultrices sagittis orci a.*/}
-      {/*  </Typography>*/}
-      {/*</Box>*/}
     </Box>
   );
 };

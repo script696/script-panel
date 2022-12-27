@@ -13,6 +13,7 @@ const AppRouter = () => {
       <Route path="signup" element={<Registration />} />
       <Route path="signin" element={<Login />} />
       <Route path="404" element={<PageNotFound />} />
+      <Route path="/" element={<Navigate to={`/home`} replace />} />
       <Route path="*" element={<Navigate to={`/404`} replace />} />
     </Routes>
   );
