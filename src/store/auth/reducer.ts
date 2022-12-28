@@ -7,7 +7,7 @@ const initialState = {
   isUserAuth: false,
 };
 
-const LoginReducer = (state = initialState, action: Actions) => {
+const AuthReducer = (state = initialState, action: Actions) => {
   switch (action.type) {
     case ActionType.LOADING:
       state = {
@@ -27,4 +27,4 @@ const LoginReducer = (state = initialState, action: Actions) => {
   }
   return state;
 };
-export default LoginReducer;
+export default AuthReducer;

@@ -1,15 +1,10 @@
-import { Grid } from "@mui/material";
-import { MainLayout } from "../../layouts";
-import Box from "@mui/material/Box";
+import { AdminLayout } from "../../layouts";
 
 const Home = () => {
   return (
-    <Grid container sx={{ height: "100vh" }}>
-      <MainLayout />
-      <Box component="main" flexGrow={1}>
-        Home
-      </Box>
-    </Grid>
+    <AdminLayout>
+      <section>Home!!!!!!!</section>
+    </AdminLayout>
   );
 };
 

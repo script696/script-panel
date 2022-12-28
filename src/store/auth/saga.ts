@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { ActionType, ILoginUser, IRegisterUser } from "./actionTypes";
+import { ActionType, LoginUser, RegisterUser } from "./actionTypes";
 import { AxiosResponse } from "axios";
 import Auth from "./services";
 import { ACCESS_TOKEN } from "../../api/constants/app_constants";
@@ -10,7 +10,7 @@ import {
 } from "./types";
 import { setFirstLoad, setLoading } from "./actions";
 
-function* loginUser({ payload }: ILoginUser) {
+function* loginUser({ payload }: LoginUser) {
   const { values, navigate } = payload;
   yield put(setLoading(true));
 
@@ -29,7 +29,7 @@ function* loginUser({ payload }: ILoginUser) {
   }
 }
 
-function* registerUser({ payload }: IRegisterUser) {
+function* registerUser({ payload }: RegisterUser) {
   const { values, navigate } = payload;
   yield put(setLoading(true));
 

@@ -4,7 +4,7 @@ import { ACCESS_TOKEN } from "../../api/constants/app_constants";
 import { Preloader } from "../index";
 
 const ProtectedRoutes = () => {
-  const { isFirstLoad } = useAppSelector((state) => state.LoginReducer);
+  const { isFirstLoad } = useAppSelector((state) => state.AuthReducer);
 
   if (isFirstLoad) {
     return <Preloader />;

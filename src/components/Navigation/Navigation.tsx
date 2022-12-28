@@ -7,9 +7,11 @@ import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
-import { useState } from "react";
 import { Avatar, Grid, ListItemAvatar, ListItemText } from "@mui/material";
-import { Logo } from "../../components";
+import { Logo } from "../index";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { useDispatch } from "react-redux";
+import { toggleMobileMenu } from "../../store/settings/actions";
 
 const drawerWidth = 240;
 
@@ -45,10 +47,11 @@ const settingItems = [
 ];
 
 const Navigation = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const { isMobileMenuOpen } = useAppSelector((state) => state.SettingsReducer);
+  const dispatch = useDispatch();
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+    dispatch(toggleMobileMenu());
   };
 
   const drawer = (
@@ -87,12 +90,15 @@ const Navigation = () => {
   return (
     <Box
       component="nav"
-      sx={{ width: { xs: 0, sm: drawerWidth }, flexShrink: { lg: 0 } }}
+      sx={{
+        width: { xs: 0, sm: drawerWidth },
+        flexShrink: { lg: 0 },
+      }}
     >
       {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
       <Drawer
         variant="temporary"
-        open={mobileOpen}
+        open={isMobileMenuOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
           keepMounted: true, // Better open performance on mobile.
