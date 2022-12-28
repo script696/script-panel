@@ -8,19 +8,8 @@ import Diversity3Icon from "@mui/icons-material/Diversity3";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import { useState } from "react";
-import {
-  AppBar,
-  Avatar,
-  Button,
-  Grid,
-  IconButton,
-  ListItemAvatar,
-  ListItemText,
-  Toolbar,
-} from "@mui/material";
+import { Avatar, Grid, ListItemAvatar, ListItemText } from "@mui/material";
 import { Logo } from "../../components";
-import Typography from "@mui/material/Typography";
-import MenuIcon from "@mui/icons-material/Menu";
 
 const drawerWidth = 240;
 
@@ -55,7 +44,7 @@ const settingItems = [
   },
 ];
 
-const MainLayout = () => {
+const Navigation = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -96,70 +85,48 @@ const MainLayout = () => {
   );
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              News
-            </Typography>
-            <Button color="inherit">Login</Button>
-          </Toolbar>
-        </AppBar>
-      </Box>
-      <Box
-        component="nav"
-        sx={{ width: 0, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
+    <Box
+      component="nav"
+      sx={{ width: { xs: 0, sm: drawerWidth }, flexShrink: { lg: 0 } }}
+    >
+      {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+      <Drawer
+        variant="temporary"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
+        }}
+        sx={{
+          display: { xs: "block", sm: "none" },
+          "& .MuiDrawer-paper": {
+            border: "none",
+            boxSizing: "border-box",
+            width: "70vw",
+          },
+        }}
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Drawer
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              border: "none",
-              boxSizing: "border-box",
-              width: "70vw",
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-        <Drawer
-          variant="permanent"
-          sx={{
-            display: {
-              xs: "none",
-              sm: "block",
-            },
-            "& .MuiDrawer-paper": {
-              border: "none",
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-          open
-        >
-          {drawer}
-        </Drawer>
-      </Box>
+        {drawer}
+      </Drawer>
+      <Drawer
+        variant="permanent"
+        sx={{
+          display: {
+            xs: "none",
+            sm: "block",
+          },
+          "& .MuiDrawer-paper": {
+            border: "none",
+            boxSizing: "border-box",
+            width: drawerWidth,
+          },
+        }}
+        open
+      >
+        {drawer}
+      </Drawer>
     </Box>
   );
 };
 
-export default MainLayout;
+export default Navigation;

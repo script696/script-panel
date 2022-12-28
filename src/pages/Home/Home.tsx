@@ -1,8 +1,15 @@
+import { Grid } from "@mui/material";
+import { MainLayout } from "../../layouts";
+import Box from "@mui/material/Box";
+
 const Home = () => {
   return (
-    <div style={{ color: "red", position: "fixed", top: "50%", left: "50%" }}>
-      Home
-    </div>
+    <Grid container sx={{ height: "100vh" }}>
+      <MainLayout />
+      <Box component="main" flexGrow={1}>
+        Home
+      </Box>
+    </Grid>
   );
 };
 
