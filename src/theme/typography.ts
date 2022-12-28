@@ -28,7 +28,6 @@ const typography = {
   label: {
     fontWeight: 400,
     fontSize: "0.9rem",
-    colors: "red",
   },
 };
 

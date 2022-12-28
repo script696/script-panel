@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
-import LoginReducer from "./auth/reducer";
-// Front
+import AuthReducer from "./auth/reducer";
+import SettingsReducer from "./settings/reducer";
 
 const rootReducer = combineReducers({
-  LoginReducer,
+  AuthReducer,
+  SettingsReducer,
 });
 
 export default rootReducer;

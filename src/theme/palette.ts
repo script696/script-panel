@@ -7,26 +7,25 @@ const palette = {
     "200": "#B0BEC5",
     "300": "#90A4AE",
     "400": "#78909C",
-    "500": "#16171b",
-    "600": "#0284c7",
-    "700": "#222327",
-    "800": "#37474F",
-    "900": "#16171b",
+    "500": "#e0e1dd",
+    "600": "#778da9",
+    "700": "#415a77",
+    "800": "#1b263b",
+    "900": "#0d1b2a",
   },
 };
-//fiolet #7c3aed
-// blue #0284c7
-//red #bb432c
-//yellow #ecb613
-//#06152B
-//#364153
+const test = {
+  main: "#222327",
+  secondary: "#222327",
+};
+
 const darkPalette = {
   ...palette,
   mode: "dark" as PaletteMode,
   background: {
-    paper: palette.grey[900],
-    default: palette.grey[800],
-    light: palette.grey[200],
+    paper: "#a69eb0",
+    default: "#000000",
+    light: "#f2e2cd",
   },
   primary: {
     main: "#64B5F6",

@@ -19,21 +19,21 @@ export enum ActionType {
   FIRST_LOAD = "FIRST_LOAD",
 }
 
-export type ILoginUser = {
+export type LoginUser = {
   type: ActionType.LOGIN_USER;
   payload: { values: LoginData; navigate: NavigateFunction };
 };
 
-export type IRegisterUser = {
+export type RegisterUser = {
   type: ActionType.REGISTER_USER;
   payload: { values: RegisterData; navigate: NavigateFunction };
 };
 
-export type ILoading = {
+export type Loading = {
   type: ActionType.LOADING;
   payload: boolean;
 };
 export type LoadApp = {
   type: ActionType.FIRST_LOAD;
 };
-export type Actions = ILoginUser | ILoading | LoadApp;
+export type Actions = LoginUser | Loading | LoadApp;

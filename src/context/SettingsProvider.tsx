@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import { createMuiTheme } from "../theme";
 import { GlobalStyles } from "@mui/material";
 
@@ -14,7 +14,7 @@ const SettingsProvider = ({ children }: any) => {
         <GlobalStyles
           styles={{
             body: {
-              backgroundColor: theme.palette.background.paper,
+              backgroundColor: theme.palette.grey[800],
               margin: "0",
             },
           }}

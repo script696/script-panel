@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./styles/index.css";
 import { AppRouter } from "./components";
 import { useDispatch } from "react-redux";
 import { checkAuth } from "./store/auth/actions";
