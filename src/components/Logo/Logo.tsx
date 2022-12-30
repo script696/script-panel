@@ -1,15 +1,15 @@
 import Box, { BoxProps } from "@mui/material/Box";
-import { ReactComponent as LogoSvg } from "../../assets/img/logo.svg";
+import { ReactComponent as LogoSvg } from "../../assets/svg/logo.svg";
 
 type LogoProps = {
-  colored?: boolean;
+  color?: string;
   size: number;
 } & BoxProps;
 
-const Logo = ({ colored = false, size, ...boxProps }: LogoProps) => {
+const Logo = ({ color, size, ...boxProps }: LogoProps) => {
   return (
     <Box {...boxProps}>
-      <LogoSvg height={size} width={size} />
+      <LogoSvg height={size} width={size} style={{ fill: color }} />
     </Box>
   );
 };

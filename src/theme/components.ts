@@ -6,7 +6,6 @@ const createThemeComponents = (theme: Theme) => ({
       root: {
         fontSize: "0.7rem",
         lineHeight: "1.4rem",
-        // padding: "5px 5px",
       },
     },
   },
@@ -14,14 +13,15 @@ const createThemeComponents = (theme: Theme) => ({
     styleOverrides: {
       root: {
         borderRadius: 10,
-        // padding: "5px 5px",
       },
     },
   },
   MuiLoadingButton: {
     styleOverrides: {
       root: {
-        background: theme.palette.grey[600],
+        background: "#669bbc",
+        color: "#fff",
+        border: "1px solid inherit",
       },
     },
   },
@@ -38,22 +38,28 @@ const createThemeComponents = (theme: Theme) => ({
       root: {
         padding: "5px 0",
         borderRadius: 8,
-        border: `2px solid ${theme.palette.grey[600]}`,
-        background: "none",
+        border: `1px solid ${theme.palette.primary.contrastText}`,
+        background: theme.palette.background.default,
+        boxShadow:
+          "0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)",
         color: "#fff",
         fontSize: "0.65rem",
+        "&.color_secondary": {
+          color: "#fff",
+        },
       },
     },
   },
   MuiListItemButton: {
     styleOverrides: {
       root: {
-        color: theme.palette.text.primary,
+        color: "red",
         borderRadius: "8px 0 0 8px",
         paddingTop: 12,
         paddingBottom: 12,
         "&.active": {
-          backgroundColor: theme.palette.grey[700],
+          backgroundColor: theme.palette.primary.light,
+          border: `1px solid ${theme.palette.primary.contrastText}`,
         },
       },
     },
@@ -63,24 +69,17 @@ const createThemeComponents = (theme: Theme) => ({
       root: {
         width: "100%",
         "&.login": {
-          background: theme.palette.grey[900],
-          // backgroundImage:
-          //   "linear-gradient( to left, transparent, rgba(255, 255, 255, .125) 20%, rgba(255, 255, 255, .125) 80%, transparent )",
+          background: theme.palette.primary.main,
         },
         "&.grid_base": {
-          background: theme.palette.grey[700],
+          // background: theme.palette.primary.light,
           borderRadius: "16px",
-
-          // backgroundImage:
-          //   "linear-gradient( to left, rgba(255, 255, 255, .125) 50%, rgba(255, 255, 255, .125) 50%, transparent )",
-          // boxShadow: "inset 10px 10px 10px rgba(000, 000, 000, 0.9)",
+          border: `2px solid ${theme.palette.primary.light}`,
         },
         "&.grid_drawer": {
           minHeight: "100%",
-          background: theme.palette.grey[900],
+          background: theme.palette.primary.main,
           border: "none",
-          // backgroundImage:
-          //   "linear-gradient( to left, rgba(255, 255, 255, .125) 50%, rgba(255, 255, 255, .125) 50%, transparent )",
         },
       },
     },
@@ -89,6 +88,16 @@ const createThemeComponents = (theme: Theme) => ({
     styleOverrides: {
       root: {
         color: theme.palette.text.primary,
+        "&.color_secondary": {
+          color: theme.palette.text.secondary,
+        },
+      },
+    },
+  },
+  MuiSvgIcon: {
+    styleOverrides: {
+      root: {
+        color: theme.palette.text.secondary,
       },
     },
   },

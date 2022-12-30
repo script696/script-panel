@@ -1,6 +1,5 @@
 import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
 import { Button, Grid, TextField } from "@mui/material";
-import { Logo } from "../../components";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import LoadingButton from "@mui/lab/LoadingButton";
@@ -10,6 +9,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../store/auth/actions";
 import { ReactComponent as InformationSvg } from "../../assets/svg/information.svg";
+import { Logo } from "../../components";
+import { useAppSelector } from "../../hooks/useAppSelector";
 
 type FormValues = {
   email: string;
@@ -17,6 +18,7 @@ type FormValues = {
 };
 
 const Login = () => {
+  const { colorMode } = useAppSelector((state) => state.SettingsReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -80,7 +82,11 @@ const Login = () => {
           lg={5}
           xl={3}
         >
-          <Logo size={50} mb={2} />
+          <Logo
+            size={50}
+            mb={2}
+            color={colorMode === "dark" ? "#fff" : "#ddbea9"}
+          />
           <Grid
             className="grid_base"
             container
@@ -89,10 +95,20 @@ const Login = () => {
             px={4}
             py={1}
           >
-            <Typography component="h2" variant="h3" mb={0.5}>
+            <Typography
+              component="h2"
+              variant="h3"
+              mb={0.5}
+              className="color_secondary"
+            >
               Войти
             </Typography>
-            <Box component="form" noValidate onSubmit={formik.handleSubmit}>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={formik.handleSubmit}
+              width="100%"
+            >
               <TextField
                 size="small"
                 margin="normal"
@@ -129,7 +145,8 @@ const Login = () => {
                 type="submit"
                 fullWidth
                 variant="contained"
-                color="primary"
+                color="inherit"
+                className="color_secondary"
                 disabled={false}
                 loading={false}
                 sx={{ my: 2 }}
@@ -148,7 +165,12 @@ const Login = () => {
             px={4}
             py={3}
           >
-            <Typography mb={1} component="span" variant="subtitle1">
+            <Typography
+              mb={1}
+              component="span"
+              variant="subtitle1"
+              className="color_secondary"
+            >
               Еще не зарегестрированы ?
             </Typography>
             <Button

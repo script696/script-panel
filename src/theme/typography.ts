@@ -19,15 +19,30 @@ const typography = {
     fontSize: "1.2rem",
     letterSpacing: 0,
   },
+  h4: {
+    fontWeight: 800,
+    fontSize: "1.1rem",
+    letterSpacing: 0,
+  },
+  h5: {
+    fontWeight: 800,
+    fontSize: "1.0rem",
+    letterSpacing: 0,
+  },
+  h6: {
+    fontWeight: 800,
+    fontSize: "0.8rem",
+    letterSpacing: 0,
+  },
 
   subtitle1: {
-    fontWeight: 200,
+    fontWeight: 400,
     fontSize: "0.7rem",
     letterSpacing: "0.05rem",
   },
-  label: {
-    fontWeight: 400,
-    fontSize: "0.9rem",
+  body1: {
+    fontWeight: 700,
+    fontSize: "0.8rem",
   },
 };
 
