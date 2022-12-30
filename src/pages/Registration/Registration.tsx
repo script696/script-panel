@@ -9,6 +9,7 @@ import { Logo } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../store/auth/actions";
+import { useAppSelector } from "../../hooks/useAppSelector";
 
 type FormValues = {
   username: string;
@@ -17,6 +18,7 @@ type FormValues = {
 };
 
 const Registration = () => {
+  const { colorMode } = useAppSelector((state) => state.SettingsReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -49,8 +51,13 @@ const Registration = () => {
         alignItems="center"
         maxWidth={450}
       >
-        <Logo size={50} />
-        <Typography component="h2" variant="h3" mb={2}>
+        <Logo size={50} color={colorMode === "dark" ? "#fff" : "#ddbea9"} />
+        <Typography
+          component="h2"
+          variant="h3"
+          mb={2}
+          className="color_secondary"
+        >
           Регистрация
         </Typography>
         <Box component="form" noValidate onSubmit={formik.handleSubmit}>
@@ -111,7 +118,11 @@ const Registration = () => {
             Register
           </LoadingButton>
           <Grid container alignItems="center" justifyContent="space-between">
-            <Typography component="span" variant="subtitle1">
+            <Typography
+              component="span"
+              variant="subtitle1"
+              className="color_secondary"
+            >
               Уже зарегестрированы ?
             </Typography>
             <Button component={Link} to="/signin" sx={{ width: "40%" }}>

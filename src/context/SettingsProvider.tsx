@@ -1,20 +1,31 @@
-import { createContext } from "react";
+import { createContext, useMemo } from "react";
 import { ThemeProvider } from "@mui/material/styles";
-import { createMuiTheme } from "../theme";
 import { GlobalStyles } from "@mui/material";
-
-const theme = createMuiTheme({ mode: "dark" });
+import { useAppSelector } from "../hooks/useAppSelector";
+import { createMuiTheme } from "../theme";
 
 export const SettingsContext = createContext({});
 
 const SettingsProvider = ({ children }: any) => {
+  const { colorMode } = useAppSelector((state) => state.SettingsReducer);
+  const currentColorMode = localStorage.getItem("dashboardTheme") ?? colorMode;
+  // const theme = createMuiTheme({ mode: "dark" });
+
+  // useEffect(() => {
+  //   console.log(colorMode);
+  // }, [colorMode]);
+  const theme = useMemo(() => {
+    console.log(currentColorMode);
+    return createMuiTheme({ mode: currentColorMode as "dark" | "light" });
+  }, [colorMode, currentColorMode]);
+
   return (
     <SettingsContext.Provider value={{}}>
       <ThemeProvider theme={theme}>
         <GlobalStyles
           styles={{
             body: {
-              backgroundColor: theme.palette.grey[800],
+              backgroundColor: theme.palette.primary.dark,
               margin: "0",
             },
           }}

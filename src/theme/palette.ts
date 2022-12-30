@@ -13,37 +13,46 @@ const palette = {
     "800": "#1b263b",
     "900": "#0d1b2a",
   },
-};
-const test = {
-  main: "#222327",
-  secondary: "#222327",
+  red: {
+    "600": "#f0efeb",
+    "700": "#B37840",
+    "800": "#E6E3E1",
+    "900": "#95775A",
+  },
 };
 
 const darkPalette = {
   ...palette,
   mode: "dark" as PaletteMode,
-  background: {
-    paper: "#a69eb0",
-    default: "#000000",
-    light: "#f2e2cd",
-  },
   primary: {
-    main: "#64B5F6",
-    contrastText: palette.grey[900],
+    main: palette.grey[900],
+    dark: palette.grey[800],
+    light: palette.grey[700],
+    contrastText: palette.grey[600],
   },
   text: {
     primary: palette.grey[100],
-    secondary: palette.grey[300],
+    secondary: palette.grey[700],
     disabled: palette.grey[600],
   },
 };
 
 const lightPalette = {
   ...palette,
+  mode: "light" as PaletteMode,
   background: {
-    paper: palette.grey[900],
-    default: palette.grey[800],
-    light: palette.grey[200],
+    default: "#669bbc",
+  },
+  primary: {
+    main: "#95775A",
+    dark: "#E6E3E1",
+    light: "#ddbea9",
+    contrastText: "#f0efeb",
+  },
+  text: {
+    primary: "#FFFFFF",
+    secondary: palette.red[900],
+    disabled: palette.grey[600],
   },
 };
 

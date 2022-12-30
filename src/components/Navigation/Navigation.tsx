@@ -6,12 +6,14 @@ import { NavLink } from "react-router-dom";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import HomeIcon from "@mui/icons-material/Home";
-import PersonIcon from "@mui/icons-material/Person";
 import { Avatar, Grid, ListItemAvatar, ListItemText } from "@mui/material";
 import { Logo } from "../index";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { useDispatch } from "react-redux";
-import { toggleMobileMenu } from "../../store/settings/actions";
+import {
+  changeSettingsStatus,
+  toggleMobileMenu,
+} from "../../store/settings/actions";
 
 const drawerWidth = 240;
 
@@ -33,31 +35,29 @@ const navItems = [
   },
 ];
 
-const settingItems = [
-  {
-    title: "Profile",
-    link: "/profile",
-    icon: PersonIcon,
-  },
-  {
-    title: "Setting",
-    link: "/settings",
-    icon: HomeIcon,
-  },
-];
-
 const Navigation = () => {
-  const { isMobileMenuOpen } = useAppSelector((state) => state.SettingsReducer);
+  const { isMobileMenuOpen, colorMode } = useAppSelector(
+    (state) => state.SettingsReducer
+  );
+
   const dispatch = useDispatch();
 
   const handleDrawerToggle = () => {
     dispatch(toggleMobileMenu());
   };
 
+  const handleSettingsToggle = () => {
+    dispatch(changeSettingsStatus(true));
+  };
+
   const drawer = (
     <Grid container direction="column" py={2} className="grid_drawer">
       <Box display="flex" justifyContent="center">
-        <Logo size={50} mb={2} />
+        <Logo
+          size={50}
+          mb={2}
+          color={colorMode === "dark" ? "#fff" : "#ddbea9"}
+        />
       </Box>
       <List sx={{ py: 2, pl: 2 }}>
         {navItems.map(({ title, link, icon: Icon }) => (
@@ -73,16 +73,18 @@ const Navigation = () => {
       </List>
       <Box sx={{ flexGrow: 1 }} />
       <List sx={{ px: 2 }}>
-        {settingItems.map(({ title, link, icon: Icon }) => (
-          <ListItemButton key={link} component={NavLink} to={link}>
-            <ListItemAvatar>
-              <Avatar>
-                <Icon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={title} />
-          </ListItemButton>
-        ))}
+        <ListItemButton
+          key="settings"
+          component="button"
+          onClick={handleSettingsToggle}
+        >
+          <ListItemAvatar>
+            <Avatar>
+              <HomeIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="Setting" />
+        </ListItemButton>
       </List>
     </Grid>
   );
