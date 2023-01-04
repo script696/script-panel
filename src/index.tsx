@@ -4,13 +4,12 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
-import SettingsProvider from "./context/SettingsProvider";
+import { SettingsProvider } from "./components";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  // <React.StrictMode>
   <Provider store={store}>
     <SettingsProvider>
       <BrowserRouter>
@@ -18,5 +17,4 @@ root.render(
       </BrowserRouter>
     </SettingsProvider>
   </Provider>
-  // </React.StrictMode>
 );
