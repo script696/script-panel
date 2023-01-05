@@ -12,6 +12,7 @@ import { registerUser } from "../../store/auth/actions";
 import { useAppSelector } from "../../hooks/useAppSelector";
 
 type FormValues = {
+  role: string;
   username: string;
   password: string;
   email: string;
@@ -27,6 +28,7 @@ const Registration = () => {
       username: "",
       email: "",
       password: "",
+      role: "admin",
     },
     validationSchema: Yup.object({
       username: Yup.string().required("common.validations.required"),

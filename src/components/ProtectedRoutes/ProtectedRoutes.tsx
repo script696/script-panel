@@ -2,6 +2,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { ACCESS_TOKEN } from "../../api/constants/app_constants";
 import { Preloader } from "../index";
+import { AdminLayout } from "../../layouts";
 
 const ProtectedRoutes = () => {
   const { isFirstLoad } = useAppSelector((state) => state.AuthReducer);
@@ -14,7 +15,11 @@ const ProtectedRoutes = () => {
     return <Navigate to={`/signin`} />;
   }
 
-  return <Outlet />;
+  return (
+    <AdminLayout>
+      <Outlet />
+    </AdminLayout>
+  );
 };
 
 export default ProtectedRoutes;

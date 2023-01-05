@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Home, Login, PageNotFound, Registration } from "../../pages";
+import { Home, Login, PageNotFound, Profile, Registration } from "../../pages";
 import { ProtectedRoutes } from "../index";
 import Users from "../../pages/Users/Users";
 
@@ -9,6 +9,7 @@ const AppRouter = () => {
       <Route element={<ProtectedRoutes />}>
         <Route path="home" element={<Home />} />
         <Route path="users" element={<Users />} />
+        <Route path="profile" element={<Profile />} />
       </Route>
       <Route path="signup" element={<Registration />} />
       <Route path="signin" element={<Login />} />
