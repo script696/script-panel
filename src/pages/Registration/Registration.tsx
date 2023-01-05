@@ -36,7 +36,6 @@ const Registration = () => {
       password: Yup.string().required("common.validations.required"),
     }),
     onSubmit: (values) => {
-      console.log(values);
       handleRegister(values);
     },
   });

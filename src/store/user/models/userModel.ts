@@ -2,6 +2,12 @@ interface UserDto {
   email: string;
   username: string;
   role: string;
+  about?: string;
 }
 
-export type { UserDto };
+interface UpdateUserDto {
+  email: string;
+  username: string;
+}
+
+export type { UserDto, UpdateUserDto };

@@ -8,7 +8,6 @@ interface ICreateMuiTheme {
 }
 
 const createMuiTheme = ({ mode }: ICreateMuiTheme) => {
-  console.log(mode);
   const palette = mode === "dark" ? darkPalette : lightPalette;
 
   const baseTheme = createTheme({

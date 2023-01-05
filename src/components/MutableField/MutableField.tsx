@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { Grid, TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
 type MutableFieldProps = {
@@ -7,6 +7,7 @@ type MutableFieldProps = {
   formik: any;
   id: string;
   label: string;
+  multiline?: boolean;
 };
 
 const MutableField = ({
@@ -15,12 +16,16 @@ const MutableField = ({
   value,
   formik,
   id,
+  multiline = false,
 }: MutableFieldProps) => {
+  const fieldTitle = `${id[0].toUpperCase()}${id.slice(1)}:`;
+
   return isEditMode ? (
     <TextField
       size="small"
       margin="normal"
       fullWidth
+      multiline={multiline}
       id={id}
       label={label}
       name={id}
@@ -29,9 +34,19 @@ const MutableField = ({
       onChange={formik.handleChange}
     />
   ) : (
-    <Typography component="p" variant="h6" my={2}>
-      {value}
-    </Typography>
+    <Grid container direction="column" mb={2}>
+      <Typography component="h4" variant="h6">
+        {fieldTitle}
+      </Typography>
+      <Typography
+        component="span"
+        variant="body1"
+        my={2}
+        sx={{ whiteSpace: "pre", margin: 0 }}
+      >
+        {value}
+      </Typography>
+    </Grid>
   );
 };
 
