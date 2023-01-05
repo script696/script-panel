@@ -10,7 +10,6 @@ function* getUser() {
 
   try {
     const response: AxiosResponse<UserDto> = yield call(User.fetchUser);
-
     console.log(response.data);
     yield put(setUser(response.data));
   } catch (error) {
