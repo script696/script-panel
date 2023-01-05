@@ -12,6 +12,7 @@ type User = {
   username: string;
   role: string;
   about: string;
+  avatar: string;
 };
 
 export type SetUser = {

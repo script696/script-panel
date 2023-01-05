@@ -9,7 +9,8 @@ class User {
   static fetchUpdateUser(userData: any) {
     return $api.put(
       `${USER_ENDPOINTS.BASE}/${USER_ENDPOINTS.UPDATE_USER}`,
-      userData
+      userData,
+      { headers: { "Content-Type": "multipart/form-data" } }
     );
   }
 }

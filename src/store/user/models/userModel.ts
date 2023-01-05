@@ -3,6 +3,7 @@ interface UserDto {
   username: string;
   role: string;
   about?: string;
+  avatar?: string;
 }
 
 interface UpdateUserDto {

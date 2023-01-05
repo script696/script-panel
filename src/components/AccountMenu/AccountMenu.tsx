@@ -10,8 +10,14 @@ import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
 import defaultAvatar from "../../assets/img/avatars/defaultAvatar.png";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { BASE_URL } from "../../api/constants/api_endpoints";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 export default function AccountMenu() {
+  const { avatar } = useAppSelector((state) => state.UserReducer);
+  const userAvatar = avatar ? `${BASE_URL}/${avatar}` : defaultAvatar;
+
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const navigate = useNavigate();
@@ -42,7 +48,7 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar alt="user avatar" src={defaultAvatar} />
+            <Avatar alt="user avatar" src={userAvatar} />
           </IconButton>
         </Tooltip>
       </Box>
@@ -83,7 +89,10 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem onClick={redirectToProfile}>
-          <Avatar /> Profile
+          <ListItemIcon>
+            <SettingsIcon fontSize="small" />
+          </ListItemIcon>
+          Profile
         </MenuItem>
         <Divider />
         <MenuItem>

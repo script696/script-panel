@@ -9,7 +9,6 @@ function* getUser() {
   yield put(setLoading(true));
   try {
     const response: AxiosResponse<UserDto> = yield call(User.fetchGetUser);
-
     yield put(setUser(response.data));
   } catch (error) {
     yield;
@@ -25,6 +24,7 @@ function* updateUser({ payload }: UpdateUser) {
       User.fetchUpdateUser,
       payload
     );
+    console.log(response);
     yield put(setUser(response.data));
   } catch (error) {
     yield;

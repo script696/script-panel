@@ -5,10 +5,12 @@ type InitialState = {
   username: string;
   role: string;
   about: string;
+  avatar: string;
   isLoading: boolean;
 };
 
 const initialState: InitialState = {
+  avatar: "",
   about: "",
   username: "",
   role: "",
@@ -25,6 +27,7 @@ const UserReducer = (state = initialState, action: Actions) => {
         role: action.payload.role,
         username: action.payload.username,
         about: action.payload.about,
+        avatar: action.payload.avatar,
       };
       break;
     default:
