@@ -26,6 +26,8 @@ const Profile = () => {
     (state) => state.UserReducer
   );
 
+  const { isLoading } = useAppSelector((state) => state.RequestsReducer);
+
   const dispatch = useDispatch();
 
   const {
@@ -171,8 +173,8 @@ const Profile = () => {
                 variant="contained"
                 color="inherit"
                 className="color_secondary"
-                disabled={false}
-                loading={false}
+                disabled={isLoading}
+                loading={isLoading}
                 sx={{ my: 2 }}
               >
                 Update

@@ -5,7 +5,7 @@ import { Preloader } from "../index";
 import { AdminLayout } from "../../layouts";
 
 const ProtectedRoutes = () => {
-  const { isFirstLoad } = useAppSelector((state) => state.AuthReducer);
+  const { isFirstLoad } = useAppSelector((state) => state.RequestsReducer);
 
   if (isFirstLoad) {
     return <Preloader />;

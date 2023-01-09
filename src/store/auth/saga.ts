@@ -8,7 +8,7 @@ import {
   ILoginUserResponse,
   IRegisterUserResponse,
 } from "./types";
-import { setFirstLoad, setLoading } from "./actions";
+import { setFirstLoad, setLoading } from "../requests/actions";
 
 function* loginUser({ payload }: LoginUser) {
   const { values, navigate } = payload;

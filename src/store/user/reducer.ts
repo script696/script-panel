@@ -7,7 +7,6 @@ type InitialState = {
   about: string;
   avatar: string;
   isEditMode: boolean;
-  isLoading: boolean;
 };
 
 const initialState: InitialState = {
@@ -17,7 +16,6 @@ const initialState: InitialState = {
   role: "",
   email: "",
   isEditMode: false,
-  isLoading: false,
 };
 
 const UserReducer = (state = initialState, action: Actions) => {

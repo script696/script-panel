@@ -19,7 +19,11 @@ type FormValues = {
 
 const Login = () => {
   const { colorMode } = useAppSelector((state) => state.SettingsReducer);
+
+  const { isLoading } = useAppSelector((state) => state.RequestsReducer);
+
   const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   const formik = useFormik<FormValues>({
@@ -147,8 +151,8 @@ const Login = () => {
                 variant="contained"
                 color="inherit"
                 className="color_secondary"
-                disabled={false}
-                loading={false}
+                disabled={isLoading}
+                loading={isLoading}
                 sx={{ my: 2 }}
               >
                 Войти
@@ -163,10 +167,11 @@ const Login = () => {
             direction="column"
             alignItems="center"
             px={4}
-            py={3}
+            pt={1}
+            pb={2}
           >
             <Typography
-              mb={1}
+              mb={2}
               component="span"
               variant="subtitle1"
               className="color_secondary"

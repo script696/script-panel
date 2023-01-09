@@ -20,7 +20,11 @@ type FormValues = {
 
 const Registration = () => {
   const { colorMode } = useAppSelector((state) => state.SettingsReducer);
+
+  const { isLoading } = useAppSelector((state) => state.RequestsReducer);
+
   const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   const formik = useFormik<FormValues>({
@@ -113,8 +117,8 @@ const Registration = () => {
             fullWidth
             variant="contained"
             color="primary"
-            disabled={false}
-            loading={false}
+            disabled={isLoading}
+            loading={isLoading}
             sx={{ my: 2 }}
           >
             Register

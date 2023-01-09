@@ -1,24 +1,15 @@
 import { Actions, ActionType } from "./actionTypes";
 
 const initialState = {
-  isLoading: false,
-  isFirstLoad: true,
-  error: "",
   isUserAuth: false,
 };
 
 const AuthReducer = (state = initialState, action: Actions) => {
   switch (action.type) {
-    case ActionType.LOADING:
+    case ActionType.SET_USER_AUTH:
       state = {
         ...state,
-        isLoading: action.payload,
-      };
-      break;
-    case ActionType.FIRST_LOAD:
-      state = {
-        ...state,
-        isFirstLoad: false,
+        isUserAuth: action.payload,
       };
       break;
     default:

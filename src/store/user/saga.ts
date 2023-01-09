@@ -1,9 +1,10 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { ActionType, UpdateUser } from "./actionTypes";
 import { AxiosResponse } from "axios";
-import { setLoading, setUser, toggleProfileEditeMode } from "./actions";
+import { setUser, toggleProfileEditeMode } from "./actions";
 import User from "./services";
 import { UserDto } from "./models/userModel";
+import { setLoading } from "../requests/actions";
 
 function* getUser() {
   yield put(setLoading(true));
