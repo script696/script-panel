@@ -5,3 +5,4 @@ export { default as Preloader } from "./Preloader/Preloader";
 export { default as SettingsProvider } from "./SettingsProvider/SettingsProvider";
 export { default as AccountMenu } from "./AccountMenu/AccountMenu";
 export { default as MutableField } from "./MutableField/MutableField";
+export { default as FileLoader } from "./FileLoader/FileLoader";

@@ -10,11 +10,11 @@ import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
 import defaultAvatar from "../../assets/img/avatars/defaultAvatar.png";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../hooks/useAppSelector";
+import { useAppSelector } from "../../hooks";
 import { BASE_URL } from "../../api/constants/api_endpoints";
 import SettingsIcon from "@mui/icons-material/Settings";
 
-export default function AccountMenu() {
+const AccountMenu = () => {
   const { avatar } = useAppSelector((state) => state.UserReducer);
   const userAvatar = avatar ? `${BASE_URL}/${avatar}` : defaultAvatar;
 
@@ -104,4 +104,6 @@ export default function AccountMenu() {
       </Menu>
     </React.Fragment>
   );
-}
+};
+
+export default AccountMenu;

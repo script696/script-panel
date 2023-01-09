@@ -9,7 +9,7 @@ import { Logo } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../store/auth/actions";
-import { useAppSelector } from "../../hooks/useAppSelector";
+import { useAppSelector } from "../../hooks";
 
 type FormValues = {
   role: string;

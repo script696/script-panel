@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { loginUser } from "../../store/auth/actions";
 import { ReactComponent as InformationSvg } from "../../assets/svg/information.svg";
 import { Logo } from "../../components";
-import { useAppSelector } from "../../hooks/useAppSelector";
+import { useAppSelector } from "../../hooks";
 
 type FormValues = {
   email: string;

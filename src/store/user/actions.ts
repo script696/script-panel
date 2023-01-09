@@ -17,4 +17,8 @@ const updateUser = (userData: UpdateUserDto) => {
   return { type: ActionType.UPDATE_USER, payload: userData };
 };
 
-export { setLoading, getUser, setUser, updateUser };
+const toggleProfileEditeMode = () => {
+  return { type: ActionType.TOGGLE_PROFILE_EDIT_MODE };
+};
+
+export { setLoading, getUser, setUser, updateUser, toggleProfileEditeMode };

@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { ActionType, UpdateUser } from "./actionTypes";
 import { AxiosResponse } from "axios";
-import { setLoading, setUser } from "./actions";
+import { setLoading, setUser, toggleProfileEditeMode } from "./actions";
 import User from "./services";
 import { UserDto } from "./models/userModel";
 
@@ -24,8 +24,8 @@ function* updateUser({ payload }: UpdateUser) {
       User.fetchUpdateUser,
       payload
     );
-    console.log(response);
     yield put(setUser(response.data));
+    yield put(toggleProfileEditeMode());
   } catch (error) {
     yield;
   } finally {

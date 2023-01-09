@@ -2,7 +2,7 @@ import { Grid, IconButton, SwipeableDrawer } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import ThemeCheckbox from "../ThemeCheckbox/ThemeCheckbox";
-import { useAppSelector } from "../../hooks/useAppSelector";
+import { useAppSelector } from "../../hooks";
 import { useDispatch } from "react-redux";
 import {
   changeSettingsStatus,

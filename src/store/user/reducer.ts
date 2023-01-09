@@ -6,6 +6,7 @@ type InitialState = {
   role: string;
   about: string;
   avatar: string;
+  isEditMode: boolean;
   isLoading: boolean;
 };
 
@@ -15,6 +16,7 @@ const initialState: InitialState = {
   username: "",
   role: "",
   email: "",
+  isEditMode: false,
   isLoading: false,
 };
 
@@ -28,6 +30,12 @@ const UserReducer = (state = initialState, action: Actions) => {
         username: action.payload.username,
         about: action.payload.about,
         avatar: action.payload.avatar,
+      };
+      break;
+    case ActionType.TOGGLE_PROFILE_EDIT_MODE:
+      state = {
+        ...state,
+        isEditMode: !state.isEditMode,
       };
       break;
     default:

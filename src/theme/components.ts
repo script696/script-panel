@@ -72,9 +72,12 @@ const createThemeComponents = (theme: Theme) => ({
           background: theme.palette.primary.main,
         },
         "&.grid_base": {
-          // background: theme.palette.primary.light,
           borderRadius: "16px",
           border: `2px solid ${theme.palette.primary.light}`,
+        },
+        "&.grid_test": {
+          background: theme.palette.primary.light,
+          borderRadius: "16px",
         },
         "&.grid_drawer": {
           minHeight: "100%",

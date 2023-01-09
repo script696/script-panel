@@ -5,6 +5,7 @@ export enum ActionType {
   GET_USER = "GET_USER",
   UPDATE_USER = "UPDATE_USER",
   LOADING = "LOADING",
+  TOGGLE_PROFILE_EDIT_MODE = "TOGGLE_PROFILE_EDIT_MODE",
 }
 
 type User = {
@@ -20,8 +21,8 @@ export type SetUser = {
   payload: User;
 };
 
-export type GetUser = {
-  type: ActionType.GET_USER;
+export type SetProfileEditeMode = {
+  type: ActionType.TOGGLE_PROFILE_EDIT_MODE;
 };
 
 export type UpdateUser = {
@@ -29,4 +30,4 @@ export type UpdateUser = {
   payload: UpdateUserDto;
 };
 
-export type Actions = SetUser;
+export type Actions = SetUser | SetProfileEditeMode;
