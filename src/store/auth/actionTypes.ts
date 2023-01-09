@@ -16,8 +16,7 @@ export enum ActionType {
   LOGIN_USER = "LOGIN_USER",
   REGISTER_USER = "REGISTER_USER",
   CHECK_AUTH = "CHECK_AUTH",
-  LOADING = "LOADING",
-  FIRST_LOAD = "FIRST_LOAD",
+  SET_USER_AUTH = "SET_USER_AUTH",
 }
 
 export type LoginUser = {
@@ -25,16 +24,14 @@ export type LoginUser = {
   payload: { values: LoginData; navigate: NavigateFunction };
 };
 
+export type SetUserAuth = {
+  type: ActionType.SET_USER_AUTH;
+  payload: boolean;
+};
+
 export type RegisterUser = {
   type: ActionType.REGISTER_USER;
   payload: { values: RegisterData; navigate: NavigateFunction };
 };
 
-export type Loading = {
-  type: ActionType.LOADING;
-  payload: boolean;
-};
-export type LoadApp = {
-  type: ActionType.FIRST_LOAD;
-};
-export type Actions = LoginUser | Loading | LoadApp;
+export type Actions = SetUserAuth;

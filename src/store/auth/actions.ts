@@ -1,30 +1,27 @@
 import { ActionType, LoginData, RegisterData } from "./actionTypes";
 import { NavigateFunction } from "react-router-dom";
 
-const loginUser = (values: LoginData, navigate: NavigateFunction) => {
+export const loginUser = (values: LoginData, navigate: NavigateFunction) => {
   return {
     type: ActionType.LOGIN_USER,
     payload: { values, navigate },
   };
 };
 
-const registerUser = (values: RegisterData, navigate: NavigateFunction) => {
+export const registerUser = (
+  values: RegisterData,
+  navigate: NavigateFunction
+) => {
   return {
     type: ActionType.REGISTER_USER,
     payload: { values, navigate },
   };
 };
 
-const checkAuth = () => {
+export const checkAuth = () => {
   return { type: ActionType.CHECK_AUTH };
 };
 
-const setLoading = (isLoading: boolean) => {
-  return { type: ActionType.LOADING, payload: isLoading };
+export const setUserAuth = (isUserAuth: boolean) => {
+  return { type: ActionType.SET_USER_AUTH };
 };
-
-const setFirstLoad = () => {
-  return { type: ActionType.FIRST_LOAD };
-};
-
-export { loginUser, setFirstLoad, registerUser, checkAuth, setLoading };
