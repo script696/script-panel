@@ -3,18 +3,18 @@ import $api from "../../api/api";
 import { AUTH_ENDPOINTS } from "../../api/constants/api_endpoints";
 
 class Auth {
-  static fetchLogin({ email, password }: LoginData) {
-    return $api.post(`${AUTH_ENDPOINTS.BASE}/${AUTH_ENDPOINTS.SIGNIN}`, {
-      email,
-      password,
-    });
+  static fetchLogin(loginData: LoginData) {
+    return $api.post(
+      `${AUTH_ENDPOINTS.BASE}/${AUTH_ENDPOINTS.SIGNIN}`,
+      loginData
+    );
   }
-  static fetchRegister({ username, email, password }: RegisterData) {
-    return $api.post(`${AUTH_ENDPOINTS.BASE}/${AUTH_ENDPOINTS.SIGNUP}`, {
-      username,
-      email,
-      password,
-    });
+
+  static fetchRegister(registerData: RegisterData) {
+    return $api.post(
+      `${AUTH_ENDPOINTS.BASE}/${AUTH_ENDPOINTS.SIGNUP}`,
+      registerData
+    );
   }
 
   static fetchCheckAuth() {

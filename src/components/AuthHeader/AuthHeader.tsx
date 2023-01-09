@@ -1,9 +1,9 @@
-import { Avatar, Grid, IconButton, Toolbar, Tooltip } from "@mui/material";
+import { Grid, IconButton, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import defaultAvatar from "../../assets/img/avatars/defaultAvatar.png";
 import Box from "@mui/material/Box";
 import { useDispatch } from "react-redux";
 import { toggleMobileMenu } from "../../store/settings/actions";
+import { AccountMenu } from "../index";
 
 const AuthHeader = () => {
   const dispatch = useDispatch();
@@ -29,11 +29,7 @@ const AuthHeader = () => {
           >
             <MenuIcon sx={{ fontSize: "2rem" }} />
           </IconButton>
-          <Tooltip title="Open settings">
-            <IconButton onClick={() => console.log("click")} sx={{ p: 0 }}>
-              <Avatar alt="user avatar" src={defaultAvatar} />
-            </IconButton>
-          </Tooltip>
+          <AccountMenu />
         </Grid>
       </Toolbar>
     </Box>

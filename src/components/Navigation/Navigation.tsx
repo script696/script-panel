@@ -8,7 +8,7 @@ import Diversity3Icon from "@mui/icons-material/Diversity3";
 import HomeIcon from "@mui/icons-material/Home";
 import { Avatar, Grid, ListItemAvatar, ListItemText } from "@mui/material";
 import { Logo } from "../index";
-import { useAppSelector } from "../../hooks/useAppSelector";
+import { useAppSelector } from "../../hooks";
 import { useDispatch } from "react-redux";
 import {
   changeSettingsStatus,

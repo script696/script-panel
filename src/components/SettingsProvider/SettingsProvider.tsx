@@ -1,7 +1,7 @@
 import { ReactNode, useMemo } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { GlobalStyles } from "@mui/material";
-import { useAppSelector } from "../../hooks/useAppSelector";
+import { useAppSelector } from "../../hooks";
 import { createMuiTheme } from "../../theme";
 
 const SettingsProvider = ({ children }: { children: ReactNode }) => {

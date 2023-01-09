@@ -32,7 +32,6 @@ function* loginUser({ payload }: LoginUser) {
 function* registerUser({ payload }: RegisterUser) {
   const { values, navigate } = payload;
   yield put(setLoading(true));
-
   try {
     const response: AxiosResponse<IRegisterUserResponse> = yield call(
       Auth.fetchRegister,
@@ -64,10 +63,10 @@ function* checkAuth() {
   }
 }
 
-function* RequestSaga() {
-  yield takeEvery(ActionType.REGISTER_USER, registerUser);
-  yield takeEvery(ActionType.LOGIN_USER, loginUser);
-  yield takeEvery(ActionType.CHECK_AUTH, checkAuth);
-}
+const AuthSaga = [
+  takeEvery(ActionType.REGISTER_USER, registerUser),
+  takeEvery(ActionType.LOGIN_USER, loginUser),
+  takeEvery(ActionType.CHECK_AUTH, checkAuth),
+];
 
-export default RequestSaga;
+export default AuthSaga;

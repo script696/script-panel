@@ -1,11 +1,5 @@
-import { AdminLayout } from "../../layouts";
-
 const Home = () => {
-  return (
-    <AdminLayout>
-      <section>Home!!!!!!!</section>
-    </AdminLayout>
-  );
+  return <section>Home!!!!!!!</section>;
 };
 
 export default Home;

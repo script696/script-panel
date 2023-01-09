@@ -7,4 +7,10 @@ const AUTH_ENDPOINTS = {
   REFRESH: "refresh",
 };
 
-export { BASE_URL, AUTH_ENDPOINTS };
+const USER_ENDPOINTS = {
+  BASE: "users",
+  GET_USER: "getUser",
+  UPDATE_USER: "updateUser",
+};
+
+export { BASE_URL, AUTH_ENDPOINTS, USER_ENDPOINTS };

@@ -41,7 +41,7 @@ const typography = {
     letterSpacing: "0.05rem",
   },
   body1: {
-    fontWeight: 700,
+    fontWeight: 400,
     fontSize: "0.8rem",
   },
 };
