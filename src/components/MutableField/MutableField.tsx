@@ -7,6 +7,7 @@ type MutableFieldProps = {
   formik: any;
   id: string;
   label: string;
+  autoComplete: string;
   multiline?: boolean;
 };
 
@@ -16,6 +17,7 @@ const MutableField = ({
   value,
   formik,
   id,
+  autoComplete,
   multiline = false,
 }: MutableFieldProps) => {
   const fieldTitle = `${id[0].toUpperCase()}${id.slice(1)}:`;
@@ -29,9 +31,12 @@ const MutableField = ({
       id={id}
       label={label}
       name={id}
-      autoComplete="family-name"
+      autoComplete={autoComplete}
       value={value}
       onChange={formik.handleChange}
+      onBlur={formik.handleBlur}
+      error={formik.touched[id] && Boolean(formik.errors[id])}
+      helperText={formik.touched[id] && formik.errors[id]}
     />
   ) : (
     <Grid container direction="column" mb={2}>

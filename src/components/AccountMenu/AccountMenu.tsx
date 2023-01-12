@@ -11,15 +11,15 @@ import Logout from "@mui/icons-material/Logout";
 import defaultAvatar from "../../assets/img/avatars/defaultAvatar.png";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../hooks";
-import { BASE_URL } from "../../api/constants/api_endpoints";
 import SettingsIcon from "@mui/icons-material/Settings";
+import { useDispatch } from "react-redux";
+import { signOutUser } from "../../store/auth/actions";
 
 const AccountMenu = () => {
   const { avatar } = useAppSelector((state) => state.UserReducer);
-  const userAvatar = avatar ? `${BASE_URL}/${avatar}` : defaultAvatar;
-
+  const dispatch = useDispatch();
+  const userAvatar = avatar ?? defaultAvatar;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
   const navigate = useNavigate();
 
   const open = Boolean(anchorEl);
@@ -34,6 +34,10 @@ const AccountMenu = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    dispatch(signOutUser(navigate));
   };
 
   return (
@@ -95,7 +99,7 @@ const AccountMenu = () => {
           Profile
         </MenuItem>
         <Divider />
-        <MenuItem>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

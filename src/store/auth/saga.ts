@@ -1,5 +1,10 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { ActionType, LoginUser, RegisterUser } from "./actionTypes";
+import {
+  ActionType,
+  LoginUser,
+  RegisterUser,
+  SignOutUser,
+} from "./actionTypes";
 import { AxiosResponse } from "axios";
 import Auth from "./services";
 import { ACCESS_TOKEN } from "../../api/constants/app_constants";
@@ -47,6 +52,23 @@ function* registerUser({ payload }: RegisterUser) {
   }
 }
 
+function* signOutUser({ payload }: SignOutUser) {
+  const { navigate } = payload;
+
+  yield put(setLoading(true));
+  try {
+    const response: AxiosResponse<string> = yield call(Auth.fetchSignOut);
+
+    localStorage.removeItem(ACCESS_TOKEN);
+
+    navigate("/signin");
+  } catch (error) {
+    yield;
+  } finally {
+    yield put(setLoading(false));
+  }
+}
+
 function* checkAuth() {
   yield put(setLoading(true));
 
@@ -67,6 +89,7 @@ const AuthSaga = [
   takeEvery(ActionType.REGISTER_USER, registerUser),
   takeEvery(ActionType.LOGIN_USER, loginUser),
   takeEvery(ActionType.CHECK_AUTH, checkAuth),
+  takeEvery(ActionType.SIGN_OUT_USER, signOutUser),
 ];
 
 export default AuthSaga;

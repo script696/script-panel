@@ -4,6 +4,7 @@ const AUTH_ENDPOINTS = {
   BASE: "auth",
   SIGNIN: "signin",
   SIGNUP: "signup",
+  SIGNOUT: "sign-out",
   REFRESH: "refresh",
 };
 

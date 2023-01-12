@@ -4,13 +4,15 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../store/auth/actions";
 import { ReactComponent as InformationSvg } from "../../assets/svg/information.svg";
 import { Logo } from "../../components";
 import { useAppSelector } from "../../hooks";
+import * as Yup from "yup";
+import { passwordRegExp } from "../../utils/regExp/regExp";
+import { Errors } from "../../utils/errors/errors";
 
 type FormValues = {
   email: string;
@@ -32,13 +34,12 @@ const Login = () => {
       password: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string()
-        .email("Invalid email address")
-        .required("common.validations.required"),
+      email: Yup.string().email().required(),
       password: Yup.string()
-        .max(20, "common.validations.max")
-        .required("common.validations.required"),
+        .matches(passwordRegExp, Errors.PASSWORD)
+        .required(),
     }),
+    validateOnChange: true,
     onSubmit: (values) => {
       handleLogin(values);
     },
@@ -121,10 +122,11 @@ const Login = () => {
                 id="email"
                 label="Введите почту"
                 name="email"
-                autoComplete="family-name"
-                disabled={false}
+                autoComplete="email"
+                disabled={isLoading}
                 value={formik.values.email}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 error={formik.touched.email && Boolean(formik.errors.email)}
                 helperText={formik.touched.email && formik.errors.email}
               />
@@ -133,13 +135,15 @@ const Login = () => {
                 margin="normal"
                 required
                 fullWidth
+                type="password"
                 id="password"
-                label="Введите пароль"
                 name="password"
-                autoComplete="family-name"
-                disabled={false}
+                label="Введите пароль"
+                autoComplete="current-password"
+                disabled={isLoading}
                 value={formik.values.password}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 error={
                   formik.touched.password && Boolean(formik.errors.password)
                 }

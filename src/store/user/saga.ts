@@ -5,6 +5,7 @@ import { setUser, toggleProfileEditeMode } from "./actions";
 import User from "./services";
 import { UserDto } from "./models/userModel";
 import { setLoading } from "../requests/actions";
+import { clientErrorHandler } from "../../utils/handlers";
 
 function* getUser() {
   yield put(setLoading(true));
@@ -28,6 +29,7 @@ function* updateUser({ payload }: UpdateUser) {
     yield put(setUser(response.data));
     yield put(toggleProfileEditeMode());
   } catch (error) {
+    clientErrorHandler({ error });
     yield;
   } finally {
     yield put(setLoading(false));

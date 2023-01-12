@@ -4,14 +4,15 @@ import { ACCESS_TOKEN } from "../../api/constants/app_constants";
 import { Preloader } from "../index";
 import { AdminLayout } from "../../layouts";
 
-const ProtectedRoutes = () => {
+const ProtectedRouter = () => {
   const { isFirstLoad } = useAppSelector((state) => state.RequestsReducer);
+  const token = localStorage.getItem(ACCESS_TOKEN);
 
   if (isFirstLoad) {
     return <Preloader />;
   }
 
-  if (!localStorage.getItem(ACCESS_TOKEN)) {
+  if (!token) {
     return <Navigate to={`/signin`} />;
   }
 
@@ -22,4 +23,4 @@ const ProtectedRoutes = () => {
   );
 };
 
-export default ProtectedRoutes;
+export default ProtectedRouter;

@@ -25,3 +25,7 @@ export const checkAuth = () => {
 export const setUserAuth = (isUserAuth: boolean) => {
   return { type: ActionType.SET_USER_AUTH };
 };
+
+export const signOutUser = (navigate: NavigateFunction) => {
+  return { type: ActionType.SIGN_OUT_USER, payload: { navigate } };
+};

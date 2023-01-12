@@ -21,8 +21,8 @@ class Auth {
     return $api.get(`${AUTH_ENDPOINTS.BASE}/${AUTH_ENDPOINTS.REFRESH} `);
   }
 
-  static fetchTestCheck() {
-    return $api.get(`users/check`);
+  static fetchSignOut() {
+    return $api.post(`${AUTH_ENDPOINTS.BASE}/${AUTH_ENDPOINTS.SIGNOUT} `);
   }
 }
 
