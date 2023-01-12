@@ -10,11 +10,13 @@ export interface RegisterData {
   username: string;
   email: string;
   password: string;
+  passwordRepeat: string;
 }
 
 export enum ActionType {
   LOGIN_USER = "LOGIN_USER",
   REGISTER_USER = "REGISTER_USER",
+  SIGN_OUT_USER = "SIGN_OUT_USER",
   CHECK_AUTH = "CHECK_AUTH",
   SET_USER_AUTH = "SET_USER_AUTH",
 }
@@ -32,6 +34,11 @@ export type SetUserAuth = {
 export type RegisterUser = {
   type: ActionType.REGISTER_USER;
   payload: { values: RegisterData; navigate: NavigateFunction };
+};
+
+export type SignOutUser = {
+  type: ActionType.SIGN_OUT_USER;
+  payload: { navigate: NavigateFunction };
 };
 
 export type Actions = SetUserAuth;

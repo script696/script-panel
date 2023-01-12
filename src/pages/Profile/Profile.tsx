@@ -39,6 +39,8 @@ const Profile = () => {
     defaultPictureUrl: avatar,
   });
 
+  const SUPPORTED_FORMATS = ["jpeg"];
+
   const formik = useFormik<FormValues>({
     enableReinitialize: true,
     initialValues: {
@@ -49,10 +51,24 @@ const Profile = () => {
       role: "admin",
     },
     validationSchema: Yup.object({
-      email: Yup.string()
-        .email("Invalid email address")
-        .required("common.validations.required"),
+      username: Yup.string().min(5).max(10).required(),
+      email: Yup.string().email().required(),
+      avatar: Yup.mixed()
+        .notRequired()
+        .test(
+          "type",
+          "Only the following formats are accepted: .jpeg, .jpg, .bmp, .pdf and .doc",
+          (value) => {
+            if (!value) return true;
+
+            const type = value?.type.split("/")[1];
+            const isFormatSupported = SUPPORTED_FORMATS.includes(type);
+            console.log(isFormatSupported);
+            return isFormatSupported;
+          }
+        ),
     }),
+    validateOnChange: true,
     onSubmit: (values) => {
       handleUpdateProfile(values);
     },
@@ -122,6 +138,7 @@ const Profile = () => {
               disabled={!isEditMode}
             />
           </Box>
+          {formik.errors.avatar && <Typography>test</Typography>}
           <Typography component="span" variant="h5">
             {roleTitle}
           </Typography>
@@ -147,6 +164,7 @@ const Profile = () => {
             <MutableField
               id="username"
               label="Введите имя"
+              autoComplete="name"
               formik={formik}
               isEditMode={isEditMode}
               value={formik.values.username}
@@ -154,6 +172,7 @@ const Profile = () => {
             <MutableField
               id="email"
               label="Введите почту"
+              autoComplete="email"
               formik={formik}
               isEditMode={isEditMode}
               value={formik.values.email}
@@ -163,6 +182,7 @@ const Profile = () => {
               label="О себе"
               multiline
               formik={formik}
+              autoComplete="off"
               isEditMode={isEditMode}
               value={formik.values.about}
             />

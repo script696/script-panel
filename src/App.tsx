@@ -1,19 +1,38 @@
 import React, { useEffect } from "react";
-import { AppRouter } from "./components";
+import { AuthRouter, ProtectedRouter } from "./components";
 import { useDispatch } from "react-redux";
-import { getUser } from "./store/user/actions";
-import { setFirstLoad } from "./store/requests/actions";
+import { checkAuth } from "./store/auth/actions";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { ProtectedRotes, PublicRotes } from "./utils/routes/routes";
+import { Home, Login, PageNotFound, Profile, Registration } from "./pages";
+import Users from "./pages/Users/Users";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(checkAuth());
-    dispatch(getUser());
-    dispatch(setFirstLoad());
+    dispatch(checkAuth());
   }, []);
 
-  return <AppRouter />;
+  return (
+    <Routes>
+      <Route element={<ProtectedRouter />}>
+        <Route path={ProtectedRotes.HOME} element={<Home />} />
+        <Route path={ProtectedRotes.USERS} element={<Users />} />
+        <Route path={ProtectedRotes.PROFILE} element={<Profile />} />
+      </Route>
+      <Route element={<AuthRouter />}>
+        <Route path={PublicRotes.SIGNUP} element={<Registration />} />
+        <Route path={PublicRotes.SIGNIN} element={<Login />} />
+      </Route>
+      <Route path={PublicRotes.NOT_FOUND} element={<PageNotFound />} />
+      <Route path="/" element={<Navigate to={ProtectedRotes.HOME} replace />} />
+      <Route
+        path="*"
+        element={<Navigate to={PublicRotes.NOT_FOUND} replace />}
+      />
+    </Routes>
+  );
 }
 
 export default App;

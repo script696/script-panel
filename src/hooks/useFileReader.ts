@@ -1,5 +1,4 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { BASE_URL } from "../api/constants/api_endpoints";
 
 type UseFileReaderParams = {
   defaultPictureUrl: string;
@@ -36,13 +35,12 @@ const useFileReader: UseFileReader = ({ defaultPictureUrl }) => {
   };
 
   const resetPicturePreviewUrlToDefault = () => {
+    console.log("here");
     setPicturePreviewUrl(defaultPictureUrl);
   };
 
   useEffect(() => {
-    setPicturePreviewUrl(
-      defaultPictureUrl ? `${BASE_URL}/${defaultPictureUrl}` : undefined
-    );
+    setPicturePreviewUrl(defaultPictureUrl);
   }, [defaultPictureUrl]);
 
   return {
