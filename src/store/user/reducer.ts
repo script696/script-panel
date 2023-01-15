@@ -1,5 +1,6 @@
 import { Actions, ActionType } from "./actionTypes";
 import { BASE_URL } from "../../api/constants/api_endpoints";
+import defaultAvatar from "../../assets/img/avatars/defaultAvatar.jpg";
 
 type InitialState = {
   email: string;
@@ -29,7 +30,7 @@ const UserReducer = (state = initialState, action: Actions) => {
         role: action.payload.role,
         username: action.payload.username,
         about: action.payload.about,
-        avatar: `${BASE_URL}/${avatar}`,
+        avatar: avatar ? `${BASE_URL}/${avatar}` : defaultAvatar,
       };
       break;
     case ActionType.TOGGLE_PROFILE_EDIT_MODE:

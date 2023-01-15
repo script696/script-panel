@@ -2,19 +2,33 @@ import { Actions, ActionType } from "./actionTypes";
 
 type ColorMode = "dark" | "light";
 
+type SnackBar = {
+  isSnackBarOpen: boolean;
+  snackBarMessage: string;
+  snackBarType: "success" | "error" | undefined;
+};
+
 type InitialState = {
   isMobileMenuOpen: boolean;
   isSettingsOpen: boolean;
   colorMode: ColorMode;
+  snackBar: SnackBar;
+};
+
+const defaultSnackBarState: SnackBar = {
+  isSnackBarOpen: false,
+  snackBarMessage: "",
+  snackBarType: undefined,
 };
 
 const initialState: InitialState = {
   isMobileMenuOpen: false,
   isSettingsOpen: false,
   colorMode: (localStorage.getItem("dashboardTheme") as ColorMode) ?? "dark",
+  snackBar: defaultSnackBarState,
 };
 
-const SettingsReducer = (state = initialState, action: Actions) => {
+const UiReducer = (state = initialState, action: Actions) => {
   switch (action.type) {
     case ActionType.TOGGLE_MOB_MENU:
       state = {
@@ -36,6 +50,26 @@ const SettingsReducer = (state = initialState, action: Actions) => {
       };
       localStorage.setItem("dashboardTheme", colorMode);
       break;
+    case ActionType.OPEN_SNACKBAR:
+      state = {
+        ...state,
+        snackBar: {
+          isSnackBarOpen: true,
+          snackBarMessage: action.payload.message,
+          snackBarType: action.payload.snackBarType,
+        },
+      };
+      break;
+    case ActionType.CLOSE_SNACKBAR:
+      state = {
+        ...state,
+        snackBar: {
+          isSnackBarOpen: false,
+          snackBarMessage: "",
+          snackBarType: state.snackBar.snackBarType,
+        },
+      };
+      break;
     default:
       state = { ...state };
       break;
@@ -43,4 +77,4 @@ const SettingsReducer = (state = initialState, action: Actions) => {
   return state;
 };
 
-export default SettingsReducer;
+export default UiReducer;

@@ -10,9 +10,9 @@ import { loginUser } from "../../store/auth/actions";
 import { ReactComponent as InformationSvg } from "../../assets/svg/information.svg";
 import { Logo } from "../../components";
 import { useAppSelector } from "../../hooks";
-import * as Yup from "yup";
 import { passwordRegExp } from "../../utils/regExp/regExp";
-import { Errors } from "../../utils/errors/errors";
+import { ERRORS } from "../../utils/errors/errors";
+import * as Yup from "yup";
 
 type FormValues = {
   email: string;
@@ -20,7 +20,7 @@ type FormValues = {
 };
 
 const Login = () => {
-  const { colorMode } = useAppSelector((state) => state.SettingsReducer);
+  const { colorMode } = useAppSelector((state) => state.UiReducer);
 
   const { isLoading } = useAppSelector((state) => state.RequestsReducer);
 
@@ -36,7 +36,7 @@ const Login = () => {
     validationSchema: Yup.object({
       email: Yup.string().email().required(),
       password: Yup.string()
-        .matches(passwordRegExp, Errors.PASSWORD)
+        .matches(passwordRegExp, ERRORS.PASSWORD)
         .required(),
     }),
     validateOnChange: true,

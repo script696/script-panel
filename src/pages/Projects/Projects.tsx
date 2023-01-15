@@ -1,7 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import ConstructionIcon from "@mui/icons-material/Construction";
 
-const Home = () => {
+const Projects = () => {
   return (
     <Grid
       container
@@ -17,4 +17,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Projects;

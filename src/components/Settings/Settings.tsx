@@ -2,12 +2,8 @@ import { Grid, IconButton, SwipeableDrawer } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import ThemeCheckbox from "../ThemeCheckbox/ThemeCheckbox";
-import { useAppSelector } from "../../hooks";
 import { useDispatch } from "react-redux";
-import {
-  changeSettingsStatus,
-  toggleColorMode,
-} from "../../store/settings/actions";
+import { changeSettingsStatus, toggleColorMode } from "../../store/ui/actions";
 import ClearIcon from "@mui/icons-material/Clear";
 
 type SettingsProps = {
@@ -15,9 +11,11 @@ type SettingsProps = {
   onChangeSettingsStatus: (newStatus: boolean) => void;
 };
 
-const Settings = ({ onChangeSettingsStatus }: SettingsProps): JSX.Element => {
+const Settings = ({
+  onChangeSettingsStatus,
+  isSettingsOpen,
+}: SettingsProps): JSX.Element => {
   const dispath = useDispatch();
-  const { isSettingsOpen } = useAppSelector((state) => state.SettingsReducer);
 
   const handleChangeColorMode = () => {
     dispath(toggleColorMode());

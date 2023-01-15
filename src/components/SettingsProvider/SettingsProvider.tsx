@@ -1,11 +1,12 @@
-import { ReactNode, useMemo } from "react";
+import React, { ReactNode, useMemo } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { GlobalStyles } from "@mui/material";
 import { useAppSelector } from "../../hooks";
 import { createMuiTheme } from "../../theme";
+import SnackBar from "../SnackBar/SnackBar";
 
 const SettingsProvider = ({ children }: { children: ReactNode }) => {
-  const { colorMode } = useAppSelector((state) => state.SettingsReducer);
+  const { colorMode } = useAppSelector((state) => state.UiReducer);
   const currentColorMode = localStorage.getItem("dashboardTheme") ?? colorMode;
 
   const theme = useMemo(() => {
@@ -23,6 +24,7 @@ const SettingsProvider = ({ children }: { children: ReactNode }) => {
         }}
       />
       {children}
+      <SnackBar />
     </ThemeProvider>
   );
 };
