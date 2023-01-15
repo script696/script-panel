@@ -1,43 +1,47 @@
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
 import { NavLink } from "react-router-dom";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import HomeIcon from "@mui/icons-material/Home";
-import { Avatar, Grid, ListItemAvatar, ListItemText } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Drawer,
+  Grid,
+  List,
+  ListItemAvatar,
+  ListItemButton,
+  ListItemText,
+} from "@mui/material";
 import { Logo } from "../index";
 import { useAppSelector } from "../../hooks";
 import { useDispatch } from "react-redux";
-import {
-  changeSettingsStatus,
-  toggleMobileMenu,
-} from "../../store/settings/actions";
+import { changeSettingsStatus, toggleMobileMenu } from "../../store/ui/actions";
+import SettingsIcon from "@mui/icons-material/Settings";
+import { ProtectedRotes } from "../../utils/routes/routes";
 
 const drawerWidth = 240;
 
 const navItems = [
   {
     title: "Home",
-    link: "/home",
+    link: ProtectedRotes.HOME,
     icon: HomeIcon,
   },
   {
     title: "Users",
-    link: "/users",
+    link: ProtectedRotes.USERS,
     icon: Diversity3Icon,
   },
   {
     title: "Projects",
-    link: "/Love",
+    link: ProtectedRotes.PROJECTS,
     icon: AccountTreeIcon,
   },
 ];
 
 const Navigation = () => {
   const { isMobileMenuOpen, colorMode } = useAppSelector(
-    (state) => state.SettingsReducer
+    (state) => state.UiReducer
   );
 
   const dispatch = useDispatch();
@@ -80,7 +84,7 @@ const Navigation = () => {
         >
           <ListItemAvatar>
             <Avatar>
-              <HomeIcon />
+              <SettingsIcon />
             </Avatar>
           </ListItemAvatar>
           <ListItemText primary="Setting" />

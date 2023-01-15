@@ -5,7 +5,8 @@ import { setUser, toggleProfileEditeMode } from "./actions";
 import User from "./services";
 import { UserDto } from "./models/userModel";
 import { setLoading } from "../requests/actions";
-import { clientErrorHandler } from "../../utils/handlers";
+import getMessageFromError from "../../utils/handlers/getMessageFromError";
+import { openSnackBar } from "../ui/actions";
 
 function* getUser() {
   yield put(setLoading(true));
@@ -13,7 +14,8 @@ function* getUser() {
     const response: AxiosResponse<UserDto> = yield call(User.fetchGetUser);
     yield put(setUser(response.data));
   } catch (error) {
-    yield;
+    const message = getMessageFromError(error);
+    yield put(openSnackBar({ message, snackBarType: "error" }));
   } finally {
     yield put(setLoading(false));
   }
@@ -28,9 +30,15 @@ function* updateUser({ payload }: UpdateUser) {
     );
     yield put(setUser(response.data));
     yield put(toggleProfileEditeMode());
+    yield put(
+      openSnackBar({
+        message: "Profile has been successfully updated",
+        snackBarType: "success",
+      })
+    );
   } catch (error) {
-    clientErrorHandler({ error });
-    yield;
+    const message = getMessageFromError(error);
+    yield put(openSnackBar({ message, snackBarType: "error" }));
   } finally {
     yield put(setLoading(false));
   }

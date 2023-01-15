@@ -1,12 +1,10 @@
-import AuthHeader from "../../components/AuthHeader/AuthHeader";
-import Navigation from "../../components/Navigation/Navigation";
-import Box from "@mui/material/Box";
-import { Grid } from "@mui/material";
+import { AuthHeader, Navigation, Settings } from "../../components";
+import { Box, Grid } from "@mui/material";
 import { ReactNode, useEffect } from "react";
-import Settings from "../../components/Settings/Settings";
 import { useDispatch } from "react-redux";
-import { changeSettingsStatus } from "../../store/settings/actions";
+import { changeSettingsStatus } from "../../store/ui/actions";
 import { getUser } from "../../store/user/actions";
+import { useAppSelector } from "../../hooks";
 
 type AdminLayoutProps = {
   children: ReactNode;
@@ -14,6 +12,7 @@ type AdminLayoutProps = {
 
 const AdminLayout = ({ children }: AdminLayoutProps) => {
   const dispatch = useDispatch();
+  const { isSettingsOpen } = useAppSelector((state) => state.UiReducer);
 
   const onChangeSettingsStatus = (newStatus: boolean) => {
     dispatch(changeSettingsStatus(newStatus));
@@ -28,7 +27,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       <AuthHeader />
       <Navigation />
       <Settings
-        isSettingsOpen={true}
+        isSettingsOpen={isSettingsOpen}
         onChangeSettingsStatus={onChangeSettingsStatus}
       />
       <Box component="main" flexGrow={1} pt="64px" px={3}>

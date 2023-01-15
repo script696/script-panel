@@ -11,7 +11,7 @@ import { registerUser } from "../../store/auth/actions";
 import { useAppSelector } from "../../hooks";
 import * as Yup from "yup";
 import { passwordRegExp } from "../../utils/regExp/regExp";
-import { Errors } from "../../utils/errors/errors";
+import { ERRORS } from "../../utils/errors/errors";
 
 type FormValues = {
   role: string;
@@ -22,7 +22,7 @@ type FormValues = {
 };
 
 const Registration = () => {
-  const { colorMode } = useAppSelector((state) => state.SettingsReducer);
+  const { colorMode } = useAppSelector((state) => state.UiReducer);
 
   const { isLoading } = useAppSelector((state) => state.RequestsReducer);
 
@@ -42,7 +42,7 @@ const Registration = () => {
       username: Yup.string().min(5).max(10).required(),
       email: Yup.string().email().required(),
       password: Yup.string()
-        .matches(passwordRegExp, Errors.PASSWORD)
+        .matches(passwordRegExp, ERRORS.PASSWORD)
         .required(),
       passwordRepeat: Yup.string()
         .oneOf([Yup.ref("password"), null], "Passwords should match")

@@ -1,7 +1,6 @@
 import { Avatar, Grid, IconButton } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toggleProfileEditeMode, updateUser } from "../../store/user/actions";
@@ -12,6 +11,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Box from "@mui/material/Box";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
+import * as Yup from "yup";
+import { ERRORS } from "../../utils/errors/errors";
+import { SUPPORTED_PICTURE_FORMATS } from "../../utils/constants/constants";
 
 type FormValues = {
   email: string;
@@ -39,8 +41,6 @@ const Profile = () => {
     defaultPictureUrl: avatar,
   });
 
-  const SUPPORTED_FORMATS = ["jpeg"];
-
   const formik = useFormik<FormValues>({
     enableReinitialize: true,
     initialValues: {
@@ -55,18 +55,16 @@ const Profile = () => {
       email: Yup.string().email().required(),
       avatar: Yup.mixed()
         .notRequired()
-        .test(
-          "type",
-          "Only the following formats are accepted: .jpeg, .jpg, .bmp, .pdf and .doc",
-          (value) => {
-            if (!value) return true;
+        .test("type", ERRORS.PICTURE, (value) => {
+          /**
+           * Валидация осуществляется только по вновь загруженным файлам,
+           * если картинка не загружена - null или загружена дефолтная - string => валидация не требуется
+           */
+          if (!value || typeof value === "string") return true;
 
-            const type = value?.type.split("/")[1];
-            const isFormatSupported = SUPPORTED_FORMATS.includes(type);
-            console.log(isFormatSupported);
-            return isFormatSupported;
-          }
-        ),
+          const type = value?.type?.split("/")[1];
+          return SUPPORTED_PICTURE_FORMATS.includes(type);
+        }),
     }),
     validateOnChange: true,
     onSubmit: (values) => {
@@ -193,8 +191,8 @@ const Profile = () => {
                 variant="contained"
                 color="inherit"
                 className="color_secondary"
-                disabled={isLoading}
-                loading={isLoading}
+                disabled={false}
+                loading={false}
                 sx={{ my: 2 }}
               >
                 Update

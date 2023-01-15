@@ -14,6 +14,8 @@ import {
   IRegisterUserResponse,
 } from "./types";
 import { setFirstLoad, setLoading } from "../requests/actions";
+import getMessageFromError from "../../utils/handlers/getMessageFromError";
+import { openSnackBar } from "../ui/actions";
 
 function* loginUser({ payload }: LoginUser) {
   const { values, navigate } = payload;
@@ -28,7 +30,8 @@ function* loginUser({ payload }: LoginUser) {
     localStorage.setItem(ACCESS_TOKEN, response.data.accessToken);
     navigate("/home");
   } catch (error) {
-    yield;
+    const message = getMessageFromError(error);
+    yield put(openSnackBar({ message, snackBarType: "error" }));
   } finally {
     yield put(setLoading(false));
   }
@@ -44,9 +47,18 @@ function* registerUser({ payload }: RegisterUser) {
     );
 
     localStorage.setItem(ACCESS_TOKEN, response.data.accessToken);
-    navigate("/home");
+
+    yield put(
+      openSnackBar({
+        message: "You have successfully registered",
+        snackBarType: "success",
+      })
+    );
+
+    setTimeout(() => navigate("/home"), 3000);
   } catch (error) {
-    yield;
+    const message = getMessageFromError(error);
+    yield put(openSnackBar({ message, snackBarType: "error" }));
   } finally {
     yield put(setLoading(false));
   }
@@ -63,7 +75,8 @@ function* signOutUser({ payload }: SignOutUser) {
 
     navigate("/signin");
   } catch (error) {
-    yield;
+    const message = getMessageFromError(error);
+    yield put(openSnackBar({ message, snackBarType: "error" }));
   } finally {
     yield put(setLoading(false));
   }

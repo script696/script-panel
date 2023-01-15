@@ -1,1 +1,1 @@
-export { default as clientErrorHandler } from "./clientErrorHandler";
+export { default as getMessageFromError } from "./getMessageFromError";

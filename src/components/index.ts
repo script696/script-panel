@@ -6,3 +6,6 @@ export { default as SettingsProvider } from "./SettingsProvider/SettingsProvider
 export { default as AccountMenu } from "./AccountMenu/AccountMenu";
 export { default as MutableField } from "./MutableField/MutableField";
 export { default as FileLoader } from "./FileLoader/FileLoader";
+export { default as AuthHeader } from "./AuthHeader/AuthHeader";
+export { default as Navigation } from "./Navigation/Navigation";
+export { default as Settings } from "./Settings/Settings";
