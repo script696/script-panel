@@ -1,11 +1,12 @@
 import { ActionType } from "./actionTypes";
-import { UpdateUserDto, UserDto } from "./models/userModel";
+import { UpdateUserDto } from "./userDto/userDto";
+import { User } from "./types";
 
 export const getUser = () => {
   return { type: ActionType.GET_USER };
 };
 
-export const setUser = (userData: UserDto) => {
+export const setUser = (userData: User) => {
   return { type: ActionType.SET_USER, payload: userData };
 };
 
