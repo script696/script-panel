@@ -3,15 +3,17 @@ import { ActionType, UpdateUser } from "./actionTypes";
 import { AxiosResponse } from "axios";
 import { setUser, toggleProfileEditeMode } from "./actions";
 import User from "./services";
-import { UserDto } from "./models/userModel";
 import { setLoading } from "../requests/actions";
 import getMessageFromError from "../../utils/handlers/getMessageFromError";
 import { openSnackBar } from "../ui/actions";
+import { getUserResponse } from "./types";
 
 function* getUser() {
   yield put(setLoading(true));
   try {
-    const response: AxiosResponse<UserDto> = yield call(User.fetchGetUser);
+    const response: AxiosResponse<getUserResponse> = yield call(
+      User.fetchGetUser
+    );
     yield put(setUser(response.data));
   } catch (error) {
     const message = getMessageFromError(error);

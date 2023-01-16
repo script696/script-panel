@@ -9,26 +9,26 @@ import { AxiosResponse } from "axios";
 import Auth from "./services";
 import { ACCESS_TOKEN } from "../../api/constants/app_constants";
 import {
-  ICheckAuthResponse,
-  ILoginUserResponse,
-  IRegisterUserResponse,
+  CheckAuthResponse,
+  LoginUserResponse,
+  RegisterUserResponse,
 } from "./types";
 import { setFirstLoad, setLoading } from "../requests/actions";
 import getMessageFromError from "../../utils/handlers/getMessageFromError";
 import { openSnackBar } from "../ui/actions";
+import { ProtectedRotes, PublicRotes } from "../../utils/routes/routes";
 
 function* loginUser({ payload }: LoginUser) {
   const { values, navigate } = payload;
   yield put(setLoading(true));
 
   try {
-    const response: AxiosResponse<ILoginUserResponse> = yield call(
+    const response: AxiosResponse<LoginUserResponse> = yield call(
       Auth.fetchLogin,
       values
     );
 
-    localStorage.setItem(ACCESS_TOKEN, response.data.accessToken);
-    navigate("/home");
+    navigate(ProtectedRotes.HOME);
   } catch (error) {
     const message = getMessageFromError(error);
     yield put(openSnackBar({ message, snackBarType: "error" }));
@@ -41,7 +41,7 @@ function* registerUser({ payload }: RegisterUser) {
   const { values, navigate } = payload;
   yield put(setLoading(true));
   try {
-    const response: AxiosResponse<IRegisterUserResponse> = yield call(
+    const response: AxiosResponse<RegisterUserResponse> = yield call(
       Auth.fetchRegister,
       values
     );
@@ -55,7 +55,7 @@ function* registerUser({ payload }: RegisterUser) {
       })
     );
 
-    setTimeout(() => navigate("/home"), 3000);
+    setTimeout(() => navigate(ProtectedRotes.HOME), 3000);
   } catch (error) {
     const message = getMessageFromError(error);
     yield put(openSnackBar({ message, snackBarType: "error" }));
@@ -73,7 +73,7 @@ function* signOutUser({ payload }: SignOutUser) {
 
     localStorage.removeItem(ACCESS_TOKEN);
 
-    navigate("/signin");
+    navigate(PublicRotes.SIGNIN);
   } catch (error) {
     const message = getMessageFromError(error);
     yield put(openSnackBar({ message, snackBarType: "error" }));
@@ -86,7 +86,7 @@ function* checkAuth() {
   yield put(setLoading(true));
 
   try {
-    const response: AxiosResponse<ICheckAuthResponse> = yield call(
+    const response: AxiosResponse<CheckAuthResponse> = yield call(
       Auth.fetchCheckAuth
     );
     localStorage.setItem(ACCESS_TOKEN, response.data.accessToken);

@@ -1,17 +1,5 @@
 import { NavigateFunction } from "react-router-dom";
-
-export interface LoginData {
-  email: string;
-  password: string;
-}
-
-export interface RegisterData {
-  role: string;
-  username: string;
-  email: string;
-  password: string;
-  passwordRepeat: string;
-}
+import { LoginDto, RegisterDto } from "./authDto/authDto";
 
 export enum ActionType {
   LOGIN_USER = "LOGIN_USER",
@@ -23,7 +11,7 @@ export enum ActionType {
 
 export type LoginUser = {
   type: ActionType.LOGIN_USER;
-  payload: { values: LoginData; navigate: NavigateFunction };
+  payload: { values: LoginDto; navigate: NavigateFunction };
 };
 
 export type SetUserAuth = {
@@ -33,7 +21,7 @@ export type SetUserAuth = {
 
 export type RegisterUser = {
   type: ActionType.REGISTER_USER;
-  payload: { values: RegisterData; navigate: NavigateFunction };
+  payload: { values: RegisterDto; navigate: NavigateFunction };
 };
 
 export type SignOutUser = {

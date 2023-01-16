@@ -1,4 +1,4 @@
-import { UpdateUserDto } from "./models/userModel";
+import { UpdateUserDto } from "./userDto/userDto";
 
 export enum ActionType {
   SET_USER = "SET_USER",

@@ -1,9 +1,9 @@
-interface IAuthResponse {
+interface AuthResponse {
   accessToken: string;
 }
 
-interface ILoginUserResponse extends IAuthResponse {}
-interface IRegisterUserResponse extends IAuthResponse {}
-interface ICheckAuthResponse extends IAuthResponse {}
+interface LoginUserResponse extends AuthResponse {}
+interface RegisterUserResponse extends AuthResponse {}
+interface CheckAuthResponse extends AuthResponse {}
 
-export type { ILoginUserResponse, IRegisterUserResponse, ICheckAuthResponse };
+export type { LoginUserResponse, RegisterUserResponse, CheckAuthResponse };
