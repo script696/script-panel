@@ -1,18 +1,20 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { ActionType, UpdateUser } from "./actionTypes";
 import { AxiosResponse } from "axios";
-import { setUser, toggleProfileEditeMode } from "./actions";
-import User from "./services";
+
 import { setLoading } from "../requests/actions";
 import getMessageFromError from "../../utils/handlers/getMessageFromError";
 import { openSnackBar } from "../ui/actions";
+
+import User from "./services";
+import { setUser, toggleProfileEditeMode } from "./actions";
+import { ActionType, UpdateUser } from "./actionTypes";
 import { getUserResponse } from "./types";
 
 function* getUser() {
   yield put(setLoading(true));
   try {
     const response: AxiosResponse<getUserResponse> = yield call(
-      User.fetchGetUser
+      User.fetchGetUser,
     );
     yield put(setUser(response.data));
   } catch (error) {
@@ -28,7 +30,7 @@ function* updateUser({ payload }: UpdateUser) {
   try {
     const response: AxiosResponse<any> = yield call(
       User.fetchUpdateUser,
-      payload
+      payload,
     );
     yield put(setUser(response.data));
     yield put(toggleProfileEditeMode());
@@ -36,7 +38,7 @@ function* updateUser({ payload }: UpdateUser) {
       openSnackBar({
         message: "Profile has been successfully updated",
         snackBarType: "success",
-      })
+      }),
     );
   } catch (error) {
     const message = getMessageFromError(error);

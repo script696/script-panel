@@ -47,7 +47,7 @@ const MutableField = ({
         component="span"
         variant="body1"
         my={2}
-        sx={{ whiteSpace: "pre", margin: 0 }}
+        sx={{ margin: 0, whiteSpace: "pre" }}
       >
         {value}
       </Typography>

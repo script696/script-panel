@@ -1,15 +1,16 @@
-import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
 import Box from "@mui/material/Box";
 import { useFormik } from "formik";
 import { Button, Grid, TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { Logo } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import * as Yup from "yup";
+
+import { Logo } from "../../components";
 import { registerUser } from "../../store/auth/actions";
 import { useAppSelector } from "../../hooks";
-import * as Yup from "yup";
+import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
 import { passwordRegExp } from "../../utils/regExp/regExp";
 import { ERRORS } from "../../utils/errors/errors";
 
@@ -32,14 +33,17 @@ const Registration = () => {
 
   const formik = useFormik<FormValues>({
     initialValues: {
-      username: "",
       email: "",
       password: "",
       passwordRepeat: "",
       role: "admin",
+      username: "",
     },
+    onSubmit: (values) => {
+      handleRegister(values);
+    },
+    validateOnChange: true,
     validationSchema: Yup.object({
-      username: Yup.string().min(5).max(10).required(),
       email: Yup.string().email().required(),
       password: Yup.string()
         .matches(passwordRegExp, ERRORS.PASSWORD)
@@ -47,11 +51,8 @@ const Registration = () => {
       passwordRepeat: Yup.string()
         .oneOf([Yup.ref("password"), null], "Passwords should match")
         .required(),
+      username: Yup.string().min(5).max(10).required(),
     }),
-    validateOnChange: true,
-    onSubmit: (values) => {
-      handleRegister(values);
-    },
   });
 
   const handleRegister = (values: FormValues) => {

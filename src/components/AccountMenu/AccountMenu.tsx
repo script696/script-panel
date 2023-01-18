@@ -8,11 +8,12 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../hooks";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useDispatch } from "react-redux";
-import { signOutUser } from "../../store/auth/actions";
 import { Avatar } from "@mui/material";
+
+import { signOutUser } from "../../store/auth/actions";
+import { useAppSelector } from "../../hooks";
 
 const AccountMenu = () => {
   const { avatar } = useAppSelector((state) => state.UserReducer);
@@ -40,7 +41,7 @@ const AccountMenu = () => {
 
   return (
     <React.Fragment>
-      <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
+      <Box sx={{ alignItems: "center", display: "flex", textAlign: "center" }}>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
@@ -63,28 +64,28 @@ const AccountMenu = () => {
         PaperProps={{
           elevation: 0,
           sx: {
-            minWidth: "150px",
-            overflow: "visible",
-            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-            mt: 1.5,
             "& .MuiAvatar-root": {
-              width: 32,
               height: 32,
               ml: -0.5,
               mr: 1,
+              width: 32,
             },
             "&:before": {
-              content: '""',
-              display: "block",
-              position: "absolute",
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
               bgcolor: "background.paper",
+              content: "\"\"",
+              display: "block",
+              height: 10,
+              position: "absolute",
+              right: 14,
+              top: 0,
               transform: "translateY(-50%) rotate(45deg)",
+              width: 10,
               zIndex: 0,
             },
+            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+            minWidth: "150px",
+            mt: 1.5,
+            overflow: "visible",
           },
         }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}

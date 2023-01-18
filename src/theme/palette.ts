@@ -2,11 +2,11 @@ import { PaletteMode } from "@mui/material";
 
 const palette = {
   grey: {
-    "50": "#ECEFF1",
     "100": "#CFD8DC",
     "200": "#B0BEC5",
     "300": "#90A4AE",
     "400": "#78909C",
+    "50": "#ECEFF1",
     "500": "#e0e1dd",
     "600": "#778da9",
     "700": "#415a77",
@@ -25,34 +25,34 @@ const darkPalette = {
   ...palette,
   mode: "dark" as PaletteMode,
   primary: {
-    main: palette.grey[900],
+    contrastText: palette.grey[600],
     dark: palette.grey[800],
     light: palette.grey[700],
-    contrastText: palette.grey[600],
+    main: palette.grey[900],
   },
   text: {
+    disabled: palette.grey[600],
     primary: palette.grey[100],
     secondary: palette.grey[700],
-    disabled: palette.grey[600],
   },
 };
 
 const lightPalette = {
   ...palette,
-  mode: "light" as PaletteMode,
   background: {
     default: "#669bbc",
   },
+  mode: "light" as PaletteMode,
   primary: {
-    main: "#95775A",
+    contrastText: "#f0efeb",
     dark: "#E6E3E1",
     light: "#ddbea9",
-    contrastText: "#f0efeb",
+    main: "#95775A",
   },
   text: {
+    disabled: palette.grey[600],
     primary: "#FFFFFF",
     secondary: palette.red[900],
-    disabled: palette.grey[600],
   },
 };
 

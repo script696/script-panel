@@ -1,5 +1,6 @@
 import $api from "../../api/api";
 import { USER_ENDPOINTS } from "../../api/constants/api_endpoints";
+
 import { UpdateUserDto } from "./userDto/userDto";
 
 class User {
@@ -11,7 +12,7 @@ class User {
     return $api.put(
       `${USER_ENDPOINTS.BASE}/${USER_ENDPOINTS.UPDATE_USER}`,
       userData,
-      { headers: { "Content-Type": "multipart/form-data" } }
+      { headers: { "Content-Type": "multipart/form-data" } },
     );
   }
 }

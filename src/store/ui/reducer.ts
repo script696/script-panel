@@ -22,9 +22,9 @@ const defaultSnackBarState: SnackBar = {
 };
 
 const initialState: InitialState = {
+  colorMode: (localStorage.getItem("dashboardTheme") as ColorMode) ?? "dark",
   isMobileMenuOpen: false,
   isSettingsOpen: false,
-  colorMode: (localStorage.getItem("dashboardTheme") as ColorMode) ?? "dark",
   snackBar: defaultSnackBarState,
 };
 

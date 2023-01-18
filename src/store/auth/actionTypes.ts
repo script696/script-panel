@@ -1,4 +1,5 @@
 import { NavigateFunction } from "react-router-dom";
+
 import { LoginDto, RegisterDto } from "./authDto/authDto";
 
 export enum ActionType {

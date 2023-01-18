@@ -12,36 +12,37 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material";
-import { Logo } from "../index";
-import { useAppSelector } from "../../hooks";
 import { useDispatch } from "react-redux";
-import { changeSettingsStatus, toggleMobileMenu } from "../../store/ui/actions";
 import SettingsIcon from "@mui/icons-material/Settings";
+
+import { Logo } from "..";
+import { useAppSelector } from "../../hooks";
+import { changeSettingsStatus, toggleMobileMenu } from "../../store/ui/actions";
 import { ProtectedRotes } from "../../utils/routes/routes";
 
 const drawerWidth = 240;
 
 const navItems = [
   {
-    title: "Home",
-    link: ProtectedRotes.HOME,
     icon: HomeIcon,
+    link: ProtectedRotes.HOME,
+    title: "Home",
   },
   {
-    title: "Users",
-    link: ProtectedRotes.USERS,
     icon: Diversity3Icon,
+    link: ProtectedRotes.USERS,
+    title: "Users",
   },
   {
-    title: "Projects",
-    link: ProtectedRotes.PROJECTS,
     icon: AccountTreeIcon,
+    link: ProtectedRotes.PROJECTS,
+    title: "Projects",
   },
 ];
 
 const Navigation = () => {
   const { isMobileMenuOpen, colorMode } = useAppSelector(
-    (state) => state.UiReducer
+    (state) => state.UiReducer,
   );
 
   const dispatch = useDispatch();
@@ -63,7 +64,7 @@ const Navigation = () => {
           color={colorMode === "dark" ? "#fff" : "#ddbea9"}
         />
       </Box>
-      <List sx={{ py: 2, pl: 2 }}>
+      <List sx={{ pl: 2, py: 2 }}>
         {navItems.map(({ title, link, icon: Icon }) => (
           <ListItemButton key={link} component={NavLink} to={link}>
             <ListItemAvatar>
@@ -97,8 +98,8 @@ const Navigation = () => {
     <Box
       component="nav"
       sx={{
-        width: { xs: 0, sm: drawerWidth },
         flexShrink: { lg: 0 },
+        width: { sm: drawerWidth, xs: 0 },
       }}
     >
       {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -110,12 +111,12 @@ const Navigation = () => {
           keepMounted: true, // Better open performance on mobile.
         }}
         sx={{
-          display: { xs: "block", sm: "none" },
           "& .MuiDrawer-paper": {
             border: "none",
             boxSizing: "border-box",
             width: "70vw",
           },
+          display: { sm: "none", xs: "block" },
         }}
       >
         {drawer}
@@ -123,14 +124,14 @@ const Navigation = () => {
       <Drawer
         variant="permanent"
         sx={{
-          display: {
-            xs: "none",
-            sm: "block",
-          },
           "& .MuiDrawer-paper": {
             border: "none",
             boxSizing: "border-box",
             width: drawerWidth,
+          },
+          display: {
+            sm: "block",
+            xs: "none",
           },
         }}
         open

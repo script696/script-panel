@@ -1,21 +1,22 @@
-import { ActionType } from "./actionTypes";
 import { NavigateFunction } from "react-router-dom";
+
+import { ActionType } from "./actionTypes";
 import { LoginDto, RegisterDto } from "./authDto/authDto";
 
 export const loginUser = (values: LoginDto, navigate: NavigateFunction) => {
   return {
+    payload: { navigate, values },
     type: ActionType.LOGIN_USER,
-    payload: { values, navigate },
   };
 };
 
 export const registerUser = (
   values: RegisterDto,
-  navigate: NavigateFunction
+  navigate: NavigateFunction,
 ) => {
   return {
+    payload: { navigate, values },
     type: ActionType.REGISTER_USER,
-    payload: { values, navigate },
   };
 };
 
@@ -24,5 +25,5 @@ export const checkAuth = () => {
 };
 
 export const signOutUser = (navigate: NavigateFunction) => {
-  return { type: ActionType.SIGN_OUT_USER, payload: { navigate } };
+  return { payload: { navigate }, type: ActionType.SIGN_OUT_USER };
 };

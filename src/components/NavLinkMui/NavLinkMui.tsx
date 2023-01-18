@@ -11,7 +11,7 @@ const LinkBehavior = forwardRef<any, Omit<RouterLinkProps, "to">>(
       to="/material-ui/getting-started/installation/"
       {...props}
     />
-  )
+  ),
 );
 
 export default LinkBehavior;

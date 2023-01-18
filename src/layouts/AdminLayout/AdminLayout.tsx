@@ -1,7 +1,8 @@
-import { AuthHeader, Navigation, Settings } from "../../components";
 import { Box, Grid } from "@mui/material";
 import { ReactNode, useEffect } from "react";
 import { useDispatch } from "react-redux";
+
+import { AuthHeader, Navigation, Settings } from "../../components";
 import { changeSettingsStatus } from "../../store/ui/actions";
 import { getUser } from "../../store/user/actions";
 import { useAppSelector } from "../../hooks";
@@ -20,7 +21,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 
   useEffect(() => {
     dispatch(getUser());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Grid container sx={{ height: "100vh" }}>

@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { AuthRouter, ProtectedRouter } from "./components";
 import { useDispatch } from "react-redux";
-import { checkAuth } from "./store/auth/actions";
 import { Navigate, Route, Routes } from "react-router-dom";
+
+import { AuthRouter, ProtectedRouter } from "./components";
+import { checkAuth } from "./store/auth/actions";
 import { ProtectedRotes, PublicRotes } from "./utils/routes/routes";
 import {
   Home,

@@ -1,9 +1,10 @@
 import { Alert, Snackbar } from "@mui/material";
 import ReportGmailerrorredIcon from "@mui/icons-material/ReportGmailerrorred";
-import { useAppSelector } from "../../hooks";
 import { useDispatch } from "react-redux";
-import { closeSnackBar } from "../../store/ui/actions";
 import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
+
+import { useAppSelector } from "../../hooks";
+import { closeSnackBar } from "../../store/ui/actions";
 
 const SnackBar = () => {
   const {
@@ -33,7 +34,7 @@ const SnackBar = () => {
 
   return (
     <Snackbar
-      anchorOrigin={{ vertical: "top", horizontal: "left" }}
+      anchorOrigin={{ horizontal: "left", vertical: "top" }}
       autoHideDuration={3 * 1000}
       open={isSnackBarOpen}
       onClose={handleClose}
@@ -42,7 +43,7 @@ const SnackBar = () => {
       <Alert
         variant="filled"
         severity={snackBarType}
-        sx={{ width: "100%", color: "#fff" }}
+        sx={{ color: "#fff", width: "100%" }}
         icon={getCurrentIcon()}
       >
         {snackBarMessage}

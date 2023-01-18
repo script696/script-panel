@@ -13,15 +13,15 @@ export const toggleColorMode = () => {
 
 export const changeSettingsStatus = (newStatus: boolean) => {
   return {
-    type: ActionType.CHANGE_SETTINGS_STATUS,
     payload: newStatus,
+    type: ActionType.CHANGE_SETTINGS_STATUS,
   };
 };
 
 export const openSnackBar = (payload: OpenSnackBarPayload) => {
   return {
-    type: ActionType.OPEN_SNACKBAR,
     payload,
+    type: ActionType.OPEN_SNACKBAR,
   };
 };
 

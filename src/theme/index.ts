@@ -1,5 +1,6 @@
-import { darkPalette, lightPalette } from "./palette";
 import { createTheme } from "@mui/material/styles";
+
+import { darkPalette, lightPalette } from "./palette";
 import { createThemeComponents } from "./components";
 import typography from "./typography";
 
@@ -19,7 +20,7 @@ const createMuiTheme = ({ mode }: ICreateMuiTheme) => {
     {
       components: createThemeComponents(baseTheme),
     },
-    baseTheme
+    baseTheme,
   );
 };
 

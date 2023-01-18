@@ -1,32 +1,27 @@
 import { call, put, takeEvery } from "redux-saga/effects";
+import { AxiosResponse } from "axios";
+
+import { ACCESS_TOKEN } from "../../api/constants/app_constants";
+import { setFirstLoad, setLoading } from "../requests/actions";
+import getMessageFromError from "../../utils/handlers/getMessageFromError";
+import { openSnackBar } from "../ui/actions";
+import { ProtectedRotes, PublicRotes } from "../../utils/routes/routes";
+
+import { CheckAuthResponse, RegisterUserResponse } from "./types";
+import Auth from "./services";
 import {
   ActionType,
   LoginUser,
   RegisterUser,
   SignOutUser,
 } from "./actionTypes";
-import { AxiosResponse } from "axios";
-import Auth from "./services";
-import { ACCESS_TOKEN } from "../../api/constants/app_constants";
-import {
-  CheckAuthResponse,
-  LoginUserResponse,
-  RegisterUserResponse,
-} from "./types";
-import { setFirstLoad, setLoading } from "../requests/actions";
-import getMessageFromError from "../../utils/handlers/getMessageFromError";
-import { openSnackBar } from "../ui/actions";
-import { ProtectedRotes, PublicRotes } from "../../utils/routes/routes";
 
 function* loginUser({ payload }: LoginUser) {
   const { values, navigate } = payload;
   yield put(setLoading(true));
 
   try {
-    const response: AxiosResponse<LoginUserResponse> = yield call(
-      Auth.fetchLogin,
-      values
-    );
+    yield call(Auth.fetchLogin, values);
 
     navigate(ProtectedRotes.HOME);
   } catch (error) {
@@ -43,7 +38,7 @@ function* registerUser({ payload }: RegisterUser) {
   try {
     const response: AxiosResponse<RegisterUserResponse> = yield call(
       Auth.fetchRegister,
-      values
+      values,
     );
 
     localStorage.setItem(ACCESS_TOKEN, response.data.accessToken);
@@ -52,7 +47,7 @@ function* registerUser({ payload }: RegisterUser) {
       openSnackBar({
         message: "You have successfully registered",
         snackBarType: "success",
-      })
+      }),
     );
 
     setTimeout(() => navigate(ProtectedRotes.HOME), 3000);
@@ -69,7 +64,7 @@ function* signOutUser({ payload }: SignOutUser) {
 
   yield put(setLoading(true));
   try {
-    const response: AxiosResponse<string> = yield call(Auth.fetchSignOut);
+    yield call(Auth.fetchSignOut);
 
     localStorage.removeItem(ACCESS_TOKEN);
 
@@ -87,7 +82,7 @@ function* checkAuth() {
 
   try {
     const response: AxiosResponse<CheckAuthResponse> = yield call(
-      Auth.fetchCheckAuth
+      Auth.fetchCheckAuth,
     );
     localStorage.setItem(ACCESS_TOKEN, response.data.accessToken);
   } catch (error) {

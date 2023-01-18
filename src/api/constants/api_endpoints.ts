@@ -2,10 +2,10 @@ const BASE_URL = "http://localhost:5000";
 
 const AUTH_ENDPOINTS = {
   BASE: "auth",
-  SIGNIN: "signin",
-  SIGNUP: "signup",
-  SIGNOUT: "sign-out",
   REFRESH: "refresh",
+  SIGNIN: "signin",
+  SIGNOUT: "sign-out",
+  SIGNUP: "signup",
 };
 
 const USER_ENDPOINTS = {

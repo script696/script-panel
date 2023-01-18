@@ -35,7 +35,6 @@ const useFileReader: UseFileReader = ({ defaultPictureUrl }) => {
   };
 
   const resetPicturePreviewUrlToDefault = () => {
-    console.log("here");
     setPicturePreviewUrl(defaultPictureUrl);
   };
 
@@ -44,9 +43,9 @@ const useFileReader: UseFileReader = ({ defaultPictureUrl }) => {
   }, [defaultPictureUrl]);
 
   return {
+    file,
     handleReadPicture,
     picturePreviewUrl,
-    file,
     resetPicturePreviewUrlToDefault,
   };
 };

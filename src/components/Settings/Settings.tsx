@@ -1,10 +1,11 @@
 import { Grid, IconButton, SwipeableDrawer } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import ThemeCheckbox from "../ThemeCheckbox/ThemeCheckbox";
 import { useDispatch } from "react-redux";
-import { changeSettingsStatus, toggleColorMode } from "../../store/ui/actions";
 import ClearIcon from "@mui/icons-material/Clear";
+
+import ThemeCheckbox from "../ThemeCheckbox/ThemeCheckbox";
+import { changeSettingsStatus, toggleColorMode } from "../../store/ui/actions";
 
 type SettingsProps = {
   isSettingsOpen: boolean;
@@ -42,7 +43,7 @@ const Settings = ({
           aria-label="settings"
           onClick={handleChangeSettingsStatus}
         >
-          <ClearIcon sx={{ fontSize: "2rem", color: "#fff" }} />
+          <ClearIcon sx={{ color: "#fff", fontSize: "2rem" }} />
         </IconButton>
         <Typography component="h4" variant="h4" textAlign="center">
           Настройки
@@ -74,7 +75,7 @@ const Settings = ({
     };
 
   return (
-    <Box component="section" sx={{ width: 0, flexShrink: { lg: 0 } }}>
+    <Box component="section" sx={{ flexShrink: { lg: 0 }, width: 0 }}>
       <SwipeableDrawer
         anchor={anchor}
         open={isSettingsOpen}
@@ -84,7 +85,7 @@ const Settings = ({
           "& .MuiDrawer-paper": {
             border: "none",
             boxSizing: "border-box",
-            width: { xs: "100vw", sm: "35vw", md: "25vw", lg: "250px" },
+            width: { lg: "250px", md: "25vw", sm: "35vw", xs: "100vw" },
           },
         }}
       >
