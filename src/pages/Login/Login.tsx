@@ -1,4 +1,3 @@
-import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
 import { Button, Grid, TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -6,13 +5,15 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import * as Yup from "yup";
+
 import { loginUser } from "../../store/auth/actions";
 import { ReactComponent as InformationSvg } from "../../assets/svg/information.svg";
 import { Logo } from "../../components";
 import { useAppSelector } from "../../hooks";
 import { passwordRegExp } from "../../utils/regExp/regExp";
 import { ERRORS } from "../../utils/errors/errors";
-import * as Yup from "yup";
+import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
 
 type FormValues = {
   email: string;
@@ -33,16 +34,16 @@ const Login = () => {
       email: "",
       password: "",
     },
+    onSubmit: (values) => {
+      handleLogin(values);
+    },
+    validateOnChange: true,
     validationSchema: Yup.object({
       email: Yup.string().email().required(),
       password: Yup.string()
         .matches(passwordRegExp, ERRORS.PASSWORD)
         .required(),
     }),
-    validateOnChange: true,
-    onSubmit: (values) => {
-      handleLogin(values);
-    },
   });
 
   const handleLogin = (values: FormValues) => {
@@ -55,7 +56,7 @@ const Login = () => {
         <Grid
           item
           container
-          display={{ xs: "none", sm: "none", md: "flex" }}
+          display={{ md: "flex", sm: "none", xs: "none" }}
           py={3}
           md={7}
           lg={7}

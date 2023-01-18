@@ -1,7 +1,7 @@
 import { ActionType } from "./actionTypes";
 
 export const setLoading = (isLoading: boolean) => {
-  return { type: ActionType.SET_LOADING, payload: isLoading };
+  return { payload: isLoading, type: ActionType.SET_LOADING };
 };
 
 export const setFirstLoad = () => {

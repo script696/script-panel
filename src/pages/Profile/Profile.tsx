@@ -3,15 +3,16 @@ import Typography from "@mui/material/Typography";
 import { useFormik } from "formik";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { toggleProfileEditeMode, updateUser } from "../../store/user/actions";
-import { MutableField } from "../../components";
-import { useAppSelector, useFileReader } from "../../hooks";
 import EditIcon from "@mui/icons-material/Edit";
 import CloseIcon from "@mui/icons-material/Close";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Box from "@mui/material/Box";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import * as Yup from "yup";
+
+import { useAppSelector, useFileReader } from "../../hooks";
+import { MutableField } from "../../components";
+import { toggleProfileEditeMode, updateUser } from "../../store/user/actions";
 import { ERRORS } from "../../utils/errors/errors";
 import { SUPPORTED_PICTURE_FORMATS } from "../../utils/constants/constants";
 
@@ -25,7 +26,7 @@ type FormValues = {
 
 const Profile = () => {
   const { email, username, about, role, avatar, isEditMode } = useAppSelector(
-    (state) => state.UserReducer
+    (state) => state.UserReducer,
   );
 
   const { isLoading } = useAppSelector((state) => state.RequestsReducer);
@@ -44,15 +45,17 @@ const Profile = () => {
   const formik = useFormik<FormValues>({
     enableReinitialize: true,
     initialValues: {
-      username,
-      email,
       about,
       avatar,
+      email,
       role: "admin",
+      username,
     },
+    onSubmit: (values) => {
+      handleUpdateProfile(values);
+    },
+    validateOnChange: true,
     validationSchema: Yup.object({
-      username: Yup.string().min(5).max(10).required(),
-      email: Yup.string().email().required(),
       avatar: Yup.mixed()
         .notRequired()
         .test("type", ERRORS.PICTURE, (value) => {
@@ -65,11 +68,9 @@ const Profile = () => {
           const type = value?.type?.split("/")[1];
           return SUPPORTED_PICTURE_FORMATS.includes(type);
         }),
+      email: Yup.string().email().required(),
+      username: Yup.string().min(5).max(10).required(),
     }),
-    validateOnChange: true,
-    onSubmit: (values) => {
-      handleUpdateProfile(values);
-    },
   });
 
   const roleTitle = `${role[0]?.toUpperCase()}${role?.slice(1)}`;
@@ -86,7 +87,7 @@ const Profile = () => {
 
   useEffect(() => {
     formik.setFieldValue("avatar", file);
-  }, [file]);
+  }, [file, formik]);
 
   return (
     <Box component="section" sx={{ height: "100%" }}>
@@ -108,20 +109,20 @@ const Profile = () => {
           <Box component="label" position="relative">
             <Avatar
               sx={{
-                width: "12rem",
                 height: "12rem",
                 opacity: isEditMode ? 0.5 : 1,
+                width: "12rem",
               }}
               src={picturePreviewUrl}
             />
             {isEditMode && (
               <AddPhotoAlternateIcon
                 sx={{
-                  fontSize: "3rem",
-                  color: "#fff",
-                  position: "absolute",
                   bottom: "10%",
+                  color: "#fff",
+                  fontSize: "3rem",
                   left: "50%",
+                  position: "absolute",
                   transform: "translateX(-50%)",
                 }}
               />
@@ -153,9 +154,9 @@ const Profile = () => {
                 onClick={toggleEditMode}
               >
                 {isEditMode ? (
-                  <CloseIcon sx={{ fontSize: "1.5rem", color: "#fff" }} />
+                  <CloseIcon sx={{ color: "#fff", fontSize: "1.5rem" }} />
                 ) : (
-                  <EditIcon sx={{ fontSize: "1.3rem", color: "#fff" }} />
+                  <EditIcon sx={{ color: "#fff", fontSize: "1.3rem" }} />
                 )}
               </IconButton>
             </Grid>
@@ -191,8 +192,8 @@ const Profile = () => {
                 variant="contained"
                 color="inherit"
                 className="color_secondary"
-                disabled={false}
-                loading={false}
+                disabled={isLoading}
+                loading={isLoading}
                 sx={{ my: 2 }}
               >
                 Update

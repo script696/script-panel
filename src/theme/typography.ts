@@ -1,48 +1,48 @@
 const typography = {
+  body1: {
+    fontSize: "0.8rem",
+    fontWeight: 400,
+  },
   fontFamily: "Oswald, sans-serif",
-  fontWeightLight: 200,
-  fontWeightRegular: 400,
-  fontWeightMedium: 700,
   fontWeightBold: 800,
+  fontWeightLight: 200,
+  fontWeightMedium: 700,
+  fontWeightRegular: 400,
   h1: {
-    fontWeight: 800,
     fontSize: "2rem",
+    fontWeight: 800,
     letterSpacing: 0,
   },
   h2: {
-    fontWeight: 800,
     fontSize: "1.5rem",
+    fontWeight: 800,
     letterSpacing: 0,
   },
   h3: {
-    fontWeight: 800,
     fontSize: "1.2rem",
+    fontWeight: 800,
     letterSpacing: 0,
   },
   h4: {
-    fontWeight: 800,
     fontSize: "1.1rem",
+    fontWeight: 800,
     letterSpacing: 0,
   },
   h5: {
-    fontWeight: 800,
     fontSize: "1.0rem",
-    letterSpacing: 0,
-  },
-  h6: {
     fontWeight: 800,
-    fontSize: "0.8rem",
     letterSpacing: 0,
   },
 
-  subtitle1: {
-    fontWeight: 400,
-    fontSize: "0.7rem",
-    letterSpacing: "0.05rem",
-  },
-  body1: {
-    fontWeight: 400,
+  h6: {
     fontSize: "0.8rem",
+    fontWeight: 800,
+    letterSpacing: 0,
+  },
+  subtitle1: {
+    fontSize: "0.7rem",
+    fontWeight: 400,
+    letterSpacing: "0.05rem",
   },
 };
 

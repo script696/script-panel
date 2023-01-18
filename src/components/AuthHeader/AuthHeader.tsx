@@ -2,8 +2,9 @@ import { Grid, IconButton, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Box from "@mui/material/Box";
 import { useDispatch } from "react-redux";
+
 import { toggleMobileMenu } from "../../store/ui/actions";
-import { AccountMenu } from "../index";
+import { AccountMenu } from "..";
 
 const AuthHeader = () => {
   const dispatch = useDispatch();

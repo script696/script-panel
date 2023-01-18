@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { AUTH_ENDPOINTS, BASE_URL } from "./constants/api_endpoints";
 import { ACCESS_TOKEN } from "./constants/app_constants";
 
@@ -12,7 +13,7 @@ const refresh = async () =>
     `${BASE_URL}/${AUTH_ENDPOINTS.BASE}/${AUTH_ENDPOINTS.REFRESH}`,
     {
       withCredentials: true,
-    }
+    },
   );
 
 $api.interceptors.request.use(
@@ -25,7 +26,7 @@ $api.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 $api.interceptors.response.use(
@@ -35,7 +36,7 @@ $api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
     if (
-      error.response.status == 401 &&
+      error.response.status === 401 &&
       error.config &&
       !error.config._isRetry
     ) {
@@ -46,12 +47,10 @@ $api.interceptors.response.use(
         return $api.request(originalRequest);
       } catch (e) {
         localStorage.removeItem(ACCESS_TOKEN);
-
-        console.log("Not Authotaize");
       }
     }
     throw error;
-  }
+  },
 );
 
 export default $api;

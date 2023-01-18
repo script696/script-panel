@@ -1,5 +1,6 @@
 import { applyMiddleware, compose, createStore, PreloadedState } from "redux";
 import createSagaMiddleware from "redux-saga";
+
 import rootReducer, { IRootState } from "./reducers";
 import rootSaga from "./sagas";
 
@@ -17,7 +18,7 @@ const configureStore = (preloadedState: PreloadedState<IRootState>) =>
   createStore(
     rootReducer,
     preloadedState,
-    composeEnhancers(applyMiddleware(sagaMiddleware))
+    composeEnhancers(applyMiddleware(sagaMiddleware)),
   );
 
 const store = configureStore({});

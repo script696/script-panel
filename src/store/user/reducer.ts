@@ -1,6 +1,7 @@
-import { Actions, ActionType } from "./actionTypes";
 import { BASE_URL } from "../../api/constants/api_endpoints";
 import defaultAvatar from "../../assets/img/avatars/defaultAvatar.jpg";
+
+import { Actions, ActionType } from "./actionTypes";
 
 type InitialState = {
   email: string;
@@ -12,12 +13,12 @@ type InitialState = {
 };
 
 const initialState: InitialState = {
-  avatar: "",
   about: "",
-  username: "",
-  role: "",
+  avatar: "",
   email: "",
   isEditMode: false,
+  role: "",
+  username: "",
 };
 
 const UserReducer = (state = initialState, action: Actions) => {
@@ -26,11 +27,11 @@ const UserReducer = (state = initialState, action: Actions) => {
       const avatar = action.payload.avatar;
       state = {
         ...state,
+        about: action.payload.about,
+        avatar: avatar ? `${BASE_URL}/${avatar}` : defaultAvatar,
         email: action.payload.email,
         role: action.payload.role,
         username: action.payload.username,
-        about: action.payload.about,
-        avatar: avatar ? `${BASE_URL}/${avatar}` : defaultAvatar,
       };
       break;
     case ActionType.TOGGLE_PROFILE_EDIT_MODE:

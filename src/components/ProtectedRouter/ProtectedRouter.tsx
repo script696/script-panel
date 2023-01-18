@@ -1,7 +1,8 @@
 import { Navigate, Outlet } from "react-router-dom";
+
 import { useAppSelector } from "../../hooks";
 import { ACCESS_TOKEN } from "../../api/constants/app_constants";
-import { Preloader } from "../index";
+import { Preloader } from "..";
 import { AdminLayout } from "../../layouts";
 
 const ProtectedRouter = () => {
@@ -13,7 +14,7 @@ const ProtectedRouter = () => {
   }
 
   if (!token) {
-    return <Navigate to={`/signin`} />;
+    return <Navigate to={"/signin"} />;
   }
 
   return (

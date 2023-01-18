@@ -7,11 +7,11 @@ export const getUser = () => {
 };
 
 export const setUser = (userData: User) => {
-  return { type: ActionType.SET_USER, payload: userData };
+  return { payload: userData, type: ActionType.SET_USER };
 };
 
 export const updateUser = (userData: UpdateUserDto) => {
-  return { type: ActionType.UPDATE_USER, payload: userData };
+  return { payload: userData, type: ActionType.UPDATE_USER };
 };
 
 export const toggleProfileEditeMode = () => {

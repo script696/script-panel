@@ -1,6 +1,7 @@
 import React, { ReactNode, useMemo } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { GlobalStyles } from "@mui/material";
+
 import { useAppSelector } from "../../hooks";
 import { createMuiTheme } from "../../theme";
 import SnackBar from "../SnackBar/SnackBar";

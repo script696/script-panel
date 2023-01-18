@@ -1,8 +1,9 @@
 import Box from "@mui/material/Box";
-import { ReactComponent as PageNotFoundSvg } from "../../assets/svg/pageNotFound.svg";
 import { Button, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
+
+import { ReactComponent as PageNotFoundSvg } from "../../assets/svg/pageNotFound.svg";
 
 const PageNotFound = () => {
   const navigate = useNavigate();

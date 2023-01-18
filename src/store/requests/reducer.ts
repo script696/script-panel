@@ -1,9 +1,9 @@
 import { Actions, ActionType } from "./actionTypes";
 
 const initialState = {
-  isLoading: false,
-  isFirstLoad: true,
   errorMessage: "",
+  isFirstLoad: true,
+  isLoading: false,
 };
 
 const RequestsReducer = (state = initialState, action: Actions) => {
