@@ -12,7 +12,7 @@ export const loginUser = (values: LoginDto, navigate: NavigateFunction) => {
 
 export const registerUser = (
   values: RegisterDto,
-  navigate: NavigateFunction,
+  navigate: NavigateFunction
 ) => {
   return {
     payload: { navigate, values },
