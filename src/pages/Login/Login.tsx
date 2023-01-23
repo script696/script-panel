@@ -31,8 +31,8 @@ const Login = () => {
 
   const formik = useFormik<FormValues>({
     initialValues: {
-      email: "",
-      password: "",
+      email: "admin@mail.ru",
+      password: "12345678Aa",
     },
     onSubmit: (values) => {
       handleLogin(values);

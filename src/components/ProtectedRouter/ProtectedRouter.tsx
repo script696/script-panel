@@ -14,6 +14,7 @@ const ProtectedRouter = () => {
   }
 
   if (!token) {
+    console.log("token");
     return <Navigate to={"/signin"} />;
   }
 
