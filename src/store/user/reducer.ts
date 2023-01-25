@@ -1,5 +1,6 @@
+import defaultAvatar3 from "../../assets/img/avatars/defaultAvatar3.png";
+
 import { BASE_URL } from "../../api/constants/api_endpoints";
-import defaultAvatar from "../../assets/img/avatars/defaultAvatar.jpg";
 
 import { Actions, ActionType } from "./actionTypes";
 
@@ -14,7 +15,7 @@ type InitialState = {
 
 const initialState: InitialState = {
 	about: "",
-	avatar: "",
+	avatar: defaultAvatar3,
 	email: "",
 	isEditMode: false,
 	role: "",
@@ -33,7 +34,8 @@ const UserReducer = (state = initialState, action: Actions) => {
 			state = {
 				...state,
 				about: action.payload.about,
-				avatar: avatar ? `${BASE_URL}/${avatar}` : defaultAvatar,
+				avatar: avatar ? `${BASE_URL}/${avatar}` : defaultAvatar3,
+				// avatar: state.avatar,
 				email: action.payload.email,
 				role: uppercaseRole,
 				username: uppercaseUsername,

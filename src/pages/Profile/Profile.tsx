@@ -1,7 +1,6 @@
 import { Grid } from "@mui/material";
-import Typography from "@mui/material/Typography";
 import { useFormik } from "formik";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Box } from "@mui/material";
 import * as Yup from "yup";
@@ -9,13 +8,19 @@ import * as Yup from "yup";
 import { Divider } from "@mui/material";
 
 import { useAppSelector, useFileReader } from "../../hooks";
-import { toggleProfileEditeMode, updateUser } from "../../store/user/actions";
+import { updateUser } from "../../store/user/actions";
 import { ERRORS } from "../../utils/errors/errors";
 import { SUPPORTED_PICTURE_FORMATS } from "../../utils/constants/constants";
 
-import ProfileAvatar from "./components/ProfileAvatar";
-import ProfileTabs from "./components/ProfileTabs";
-import useProfileTabs from "./hooks/useProfileTabs";
+import { ProfileTabsList } from "../../entities/ProfileTabs";
+
+import useTabsProvider from "../../entities/ProfileTabPanelsList/lib/hooks/useTabs";
+
+import ProfileInformationPanel from "../../widgets/ProfileInformationPanel/ui/ProfileInformationPanel";
+import { TabsProvider } from "../../entities/TabsProvider";
+
+import { ProfileEditAvatar } from "../../widgets/ProfileEditAvatar";
+import { ProfileIRoleCol } from "../../entities/ProfileIRoleCol";
 
 type FormValues = {
 	email: string;
@@ -27,13 +32,6 @@ type FormValues = {
 
 const Profile = () => {
 	const { email, username, about, role, avatar, isEditMode } = useAppSelector((state) => state.UserReducer);
-
-	const profileInfoData = [
-		{ text: username, title: "Username" },
-		{ text: email, title: "Email" },
-	];
-
-	const { isLoading } = useAppSelector((state) => state.RequestsReducer);
 
 	const dispatch = useDispatch();
 
@@ -72,14 +70,6 @@ const Profile = () => {
 		}),
 	});
 
-	const roleTitle = `${role[0]?.toUpperCase()}${role?.slice(1)}`;
-
-	const toggleEditMode = () => {
-		if (isEditMode) resetPicturePreviewUrlToDefault();
-
-		dispatch(toggleProfileEditeMode());
-	};
-
 	const handleUpdateProfile = (values: FormValues) => {
 		dispatch(updateUser(values));
 	};
@@ -87,167 +77,25 @@ const Profile = () => {
 	useEffect(() => {
 		formik.setFieldValue("avatar", file);
 	}, [file]);
-	const {
-		getCurrentTabSlideComponent,
-		handleTabClick: onTabClick,
-		currentTabSlide,
-	} = useProfileTabs({ profileInfoData });
+
+	const { handleChangeTabIndex: onChangeTabIndex, tabIndex } = useTabsProvider();
 
 	return (
-		<Box component="section" sx={{ height: "100%" }}>
+		<TabsProvider onTabClick={onChangeTabIndex} currentTabId={tabIndex}>
 			<Grid container gap={1.5} wrap="nowrap" sx={{ height: "100%" }} px={1} pt={1} pb={2}>
-				<Grid
-					item
-					md={4}
-					className="grid_dark grid_style_box-shadow"
-					sx={{
-						borderRadius: "10px",
-						height: "100%",
-					}}
-				>
+				<Grid component="section" item md={4} className="grid_dark grid_style_box-shadow grid_style_bordered">
 					<Box display="flex" p={2} columnGap="10px" alignItems="center">
-						<ProfileAvatar
-							isEditMode={isEditMode}
-							picturePreviewUrl={picturePreviewUrl}
-							onReadPicture={handleReadPicture}
-						/>
-						<Box display="flex" flexDirection="column" rowGap="5px">
-							<Typography component="span" variant="body1">
-								{username}
-							</Typography>
-							<Typography component="span" variant="h6">
-								{email}
-							</Typography>
-						</Box>
+						<ProfileEditAvatar />
+						<ProfileIRoleCol userName={username} email={email} />
 					</Box>
 					<Divider />
-					<Box p={2}>
-						<ProfileTabs onTabClick={onTabClick} currentTabSlide={currentTabSlide} />
-					</Box>
+					<ProfileTabsList currentTabId={tabIndex} />
 				</Grid>
-				<Grid
-					item
-					md={8}
-					className="grid_dark grid_style_box-shadow"
-					sx={{ borderRadius: "10px", height: "100%" }}
-				>
-					<Box display="flex" p={2} columnGap="10px" alignItems="center" flexDirection="column">
-						{getCurrentTabSlideComponent()}
-					</Box>
+				<Grid component="section" item md={8} className="grid_dark grid_style_box-shadow grid_style_bordered">
+					<ProfileInformationPanel />
 				</Grid>
 			</Grid>
-			{/*<Grid*/}
-			{/*  container*/}
-			{/*  component="form"*/}
-			{/*  onSubmit={formik.handleSubmit}*/}
-			{/*  sx={{ height: "100%" }}*/}
-			{/*>*/}
-			{/*  <Grid*/}
-			{/*    item*/}
-			{/*    xs={4}*/}
-			{/*    container*/}
-			{/*    justifyContent="center"*/}
-			{/*    alignItems="center"*/}
-			{/*    direction="column"*/}
-			{/*    rowGap={1}*/}
-			{/*  >*/}
-			{/*    <Box component="label" position="relative">*/}
-			{/*      <Avatar*/}
-			{/*        sx={{*/}
-			{/*          height: "12rem",*/}
-			{/*          opacity: isEditMode ? 0.5 : 1,*/}
-			{/*          width: "12rem",*/}
-			{/*        }}*/}
-			{/*        src={picturePreviewUrl}*/}
-			{/*      />*/}
-			{/*      {isEditMode && (*/}
-			{/*        <AddPhotoAlternateIcon*/}
-			{/*          sx={{*/}
-			{/*            bottom: "10%",*/}
-			{/*            color: "#fff",*/}
-			{/*            fontSize: "3rem",*/}
-			{/*            left: "50%",*/}
-			{/*            position: "absolute",*/}
-			{/*            transform: "translateX(-50%)",*/}
-			{/*          }}*/}
-			{/*        />*/}
-			{/*      )}*/}
-
-			{/*      <input*/}
-			{/*        type="file"*/}
-			{/*        hidden*/}
-			{/*        id="avatar"*/}
-			{/*        name="avatar"*/}
-			{/*        onChange={handleReadPicture}*/}
-			{/*        disabled={!isEditMode}*/}
-			{/*      />*/}
-			{/*    </Box>*/}
-			{/*    {formik.errors.avatar && <Typography>test</Typography>}*/}
-			{/*    <Typography component="span" variant="h5">*/}
-			{/*      {roleTitle}*/}
-			{/*    </Typography>*/}
-			{/*  </Grid>*/}
-			{/*  <Grid container item xs={8} justifyContent="center" alignItems="center">*/}
-			{/*    <Grid width="80%" className="grid_test" px={6} py={6}>*/}
-			{/*      <Grid container alignItems="center" justifyContent="space-between">*/}
-			{/*        <Typography component="h2" variant="h4" mb={2}>*/}
-			{/*          Your profile*/}
-			{/*        </Typography>*/}
-			{/*        <IconButton*/}
-			{/*          edge="start"*/}
-			{/*          aria-label="settings"*/}
-			{/*          onClick={toggleEditMode}*/}
-			{/*        >*/}
-			{/*          {isEditMode ? (*/}
-			{/*            <CloseIcon sx={{ color: "#fff", fontSize: "1.5rem" }} />*/}
-			{/*          ) : (*/}
-			{/*            <EditIcon sx={{ color: "#fff", fontSize: "1.3rem" }} />*/}
-			{/*          )}*/}
-			{/*        </IconButton>*/}
-			{/*      </Grid>*/}
-			{/*      <MutableField*/}
-			{/*        id="username"*/}
-			{/*        label="Введите имя"*/}
-			{/*        autoComplete="name"*/}
-			{/*        formik={formik}*/}
-			{/*        isEditMode={isEditMode}*/}
-			{/*        value={formik.values.username}*/}
-			{/*      />*/}
-			{/*      <MutableField*/}
-			{/*        id="email"*/}
-			{/*        label="Введите почту"*/}
-			{/*        autoComplete="email"*/}
-			{/*        formik={formik}*/}
-			{/*        isEditMode={isEditMode}*/}
-			{/*        value={formik.values.email}*/}
-			{/*      />*/}
-			{/*      <MutableField*/}
-			{/*        id="about"*/}
-			{/*        label="О себе"*/}
-			{/*        multiline*/}
-			{/*        formik={formik}*/}
-			{/*        autoComplete="off"*/}
-			{/*        isEditMode={isEditMode}*/}
-			{/*        value={formik.values.about}*/}
-			{/*      />*/}
-			{/*      {isEditMode && (*/}
-			{/*        <LoadingButton*/}
-			{/*          type="submit"*/}
-			{/*          fullWidth*/}
-			{/*          variant="contained"*/}
-			{/*          color="inherit"*/}
-			{/*          className="color_secondary"*/}
-			{/*          disabled={isLoading}*/}
-			{/*          loading={isLoading}*/}
-			{/*          sx={{ my: 2 }}*/}
-			{/*        >*/}
-			{/*          Update*/}
-			{/*        </LoadingButton>*/}
-			{/*      )}*/}
-			{/*    </Grid>*/}
-			{/*  </Grid>*/}
-			{/*</Grid>*/}
-		</Box>
+		</TabsProvider>
 	);
 };
 
