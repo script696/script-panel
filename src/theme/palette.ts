@@ -25,16 +25,16 @@ const darkPalette = {
 	...palette,
 	mode: "dark" as PaletteMode,
 	primary: {
-		contrastText: palette.grey[600],
-		dark: palette.grey[800],
-		light: palette.grey[700],
-		main: palette.grey[900],
+		contrastText: "#fff",
+		dark: "#0d1b2a",
+		light: "#415a77",
+		main: "#1b263b",
 	},
 	text: {
-		disabled: palette.grey[600],
-		primary: palette.grey[100],
-		secondary: palette.grey[700],
 		alt: palette.grey[400],
+		disabled: palette.grey[600],
+		primary: "#CFD8DC",
+		secondary: "#0d1b2a",
 	},
 };
 

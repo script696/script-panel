@@ -1,8 +1,7 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import { useAppSelector } from "../../hooks";
 import { ACCESS_TOKEN } from "../../api/constants/app_constants";
-import { Preloader } from "..";
 import { AdminLayout } from "../../layouts";
 
 const ProtectedRouter = () => {

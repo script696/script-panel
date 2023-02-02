@@ -3,43 +3,51 @@ import React from "react";
 
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 
-import { TabsData } from "../../types/types";
+import { useDispatch } from "react-redux";
+
+import { FormAddressValues, FormInfoValues, TabsData } from "../../types/types";
 import InfoSlide from "../components/InfoSlide/InfoSlide";
 
-import useProfileInfoForm from "../../lib/hooks/useInfoEditForm";
-
-import { SLIDE_LABELS } from "../../constants/constants";
+import { SLIDE_LABELS } from "../../consts/constants";
 
 import AddressSlide from "../components/AddressSlide/AddressSlide";
 
-import useInfoAddressEditForm from "../../lib/hooks/useInfoAddressEditForm";
+import useAddressInfoForm from "../../lib/hooks/useAddressInfoForm";
 import useTabs from "../../lib/hooks/useTabs";
-
-const INFO_MOCK = {
-	dateOfBirth: "11.11.1992",
-	fullName: "nikita",
-	nickName: "script696",
-	phoneNumber: "79215562686",
-};
-const ADDRESS_MOCK = {
-	addressLine: "Liberty street",
-	apartment: "201",
-	city: "Los Angeles",
-	country: "USA",
-};
+import { useAppSelector } from "../../../../hooks";
+import { removeFalsyValues } from "../../../../utils/handlers";
+import { handleUpdateAddressInfo, handleUpdateBasicInfo } from "../../../../store/user/actions";
+import useBasicInfoForm from "../../lib/hooks/useBasicInfoForm";
 
 type ProfileInfoFormProps = {
-	initialProfileInfoFormValues?: Record<string, string>;
-	initialProfileAddressFormValues?: Record<string, string>;
 	onCancelForm: () => void;
 };
-const InfoEditForm = ({
-	initialProfileInfoFormValues,
-	initialProfileAddressFormValues,
-	onCancelForm,
-}: ProfileInfoFormProps) => {
-	const { formInfoInstance } = useProfileInfoForm({ initialFormValues: INFO_MOCK });
-	const { formAddressInstance } = useInfoAddressEditForm({ initialFormValues: ADDRESS_MOCK });
+const InfoEditForm = ({ onCancelForm }: ProfileInfoFormProps) => {
+	const adminData = useAppSelector((state) => state.UserReducer);
+	const dispatch = useDispatch();
+
+	const { nickName, fullName, phoneNumber, dateOfBirth } = adminData;
+	const { addressLine, apartment, city, country } = adminData;
+
+	const handleSubmitAddressInfoForm = (values: FormAddressValues) => {
+		const mappedValues = removeFalsyValues<FormAddressValues>(values);
+		dispatch(handleUpdateAddressInfo({ data: mappedValues, onCloseModal: onCancelForm }));
+	};
+
+	const handleSubmitBasicInfoForm = (values: FormInfoValues) => {
+		const mappedValues = removeFalsyValues<FormInfoValues>(values);
+		dispatch(handleUpdateBasicInfo({ data: mappedValues, onCloseModal: onCancelForm }));
+	};
+
+	const { formInfoInstance } = useBasicInfoForm({
+		initialFormValues: { dateOfBirth, fullName, nickName, phoneNumber },
+		onSubmit: handleSubmitBasicInfoForm,
+	});
+	const { formAddressInstance } = useAddressInfoForm({
+		initialFormValues: { addressLine, apartment, city, country },
+		onSubmit: handleSubmitAddressInfoForm,
+	});
+
 	const { currentTabIndex, handleChangeTabIndex: onChangeTabIndex } = useTabs(SLIDE_LABELS.profileInfoSlide);
 
 	const tabsData: Array<TabsData> = [
@@ -75,13 +83,15 @@ const InfoEditForm = ({
 						})}
 					</TabList>
 				</Box>
-				{tabsData.map(({ label, tabSlide: TabSlide }) => {
-					return (
-						<TabPanel key={label} value={label}>
-							{TabSlide}
-						</TabPanel>
-					);
-				})}
+				<Box flexGrow={1}>
+					{tabsData.map(({ label, tabSlide: TabSlide }) => {
+						return (
+							<TabPanel key={label} value={label}>
+								{TabSlide}
+							</TabPanel>
+						);
+					})}
+				</Box>
 			</TabContext>
 		</Grid>
 	);

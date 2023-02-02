@@ -19,7 +19,7 @@ const SettingsProvider = ({ children }: { children: ReactNode }) => {
 			<GlobalStyles
 				styles={{
 					body: {
-						backgroundColor: theme.palette.primary.dark,
+						backgroundColor: theme.palette.primary.main,
 						margin: "0",
 					},
 				}}

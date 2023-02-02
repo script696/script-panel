@@ -1,12 +1,12 @@
 export interface LoginDto {
-  email: string;
-  password: string;
+	email: string;
+	password: string;
 }
 
 export interface RegisterDto {
-  role: string;
-  username: string;
-  email: string;
-  password: string;
-  passwordRepeat: string;
+	role: string;
+	nickName: string;
+	email: string;
+	password: string;
+	passwordRepeat: string;
 }

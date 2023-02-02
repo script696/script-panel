@@ -40,7 +40,7 @@ const Login = () => {
 		validateOnChange: true,
 		validationSchema: Yup.object({
 			email: Yup.string().email().required(),
-			password: Yup.string().matches(passwordRegExp, ERRORS.PASSWORD).required(),
+			password: Yup.string().matches(passwordRegExp, ERRORS.password).required(),
 		}),
 	});
 
@@ -62,7 +62,7 @@ const Login = () => {
 					justifyContent="center"
 					alignItems="center"
 					direction="column"
-					className="login"
+					className="grid_dark"
 				>
 					<Box flexGrow={1} height="25rem" width="25rem">
 						<InformationSvg height="100%" width="100%" />
@@ -87,8 +87,15 @@ const Login = () => {
 					xl={3}
 				>
 					<Logo size={50} mb={2} color={colorMode === "dark" ? "#fff" : "#ddbea9"} />
-					<Grid className="grid_base" container alignItems="center" direction="column" px={4} py={1}>
-						<Typography component="h2" variant="h3" mb={0.5} className="color_secondary">
+					<Grid
+						className="grid_style_bordered grid_border_light"
+						container
+						alignItems="center"
+						direction="column"
+						px={4}
+						py={1}
+					>
+						<Typography component="h2" variant="h3" mb={0.5}>
 							Войти
 						</Typography>
 						<Box component="form" noValidate onSubmit={formik.handleSubmit} width="100%">
@@ -102,7 +109,6 @@ const Login = () => {
 								name="email"
 								autoComplete="email"
 								disabled={isLoading}
-								color="secondary"
 								value={formik.values.email}
 								onChange={formik.handleChange}
 								onBlur={formik.handleBlur}
@@ -118,6 +124,7 @@ const Login = () => {
 								id="password"
 								name="password"
 								label="Введите пароль"
+								color={undefined}
 								autoComplete="current-password"
 								disabled={isLoading}
 								value={formik.values.password}
@@ -142,7 +149,15 @@ const Login = () => {
 						</Box>
 					</Grid>
 					<Box flexGrow={1} />
-					<Grid className="grid_base" container direction="column" alignItems="center" px={4} pt={1} pb={2}>
+					<Grid
+						className="grid_style_bordered grid_border_light"
+						container
+						direction="column"
+						alignItems="center"
+						px={4}
+						pt={1}
+						pb={2}
+					>
 						<Typography mb={2} component="span" variant="subtitle1" className="color_secondary">
 							Еще не зарегестрированы ?
 						</Typography>

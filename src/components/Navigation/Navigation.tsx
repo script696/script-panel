@@ -45,7 +45,7 @@ const Navigation = () => {
 	};
 
 	const drawer = (
-		<Grid container direction="column" py={2} className="grid_dark">
+		<Grid container direction="column" py={2} className="grid_dark" height="100%">
 			<Box display="flex" justifyContent="center">
 				<Logo size={50} mb={2} color={colorMode === "dark" ? "#fff" : "#ddbea9"} />
 			</Box>

@@ -1,8 +1,8 @@
 export type FormInfoValues = {
-	fullName: string;
+	fullName?: string;
 	nickName: string;
-	phoneNumber: string;
-	dateOfBirth: string;
+	phoneNumber?: string;
+	dateOfBirth?: string;
 };
 
 export type FormAddressValues = {

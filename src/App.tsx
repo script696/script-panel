@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { AuthRouter, ProtectedRouter } from "./components";
-import { checkAuth } from "./store/auth/actions";
 import { ProtectedRotes, PublicRotes } from "./utils/routes/routes";
 import { Home, Login, PageNotFound, Profile, Projects, Registration } from "./pages";
 import Users from "./pages/Users/Users";
@@ -11,9 +10,9 @@ import Users from "./pages/Users/Users";
 function App() {
 	const dispatch = useDispatch();
 
-	useEffect(() => {
-		dispatch(checkAuth());
-	}, []);
+	// useEffect(() => {
+	// 	dispatch(checkAuth());
+	// }, []);
 
 	return (
 		<>

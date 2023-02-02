@@ -1,2 +1,1 @@
-export { default as ProfileAvatarAndNavigation } from "./ui/ProfileInformationPanel";
-export { default as ProfileInformationPanelReducer } from "./model/reducer";
+export { default as ProfileInformationPanel } from "./ui/ProfileInformationPanel";

@@ -1,1 +1,1 @@
-export { default as ProfileIRoleCol } from "./ui/ProfileIRoleCol";
+export { default as ProfileIRoleCol } from "./ui/ProfileRoleCol";

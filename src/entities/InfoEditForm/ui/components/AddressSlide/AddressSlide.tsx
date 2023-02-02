@@ -4,7 +4,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import React from "react";
 import { FormikProps } from "formik";
 
-import { PROFILE_ADDRESS_FIELDS_DATA } from "../../../constants/constants";
+import { PROFILE_ADDRESS_FIELDS_DATA } from "../../../consts/constants";
 import { FormAddressValues } from "../../../types/types";
 
 type ProfileAddressSlideProps = {

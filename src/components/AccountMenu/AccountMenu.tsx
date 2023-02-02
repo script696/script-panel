@@ -15,9 +15,13 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 import { signOutUser } from "../../store/auth/actions";
 import { useAppSelector } from "../../hooks";
+import { useEffect } from "react";
 
 const AccountMenu = () => {
-	const { avatar, username, role } = useAppSelector((state) => state.UserReducer);
+	const { avatarUrl, nickName, role } = useAppSelector((state) => state.UserReducer);
+	useEffect(() => {
+		console.log(avatarUrl);
+	}, [avatarUrl]);
 	const dispatch = useDispatch();
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const navigate = useNavigate();
@@ -53,13 +57,13 @@ const AccountMenu = () => {
 						aria-expanded={open ? "true" : undefined}
 					>
 						<Grid container direction="row" alignItems="center">
-							<Avatar alt="user avatar" src={avatar} sx={{ marginRight: "15px" }} />
+							<Avatar alt="user avatar" src={avatarUrl} sx={{ marginRight: "15px" }} />
 							<Box display="flex" flexDirection="column">
 								<Typography textAlign="start" component="span" variant="body1">
 									{role}
 								</Typography>
 								<Typography textAlign="start" component="span" variant="h6">
-									{username}
+									{nickName}
 								</Typography>
 							</Box>
 							<KeyboardArrowDownIcon sx={{ color: "#fff" }} />

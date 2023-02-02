@@ -3,17 +3,33 @@ import { Box } from "@mui/material";
 
 import React from "react";
 
-import ProfileInfoRow from "../../../../pages/Profile/components/ProfileInfoRow";
-
-import PanelEditRow from "../components/PanelEditRow";
-import { ProfileInfoData } from "../../types/types";
+import { ProfileInfoRow } from "../components/ProfileInfoRow";
+import { useAppSelector } from "../../../../hooks";
+import { PanelTitleBox } from "../components/PanelTitleBox";
+import { EditButton } from "../components/EditButton";
 
 type ProfileInfoProps = {
-	profileInfoData: Array<ProfileInfoData>;
 	onTurnOnEditMode: () => void;
 };
 
-const ProfileInfoPanel = ({ profileInfoData, onTurnOnEditMode }: ProfileInfoProps) => {
+const ProfileInfoPanel = ({ onTurnOnEditMode }: ProfileInfoProps) => {
+	const { nickName, apartment, dateOfBirth, addressLine, fullName, phoneNumber, country, city } =
+		useAppSelector((state) => state.UserReducer);
+
+	const profileBaseData = [
+		{ text: nickName, title: "Nickname" },
+		{ text: dateOfBirth, title: "Full Name" },
+		{ text: fullName, title: "Date of Birth" },
+		{ text: phoneNumber, title: "Phone Number" },
+	];
+
+	const profileAddressData = [
+		{ text: country, title: "Country" },
+		{ text: city, title: "City" },
+		{ text: addressLine, title: "Address Line" },
+		{ text: apartment, title: "Apartment" },
+	];
+
 	return (
 		<Box p={3} component="section">
 			<Box display="flex" flexDirection="column" rowGap={2} mb={1}>
@@ -25,9 +41,15 @@ const ProfileInfoPanel = ({ profileInfoData, onTurnOnEditMode }: ProfileInfoProp
 				</Typography>
 			</Box>
 			<Box sx={{ width: "100%" }}>
-				<PanelEditRow title="Basics" onChangeEditMode={onTurnOnEditMode} />
-				{profileInfoData.map(({ title, text }) => {
-					return <ProfileInfoRow key={title} title={title} text={text} />;
+				<PanelTitleBox title="Basics">
+					<EditButton onClick={onTurnOnEditMode} />
+				</PanelTitleBox>
+				{profileBaseData.map(({ title, text }) => {
+					return <ProfileInfoRow key={title} title={title} text={text || "-"} />;
+				})}
+				<PanelTitleBox title="Address" />
+				{profileAddressData.map(({ title, text }) => {
+					return <ProfileInfoRow key={title} title={title} text={text || "-"} />;
 				})}
 			</Box>
 		</Box>

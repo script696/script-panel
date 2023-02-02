@@ -6,13 +6,11 @@ import { FormikProps } from "formik";
 
 import { LoadingButton } from "@mui/lab";
 
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
-import { LocalizationProvider } from "@mui/x-date-pickers";
+import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 
-import { PROFILE_INFO_FIELDS_DATA } from "../../../constants/constants";
+import { PROFILE_INFO_FIELDS_DATA } from "../../../consts/constants";
 import { FormInfoValues } from "../../../types/types";
 
 type ProfileInfoSlideProps = {
@@ -21,10 +19,11 @@ type ProfileInfoSlideProps = {
 };
 const InfoSlide = ({ formInstance, onCancel }: ProfileInfoSlideProps) => {
 	const handlePickDate = (value: any) => {
-		const { $D: day, $M: month, $y: year } = value;
 		if (!value) return;
-		formInstance.setFieldValue("dateOfBirth", `${day}.${month}.${year}`);
+		const { $D: day, $M: month, $y: year } = value;
+		formInstance.setFieldValue("dateOfBirth", `0${day}.0${month}.${year}`);
 	};
+
 	return (
 		<Grid
 			container
@@ -59,7 +58,7 @@ const InfoSlide = ({ formInstance, onCancel }: ProfileInfoSlideProps) => {
 				})}
 				<Grid item xs={6}>
 					<LocalizationProvider dateAdapter={AdapterDayjs}>
-						<DatePicker
+						<DesktopDatePicker
 							label="Date Of Birth"
 							value={formInstance.values.dateOfBirth}
 							onChange={handlePickDate}

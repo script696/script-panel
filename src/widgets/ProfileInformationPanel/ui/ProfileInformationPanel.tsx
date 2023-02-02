@@ -3,38 +3,39 @@ import React from "react";
 
 import TabPanelUnstyled from "@mui/base/TabPanelUnstyled";
 
-import { useAppSelector } from "../../../hooks";
-
-import { ModalPopup } from "../../../modules/ModalPopup";
+import { ModalPopup, useModal } from "../../../shared/ui/ModalPopup";
 
 import { ProfileSecurityPanel, ProfileInfoPanel } from "../../../entities/ProfileTabPanelsList";
 import { InfoEditForm } from "../../../entities/InfoEditForm";
-import useModals from "../lib/hooks/useModals";
+import ProfileSecurityForm from "../../../entities/ProfileSecurityForm/ui/ProfileSecurityForm";
 
 const ProfileInformationPanel = () => {
-	const { email, username, about, role, avatar, isEditMode } = useAppSelector((state) => state.UserReducer);
 	const {
-		handleCloseModalInfo: onCloseModalInfo,
-		handleOpenModalInfo: onOpenModalInfo,
-		isModalInfoOpen,
-	} = useModals();
-
-	const profileInfoData = [
-		{ text: username, title: "Username" },
-		{ text: email, title: "Email" },
-	];
+		handleCloseModal: onCloseModalInfo,
+		handleOpenModal: onOpenModalInfo,
+		isModalOpen: isModalInfoOpen,
+	} = useModal();
+	const {
+		handleCloseModal: onCloseModalSecurity,
+		handleOpenModal: onOpenModalSecurity,
+		isModalOpen: isModalSecurityOpen,
+	} = useModal();
 
 	return (
 		<Box>
 			<TabPanelUnstyled value={0}>
-				<ProfileInfoPanel profileInfoData={profileInfoData} onTurnOnEditMode={onOpenModalInfo} />
+				<ProfileInfoPanel onTurnOnEditMode={onOpenModalInfo} />
 			</TabPanelUnstyled>
 			<TabPanelUnstyled value={1}>
-				<ProfileSecurityPanel />
+				<ProfileSecurityPanel onTurnOnEditMode={onOpenModalSecurity} />
 			</TabPanelUnstyled>
 
 			<ModalPopup onCloseModalPopup={onCloseModalInfo} isModalPopupOpen={isModalInfoOpen}>
 				<InfoEditForm onCancelForm={onCloseModalInfo} />
+			</ModalPopup>
+
+			<ModalPopup onCloseModalPopup={onCloseModalSecurity} isModalPopupOpen={isModalSecurityOpen}>
+				<ProfileSecurityForm onCancelForm={onCloseModalSecurity} />
 			</ModalPopup>
 		</Box>
 	);

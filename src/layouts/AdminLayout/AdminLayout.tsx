@@ -21,7 +21,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 
 	useEffect(() => {
 		dispatch(getUser());
-	}, [dispatch]);
+	}, []);
 
 	return (
 		<Grid container sx={{ height: "100vh" }}>

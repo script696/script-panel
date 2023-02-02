@@ -5,40 +5,74 @@ import { BASE_URL } from "../../api/constants/api_endpoints";
 import { Actions, ActionType } from "./actionTypes";
 
 type InitialState = {
+	avatarUrl: string;
+	dateOfBirth: string;
 	email: string;
-	username: string;
-	role: string;
-	about: string;
-	avatar: string;
+	fullName: string;
 	isEditMode: boolean;
+	nickName: string;
+	phoneNumber: string;
+	role: string;
+	country: string;
+	city: string;
+	addressLine: string;
+	apartment: string;
 };
-
 const initialState: InitialState = {
-	about: "",
-	avatar: defaultAvatar3,
+	addressLine: "",
+	apartment: "",
+	avatarUrl: defaultAvatar3,
+	city: "",
+	country: "",
+	dateOfBirth: "",
 	email: "",
+	fullName: "",
 	isEditMode: false,
+	nickName: "",
+	phoneNumber: "",
 	role: "",
-	username: "",
 };
 
 const UserReducer = (state = initialState, action: Actions) => {
 	switch (action.type) {
 		case ActionType.SET_USER:
-			const username = action.payload.username;
-			const uppercaseUsername = username.slice(0, 1).toUpperCase() + username.slice(1);
-			const avatar = action.payload.avatar;
-			const role = action.payload.role;
-			const uppercaseRole = role.slice(0, 1).toUpperCase() + role.slice(1);
-
 			state = {
 				...state,
-				about: action.payload.about,
-				avatar: avatar ? `${BASE_URL}/${avatar}` : defaultAvatar3,
-				// avatar: state.avatar,
+				addressLine: action.payload.addressLine ?? "",
+				apartment: action.payload.apartment ?? "",
+				avatarUrl: action.payload.avatarUrl ? `${BASE_URL}/${action.payload.avatarUrl}` : defaultAvatar3,
+				city: action.payload.city ?? "",
+				country: action.payload.country ?? "",
+				dateOfBirth: action.payload.dateOfBirth ?? "",
 				email: action.payload.email,
-				role: uppercaseRole,
-				username: uppercaseUsername,
+				fullName: action.payload.fullName ?? "",
+				nickName: action.payload.nickName,
+				phoneNumber: action.payload.phoneNumber ?? "",
+				role: action.payload.role,
+			};
+			break;
+		case ActionType.SET_AVATAR:
+			state = {
+				...state,
+				avatarUrl: `${BASE_URL}/${action.payload}`,
+			};
+			break;
+		case ActionType.SET_BASIC_INFO:
+			state = {
+				...state,
+				dateOfBirth: action.payload.fullName ?? "",
+				fullName: action.payload.fullName ?? "",
+				nickName: action.payload.nickName,
+				phoneNumber: action.payload.phoneNumber ?? "",
+			};
+			break;
+		case ActionType.SET_ADDRESS_INFO:
+			state = {
+				...state,
+				addressLine: action.payload.addressLine ?? "",
+				apartment: action.payload.apartment ?? "",
+				city: action.payload.city ?? "",
+				country: action.payload.country ?? "",
 			};
 			break;
 		case ActionType.TOGGLE_PROFILE_EDIT_MODE:
