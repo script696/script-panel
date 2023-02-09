@@ -16,7 +16,7 @@ import useAddressInfoForm from "../../lib/hooks/useAddressInfoForm";
 import useTabs from "../../lib/hooks/useTabs";
 import { useAppSelector } from "../../../../hooks";
 import { removeFalsyValues } from "../../../../utils/handlers";
-import { handleUpdateAddressInfo, handleUpdateBasicInfo } from "../../../../store/user/actions";
+import { updateAddressInfo, updateBasicInfo } from "../../../../store/user/actions";
 import useBasicInfoForm from "../../lib/hooks/useBasicInfoForm";
 
 type ProfileInfoFormProps = {
@@ -31,12 +31,12 @@ const InfoEditForm = ({ onCancelForm }: ProfileInfoFormProps) => {
 
 	const handleSubmitAddressInfoForm = (values: FormAddressValues) => {
 		const mappedValues = removeFalsyValues<FormAddressValues>(values);
-		dispatch(handleUpdateAddressInfo({ data: mappedValues, onCloseModal: onCancelForm }));
+		dispatch(updateAddressInfo({ data: mappedValues, onCloseModal: onCancelForm }));
 	};
 
 	const handleSubmitBasicInfoForm = (values: FormInfoValues) => {
 		const mappedValues = removeFalsyValues<FormInfoValues>(values);
-		dispatch(handleUpdateBasicInfo({ data: mappedValues, onCloseModal: onCancelForm }));
+		dispatch(updateBasicInfo({ data: mappedValues, onCloseModal: onCancelForm }));
 	};
 
 	const { formInfoInstance } = useBasicInfoForm({

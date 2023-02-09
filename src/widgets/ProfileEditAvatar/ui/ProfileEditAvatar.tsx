@@ -30,8 +30,9 @@ const ProfileEditAvatar = () => {
 		if (!file) return;
 		const fileFormat = file.type.split("/")[1];
 		if (!SUPPORTED_PICTURE_FORMATS.includes(fileFormat)) return;
+		const data = { avatar: file };
 
-		dispatch(updateAvatar({ avatar: file, onCloseModal: onCloseModalAvatar }));
+		dispatch(updateAvatar({ data, onCloseModal: onCloseModalAvatar }));
 	};
 
 	return (

@@ -1,46 +1,42 @@
+import { ActionType } from "./actionTypes";
 import {
-	ActionType,
+	SetUserPayload,
 	UpdateAddressInfoPayload,
 	UpdateAvatarPayload,
 	UpdateBasicInfoPayload,
-} from "./actionTypes";
-import { UpdateUserDto } from "./userDto/userDto";
-import { User } from "./types";
-import { UpdateBasicInfoDto } from "./userDto/updateBasicInfoDto";
-import { UpdateAddressInfoDto } from "./userDto/updateAddressInfoDto";
+} from "./types";
+import { UpdateAddressInfoResponse, UpdateAvatarResponse, UpdateBasicInfoResponse } from "./types";
 
-export const getUser = () => {
-	return { type: ActionType.GET_USER };
-};
-
-export const setUser = (userData: User) => {
+/* Redux actions */
+export const setUser = (userData: SetUserPayload) => {
 	return { payload: userData, type: ActionType.SET_USER };
 };
 
-export const updateUser = (userData: UpdateUserDto) => {
-	return { payload: userData, type: ActionType.UPDATE_USER };
+export const setAvatar = (avatar: UpdateAvatarResponse) => {
+	return { payload: avatar, type: ActionType.SET_AVATAR };
+};
+
+export const setBasicInfo = (data: UpdateBasicInfoResponse) => {
+	return { payload: data, type: ActionType.SET_BASIC_INFO };
+};
+
+export const setAddressInfo = (data: UpdateAddressInfoResponse) => {
+	return { payload: data, type: ActionType.SET_ADDRESS_INFO };
+};
+
+/* Saga actions */
+export const getUser = () => {
+	return { type: ActionType.GET_USER };
 };
 
 export const updateAvatar = (data: UpdateAvatarPayload) => {
 	return { payload: data, type: ActionType.UPDATE_AVATAR };
 };
 
-export const setAvatar = (avatar: string) => {
-	return { payload: avatar, type: ActionType.SET_AVATAR };
-};
-
-export const handleUpdateBasicInfo = (data: UpdateBasicInfoPayload) => {
+export const updateBasicInfo = (data: UpdateBasicInfoPayload) => {
 	return { payload: data, type: ActionType.UPDATE_BASIC_INFO };
 };
 
-export const handleUpdateAddressInfo = (data: UpdateAddressInfoPayload) => {
+export const updateAddressInfo = (data: UpdateAddressInfoPayload) => {
 	return { payload: data, type: ActionType.UPDATE_ADDRESS_INFO };
-};
-
-export const setBasicInfo = (data: UpdateBasicInfoDto) => {
-	return { payload: data, type: ActionType.SET_BASIC_INFO };
-};
-
-export const setAddressInfo = (data: UpdateAddressInfoDto) => {
-	return { payload: data, type: ActionType.SET_ADDRESS_INFO };
 };

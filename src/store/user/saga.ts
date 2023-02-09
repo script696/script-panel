@@ -7,15 +7,18 @@ import { openSnackBar } from "../ui/actions";
 
 import User from "./services";
 import { setAddressInfo, setAvatar, setBasicInfo, setUser } from "./actions";
-import { ActionType, UpdateAddressInfo, UpdateAvatar, UpdateBasicInfo, UpdateUser } from "./actionTypes";
-import { getUserResponse } from "./types";
-import { UpdateBasicInfoDto } from "./userDto/updateBasicInfoDto";
-import { UpdateAddressInfoDto } from "./userDto/updateAddressInfoDto";
+import { ActionType, UpdateAddressInfo, UpdateAvatar, UpdateBasicInfo } from "./actionTypes";
+import {
+	GetUserResponse,
+	UpdateAddressInfoResponse,
+	UpdateAvatarResponse,
+	UpdateBasicInfoResponse,
+} from "./types";
 
 function* getUser() {
 	yield put(setLoading(true));
 	try {
-		const response: AxiosResponse<getUserResponse> = yield call(User.fetchGetUser);
+		const response: AxiosResponse<GetUserResponse> = yield call(User.fetchGetUser);
 		yield put(setUser(response.data));
 	} catch (error) {
 		const message = getMessageFromError(error);
@@ -25,29 +28,11 @@ function* getUser() {
 	}
 }
 
-function* updateUser({ payload }: UpdateUser) {
+function* updateAvatar({ payload: { data, onCloseModal } }: UpdateAvatar) {
 	yield put(setLoading(true));
 	try {
-		const response: AxiosResponse<any> = yield call(User.fetchUpdateUser, payload);
-		yield put(setUser(response.data));
-		yield put(
-			openSnackBar({
-				message: "Profile has been successfully updated",
-				snackBarType: "success",
-			}),
-		);
-	} catch (error) {
-		const message = getMessageFromError(error);
-		yield put(openSnackBar({ message, snackBarType: "error" }));
-	} finally {
-		yield put(setLoading(false));
-	}
-}
-function* updateAvatar({ payload: { avatar, onCloseModal } }: UpdateAvatar) {
-	yield put(setLoading(true));
-	try {
-		const response: AxiosResponse<{ avatarUrl: string }> = yield call(User.fetchUpdateAvatar, avatar);
-		yield put(setAvatar(response.data.avatarUrl));
+		const response: AxiosResponse<UpdateAvatarResponse> = yield call(User.fetchUpdateAvatar, data);
+		yield put(setAvatar(response.data));
 		yield put(
 			openSnackBar({
 				message: "AvatarIconButton has been successfully updated",
@@ -66,7 +51,7 @@ function* updateAvatar({ payload: { avatar, onCloseModal } }: UpdateAvatar) {
 function* updateBasicInfo({ payload: { data, onCloseModal } }: UpdateBasicInfo) {
 	yield put(setLoading(true));
 	try {
-		const response: AxiosResponse<UpdateBasicInfoDto> = yield call(User.fetchUpdateBasicInfo, data);
+		const response: AxiosResponse<UpdateBasicInfoResponse> = yield call(User.fetchUpdateBasicInfo, data);
 		yield put(setBasicInfo(response.data));
 		yield put(
 			openSnackBar({
@@ -85,7 +70,7 @@ function* updateBasicInfo({ payload: { data, onCloseModal } }: UpdateBasicInfo) 
 function* updateAddressInfo({ payload: { data, onCloseModal } }: UpdateAddressInfo) {
 	yield put(setLoading(true));
 	try {
-		const response: AxiosResponse<UpdateAddressInfoDto> = yield call(User.fetchUpdateAddressInfo, data);
+		const response: AxiosResponse<UpdateAddressInfoResponse> = yield call(User.fetchUpdateAddressInfo, data);
 		yield put(setAddressInfo(response.data));
 		yield put(
 			openSnackBar({
@@ -104,7 +89,6 @@ function* updateAddressInfo({ payload: { data, onCloseModal } }: UpdateAddressIn
 
 const UserSaga = [
 	takeEvery(ActionType.GET_USER, getUser),
-	takeEvery(ActionType.UPDATE_USER, updateUser),
 	takeEvery(ActionType.UPDATE_AVATAR, updateAvatar),
 	takeEvery(ActionType.UPDATE_BASIC_INFO, updateBasicInfo),
 	takeEvery(ActionType.UPDATE_ADDRESS_INFO, updateAddressInfo),
