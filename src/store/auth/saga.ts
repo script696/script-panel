@@ -9,7 +9,7 @@ import { ProtectedRotes, PublicRotes } from "../../utils/routes/routes";
 
 import { CheckAuthResponse, LoginUserResponse, RegisterUserResponse } from "./types";
 import Auth from "./services";
-import { ActionType, LoginUser, RegisterUser, SignOutUser } from "./actionTypes";
+import { ActionType, ChangePassword, LoginUser, RegisterUser, SignOutUser } from "./actionTypes";
 
 function* loginUser({ payload }: LoginUser) {
 	const { values, navigate } = payload;
@@ -71,6 +71,25 @@ function* signOutUser({ payload }: SignOutUser) {
 	}
 }
 
+function* changePassword({ payload: { data, onCloseModal } }: ChangePassword) {
+	yield put(setLoading(true));
+	try {
+		yield call(Auth.fetchChangePassword, data);
+		yield put(
+			openSnackBar({
+				message: "Password successfully changed",
+				snackBarType: "success",
+			}),
+		);
+		onCloseModal();
+	} catch (error) {
+		const message = getMessageFromError(error);
+		yield put(openSnackBar({ message, snackBarType: "error" }));
+	} finally {
+		yield put(setLoading(false));
+	}
+}
+
 function* checkAuth() {
 	yield put(setLoading(true));
 
@@ -90,6 +109,7 @@ const AuthSaga = [
 	takeEvery(ActionType.LOGIN_USER, loginUser),
 	takeEvery(ActionType.CHECK_AUTH, checkAuth),
 	takeEvery(ActionType.SIGN_OUT_USER, signOutUser),
+	takeEvery(ActionType.CHANGE_PASSWORD, changePassword),
 ];
 
 export default AuthSaga;

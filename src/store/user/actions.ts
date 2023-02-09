@@ -44,7 +44,3 @@ export const setBasicInfo = (data: UpdateBasicInfoDto) => {
 export const setAddressInfo = (data: UpdateAddressInfoDto) => {
 	return { payload: data, type: ActionType.SET_ADDRESS_INFO };
 };
-
-export const toggleProfileEditeMode = () => {
-	return { type: ActionType.TOGGLE_PROFILE_EDIT_MODE };
-};

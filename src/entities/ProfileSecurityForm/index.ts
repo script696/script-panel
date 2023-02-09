@@ -1,1 +1,1 @@
-export { default as ProfileSecurityForm } from "./ui/ProfileSecurityForm";
+export { default as ProfileSecurityForm } from "./ui/ChangePasswordForm";

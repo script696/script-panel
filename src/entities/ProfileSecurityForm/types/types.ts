@@ -1,4 +1,4 @@
-export type FormSecurityValues = {
+export type ChangePasswordValues = {
 	oldPassword: string;
 	newPassword: string;
 	repeatPassword: string;
@@ -7,6 +7,6 @@ export type FormSecurityValues = {
 export type ProfileSecurityField = {
 	isFieldValueRequired: boolean;
 	label: string;
-	name: keyof FormSecurityValues;
+	name: keyof ChangePasswordValues;
 	title: string;
 };

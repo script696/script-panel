@@ -6,7 +6,7 @@ import getMessageFromError from "../../utils/handlers/getMessageFromError";
 import { openSnackBar } from "../ui/actions";
 
 import User from "./services";
-import { setAddressInfo, setAvatar, setBasicInfo, setUser, toggleProfileEditeMode } from "./actions";
+import { setAddressInfo, setAvatar, setBasicInfo, setUser } from "./actions";
 import { ActionType, UpdateAddressInfo, UpdateAvatar, UpdateBasicInfo, UpdateUser } from "./actionTypes";
 import { getUserResponse } from "./types";
 import { UpdateBasicInfoDto } from "./userDto/updateBasicInfoDto";
@@ -16,7 +16,6 @@ function* getUser() {
 	yield put(setLoading(true));
 	try {
 		const response: AxiosResponse<getUserResponse> = yield call(User.fetchGetUser);
-		console.log(response);
 		yield put(setUser(response.data));
 	} catch (error) {
 		const message = getMessageFromError(error);
@@ -31,7 +30,6 @@ function* updateUser({ payload }: UpdateUser) {
 	try {
 		const response: AxiosResponse<any> = yield call(User.fetchUpdateUser, payload);
 		yield put(setUser(response.data));
-		yield put(toggleProfileEditeMode());
 		yield put(
 			openSnackBar({
 				message: "Profile has been successfully updated",

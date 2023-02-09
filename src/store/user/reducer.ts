@@ -9,7 +9,6 @@ type InitialState = {
 	dateOfBirth: string;
 	email: string;
 	fullName: string;
-	isEditMode: boolean;
 	nickName: string;
 	phoneNumber: string;
 	role: string;
@@ -27,7 +26,6 @@ const initialState: InitialState = {
 	dateOfBirth: "",
 	email: "",
 	fullName: "",
-	isEditMode: false,
 	nickName: "",
 	phoneNumber: "",
 	role: "",
@@ -73,12 +71,6 @@ const UserReducer = (state = initialState, action: Actions) => {
 				apartment: action.payload.apartment ?? "",
 				city: action.payload.city ?? "",
 				country: action.payload.country ?? "",
-			};
-			break;
-		case ActionType.TOGGLE_PROFILE_EDIT_MODE:
-			state = {
-				...state,
-				isEditMode: !state.isEditMode,
 			};
 			break;
 		default:

@@ -2,6 +2,7 @@ const BASE_URL = "http://localhost:5000";
 
 const AUTH_ENDPOINTS = {
 	BASE: "auth",
+	CHANGE_PASSWORD: "changePassword",
 	REFRESH: "refresh",
 	SIGNIN: "signin",
 	SIGNOUT: "sign-out",

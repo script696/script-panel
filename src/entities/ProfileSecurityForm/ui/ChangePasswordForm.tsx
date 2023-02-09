@@ -3,18 +3,35 @@ import React from "react";
 
 import LoadingButton from "@mui/lab/LoadingButton";
 
-import { PROFILE_SECURITY_FIELDS_DATA } from "../consts/constants";
-import useProfileSecurityForm from "../hooks/useProfileSecurityForm";
+import { useDispatch } from "react-redux";
 
-type ProfileSecurityFormProps = {
+import { PROFILE_SECURITY_FIELDS_DATA } from "../consts/constants";
+import useChangePasswordForm from "../hooks/useChangePasswordForm";
+import { ChangePasswordValues } from "../types/types";
+import { changePassword } from "../../../store/auth/actions";
+import { useAppSelector } from "../../../hooks";
+
+type ChangePasswordFormProps = {
 	onCancelForm: () => void;
 };
 
-const ProfileSecurityForm = ({ onCancelForm }: ProfileSecurityFormProps) => {
-	const { formSecurityInstance } = useProfileSecurityForm({
-		newPassword: "",
-		oldPassword: "",
-		repeatPassword: "",
+const ChangePasswordForm = ({ onCancelForm }: ChangePasswordFormProps) => {
+	const { email } = useAppSelector((state) => state.UserReducer);
+	const dispatch = useDispatch();
+
+	const handleSubmitChangePasswordForm = (values: ChangePasswordValues) => {
+		const { oldPassword, newPassword } = values;
+		const data = { email, newPassword, password: oldPassword };
+		dispatch(changePassword({ data, onCloseModal: onCancelForm }));
+	};
+
+	const { formSecurityInstance } = useChangePasswordForm({
+		initialFormValues: {
+			newPassword: "",
+			oldPassword: "",
+			repeatPassword: "",
+		},
+		onSubmit: handleSubmitChangePasswordForm,
 	});
 
 	return (
@@ -77,4 +94,4 @@ const ProfileSecurityForm = ({ onCancelForm }: ProfileSecurityFormProps) => {
 	);
 };
 
-export default ProfileSecurityForm;
+export default ChangePasswordForm;

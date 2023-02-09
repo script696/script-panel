@@ -13,9 +13,7 @@ type UseFileReader = (data: UseFileReaderParams) => {
 const useFileReader: UseFileReader = ({ defaultPictureUrl }) => {
 	const [picturePreviewUrl, setPicturePreviewUrl] = useState<string | undefined>(defaultPictureUrl);
 	const [file, setFile] = useState<File | null>(null);
-	useEffect(() => {
-		console.log(defaultPictureUrl);
-	}, [defaultPictureUrl]);
+	useEffect(() => {}, [defaultPictureUrl]);
 	const handleReadPicture = (e: ChangeEvent<HTMLInputElement>) => {
 		const fileReader = new FileReader();
 

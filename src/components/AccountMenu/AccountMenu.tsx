@@ -13,15 +13,14 @@ import { useDispatch } from "react-redux";
 import { Avatar, Grid, Typography } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
+import { useEffect } from "react";
+
 import { signOutUser } from "../../store/auth/actions";
 import { useAppSelector } from "../../hooks";
-import { useEffect } from "react";
 
 const AccountMenu = () => {
 	const { avatarUrl, nickName, role } = useAppSelector((state) => state.UserReducer);
-	useEffect(() => {
-		console.log(avatarUrl);
-	}, [avatarUrl]);
+	useEffect(() => {}, [avatarUrl]);
 	const dispatch = useDispatch();
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const navigate = useNavigate();
@@ -88,7 +87,7 @@ const AccountMenu = () => {
 						},
 						"&:before": {
 							bgcolor: "background.paper",
-							content: '""',
+							content: "\"\"",
 							display: "block",
 							height: 10,
 							position: "absolute",

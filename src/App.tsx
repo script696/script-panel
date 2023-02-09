@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -6,13 +6,14 @@ import { AuthRouter, ProtectedRouter } from "./components";
 import { ProtectedRotes, PublicRotes } from "./utils/routes/routes";
 import { Home, Login, PageNotFound, Profile, Projects, Registration } from "./pages";
 import Users from "./pages/Users/Users";
+import { checkAuth } from "./store/auth/actions";
 
 function App() {
 	const dispatch = useDispatch();
 
-	// useEffect(() => {
-	// 	dispatch(checkAuth());
-	// }, []);
+	useEffect(() => {
+		dispatch(checkAuth());
+	}, []);
 
 	return (
 		<>

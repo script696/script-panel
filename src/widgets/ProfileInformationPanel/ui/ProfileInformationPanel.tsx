@@ -7,7 +7,7 @@ import { ModalPopup, useModal } from "../../../shared/ui/ModalPopup";
 
 import { ProfileSecurityPanel, ProfileInfoPanel } from "../../../entities/ProfileTabPanelsList";
 import { InfoEditForm } from "../../../entities/InfoEditForm";
-import ProfileSecurityForm from "../../../entities/ProfileSecurityForm/ui/ProfileSecurityForm";
+import ChangePasswordForm from "../../../entities/ProfileSecurityForm/ui/ChangePasswordForm";
 
 const ProfileInformationPanel = () => {
 	const {
@@ -35,7 +35,7 @@ const ProfileInformationPanel = () => {
 			</ModalPopup>
 
 			<ModalPopup onCloseModalPopup={onCloseModalSecurity} isModalPopupOpen={isModalSecurityOpen}>
-				<ProfileSecurityForm onCancelForm={onCloseModalSecurity} />
+				<ChangePasswordForm onCancelForm={onCloseModalSecurity} />
 			</ModalPopup>
 		</Box>
 	);
