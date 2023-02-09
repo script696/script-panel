@@ -1,6 +1,6 @@
 import Box, { BoxProps } from "@mui/material/Box";
 
-import { ReactComponent as LogoSvg } from "../../app/assets/svg/logo.svg";
+import { ReactComponent as LogoSvg } from "../../../app/assets/svg/logo.svg";
 
 type LogoProps = {
 	color?: string;
