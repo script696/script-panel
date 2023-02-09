@@ -1,30 +1,28 @@
-import { NavigateFunction } from "react-router-dom";
+import { ActionType } from "./actionTypes";
+import { ChangePasswordPayload, LoginPayload, RegisterPayload, SignOutPayload } from "./types";
 
-import { ActionType, ChangePasswordPayload } from "./actionTypes";
-import { LoginDto, RegisterDto } from "./authDto/authDto";
-
-export const loginUser = (values: LoginDto, navigate: NavigateFunction) => {
+export const login = (payload: LoginPayload) => {
 	return {
-		payload: { navigate, values },
-		type: ActionType.LOGIN_USER,
+		payload,
+		type: ActionType.LOGIN,
 	};
 };
 
-export const registerUser = (values: RegisterDto, navigate: NavigateFunction) => {
+export const registerUser = (payload: RegisterPayload) => {
 	return {
-		payload: { navigate, values },
-		type: ActionType.REGISTER_USER,
+		payload,
+		type: ActionType.REGISTER,
 	};
+};
+
+export const signOut = (payload: SignOutPayload) => {
+	return { payload, type: ActionType.LOGOUT };
+};
+
+export const changePassword = (payload: ChangePasswordPayload) => {
+	return { payload, type: ActionType.CHANGE_PASSWORD };
 };
 
 export const checkAuth = () => {
 	return { type: ActionType.CHECK_AUTH };
-};
-
-export const signOutUser = (navigate: NavigateFunction) => {
-	return { payload: { navigate }, type: ActionType.SIGN_OUT_USER };
-};
-
-export const changePassword = (data: ChangePasswordPayload) => {
-	return { payload: data, type: ActionType.CHANGE_PASSWORD };
 };
