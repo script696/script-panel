@@ -2,8 +2,8 @@ import React, { ReactNode, useMemo } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { GlobalStyles } from "@mui/material";
 
-import { useAppSelector } from "../../hooks";
-import { createMuiTheme } from "../../theme";
+import { useAppSelector } from "../../shared/lib/hooks";
+import { createMuiTheme } from "../../app/theme";
 import SnackBar from "../SnackBar/SnackBar";
 
 const SettingsProvider = ({ children }: { children: ReactNode }) => {

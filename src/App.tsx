@@ -3,10 +3,10 @@ import { useDispatch } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { AuthRouter, ProtectedRouter } from "./components";
-import { ProtectedRotes, PublicRotes } from "./utils/routes/routes";
+import { ProtectedRotes, PublicRotes } from "./shared/lib/constants/routes";
 import { Home, Login, PageNotFound, Profile, Projects, Registration } from "./pages";
 import Users from "./pages/Users/Users";
-import { checkAuth } from "./store/auth/actions";
+import { checkAuth } from "./app/store/auth/actions";
 
 function App() {
 	const dispatch = useDispatch();

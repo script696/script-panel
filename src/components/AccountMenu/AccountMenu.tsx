@@ -15,8 +15,8 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 import { useEffect } from "react";
 
-import { signOut } from "../../store/auth/actions";
-import { useAppSelector } from "../../hooks";
+import { signOut } from "../../app/store/auth/actions";
+import { useAppSelector } from "../../shared/lib/hooks";
 
 const AccountMenu = () => {
 	const { avatarUrl, nickName, role } = useAppSelector((state) => state.UserReducer);
@@ -87,7 +87,7 @@ const AccountMenu = () => {
 						},
 						"&:before": {
 							bgcolor: "background.paper",
-							content: "\"\"",
+							content: '""',
 							display: "block",
 							height: 10,
 							position: "absolute",

@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import React from "react";
 
 import { ProfileInfoRow } from "../components/ProfileInfoRow";
-import { useAppSelector } from "../../../../hooks";
+import { useAppSelector } from "../../../../shared/lib/hooks";
 import { PanelTitleBox } from "../components/PanelTitleBox";
 import { EditButton } from "../components/EditButton";
 

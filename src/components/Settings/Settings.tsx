@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import ClearIcon from "@mui/icons-material/Clear";
 
 import ThemeCheckbox from "../ThemeCheckbox/ThemeCheckbox";
-import { changeSettingsStatus, toggleColorMode } from "../../store/ui/actions";
+import { changeSettingsStatus, toggleColorMode } from "../../app/store/ui/actions";
 
 type SettingsProps = {
 	isSettingsOpen: boolean;

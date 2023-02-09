@@ -1,7 +1,8 @@
 import * as Yup from "yup";
 
-import { passwordRegExp } from "../regExp/regExp";
-import { ERRORS } from "../errors/errors";
+import { ERRORS } from "../../../utils/errors/errors";
+
+import { passwordRegExp } from "./regExp";
 
 export const SUPPORTED_PICTURE_FORMATS = ["jpeg"];
 

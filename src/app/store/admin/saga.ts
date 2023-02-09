@@ -2,7 +2,7 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import { AxiosResponse } from "axios";
 
 import { setLoading } from "../requests/actions";
-import getMessageFromError from "../../utils/handlers/getMessageFromError";
+import { getMessageFromError } from "../../../shared/lib/handlers";
 import { openSnackBar } from "../ui/actions";
 
 import Admin from "./services";

@@ -3,9 +3,9 @@ import { ReactNode, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { AuthHeader, Navigation, Settings } from "../../components";
-import { changeSettingsStatus } from "../../store/ui/actions";
-import { getAdmin } from "../../store/admin/actions";
-import { useAppSelector } from "../../hooks";
+import { changeSettingsStatus } from "../../app/store/ui/actions";
+import { getAdmin } from "../../app/store/admin/actions";
+import { useAppSelector } from "../../shared/lib/hooks";
 
 type AdminLayoutProps = {
 	children: ReactNode;

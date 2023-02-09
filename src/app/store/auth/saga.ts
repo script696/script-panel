@@ -1,11 +1,11 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { AxiosResponse } from "axios";
 
-import { ACCESS_TOKEN } from "../../api/constants/app_constants";
+import { ACCESS_TOKEN } from "../../../shared/api/constants/app_constants";
 import { setFirstLoad, setLoading } from "../requests/actions";
-import getMessageFromError from "../../utils/handlers/getMessageFromError";
+import { getMessageFromError } from "../../../shared/lib/handlers";
 import { openSnackBar } from "../ui/actions";
-import { ProtectedRotes, PublicRotes } from "../../utils/routes/routes";
+import { ProtectedRotes, PublicRotes } from "../../../shared/lib/constants/routes";
 
 import Auth from "./services";
 import { ActionType, ChangePassword, Login, Register, SignOut } from "./actionTypes";

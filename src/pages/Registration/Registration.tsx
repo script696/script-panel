@@ -8,10 +8,10 @@ import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 
 import { Logo } from "../../components";
-import { registerUser } from "../../store/auth/actions";
-import { useAppSelector } from "../../hooks";
+import { registerUser } from "../../app/store/auth/actions";
+import { useAppSelector } from "../../shared/lib/hooks";
 import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
-import { passwordRegExp } from "../../utils/regExp/regExp";
+import { passwordRegExp } from "../../shared/lib/constants/regExp";
 import { ERRORS } from "../../utils/errors/errors";
 
 type FormValues = {

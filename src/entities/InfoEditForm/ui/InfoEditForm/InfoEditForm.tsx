@@ -14,10 +14,10 @@ import AddressSlide from "../components/AddressSlide/AddressSlide";
 
 import useAddressInfoForm from "../../lib/hooks/useAddressInfoForm";
 import useTabs from "../../lib/hooks/useTabs";
-import { useAppSelector } from "../../../../hooks";
-import { removeFalsyValues } from "../../../../utils/handlers";
-import { updateAddressInfo, updateBasicInfo } from "../../../../store/admin/actions";
+import { useAppSelector } from "../../../../shared/lib/hooks";
+import { updateAddressInfo, updateBasicInfo } from "../../../../app/store/admin/actions";
 import useBasicInfoForm from "../../lib/hooks/useBasicInfoForm";
+import { removeFalsyValues } from "../../../../shared/lib/handlers";
 
 type ProfileInfoFormProps = {
 	onCancelForm: () => void;

@@ -7,9 +7,9 @@ import { useDispatch } from "react-redux";
 import SettingsIcon from "@mui/icons-material/Settings";
 
 import { Logo } from "..";
-import { useAppSelector } from "../../hooks";
-import { changeSettingsStatus, toggleMobileMenu } from "../../store/ui/actions";
-import { ProtectedRotes } from "../../utils/routes/routes";
+import { useAppSelector } from "../../shared/lib/hooks";
+import { changeSettingsStatus, toggleMobileMenu } from "../../app/store/ui/actions";
+import { ProtectedRotes } from "../../shared/lib/constants/routes";
 
 const drawerWidth = 240;
 

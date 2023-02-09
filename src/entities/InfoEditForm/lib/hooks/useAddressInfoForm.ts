@@ -3,7 +3,7 @@ import { FormikProps, useFormik } from "formik";
 import * as Yup from "yup";
 
 import { FormAddressValues } from "../../types/types";
-import { VALIDATORS } from "../../../../utils/constants/validators";
+import { VALIDATORS } from "../../../../shared/lib/constants/validators";
 
 type UseAddressInfoForm = ({ initialFormValues, onSubmit }: any) => {
 	formAddressInstance: FormikProps<FormAddressValues>;

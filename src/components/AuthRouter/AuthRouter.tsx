@@ -1,15 +1,15 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-import { ACCESS_TOKEN } from "../../api/constants/app_constants";
+import { ACCESS_TOKEN } from "../../shared/api/constants/app_constants";
 
 const AuthRouter = () => {
-  const token = localStorage.getItem(ACCESS_TOKEN);
+	const token = localStorage.getItem(ACCESS_TOKEN);
 
-  if (token) {
-    return <Navigate to={"/home"} />;
-  }
+	if (token) {
+		return <Navigate to={"/home"} />;
+	}
 
-  return <Outlet />;
+	return <Outlet />;
 };
 
 export default AuthRouter;

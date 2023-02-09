@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 
 import { Box } from "@mui/material";
 
-import { useAppSelector } from "../../../hooks";
+import { useAppSelector } from "../../../shared/lib/hooks";
 
 const ProfileRoleCol = () => {
 	const { email, nickName } = useAppSelector((state) => state.UserReducer);

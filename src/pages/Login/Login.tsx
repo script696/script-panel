@@ -7,11 +7,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 
-import { login } from "../../store/auth/actions";
-import { ReactComponent as InformationSvg } from "../../assets/svg/information.svg";
+import { login } from "../../app/store/auth/actions";
+import { ReactComponent as InformationSvg } from "../../app/assets/svg/information.svg";
 import { Logo } from "../../components";
-import { useAppSelector } from "../../hooks";
-import { passwordRegExp } from "../../utils/regExp/regExp";
+import { useAppSelector } from "../../shared/lib/hooks";
+import { passwordRegExp } from "../../shared/lib/constants/regExp";
 import { ERRORS } from "../../utils/errors/errors";
 import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
 

@@ -1,6 +1,6 @@
 import defaultAvatar3 from "../../assets/img/avatars/defaultAvatar3.png";
 
-import { BASE_URL } from "../../api/constants/api_endpoints";
+import { BASE_URL } from "../../../shared/api/constants/api_endpoints";
 
 import { Actions, ActionType } from "./actionTypes";
 import { Admin } from "./types";

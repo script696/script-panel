@@ -8,8 +8,8 @@ import { useDispatch } from "react-redux";
 import { PROFILE_SECURITY_FIELDS_DATA } from "../consts/constants";
 import useChangePasswordForm from "../hooks/useChangePasswordForm";
 import { ChangePasswordValues } from "../types/types";
-import { changePassword } from "../../../store/auth/actions";
-import { useAppSelector } from "../../../hooks";
+import { changePassword } from "../../../app/store/auth/actions";
+import { useAppSelector } from "../../../shared/lib/hooks";
 
 type ChangePasswordFormProps = {
 	onCancelForm: () => void;

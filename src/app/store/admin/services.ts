@@ -1,5 +1,5 @@
-import $api from "../../api/api";
-import { USER_ENDPOINTS } from "../../api/constants/api_endpoints";
+import $api from "../../../shared/api/api";
+import { USER_ENDPOINTS } from "../../../shared/api/constants/api_endpoints";
 
 import { UpdateBasicInfoDto } from "./adminDto/updateBasicInfoDto";
 import { UpdateAddressInfoDto } from "./adminDto/updateAddressInfoDto";

@@ -1,5 +1,5 @@
-import $api from "../../api/api";
-import { AUTH_ENDPOINTS } from "../../api/constants/api_endpoints";
+import $api from "../../../shared/api/api";
+import { AUTH_ENDPOINTS } from "../../../shared/api/constants/api_endpoints";
 
 import { ChangePasswordDto } from "./authDto/changePasswordDto";
 import { LoginDto } from "./authDto/loginDto";

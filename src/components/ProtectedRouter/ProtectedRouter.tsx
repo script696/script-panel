@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-import { useAppSelector } from "../../hooks";
-import { ACCESS_TOKEN } from "../../api/constants/app_constants";
+import { useAppSelector } from "../../shared/lib/hooks";
+import { ACCESS_TOKEN } from "../../shared/api/constants/app_constants";
 import { AdminLayout } from "../../layouts";
 import { Preloader } from "..";
 
