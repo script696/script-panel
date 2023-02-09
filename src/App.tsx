@@ -3,50 +3,37 @@ import { useDispatch } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { AuthRouter, ProtectedRouter } from "./components";
-import { checkAuth } from "./store/auth/actions";
 import { ProtectedRotes, PublicRotes } from "./utils/routes/routes";
-import {
-  Home,
-  Login,
-  PageNotFound,
-  Profile,
-  Projects,
-  Registration,
-} from "./pages";
+import { Home, Login, PageNotFound, Profile, Projects, Registration } from "./pages";
 import Users from "./pages/Users/Users";
+import { checkAuth } from "./store/auth/actions";
 
 function App() {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(checkAuth());
-  }, []);
+	useEffect(() => {
+		dispatch(checkAuth());
+	}, []);
 
-  return (
-    <>
-      <Routes>
-        <Route element={<ProtectedRouter />}>
-          <Route path={ProtectedRotes.HOME} element={<Home />} />
-          <Route path={ProtectedRotes.USERS} element={<Users />} />
-          <Route path={ProtectedRotes.PROJECTS} element={<Projects />} />
-          <Route path={ProtectedRotes.PROFILE} element={<Profile />} />
-        </Route>
-        <Route element={<AuthRouter />}>
-          <Route path={PublicRotes.SIGNUP} element={<Registration />} />
-          <Route path={PublicRotes.SIGNIN} element={<Login />} />
-        </Route>
-        <Route path={PublicRotes.NOT_FOUND} element={<PageNotFound />} />
-        <Route
-          path="/"
-          element={<Navigate to={ProtectedRotes.HOME} replace />}
-        />
-        <Route
-          path="*"
-          element={<Navigate to={PublicRotes.NOT_FOUND} replace />}
-        />
-      </Routes>
-    </>
-  );
+	return (
+		<>
+			<Routes>
+				<Route element={<ProtectedRouter />}>
+					<Route path={ProtectedRotes.HOME} element={<Home />} />
+					<Route path={ProtectedRotes.USERS} element={<Users />} />
+					<Route path={ProtectedRotes.PROJECTS} element={<Projects />} />
+					<Route path={ProtectedRotes.PROFILE} element={<Profile />} />
+				</Route>
+				<Route element={<AuthRouter />}>
+					<Route path={PublicRotes.SIGNUP} element={<Registration />} />
+					<Route path={PublicRotes.SIGNIN} element={<Login />} />
+				</Route>
+				<Route path={PublicRotes.NOT_FOUND} element={<PageNotFound />} />
+				<Route path="/" element={<Navigate to={ProtectedRotes.HOME} replace />} />
+				<Route path="*" element={<Navigate to={PublicRotes.NOT_FOUND} replace />} />
+			</Routes>
+		</>
+	);
 }
 
 export default App;

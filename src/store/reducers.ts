@@ -6,10 +6,10 @@ import UserReducer from "./user/reducer";
 import RequestsReducer from "./requests/reducer";
 
 const rootReducer = combineReducers({
-  AuthReducer,
-  RequestsReducer,
-  UiReducer,
-  UserReducer,
+	AuthReducer,
+	RequestsReducer,
+	UiReducer,
+	UserReducer,
 });
 
 export default rootReducer;

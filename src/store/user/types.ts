@@ -1,9 +1,15 @@
 export interface User {
-  email: string;
-  username: string;
-  role: string;
-  about?: string;
-  avatar?: string;
+	nickName: string;
+	email: string;
+	role: string;
+	avatarUrl?: string;
+	fullName?: string;
+	dateOfBirth?: string;
+	phoneNumber?: string;
+	apartment?: string;
+	country?: string;
+	city?: string;
+	addressLine?: string;
 }
 
 export interface getUserResponse extends User {}
