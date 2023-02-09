@@ -4,7 +4,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import { AuthRouter, ProtectedRouter } from "./components";
 import { ProtectedRotes, PublicRotes } from "./shared/lib/constants/routes";
-import { Home, Login, PageNotFound, Profile, Projects, Registration } from "./pages";
+import { Admin, Home, Login, PageNotFound, Projects, Registration } from "./pages";
 import Users from "./pages/Users/Users";
 import { checkAuth } from "./app/store/auth/actions";
 
@@ -22,7 +22,7 @@ function App() {
 					<Route path={ProtectedRotes.HOME} element={<Home />} />
 					<Route path={ProtectedRotes.USERS} element={<Users />} />
 					<Route path={ProtectedRotes.PROJECTS} element={<Projects />} />
-					<Route path={ProtectedRotes.PROFILE} element={<Profile />} />
+					<Route path={ProtectedRotes.PROFILE} element={<Admin />} />
 				</Route>
 				<Route element={<AuthRouter />}>
 					<Route path={PublicRotes.SIGNUP} element={<Registration />} />
