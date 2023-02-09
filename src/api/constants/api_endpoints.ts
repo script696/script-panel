@@ -11,7 +11,7 @@ const AUTH_ENDPOINTS = {
 
 const USER_ENDPOINTS = {
 	BASE: "admin",
-	GET_USER: "getUser",
+	GET_ADMIN: "getUser",
 	UPDATE_ADDRESS_INFO: "updateAddressInfo",
 	UPDATE_AVATAR: "updateAvatar",
 	UPDATE_BASIC_INFO: "updateBasicInfo",

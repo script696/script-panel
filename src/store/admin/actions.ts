@@ -25,8 +25,8 @@ export const setAddressInfo = (data: UpdateAddressInfoResponse) => {
 };
 
 /* Saga actions */
-export const getUser = () => {
-	return { type: ActionType.GET_USER };
+export const getAdmin = () => {
+	return { type: ActionType.GET_ADMIN };
 };
 
 export const updateAvatar = (data: UpdateAvatarPayload) => {

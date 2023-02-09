@@ -16,7 +16,7 @@ import useAddressInfoForm from "../../lib/hooks/useAddressInfoForm";
 import useTabs from "../../lib/hooks/useTabs";
 import { useAppSelector } from "../../../../hooks";
 import { removeFalsyValues } from "../../../../utils/handlers";
-import { updateAddressInfo, updateBasicInfo } from "../../../../store/user/actions";
+import { updateAddressInfo, updateBasicInfo } from "../../../../store/admin/actions";
 import useBasicInfoForm from "../../lib/hooks/useBasicInfoForm";
 
 type ProfileInfoFormProps = {

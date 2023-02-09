@@ -1,9 +1,9 @@
 import $api from "../../api/api";
 import { USER_ENDPOINTS } from "../../api/constants/api_endpoints";
 
-import { UpdateBasicInfoDto } from "./userDto/updateBasicInfoDto";
-import { UpdateAddressInfoDto } from "./userDto/updateAddressInfoDto";
-import { UpdateAvatarDto } from "./userDto/updateAvatarDto";
+import { UpdateBasicInfoDto } from "./adminDto/updateBasicInfoDto";
+import { UpdateAddressInfoDto } from "./adminDto/updateAddressInfoDto";
+import { UpdateAvatarDto } from "./adminDto/updateAvatarDto";
 import {
 	GetUserResponse,
 	UpdateAddressInfoResponse,
@@ -11,9 +11,9 @@ import {
 	UpdateBasicInfoResponse,
 } from "./types";
 
-class User {
-	static fetchGetUser(): Promise<GetUserResponse> {
-		return $api.get(`${USER_ENDPOINTS.BASE}/${USER_ENDPOINTS.GET_USER}`);
+class Admin {
+	static fetchGetAdmin(): Promise<GetUserResponse> {
+		return $api.get(`${USER_ENDPOINTS.BASE}/${USER_ENDPOINTS.GET_ADMIN}?role=admin`);
 	}
 
 	static fetchUpdateAvatar(data: UpdateAvatarDto): Promise<UpdateAvatarResponse> {
@@ -31,4 +31,4 @@ class User {
 	}
 }
 
-export default User;
+export default Admin;

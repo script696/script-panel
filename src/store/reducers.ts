@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 
 import AuthReducer from "./auth/reducer";
 import UiReducer from "./ui/reducer";
-import UserReducer from "./user/reducer";
+import UserReducer from "./admin/reducer";
 import RequestsReducer from "./requests/reducer";
 
 const rootReducer = combineReducers({

@@ -3,9 +3,9 @@ import defaultAvatar3 from "../../assets/img/avatars/defaultAvatar3.png";
 import { BASE_URL } from "../../api/constants/api_endpoints";
 
 import { Actions, ActionType } from "./actionTypes";
-import { User } from "./types";
+import { Admin } from "./types";
 
-const initialState: Required<User> = {
+const initialState: Required<Admin> = {
 	addressLine: "",
 	apartment: "",
 	avatarUrl: defaultAvatar3,

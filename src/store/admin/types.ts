@@ -1,8 +1,8 @@
-import { UpdateAvatarDto } from "./userDto/updateAvatarDto";
-import { UpdateAddressInfoDto } from "./userDto/updateAddressInfoDto";
-import { UpdateBasicInfoDto } from "./userDto/updateBasicInfoDto";
+import { UpdateAvatarDto } from "./adminDto/updateAvatarDto";
+import { UpdateAddressInfoDto } from "./adminDto/updateAddressInfoDto";
+import { UpdateBasicInfoDto } from "./adminDto/updateBasicInfoDto";
 
-export type User = {
+export type Admin = {
 	nickName: string;
 	email: string;
 	role: string;
@@ -17,17 +17,17 @@ export type User = {
 };
 
 /* Responses*/
-export type GetUserResponse = User;
+export type GetUserResponse = Admin;
 
-export type UpdateAvatarResponse = Pick<Required<User>, "avatarUrl">;
+export type UpdateAvatarResponse = Pick<Required<Admin>, "avatarUrl">;
 
 export type UpdateBasicInfoResponse = Pick<
-	Required<User>,
+	Required<Admin>,
 	"fullName" | "nickName" | "phoneNumber" | "dateOfBirth"
 >;
 
 export type UpdateAddressInfoResponse = Pick<
-	Required<User>,
+	Required<Admin>,
 	"country" | "city" | "addressLine" | "apartment"
 >;
 

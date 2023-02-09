@@ -8,7 +8,7 @@ import { AvatarIconButton } from "../../../shared/ui/AvatarIconButton";
 import { ModalPopup, useModal } from "../../../shared/ui/ModalPopup";
 import { useAppSelector, useFileReader } from "../../../hooks";
 import { SUPPORTED_PICTURE_FORMATS } from "../../../utils/constants/validators";
-import { updateAvatar } from "../../../store/user/actions";
+import { updateAvatar } from "../../../store/admin/actions";
 
 import { spinKeyframe } from "../constants/constants";
 

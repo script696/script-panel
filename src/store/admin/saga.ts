@@ -5,7 +5,7 @@ import { setLoading } from "../requests/actions";
 import getMessageFromError from "../../utils/handlers/getMessageFromError";
 import { openSnackBar } from "../ui/actions";
 
-import User from "./services";
+import Admin from "./services";
 import { setAddressInfo, setAvatar, setBasicInfo, setUser } from "./actions";
 import { ActionType, UpdateAddressInfo, UpdateAvatar, UpdateBasicInfo } from "./actionTypes";
 import {
@@ -15,10 +15,10 @@ import {
 	UpdateBasicInfoResponse,
 } from "./types";
 
-function* getUser() {
+function* getAdmin() {
 	yield put(setLoading(true));
 	try {
-		const response: AxiosResponse<GetUserResponse> = yield call(User.fetchGetUser);
+		const response: AxiosResponse<GetUserResponse> = yield call(Admin.fetchGetAdmin);
 		yield put(setUser(response.data));
 	} catch (error) {
 		const message = getMessageFromError(error);
@@ -31,7 +31,7 @@ function* getUser() {
 function* updateAvatar({ payload: { data, onCloseModal } }: UpdateAvatar) {
 	yield put(setLoading(true));
 	try {
-		const response: AxiosResponse<UpdateAvatarResponse> = yield call(User.fetchUpdateAvatar, data);
+		const response: AxiosResponse<UpdateAvatarResponse> = yield call(Admin.fetchUpdateAvatar, data);
 		yield put(setAvatar(response.data));
 		yield put(
 			openSnackBar({
@@ -51,7 +51,7 @@ function* updateAvatar({ payload: { data, onCloseModal } }: UpdateAvatar) {
 function* updateBasicInfo({ payload: { data, onCloseModal } }: UpdateBasicInfo) {
 	yield put(setLoading(true));
 	try {
-		const response: AxiosResponse<UpdateBasicInfoResponse> = yield call(User.fetchUpdateBasicInfo, data);
+		const response: AxiosResponse<UpdateBasicInfoResponse> = yield call(Admin.fetchUpdateBasicInfo, data);
 		yield put(setBasicInfo(response.data));
 		yield put(
 			openSnackBar({
@@ -70,7 +70,7 @@ function* updateBasicInfo({ payload: { data, onCloseModal } }: UpdateBasicInfo) 
 function* updateAddressInfo({ payload: { data, onCloseModal } }: UpdateAddressInfo) {
 	yield put(setLoading(true));
 	try {
-		const response: AxiosResponse<UpdateAddressInfoResponse> = yield call(User.fetchUpdateAddressInfo, data);
+		const response: AxiosResponse<UpdateAddressInfoResponse> = yield call(Admin.fetchUpdateAddressInfo, data);
 		yield put(setAddressInfo(response.data));
 		yield put(
 			openSnackBar({
@@ -87,11 +87,11 @@ function* updateAddressInfo({ payload: { data, onCloseModal } }: UpdateAddressIn
 	}
 }
 
-const UserSaga = [
-	takeEvery(ActionType.GET_USER, getUser),
+const AdminSaga = [
+	takeEvery(ActionType.GET_ADMIN, getAdmin),
 	takeEvery(ActionType.UPDATE_AVATAR, updateAvatar),
 	takeEvery(ActionType.UPDATE_BASIC_INFO, updateBasicInfo),
 	takeEvery(ActionType.UPDATE_ADDRESS_INFO, updateAddressInfo),
 ];
 
-export default UserSaga;
+export default AdminSaga;
