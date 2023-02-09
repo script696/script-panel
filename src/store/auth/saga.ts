@@ -7,16 +7,15 @@ import getMessageFromError from "../../utils/handlers/getMessageFromError";
 import { openSnackBar } from "../ui/actions";
 import { ProtectedRotes, PublicRotes } from "../../utils/routes/routes";
 
-import { CheckAuthResponse, LoginUserResponse, RegisterUserResponse } from "./types";
 import Auth from "./services";
-import { ActionType, ChangePassword, LoginUser, RegisterUser, SignOutUser } from "./actionTypes";
+import { ActionType, ChangePassword, Login, Register, SignOut } from "./actionTypes";
+import { CheckAuthResponse, LoginResponse, RegisterResponse } from "./types";
 
-function* loginUser({ payload }: LoginUser) {
-	const { values, navigate } = payload;
+function* login({ payload: { data, navigate } }: Login) {
 	yield put(setLoading(true));
 
 	try {
-		const response: AxiosResponse<LoginUserResponse> = yield call(Auth.fetchLogin, values);
+		const response: AxiosResponse<LoginResponse> = yield call(Auth.fetchLogin, data);
 
 		localStorage.setItem(ACCESS_TOKEN, response.data.accessToken);
 
@@ -29,11 +28,10 @@ function* loginUser({ payload }: LoginUser) {
 	}
 }
 
-function* registerUser({ payload }: RegisterUser) {
-	const { values, navigate } = payload;
+function* register({ payload: { data, navigate } }: Register) {
 	yield put(setLoading(true));
 	try {
-		const response: AxiosResponse<RegisterUserResponse> = yield call(Auth.fetchRegister, values);
+		const response: AxiosResponse<RegisterResponse> = yield call(Auth.fetchRegister, data);
 
 		localStorage.setItem(ACCESS_TOKEN, response.data.accessToken);
 
@@ -44,7 +42,7 @@ function* registerUser({ payload }: RegisterUser) {
 			}),
 		);
 
-		setTimeout(() => navigate(ProtectedRotes.HOME), 3000);
+		setTimeout(() => navigate(ProtectedRotes.HOME), 1000);
 	} catch (error) {
 		const message = getMessageFromError(error);
 		yield put(openSnackBar({ message, snackBarType: "error" }));
@@ -53,12 +51,10 @@ function* registerUser({ payload }: RegisterUser) {
 	}
 }
 
-function* signOutUser({ payload }: SignOutUser) {
-	const { navigate } = payload;
-
+function* signOut({ payload: { navigate } }: SignOut) {
 	yield put(setLoading(true));
 	try {
-		yield call(Auth.fetchSignOut);
+		yield call(Auth.fetchLogout);
 
 		localStorage.removeItem(ACCESS_TOKEN);
 
@@ -105,10 +101,10 @@ function* checkAuth() {
 }
 
 const AuthSaga = [
-	takeEvery(ActionType.REGISTER_USER, registerUser),
-	takeEvery(ActionType.LOGIN_USER, loginUser),
+	takeEvery(ActionType.REGISTER, register),
+	takeEvery(ActionType.LOGIN, login),
 	takeEvery(ActionType.CHECK_AUTH, checkAuth),
-	takeEvery(ActionType.SIGN_OUT_USER, signOutUser),
+	takeEvery(ActionType.LOGOUT, signOut),
 	takeEvery(ActionType.CHANGE_PASSWORD, changePassword),
 ];
 

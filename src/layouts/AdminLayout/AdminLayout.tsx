@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { AuthHeader, Navigation, Settings } from "../../components";
 import { changeSettingsStatus } from "../../store/ui/actions";
-import { getUser } from "../../store/user/actions";
+import { getAdmin } from "../../store/admin/actions";
 import { useAppSelector } from "../../hooks";
 
 type AdminLayoutProps = {
@@ -20,7 +20,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 	};
 
 	useEffect(() => {
-		dispatch(getUser());
+		dispatch(getAdmin());
 	}, []);
 
 	return (

@@ -3,21 +3,9 @@ import defaultAvatar3 from "../../assets/img/avatars/defaultAvatar3.png";
 import { BASE_URL } from "../../api/constants/api_endpoints";
 
 import { Actions, ActionType } from "./actionTypes";
+import { Admin } from "./types";
 
-type InitialState = {
-	avatarUrl: string;
-	dateOfBirth: string;
-	email: string;
-	fullName: string;
-	nickName: string;
-	phoneNumber: string;
-	role: string;
-	country: string;
-	city: string;
-	addressLine: string;
-	apartment: string;
-};
-const initialState: InitialState = {
+const initialState: Required<Admin> = {
 	addressLine: "",
 	apartment: "",
 	avatarUrl: defaultAvatar3,
@@ -52,7 +40,7 @@ const UserReducer = (state = initialState, action: Actions) => {
 		case ActionType.SET_AVATAR:
 			state = {
 				...state,
-				avatarUrl: `${BASE_URL}/${action.payload}`,
+				avatarUrl: `${BASE_URL}/${action.payload.avatarUrl}`,
 			};
 			break;
 		case ActionType.SET_BASIC_INFO:

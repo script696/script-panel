@@ -8,7 +8,7 @@ import { AvatarIconButton } from "../../../shared/ui/AvatarIconButton";
 import { ModalPopup, useModal } from "../../../shared/ui/ModalPopup";
 import { useAppSelector, useFileReader } from "../../../hooks";
 import { SUPPORTED_PICTURE_FORMATS } from "../../../utils/constants/validators";
-import { updateAvatar } from "../../../store/user/actions";
+import { updateAvatar } from "../../../store/admin/actions";
 
 import { spinKeyframe } from "../constants/constants";
 
@@ -30,8 +30,9 @@ const ProfileEditAvatar = () => {
 		if (!file) return;
 		const fileFormat = file.type.split("/")[1];
 		if (!SUPPORTED_PICTURE_FORMATS.includes(fileFormat)) return;
+		const data = { avatar: file };
 
-		dispatch(updateAvatar({ avatar: file, onCloseModal: onCloseModalAvatar }));
+		dispatch(updateAvatar({ data, onCloseModal: onCloseModalAvatar }));
 	};
 
 	return (

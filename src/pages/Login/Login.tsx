@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 
-import { loginUser } from "../../store/auth/actions";
+import { login } from "../../store/auth/actions";
 import { ReactComponent as InformationSvg } from "../../assets/svg/information.svg";
 import { Logo } from "../../components";
 import { useAppSelector } from "../../hooks";
@@ -44,8 +44,8 @@ const Login = () => {
 		}),
 	});
 
-	const handleLogin = (values: FormValues) => {
-		dispatch(loginUser(values, navigate));
+	const handleLogin = (data: FormValues) => {
+		dispatch(login({ data, navigate }));
 	};
 
 	return (

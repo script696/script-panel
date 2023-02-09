@@ -53,8 +53,8 @@ const Registration = () => {
 		}),
 	});
 
-	const handleRegister = (values: FormValues) => {
-		dispatch(registerUser(values, navigate));
+	const handleRegister = (data: FormValues) => {
+		dispatch(registerUser({ data, navigate }));
 	};
 
 	return (

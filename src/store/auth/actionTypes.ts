@@ -1,41 +1,38 @@
-import { NavigateFunction } from "react-router-dom";
-
-import { LoginDto, RegisterDto } from "./authDto/authDto";
-import { ChangePasswordDto } from "./authDto/changePasswordDto";
+import {
+	ChangePasswordPayload,
+	LoginPayload,
+	RegisterPayload,
+	SetUserAuthPayload,
+	SignOutPayload,
+} from "./types";
 
 export enum ActionType {
-	LOGIN_USER = "LOGIN_USER",
-	REGISTER_USER = "REGISTER_USER",
-	SIGN_OUT_USER = "SIGN_OUT_USER",
+	LOGIN = "LOGIN",
+	REGISTER = "REGISTER",
+	LOGOUT = "LOGOUT",
 	CHECK_AUTH = "CHECK_AUTH",
-	SET_USER_AUTH = "SET_USER_AUTH",
+	SET_AUTH = "SET_AUTH",
 	CHANGE_PASSWORD = "CHANGE_PASSWORD",
 }
 
-export type ChangePasswordPayload = {
-	data: ChangePasswordDto;
-	onCloseModal: () => void;
-};
-
-///////////////////////////////////////////////
-export type LoginUser = {
-	type: ActionType.LOGIN_USER;
-	payload: { values: LoginDto; navigate: NavigateFunction };
+export type Login = {
+	type: ActionType.LOGIN;
+	payload: LoginPayload;
 };
 
 export type SetUserAuth = {
-	type: ActionType.SET_USER_AUTH;
-	payload: boolean;
+	type: ActionType.SET_AUTH;
+	payload: SetUserAuthPayload;
 };
 
-export type RegisterUser = {
-	type: ActionType.REGISTER_USER;
-	payload: { values: RegisterDto; navigate: NavigateFunction };
+export type Register = {
+	type: ActionType.REGISTER;
+	payload: RegisterPayload;
 };
 
-export type SignOutUser = {
-	type: ActionType.SIGN_OUT_USER;
-	payload: { navigate: NavigateFunction };
+export type SignOut = {
+	type: ActionType.LOGOUT;
+	payload: SignOutPayload;
 };
 
 export type ChangePassword = {

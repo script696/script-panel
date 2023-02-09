@@ -15,7 +15,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 import { useEffect } from "react";
 
-import { signOutUser } from "../../store/auth/actions";
+import { signOut } from "../../store/auth/actions";
 import { useAppSelector } from "../../hooks";
 
 const AccountMenu = () => {
@@ -40,7 +40,7 @@ const AccountMenu = () => {
 	};
 
 	const handleLogout = () => {
-		dispatch(signOutUser(navigate));
+		dispatch(signOut({ navigate }));
 	};
 
 	return (
