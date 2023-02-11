@@ -18,7 +18,7 @@ const useChangePasswordForm: UseChangePasswordForm = ({ initialFormValues, onSub
 		validationSchema: Yup.object({
 			newPassword: VALIDATORS.password,
 			oldPassword: VALIDATORS.password,
-			repeatPassword: VALIDATORS.repeatPassword,
+			repeatPassword: VALIDATORS.newPasswordPassword,
 		}),
 	});
 	return { formSecurityInstance };

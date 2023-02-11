@@ -5,7 +5,7 @@ import { ACCESS_TOKEN } from "../../../shared/api/constants/app_constants";
 import { setFirstLoad, setLoading } from "../requests/actions";
 import { getMessageFromError } from "../../../shared/lib/handlers";
 import { openSnackBar } from "../ui/actions";
-import { ProtectedRotes, PublicRotes } from "../../../shared/lib/constants/routes";
+import { PROTECTED_ROUTES, PUBLIC_ROUTES } from "../../../shared/lib/constants/routes";
 
 import Auth from "./services";
 import { ActionType, ChangePassword, Login, Register, SignOut } from "./actionTypes";
@@ -42,7 +42,7 @@ function* register({ payload: { data, navigate } }: Register) {
 			}),
 		);
 
-		setTimeout(() => navigate(ProtectedRotes.HOME), 1000);
+		setTimeout(() => navigate(PROTECTED_ROUTES.HOME), 1000);
 	} catch (error) {
 		const message = getMessageFromError(error);
 		yield put(openSnackBar({ message, snackBarType: "error" }));
@@ -58,7 +58,7 @@ function* signOut({ payload: { navigate } }: SignOut) {
 
 		localStorage.removeItem(ACCESS_TOKEN);
 
-		navigate(PublicRotes.SIGNIN);
+		navigate(PUBLIC_ROUTES.SIGNIN);
 	} catch (error) {
 		const message = getMessageFromError(error);
 		yield put(openSnackBar({ message, snackBarType: "error" }));

@@ -1,26 +1,30 @@
-import Typography from "@mui/material/Typography";
 import { Grid, TextField } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import LoadingButton from "@mui/lab/LoadingButton";
+
 import { useFormik } from "formik";
+
 import * as Yup from "yup";
 
 import { useDispatch } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 
-import { FormValues } from "../types/types";
-import { useAppSelector } from "../../../../shared/lib/hooks";
-import { login } from "../../../../app/store/auth/actions";
 import { Elevation } from "../../../../shared/ui/Elevation";
+
+import { FormValues } from "../types/types";
+
+import { registerUser } from "../../../../app/store/auth/actions";
+import { useAppSelector } from "../../../../shared/lib/hooks";
 import { INITIAL_FORM_VALUES, VALIDATION_SCHEMA } from "../constants/constants";
 
-const LoginForm = () => {
-	const { isLoading } = useAppSelector((state) => state.RequestsReducer);
+const RegistrationForm = () => {
 	const dispatch = useDispatch();
+	const { isLoading } = useAppSelector((state) => state.RequestsReducer);
 	const navigate = useNavigate();
 
 	const handleSubmit = (data: FormValues) => {
-		dispatch(login({ data, navigate }));
+		dispatch(registerUser({ data, navigate }));
 	};
 
 	const formik = useFormik<FormValues>({
@@ -33,25 +37,39 @@ const LoginForm = () => {
 	return (
 		<Elevation>
 			<Grid
-				className="grid_style_bordered grid_border_light"
 				container
-				alignItems="center"
-				direction="column"
 				component="form"
-				rowGap={3}
-				px={4}
-				py={2}
 				onSubmit={formik.handleSubmit}
+				className="grid_style_bordered grid_border_light"
+				direction="column"
+				alignItems="center"
+				rowGap={2}
+				p={3}
 			>
 				<Typography component="h2" variant="h3">
-					Login
+					Registration
 				</Typography>
 				<TextField
 					size="small"
 					required
 					fullWidth
+					id="nickName"
+					label="Nickname"
+					name="nickName"
+					autoComplete="name"
+					disabled={isLoading}
+					value={formik.values.nickName}
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+					error={formik.touched.nickName && Boolean(formik.errors.nickName)}
+					helperText={formik.touched.nickName && formik.errors.nickName}
+				/>
+				<TextField
+					size="small"
+					required
+					fullWidth
 					id="email"
-					label="Введите почту"
+					label="Email"
 					name="email"
 					autoComplete="email"
 					disabled={isLoading}
@@ -65,11 +83,11 @@ const LoginForm = () => {
 					size="small"
 					required
 					fullWidth
-					type="password"
 					id="password"
+					label="Password"
 					name="password"
-					label="Введите пароль"
-					autoComplete="current-password"
+					type="password"
+					autoComplete="auto"
 					disabled={isLoading}
 					value={formik.values.password}
 					onChange={formik.handleChange}
@@ -77,21 +95,37 @@ const LoginForm = () => {
 					error={formik.touched.password && Boolean(formik.errors.password)}
 					helperText={formik.touched.password && formik.errors.password}
 				/>
+				<TextField
+					size="small"
+					required
+					fullWidth
+					id="passwordRepeat"
+					label="Repeat your password"
+					name="passwordRepeat"
+					type="password"
+					autoComplete="auto"
+					disabled={isLoading}
+					value={formik.values.passwordRepeat}
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+					error={formik.touched.passwordRepeat && Boolean(formik.errors.passwordRepeat)}
+					helperText={formik.touched.passwordRepeat && formik.errors.passwordRepeat}
+				/>
 				<LoadingButton
 					type="submit"
 					fullWidth
 					variant="contained"
-					color="inherit"
-					className="color_secondary"
+					color="primary"
 					disabled={isLoading}
 					loading={isLoading}
+					className="button_login"
 					sx={{ textTransform: "none" }}
 				>
-					Войти
+					Register
 				</LoadingButton>
 			</Grid>
 		</Elevation>
 	);
 };
 
-export default LoginForm;
+export default RegistrationForm;

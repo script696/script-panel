@@ -13,11 +13,15 @@ export const VALIDATORS = {
 	country: Yup.string().min(3).max(30),
 	email: Yup.string().email().required(),
 	fullName: Yup.string().min(4).max(10),
-	nickName: Yup.string().min(4).max(10).required(),
-	password: Yup.string().matches(passwordRegExp, ERRORS.password).required(),
-	phoneNumber: Yup.string().min(7).max(15),
-	repeatPassword: Yup.string().when("newPassword", {
-		is: (val: string) => (val && val.length > 0 ? true : false),
+	newPasswordPassword: Yup.string().when("newPassword", {
+		is: (val: string) => !!val,
 		then: Yup.string().oneOf([Yup.ref("newPassword")], "Both password need to be the same"),
 	}),
+	nickName: Yup.string().min(4).max(10).required(),
+	password: Yup.string().matches(passwordRegExp, ERRORS.password).required(),
+	passwordRepeat: Yup.string().when("password", {
+		is: (val: string) => !!val,
+		then: Yup.string().oneOf([Yup.ref("password")], "Both password need to be the same"),
+	}),
+	phoneNumber: Yup.string().min(7).max(15),
 };

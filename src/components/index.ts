@@ -1,4 +1,3 @@
-export { default as Logo } from "../shared/ui/Logo/Logo";
 export { default as ProtectedRouter } from "./ProtectedRouter/ProtectedRouter";
 export { default as AuthRouter } from "./AuthRouter/AuthRouter";
 export { default as Preloader } from "./Preloader/Preloader";

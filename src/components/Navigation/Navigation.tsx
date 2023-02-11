@@ -6,27 +6,27 @@ import { Avatar, Box, Drawer, Grid, List, ListItemAvatar, ListItemButton, ListIt
 import { useDispatch } from "react-redux";
 import SettingsIcon from "@mui/icons-material/Settings";
 
-import { Logo } from "..";
 import { useAppSelector } from "../../shared/lib/hooks";
 import { changeSettingsStatus, toggleMobileMenu } from "../../app/store/ui/actions";
-import { ProtectedRotes } from "../../shared/lib/constants/routes";
+import { PROTECTED_ROUTES } from "../../shared/lib/constants/routes";
+import { Logo } from "../../shared/ui/Logo";
 
 const drawerWidth = 240;
 
 const navItems = [
 	{
 		icon: HomeIcon,
-		link: ProtectedRotes.HOME,
+		link: PROTECTED_ROUTES.HOME,
 		title: "Home",
 	},
 	{
 		icon: Diversity3Icon,
-		link: ProtectedRotes.USERS,
+		link: PROTECTED_ROUTES.USERS,
 		title: "Users",
 	},
 	{
 		icon: AccountTreeIcon,
-		link: ProtectedRotes.PROJECTS,
+		link: PROTECTED_ROUTES.PROJECTS,
 		title: "Projects",
 	},
 ];

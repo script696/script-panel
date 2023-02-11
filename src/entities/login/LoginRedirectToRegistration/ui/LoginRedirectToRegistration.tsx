@@ -3,6 +3,7 @@ import { Button, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import { Elevation } from "../../../../shared/ui/Elevation";
+import { PUBLIC_ROUTES } from "../../../../shared/lib/constants/routes";
 
 const LoginRedirectToRegistration = () => {
 	return (
@@ -21,7 +22,7 @@ const LoginRedirectToRegistration = () => {
 				</Typography>
 				<Button
 					component={Link}
-					to="/signup"
+					to={PUBLIC_ROUTES.SIGNUP}
 					className="button_login"
 					fullWidth
 					sx={{ textTransform: "none" }}
