@@ -2,11 +2,12 @@ import { Box, Grid } from "@mui/material";
 import { ReactNode, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { Navigation, Settings } from "../../components";
+import { Settings } from "../../components";
 import { changeSettingsStatus } from "../../app/store/ui/actions";
 import { getAdmin } from "../../app/store/admin/actions";
 import { useAppSelector } from "../../shared/lib/hooks";
 import { AuthProtectedHeader } from "../../widgets/header/AuthProtectedHeader";
+import { Navigation } from "../../widgets/navigation";
 
 type AdminLayoutProps = {
 	children: ReactNode;
