@@ -1,6 +1,6 @@
 import React from "react";
 
-const useTabs = (initialTabIndex: string) => {
+const useTabsController = (initialTabIndex: string) => {
 	const [currentTabIndex, setCurrentTabIndex] = React.useState(initialTabIndex);
 
 	const handleChangeTabIndex = (_: unknown, newTabIndex: string) => {
@@ -10,4 +10,4 @@ const useTabs = (initialTabIndex: string) => {
 	return { currentTabIndex, handleChangeTabIndex };
 };
 
-export default useTabs;
+export default useTabsController;

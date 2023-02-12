@@ -5,10 +5,12 @@ import TabPanelUnstyled from "@mui/base/TabPanelUnstyled";
 
 import { ModalPopup, useModal } from "../../../../shared/ui/ModalPopup";
 
-import { InfoEditForm } from "../../../../entities/admin/AdminInfoForm";
 import AdminSecurityForm from "../../../../entities/admin/AdminSecurityForm/ui/AdminSecurityForm";
 import { AdminSecurityPanel } from "../../../../entities/admin/AdminSecurityPanel";
 import { AdminInfoPanel } from "../../../../entities/admin/AdminInfoPanel";
+import { AdminUpdateProfile } from "../../../../entities/admin/AdminUpdateProfile";
+import { AdminBasicInfoForm } from "../../../../entities/admin/AdminBasicInfoForm";
+import { AdminAddressInfoForm } from "../../../../entities/admin/AdminAddressInfoForm";
 
 const AdminPanels = () => {
 	const {
@@ -32,7 +34,10 @@ const AdminPanels = () => {
 			</TabPanelUnstyled>
 
 			<ModalPopup onCloseModalPopup={onCloseModalInfo} isModalPopupOpen={isModalInfoOpen}>
-				<InfoEditForm onCancelForm={onCloseModalInfo} />
+				<AdminUpdateProfile>
+					<AdminBasicInfoForm onCancelForm={onCloseModalInfo} value="Basic Info" />
+					<AdminAddressInfoForm onCancelForm={onCloseModalInfo} value="Address Info" />
+				</AdminUpdateProfile>
 			</ModalPopup>
 
 			<ModalPopup onCloseModalPopup={onCloseModalSecurity} isModalPopupOpen={isModalSecurityOpen}>
