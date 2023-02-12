@@ -20,7 +20,6 @@ const ModalPopup = ({ children, isModalPopupOpen, onCloseModalPopup }: ModalPopu
 		height: "80vh",
 		left: "50%",
 		maxWidth: "800px",
-		// overflowY: "scroll",
 		padding: "15px",
 		position: "absolute",
 		top: "50%",

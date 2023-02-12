@@ -1,11 +1,9 @@
 import { Box, Grid } from "@mui/material";
 import { ReactNode, useEffect } from "react";
+
 import { useDispatch } from "react-redux";
 
-import { Settings } from "../../components";
-import { changeSettingsStatus } from "../../app/store/ui/actions";
 import { getAdmin } from "../../app/store/admin/actions";
-import { useAppSelector } from "../../shared/lib/hooks";
 import { AuthProtectedHeader } from "../../widgets/header/AuthProtectedHeader";
 import { Navigation } from "../../widgets/navigation";
 
@@ -15,11 +13,6 @@ type AdminLayoutProps = {
 
 const AdminLayout = ({ children }: AdminLayoutProps) => {
 	const dispatch = useDispatch();
-	const { isSettingsOpen } = useAppSelector((state) => state.UiReducer);
-
-	const onChangeSettingsStatus = (newStatus: boolean) => {
-		dispatch(changeSettingsStatus(newStatus));
-	};
 
 	useEffect(() => {
 		dispatch(getAdmin());
@@ -36,7 +29,6 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 					</Box>
 				</Box>
 			</Box>
-			<Settings isSettingsOpen={isSettingsOpen} onChangeSettingsStatus={onChangeSettingsStatus} />
 		</Grid>
 	);
 };

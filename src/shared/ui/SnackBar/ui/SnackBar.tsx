@@ -3,8 +3,8 @@ import ReportGmailerrorredIcon from "@mui/icons-material/ReportGmailerrorred";
 import { useDispatch } from "react-redux";
 import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
 
-import { useAppSelector } from "../../shared/lib/hooks";
-import { closeSnackBar } from "../../app/store/ui/actions";
+import { useAppSelector } from "../../../lib/hooks";
+import { closeSnackBar } from "../../../../app/store/ui/actions";
 
 const SnackBar = () => {
 	const {

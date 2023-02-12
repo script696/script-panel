@@ -8,7 +8,7 @@ import { Admin, Home, Login, PageNotFound, Projects, Registration } from "./page
 import Users from "./pages/Users/Users";
 import { checkAuth } from "./app/store/auth/actions";
 
-function App() {
+const App = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -34,6 +34,6 @@ function App() {
 			</Routes>
 		</>
 	);
-}
+};
 
 export default App;

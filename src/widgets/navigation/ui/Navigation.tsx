@@ -9,14 +9,14 @@ import { StaticSideBar } from "../../../shared/ui/StaticSideBar";
 import { Logo } from "../../../shared/ui/Logo";
 import { NAV_ITEMS } from "../constants/constants";
 import { useAppSelector } from "../../../shared/lib/hooks";
-import { changeSettingsStatus } from "../../../app/store/ui/actions";
+import { toggleSettingsSidebar } from "../../../app/store/widgets/actions";
 
 const Navigation = () => {
 	const dispatch = useDispatch();
 	const { colorMode } = useAppSelector((state) => state.UiReducer);
 
 	const handleSettingsToggle = () => {
-		dispatch(changeSettingsStatus(true));
+		dispatch(toggleSettingsSidebar(true));
 	};
 
 	return (
