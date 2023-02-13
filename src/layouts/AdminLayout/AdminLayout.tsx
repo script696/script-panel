@@ -3,9 +3,9 @@ import { ReactNode, useEffect } from "react";
 
 import { useDispatch } from "react-redux";
 
-import { getAdmin } from "../../app/store/admin/actions";
-import { AuthProtectedHeader } from "../../widgets/header/AuthProtectedHeader";
-import { Navigation } from "../../widgets/navigation";
+import { getAdmin } from "app/store/admin/actions";
+import { AuthProtectedHeader } from "widgets/header/AuthProtectedHeader";
+import { Navigation } from "widgets/navigation";
 
 type AdminLayoutProps = {
 	children: ReactNode;

@@ -4,11 +4,11 @@ import React from "react";
 
 import { useDispatch } from "react-redux";
 
-import { AvatarIconButton } from "../../../../shared/ui/AvatarIconButton";
-import { ModalPopup, useModal } from "../../../../shared/ui/ModalPopup";
-import { useAppSelector, useFileReader } from "../../../../shared/lib/hooks";
-import { SUPPORTED_PICTURE_FORMATS } from "../../../../shared/lib/constants/validators";
-import { updateAvatar } from "../../../../app/store/admin/actions";
+import { AvatarIconButton } from "shared/ui/AvatarIconButton";
+import { ModalPopup, useModal } from "shared/ui/ModalPopup";
+import { useAppSelector, useFileReader } from "shared/lib/hooks";
+import { SUPPORTED_PICTURE_FORMATS } from "shared/lib/constants/validators";
+import { updateAvatar } from "app/store/admin/actions";
 
 import { spinKeyframe } from "../constants/constants";
 

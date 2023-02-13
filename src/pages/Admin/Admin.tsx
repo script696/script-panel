@@ -4,13 +4,13 @@ import { Box } from "@mui/material";
 
 import { Divider } from "@mui/material";
 
-import { ProfileTabsList } from "../../entities/admin/AdminTabs";
+import { ProfileTabsList } from "entities/admin/AdminTabs";
 
-import { ProfileInformationPanel } from "../../widgets/admin/AdminPanels";
-import { TabsProvider, useTabsProvider } from "../../shared/ui/TabsProvider";
+import { ProfileInformationPanel } from "widgets/admin/AdminPanels";
+import { TabsProvider, useTabsProvider } from "shared/ui/TabsProvider";
 
-import { ProfileEditAvatar } from "../../widgets/admin/AdminAvatar";
-import { ProfileIRoleCol } from "../../entities/admin/AdminRoleCol";
+import { ProfileEditAvatar } from "widgets/admin/AdminAvatar";
+import { ProfileIRoleCol } from "entities/admin/AdminRoleCol";
 
 const Admin = () => {
 	const { handleChangeTabIndex: onChangeTabIndex, tabIndex } = useTabsProvider();

@@ -3,7 +3,8 @@ import { Box } from "@mui/material";
 
 import React from "react";
 
-import { useAppSelector } from "../../../../../shared/lib/hooks";
+import { useAppSelector } from "shared/lib/hooks";
+
 import { PanelTitleBox } from "../components/PanelTitleBox";
 import { EditButton } from "../components/EditButton";
 import { ProfileInfoRow } from "../components/ProfileInfoRow";

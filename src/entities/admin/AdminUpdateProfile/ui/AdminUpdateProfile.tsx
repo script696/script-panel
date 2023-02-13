@@ -1,7 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import React, { ReactNode } from "react";
 
-import { TabsController } from "../../../../shared/ui/TabsController";
+import { TabsController } from "shared/ui/TabsController";
 type ProfileInfoFormProps = {
 	children: Array<ReactNode>;
 };

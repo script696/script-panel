@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 
-import { Settings } from "../../../widgets/settings";
-import { SnackBar } from "../../../shared/ui/SnackBar";
+import { Settings } from "widgets/settings";
+import { SnackBar } from "shared/ui/SnackBar";
 
 type AppLayoutProps = {
 	children: ReactNode;

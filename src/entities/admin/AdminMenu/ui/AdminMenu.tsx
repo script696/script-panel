@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 
-import { PROTECTED_ROUTES } from "../../../../shared/lib/constants/routes";
-import { signOut } from "../../../../app/store/auth/actions";
+import { PROTECTED_ROUTES } from "shared/lib/constants/routes";
+import { signOut } from "app/store/auth/actions";
 
 type AdminMenuProps = {
 	anchorEl: null | HTMLElement;
