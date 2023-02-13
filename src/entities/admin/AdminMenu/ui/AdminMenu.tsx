@@ -46,7 +46,7 @@ const AdminMenu = ({ anchorEl, isMenuOpen, onCloseMenu }: AdminMenuProps) => {
 					},
 					"&:before": {
 						bgcolor: "background.paper",
-						content: '""',
+						content: "\"\"",
 						display: "block",
 						height: 10,
 						position: "absolute",

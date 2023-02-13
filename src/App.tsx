@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import { AuthRouter, ProtectedRouter } from "./components";
 import { PROTECTED_ROUTES, PUBLIC_ROUTES } from "./shared/lib/constants/routes";
 import { Admin, Home, Login, PageNotFound, Projects, Registration } from "./pages";
 import Users from "./pages/Users/Users";
 import { checkAuth } from "./app/store/auth/actions";
+import ProtectedRouter from "./shared/ui/ProtectedRouter/ProtectedRouter";
+import AuthRouter from "./shared/ui/AuthRouter/AuthRouter";
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const App = () => {
 	return (
 		<>
 			<Routes>
-				<Route element={<ProtectedRouter />}>
+				<Route element={<ProtectedRouter route={PUBLIC_ROUTES.SIGNIN} />}>
 					<Route path={PROTECTED_ROUTES.HOME} element={<Home />} />
 					<Route path={PROTECTED_ROUTES.USERS} element={<Users />} />
 					<Route path={PROTECTED_ROUTES.PROJECTS} element={<Projects />} />

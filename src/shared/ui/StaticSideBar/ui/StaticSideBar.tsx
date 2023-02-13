@@ -18,7 +18,6 @@ const StaticSideBar = ({ children }: StaticSideBarProps) => {
 			<Drawer
 				variant="temporary"
 				open={false}
-				onClose={() => console.log("close")}
 				ModalProps={{
 					keepMounted: true, // Better open performance on mobile.
 				}}

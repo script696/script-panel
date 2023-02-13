@@ -1,12 +1,12 @@
 import { useState, MouseEvent } from "react";
 
-type useAdminMenu = () => {
+type UseAdminMenu = () => {
 	anchorEl: null | HTMLElement;
 	handleOpenMenu: (e: MouseEvent<HTMLElement>) => void;
 	handleCloseMenu: () => void;
 };
 
-const useAdminMenu: useAdminMenu = () => {
+const useAdminMenu: UseAdminMenu = () => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
 	const handleOpenMenu = (e: MouseEvent<HTMLElement>) => {
