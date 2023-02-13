@@ -5,9 +5,9 @@ import React from "react";
 
 import { useAppSelector } from "shared/lib/hooks";
 
-import { PanelTitleBox } from "../components/PanelTitleBox";
-import { EditButton } from "../components/EditButton";
-import { ProfileInfoRow } from "../components/ProfileInfoRow";
+import { PanelTitleBox } from "./components/PanelTitleBox";
+import { EditButton } from "./components/EditButton";
+import { ProfileInfoRow } from "./components/ProfileInfoRow";
 
 type ProfileInfoProps = {
 	onTurnOnEditMode: () => void;
@@ -15,12 +15,12 @@ type ProfileInfoProps = {
 
 const AdminInfoPanel = ({ onTurnOnEditMode }: ProfileInfoProps) => {
 	const { nickName, apartment, dateOfBirth, addressLine, fullName, phoneNumber, country, city } =
-		useAppSelector((state) => state.UserReducer);
+		useAppSelector((state) => state.AdminReducer);
 
 	const profileBaseData = [
 		{ text: nickName, title: "Nickname" },
-		{ text: dateOfBirth, title: "Full Name" },
-		{ text: fullName, title: "Date of Birth" },
+		{ text: fullName, title: "Full Name" },
+		{ text: dateOfBirth, title: "Date of Birth" },
 		{ text: phoneNumber, title: "Phone Number" },
 	];
 
@@ -41,18 +41,16 @@ const AdminInfoPanel = ({ onTurnOnEditMode }: ProfileInfoProps) => {
 					Basic info, like your name and address, that you use on platform.
 				</Typography>
 			</Box>
-			<Box sx={{ width: "100%" }}>
-				<PanelTitleBox title="Basics">
-					<EditButton onClick={onTurnOnEditMode} />
-				</PanelTitleBox>
-				{profileBaseData.map(({ title, text }) => {
-					return <ProfileInfoRow key={title} title={title} text={text || "-"} />;
-				})}
-				<PanelTitleBox title="Address" />
-				{profileAddressData.map(({ title, text }) => {
-					return <ProfileInfoRow key={title} title={title} text={text || "-"} />;
-				})}
-			</Box>
+			<PanelTitleBox title="Basics">
+				<EditButton onClick={onTurnOnEditMode} />
+			</PanelTitleBox>
+			{profileBaseData.map(({ title, text }) => {
+				return <ProfileInfoRow key={title} title={title} text={text || "-"} />;
+			})}
+			<PanelTitleBox title="Address" />
+			{profileAddressData.map(({ title, text }) => {
+				return <ProfileInfoRow key={title} title={title} text={text || "-"} />;
+			})}
 		</Box>
 	);
 };

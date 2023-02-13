@@ -1,9 +1,10 @@
 import { Box } from "@mui/material";
 
-import { useAppSelector } from "shared/lib/hooks";
-import { LoginForm } from "entities/login/LoginForm";
-import { LoginRedirectToRegistration } from "entities/login/LoginRedirectToRegistration";
-import Logo from "shared/ui/Logo/ui/Logo";
+import { useAppSelector } from "../../../../shared/lib/hooks";
+import { LoginForm } from "../../../../entities/login/LoginForm";
+import { LoginRedirectToRegistration } from "../../../../entities/login/LoginRedirectToRegistration";
+import SvgLoader from "../../../../shared/ui/SvgLoader/ui/SvgLoader";
+import { ReactComponent as Logo } from "../../../../app/assets/svg/logo.svg";
 
 const LoginAuthCol = () => {
 	const { colorMode } = useAppSelector((state) => state.UiReducer);
@@ -18,7 +19,7 @@ const LoginAuthCol = () => {
 			flexDirection="column"
 		>
 			<Box width="100%" display="flex" alignItems="center" flexDirection="column">
-				<Logo size={50} mb={2} color={colorMode === "dark" ? "#fff" : "#ddbea9"} />
+				<SvgLoader size={"2.8rem"} mb={2} color={colorMode === "dark" ? "#fff" : "#4A403A"} svg={Logo} />
 				<LoginForm />
 			</Box>
 			<LoginRedirectToRegistration />

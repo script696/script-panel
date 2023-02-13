@@ -21,7 +21,9 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 	return (
 		<Grid container sx={{ height: "100vh" }}>
 			<Box display="flex" flexGrow={1}>
-				<Navigation />
+				<Box flexBasis="9rem" display="flex">
+					<Navigation />
+				</Box>
 				<Box display="flex" flexDirection="column" flexGrow={1}>
 					<AuthProtectedHeader />
 					<Box component="main" flexGrow={1} px={1}>

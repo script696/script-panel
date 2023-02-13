@@ -19,7 +19,7 @@ const initialState: Required<Admin> = {
 	role: "",
 };
 
-const UserReducer = (state = initialState, action: Actions) => {
+const AdminReducer = (state = initialState, action: Actions) => {
 	switch (action.type) {
 		case ActionType.SET_USER:
 			state = {
@@ -68,4 +68,4 @@ const UserReducer = (state = initialState, action: Actions) => {
 	return state;
 };
 
-export default UserReducer;
+export default AdminReducer;

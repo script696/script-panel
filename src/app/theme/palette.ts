@@ -25,14 +25,12 @@ const darkPalette = {
 	...palette,
 	mode: "dark" as PaletteMode,
 	primary: {
-		contrastText: "#fff",
+		contrastText: "#CFD8DC",
 		dark: "#0d1b2a",
 		light: "#415a77",
 		main: "#1b263b",
 	},
 	text: {
-		alt: palette.grey[400],
-		disabled: palette.grey[600],
 		primary: "#CFD8DC",
 		secondary: "#0d1b2a",
 	},
@@ -45,16 +43,18 @@ const lightPalette = {
 	},
 	mode: "light" as PaletteMode,
 	primary: {
-		contrastText: "#f0efeb",
-		dark: "#E6E3E1",
-		light: "#ddbea9",
-		main: "#95775A",
+		contrastText: "#4A403A",
+		dark: "#4A403A",
+		light: "#a49c93",
+		main: "#EFEFEF",
 	},
 	text: {
-		disabled: palette.grey[600],
-		primary: "#FFFFFF",
-		secondary: palette.red[900],
+		primary: "#fff",
+		secondary: "#4A403A",
 	},
 };
 
 export { darkPalette, lightPalette };
+// dark: "#E6E3E1",
+// 	light: "#ddbea9",
+// 	main: "#95775A",

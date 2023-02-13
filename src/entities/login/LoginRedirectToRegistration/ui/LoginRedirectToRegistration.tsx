@@ -17,8 +17,8 @@ const LoginRedirectToRegistration = () => {
 				px={4}
 				py={2}
 			>
-				<Typography mb={2} component="span" variant="subtitle1">
-					Еще не зарегестрированы ?
+				<Typography mb={1} component="span" variant="h6" className="color_contrastText">
+					Not yet registered ?
 				</Typography>
 				<Button
 					component={Link}
@@ -27,7 +27,7 @@ const LoginRedirectToRegistration = () => {
 					fullWidth
 					sx={{ textTransform: "none" }}
 				>
-					Зарегестрироваться
+					Register
 				</Button>
 			</Grid>
 		</Elevation>

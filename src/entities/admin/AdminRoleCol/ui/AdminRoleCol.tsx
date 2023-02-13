@@ -6,7 +6,7 @@ import { Box } from "@mui/material";
 import { useAppSelector } from "shared/lib/hooks";
 
 const AdminRoleCol = () => {
-	const { email, nickName } = useAppSelector((state) => state.UserReducer);
+	const { email, nickName } = useAppSelector((state) => state.AdminReducer);
 
 	return (
 		<Box display="flex" flexDirection="column" rowGap="5px">

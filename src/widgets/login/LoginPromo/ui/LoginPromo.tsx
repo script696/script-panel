@@ -1,13 +1,15 @@
 import Box from "@mui/material/Box";
 
-import { ReactComponent as LoginPromoSvg } from "../lib/assets/information.svg";
+import SvgLoader from "../../../../shared/ui/SvgLoader/ui/SvgLoader";
+import { ReactComponent as LoginPromoSvg } from "../../../../app/assets/svg/information.svg";
+import { useAppSelector } from "../../../../shared/lib/hooks";
 
 const LoginPromo = () => {
+	const { colorMode } = useAppSelector((state) => state.UiReducer);
+
 	return (
 		<Box height="100%" width="100%" display="flex" justifyContent="center" alignItems="center">
-			<Box flexGrow={1} height="25rem" width="25rem">
-				<LoginPromoSvg height="100%" width="100%" />
-			</Box>
+			<SvgLoader size="22rem" svg={LoginPromoSvg} color={colorMode === "dark" ? "#fff" : "#ddbea9"} />
 		</Box>
 	);
 };

@@ -10,12 +10,11 @@ const AdminUpdateProfile = ({ children }: ProfileInfoFormProps) => {
 		<Grid
 			container
 			sx={{ height: "100%", width: "100%" }}
-			px={2}
 			direction="column"
 			justifyContent="center"
 			alignItems="center"
 		>
-			<Typography component="h3" variant="h3" className="color_secondary">
+			<Typography component="h3" variant="h6" className="color_secondary" mb={1}>
 				Update Profile
 			</Typography>
 			<TabsController initialTabIndex={"Basic Info"}>{children}</TabsController>

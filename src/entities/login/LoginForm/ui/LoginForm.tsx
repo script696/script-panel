@@ -8,10 +8,11 @@ import { useDispatch } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 
+import { useAppSelector } from "shared/lib/hooks";
+import { login } from "app/store/auth/actions";
+import { Elevation } from "shared/ui/Elevation";
+
 import { FormValues } from "../types/types";
-import { useAppSelector } from "../../../../shared/lib/hooks";
-import { login } from "../../../../app/store/auth/actions";
-import { Elevation } from "../../../../shared/ui/Elevation";
 import { INITIAL_FORM_VALUES, VALIDATION_SCHEMA } from "../constants/constants";
 
 const LoginForm = () => {
@@ -43,15 +44,15 @@ const LoginForm = () => {
 				py={2}
 				onSubmit={formik.handleSubmit}
 			>
-				<Typography component="h2" variant="h3">
-					Login
+				<Typography component="h2" variant="h5" className="color_contrastText">
+					Login to Dashboard
 				</Typography>
 				<TextField
 					size="small"
 					required
 					fullWidth
 					id="email"
-					label="Введите почту"
+					label="Email"
 					name="email"
 					autoComplete="email"
 					disabled={isLoading}
@@ -68,7 +69,7 @@ const LoginForm = () => {
 					type="password"
 					id="password"
 					name="password"
-					label="Введите пароль"
+					label="Password"
 					autoComplete="current-password"
 					disabled={isLoading}
 					value={formik.values.password}
@@ -87,7 +88,7 @@ const LoginForm = () => {
 					loading={isLoading}
 					sx={{ textTransform: "none" }}
 				>
-					Войти
+					Login
 				</LoadingButton>
 			</Grid>
 		</Elevation>

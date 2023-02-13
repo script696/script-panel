@@ -10,13 +10,17 @@ import { useAppSelector, useFileReader } from "shared/lib/hooks";
 import { SUPPORTED_PICTURE_FORMATS } from "shared/lib/constants/validators";
 import { updateAvatar } from "app/store/admin/actions";
 
+import { LoadingButton } from "@mui/lab";
+
 import { spinKeyframe } from "../constants/constants";
 
 import BadgeItem from "./components/BadgeItem";
 
 const AdminAvatar = () => {
 	const dispatch = useDispatch();
-	const { avatarUrl } = useAppSelector((state) => state.UserReducer);
+	const { avatarUrl } = useAppSelector((state) => state.AdminReducer);
+	const { colorMode } = useAppSelector((state) => state.WidgetsReducer);
+
 	const {
 		handleCloseModal: onCloseModalAvatar,
 		handleOpenModal: onOpenModalAvatar,
@@ -60,10 +64,10 @@ const AdminAvatar = () => {
 							width: "80%",
 						}}
 					>
-						<Button className="button_styles_none" component="label" disabled={false} sx={{ width: "100%" }}>
+						<Button className="button_styles_none" component="label" disabled={false} fullWidth>
 							<Avatar
 								sx={{
-									border: "3px solid #78909C",
+									border: `2px solid ${colorMode === "dark" ? "#78909C" : "#a49c93"}`,
 									boxShadow: "0px 20px 15px -1px rgba(34, 60, 80, 0.34)",
 									boxSizing: "border-box",
 									height: "100%",
@@ -79,17 +83,18 @@ const AdminAvatar = () => {
 					</Badge>
 
 					<Box display="flex" justifyContent="center" alignItems="center" columnGap="20px">
-						<Button
+						<LoadingButton
 							variant="contained"
-							className="style_ghost"
 							component="label"
 							color="inherit"
+							loading={false}
 							disabled={false}
 							onClick={handleSubmit}
+							sx={{ textTransform: "none", width: "6rem" }}
 						>
 							Change Avatar
-						</Button>
-						<Button onClick={onCloseModalAvatar} className="style_ghost">
+						</LoadingButton>
+						<Button onClick={onCloseModalAvatar} className="style_ghost" sx={{ width: "6rem" }}>
 							Cancel
 						</Button>
 					</Box>

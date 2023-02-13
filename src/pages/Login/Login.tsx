@@ -14,12 +14,12 @@ const Login = () => {
 					py={3}
 					md={7}
 					lg={7}
-					xl={9}
+					xl={8}
 					className="grid_dark"
 				>
 					<LoginPromo />
 				</Grid>
-				<Grid item p={4} xs={12} sm={12} md={5} lg={5} xl={3}>
+				<Grid item p={4} xs={12} sm={12} md={5} lg={5} xl={4}>
 					<LoginAuthCol />
 				</Grid>
 			</Grid>

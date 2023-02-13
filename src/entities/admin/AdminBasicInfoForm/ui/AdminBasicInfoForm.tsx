@@ -24,7 +24,7 @@ type AdminBasicInfoFormProps = {
 };
 
 const AdminBasicInfoForm = ({ onCancelForm }: AdminBasicInfoFormProps) => {
-	const { nickName, fullName, phoneNumber, dateOfBirth } = useAppSelector((state) => state.UserReducer);
+	const { nickName, fullName, phoneNumber, dateOfBirth } = useAppSelector((state) => state.AdminReducer);
 	const dispatch = useDispatch();
 	const handleSubmitBasicInfoForm = (values: BasicInfoForm) => {
 		const mappedValues = removeFalsyValues<BasicInfoForm>(values);
@@ -60,13 +60,14 @@ const AdminBasicInfoForm = ({ onCancelForm }: AdminBasicInfoFormProps) => {
 					return (
 						<Grid item xs={6} key={name}>
 							<TextField
+								classes={{ root: "style_dark" }}
 								size="small"
 								required={isFieldValueRequired}
 								fullWidth
 								id={name}
 								label={label}
 								name={name}
-								autoComplete="email"
+								autoComplete="auto"
 								disabled={false}
 								value={basicInfoForm.values[name]}
 								onChange={basicInfoForm.handleChange}
@@ -101,11 +102,11 @@ const AdminBasicInfoForm = ({ onCancelForm }: AdminBasicInfoFormProps) => {
 						className="color_secondary"
 						disabled={false}
 						loading={false}
-						sx={{ my: 2, textTransform: "none" }}
+						sx={{ my: 2, textTransform: "none", width: "6rem" }}
 					>
 						Update Profile
 					</LoadingButton>
-					<Button onClick={onCancelForm} className="style_ghost">
+					<Button onClick={onCancelForm} className="style_ghost" sx={{ width: "6rem" }}>
 						Cancel
 					</Button>
 				</Grid>

@@ -18,7 +18,7 @@ type ChangePasswordFormProps = {
 };
 
 const AdminSecurityForm = ({ onCancelForm }: ChangePasswordFormProps) => {
-	const { email } = useAppSelector((state) => state.UserReducer);
+	const { email } = useAppSelector((state) => state.AdminReducer);
 	const dispatch = useDispatch();
 
 	const handleSubmitChangePasswordForm = (values: ChangePasswordValues) => {
@@ -56,6 +56,7 @@ const AdminSecurityForm = ({ onCancelForm }: ChangePasswordFormProps) => {
 								{title}
 							</Typography>
 							<TextField
+								className="style_dark"
 								size="small"
 								required={isFieldValueRequired}
 								fullWidth
@@ -82,11 +83,11 @@ const AdminSecurityForm = ({ onCancelForm }: ChangePasswordFormProps) => {
 							className="color_secondary"
 							disabled={false}
 							loading={false}
-							sx={{ my: 2, textTransform: "none" }}
+							sx={{ my: 2, textTransform: "none", width: "6rem" }}
 						>
 							Update Address
 						</LoadingButton>
-						<Button onClick={onCancelForm} className="style_ghost">
+						<Button onClick={onCancelForm} className="style_ghost" sx={{ width: "6rem" }}>
 							Cancel
 						</Button>
 					</Box>

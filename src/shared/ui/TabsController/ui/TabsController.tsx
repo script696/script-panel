@@ -14,12 +14,20 @@ const TabsController = ({ children, initialTabIndex }: TabsControllerProps) => {
 
 	return (
 		<TabContext value={currentTabIndex}>
-			<Box mb={3}>
-				<TabList onChange={onChangeTabIndex}>
+			<Box mb={2}>
+				<TabList onChange={onChangeTabIndex} textColor="inherit">
 					{children?.map((element) => {
 						if (!React.isValidElement(element)) return <></>;
 						const elementValue = element.props.value;
-						return <Tab key={elementValue} label={elementValue} value={elementValue} />;
+						return (
+							<Tab
+								key={elementValue}
+								label={elementValue}
+								value={elementValue}
+								className="color_contrastText"
+								sx={{ minHeight: 0, textTransform: "none" }}
+							/>
+						);
 					})}
 				</TabList>
 			</Box>
