@@ -9,10 +9,11 @@ import * as Yup from "yup";
 
 import { useDispatch } from "react-redux";
 
-import { useAppSelector } from "../../../../shared/lib/hooks";
+import { useAppSelector } from "shared/lib/hooks";
 
-import { removeFalsyValues } from "../../../../shared/lib/handlers";
-import { updateAddressInfo } from "../../../../app/store/admin/actions";
+import { removeFalsyValues } from "shared/lib/handlers";
+import { updateAddressInfo } from "app/store/admin/actions";
+
 import { ADDRESS_INFO_FORM_FIELDS_DATA, VALIDATION_SCHEMA } from "../constants/constants";
 import { AddressInfoForm } from "../types/types";
 

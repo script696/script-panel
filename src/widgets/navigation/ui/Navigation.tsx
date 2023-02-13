@@ -5,11 +5,13 @@ import SettingsIcon from "@mui/icons-material/Settings";
 
 import { useDispatch } from "react-redux";
 
-import { StaticSideBar } from "../../../shared/ui/StaticSideBar";
-import { Logo } from "../../../shared/ui/Logo";
+import { StaticSideBar } from "shared/ui/StaticSideBar";
+import { Logo } from "shared/ui/Logo";
+
+import { useAppSelector } from "shared/lib/hooks";
+import { toggleSettingsSidebar } from "app/store/widgets/actions";
+
 import { NAV_ITEMS } from "../constants/constants";
-import { useAppSelector } from "../../../shared/lib/hooks";
-import { toggleSettingsSidebar } from "../../../app/store/widgets/actions";
 
 const Navigation = () => {
 	const dispatch = useDispatch();

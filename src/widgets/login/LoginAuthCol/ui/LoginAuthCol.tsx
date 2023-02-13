@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
 
-import { useAppSelector } from "../../../../shared/lib/hooks";
-import { LoginForm } from "../../../../entities/login/LoginForm";
-import { LoginRedirectToRegistration } from "../../../../entities/login/LoginRedirectToRegistration";
-import Logo from "../../../../shared/ui/Logo/ui/Logo";
+import { useAppSelector } from "shared/lib/hooks";
+import { LoginForm } from "entities/login/LoginForm";
+import { LoginRedirectToRegistration } from "entities/login/LoginRedirectToRegistration";
+import Logo from "shared/ui/Logo/ui/Logo";
 
 const LoginAuthCol = () => {
 	const { colorMode } = useAppSelector((state) => state.UiReducer);

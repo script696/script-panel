@@ -5,7 +5,12 @@ import * as Yup from "yup";
 import { VALIDATORS } from "../../../../shared/lib/constants/validators";
 import { ChangePasswordValues } from "../types/types";
 
-type UseChangePasswordForm = ({ initialFormValues, onSubmit }: any) => {
+type UseChangePasswordFormProps = {
+	initialFormValues: ChangePasswordValues;
+	onSubmit: (values: ChangePasswordValues) => void;
+};
+
+type UseChangePasswordForm = ({ initialFormValues, onSubmit }: UseChangePasswordFormProps) => {
 	formSecurityInstance: FormikProps<ChangePasswordValues>;
 };
 

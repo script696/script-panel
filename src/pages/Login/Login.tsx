@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 
-import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
-import { LoginPromo } from "../../widgets/login/LoginPromo";
-import { LoginAuthCol } from "../../widgets/login/LoginAuthCol";
+import AuthLayout from "layouts/AuthLayout/AuthLayout";
+import { LoginPromo } from "widgets/login/LoginPromo";
+import { LoginAuthCol } from "widgets/login/LoginAuthCol";
 
 const Login = () => {
 	return (

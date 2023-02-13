@@ -5,11 +5,13 @@ import LoadingButton from "@mui/lab/LoadingButton";
 
 import { useDispatch } from "react-redux";
 
+import { changePassword } from "app/store/auth/actions";
+
+import { useAppSelector } from "shared/lib/hooks";
+
 import { PROFILE_SECURITY_FIELDS_DATA } from "../consts/constants";
 import useChangePasswordForm from "../hooks/useChangePasswordForm";
 import { ChangePasswordValues } from "../types/types";
-import { changePassword } from "../../../../app/store/auth/actions";
-import { useAppSelector } from "../../../../shared/lib/hooks";
 
 type ChangePasswordFormProps = {
 	onCancelForm: () => void;

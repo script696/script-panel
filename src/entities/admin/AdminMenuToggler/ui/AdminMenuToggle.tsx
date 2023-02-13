@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import * as React from "react";
 
-import { useAppSelector } from "../../../../shared/lib/hooks";
+import { useAppSelector } from "shared/lib/hooks";
 
 type AdminMenuToggleProps = {
 	onMenuClick: (e: React.MouseEvent<HTMLElement>) => void;

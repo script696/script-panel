@@ -4,8 +4,8 @@ import Box from "@mui/material/Box";
 
 import * as React from "react";
 
-import { AdminMenuToggle } from "../../../../entities/admin/AdminMenuToggler";
-import { AdminMenu, useAdminMenu } from "../../../../entities/admin/AdminMenu";
+import { AdminMenuToggle } from "entities/admin/AdminMenuToggler";
+import { AdminMenu, useAdminMenu } from "entities/admin/AdminMenu";
 
 const AuthProtectedHeader = () => {
 	const { anchorEl, handleCloseMenu, handleOpenMenu } = useAdminMenu();
