@@ -7,9 +7,10 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 import React from "react";
 
-import { ThemeCheckbox } from "../../../shared/ui/ThemeCheckbox";
-import { SwipeableSideBar } from "../../../shared/ui/SwipeableSideBar";
-import { useAppSelector } from "../../../shared/lib/hooks";
+import { ThemeCheckbox } from "shared/ui/ThemeCheckbox";
+import { SwipeableSideBar } from "shared/ui/SwipeableSideBar";
+import { useAppSelector } from "shared/lib/hooks";
+
 import { toggleColorMode, toggleSettingsSidebar } from "../../../app/store/widgets/actions";
 
 const Settings = () => {
@@ -42,9 +43,9 @@ const Settings = () => {
 			>
 				<Grid container justifyContent="space-between" alignItems="center">
 					<ButtonBase onClick={handleCloseSettingsSidebar}>
-						<HighlightOffIcon />
+						<HighlightOffIcon sx={{ fontSize: "1.5rem" }} />
 					</ButtonBase>
-					<Typography component="h4" variant="h4" textAlign="center">
+					<Typography component="h4" variant="h5" textAlign="center">
 						Settings
 					</Typography>
 				</Grid>

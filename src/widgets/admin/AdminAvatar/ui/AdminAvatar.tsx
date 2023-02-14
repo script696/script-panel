@@ -12,7 +12,7 @@ import { updateAvatar } from "app/store/admin/actions";
 
 import { LoadingButton } from "@mui/lab";
 
-import { spinKeyframe } from "../constants/constants";
+import { spinKeyframe } from "../../../../shared/lib/constants/animations";
 
 import BadgeItem from "./components/BadgeItem";
 

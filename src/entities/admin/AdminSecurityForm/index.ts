@@ -1,1 +1,1 @@
-export { default as ProfileSecurityForm } from "./ui/AdminSecurityForm";
+export { default as AdminSecurityForm } from "./ui/AdminSecurityForm";
