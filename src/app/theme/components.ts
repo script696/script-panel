@@ -87,6 +87,17 @@ const createThemeComponents = (theme: Theme) => ({
 			},
 		},
 	},
+	MuiLink: {
+		styleOverrides: {
+			root: {
+				"&:hover": {
+					opacity: "1",
+				},
+				opacity: "0.8",
+			},
+		},
+	},
+
 	MuiListItemButton: {
 		styleOverrides: {
 			root: {
@@ -112,7 +123,6 @@ const createThemeComponents = (theme: Theme) => ({
 			},
 		},
 	},
-
 	MuiSwitch: {
 		styleOverrides: {
 			root: {
@@ -154,6 +164,7 @@ const createThemeComponents = (theme: Theme) => ({
 			},
 		},
 	},
+
 	MuiTabPanel: {
 		styleOverrides: {
 			root: {
@@ -161,7 +172,6 @@ const createThemeComponents = (theme: Theme) => ({
 			},
 		},
 	},
-
 	MuiTabs: {
 		styleOverrides: {
 			indicator: {

@@ -1,1 +1,1 @@
-export { default as AdminInfoPanel } from "./ui/AdminInfoPanel";
+export { default as AdminMainInfoPanel } from "./ui/AdminInfoPanel";

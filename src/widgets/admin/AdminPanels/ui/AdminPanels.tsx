@@ -10,7 +10,7 @@ import { AdminSecurityPanel } from "entities/admin/AdminSecurityPanel";
 import { AdminUpdateProfile } from "entities/admin/AdminUpdateProfile";
 import { AdminBasicInfoForm } from "entities/admin/AdminBasicInfoForm";
 import { AdminAddressInfoForm } from "entities/admin/AdminAddressInfoForm";
-import { AdminInfoPanel } from "entities/admin/AdminInfoPanel";
+import { AdminMainInfoPanel } from "entities/admin/AdminInfoPanel";
 
 const AdminPanels = () => {
 	const {
@@ -27,7 +27,7 @@ const AdminPanels = () => {
 	return (
 		<Box>
 			<TabPanelUnstyled value={0}>
-				<AdminInfoPanel onTurnOnEditMode={onOpenModalInfo} />
+				<AdminMainInfoPanel onTurnOnEditMode={onOpenModalInfo} />
 			</TabPanelUnstyled>
 			<TabPanelUnstyled value={1}>
 				<AdminSecurityPanel onTurnOnEditMode={onOpenModalSecurity} />
