@@ -24,7 +24,7 @@ type AdminAddressInfoFormProps = {
 
 const AdminAddressInfoForm = ({ onCancelForm }: AdminAddressInfoFormProps) => {
 	const dispatch = useDispatch();
-	const { addressLine, apartment, city, country } = useAppSelector((state) => state.UserReducer);
+	const { addressLine, apartment, city, country } = useAppSelector((state) => state.AdminReducer);
 
 	const handleSubmitAddressInfoForm = (values: AddressInfoForm) => {
 		const mappedValues = removeFalsyValues<AddressInfoForm>(values);
@@ -54,6 +54,7 @@ const AdminAddressInfoForm = ({ onCancelForm }: AdminAddressInfoFormProps) => {
 					return (
 						<Grid key={name} item xs={6}>
 							<TextField
+								className="style_dark"
 								size="small"
 								required={isFieldValueRequired}
 								fullWidth
@@ -79,11 +80,11 @@ const AdminAddressInfoForm = ({ onCancelForm }: AdminAddressInfoFormProps) => {
 						className="color_secondary"
 						disabled={false}
 						loading={false}
-						sx={{ my: 2, textTransform: "none" }}
+						sx={{ my: 2, textTransform: "none", width: "6rem" }}
 					>
 						Update Address
 					</LoadingButton>
-					<Button onClick={onCancelForm} className="style_ghost">
+					<Button onClick={onCancelForm} className="style_ghost" sx={{ width: "6rem" }}>
 						Cancel
 					</Button>
 				</Grid>

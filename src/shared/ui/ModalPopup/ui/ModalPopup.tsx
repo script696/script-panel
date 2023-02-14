@@ -9,22 +9,31 @@ type ModalPopupProps = {
 	isModalPopupOpen: boolean;
 	onCloseModalPopup: () => void;
 	children: ReactNode;
+	width?: string;
+	height?: string;
 };
 
-const ModalPopup = ({ children, isModalPopupOpen, onCloseModalPopup }: ModalPopupProps) => {
+const ModalPopup = ({
+	children,
+	isModalPopupOpen,
+	onCloseModalPopup,
+	width = "80vh",
+	height = "80vh",
+}: ModalPopupProps) => {
 	const gridModalPopupOpenTemplateStyles = {
 		background: "#fff",
 		border: "3px solid #78909C",
 		borderRadius: "10px",
 		boxSizing: "border-box",
-		height: "80vh",
+		height: height,
 		left: "50%",
+		maxHeight: "90vh",
 		maxWidth: "800px",
 		padding: "15px",
 		position: "absolute",
 		top: "50%",
 		transform: "translate(-50%, -50%)",
-		width: "80vh",
+		width: width,
 	};
 
 	return (
@@ -37,7 +46,7 @@ const ModalPopup = ({ children, isModalPopupOpen, onCloseModalPopup }: ModalPopu
 			<Box sx={gridModalPopupOpenTemplateStyles} display="flex" flexDirection="column">
 				<Box display="flex" justifyContent="flex-end">
 					<ButtonBase onClick={onCloseModalPopup}>
-						<HighlightOffIcon />
+						<HighlightOffIcon className="color_contrastText" />
 					</ButtonBase>
 				</Box>
 				{children}

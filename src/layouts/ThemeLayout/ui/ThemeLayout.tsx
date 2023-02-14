@@ -21,6 +21,24 @@ const ThemeLayout = ({ children }: { children: ReactNode }) => {
 						backgroundColor: theme.palette.primary.main,
 						margin: "0",
 					},
+					html: {
+						fontSize: "16px",
+						[theme.breakpoints.down("xs")]: {
+							fontSize: "12px",
+						},
+						[theme.breakpoints.between("sm", "md")]: {
+							fontSize: "16px",
+						},
+						[theme.breakpoints.between("md", "lg")]: {
+							fontSize: "18px",
+						},
+						[theme.breakpoints.between("lg", "xl")]: {
+							fontSize: "20px",
+						},
+						[theme.breakpoints.up("xl")]: {
+							fontSize: "23px",
+						},
+					},
 				}}
 			/>
 			{children}

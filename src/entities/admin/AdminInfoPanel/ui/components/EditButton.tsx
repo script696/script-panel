@@ -13,7 +13,7 @@ export const EditButton = ({ onClick }: EditButtonProps) => {
 			<Typography component="span" variant="subtitle1" mr={0.5} className="color_secondary">
 				Edit
 			</Typography>
-			<EditIcon sx={{ fontSize: "0.8rem" }} />
+			<EditIcon sx={{ fontSize: "0.8rem" }} className="color_secondary" />
 		</Button>
 	);
 };

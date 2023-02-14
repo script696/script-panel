@@ -33,14 +33,24 @@ const AdminPanels = () => {
 				<AdminSecurityPanel onTurnOnEditMode={onOpenModalSecurity} />
 			</TabPanelUnstyled>
 
-			<ModalPopup onCloseModalPopup={onCloseModalInfo} isModalPopupOpen={isModalInfoOpen}>
+			<ModalPopup
+				onCloseModalPopup={onCloseModalInfo}
+				isModalPopupOpen={isModalInfoOpen}
+				width="auto"
+				height="auto"
+			>
 				<AdminUpdateProfile>
 					<AdminBasicInfoForm onCancelForm={onCloseModalInfo} value="Basic Info" />
 					<AdminAddressInfoForm onCancelForm={onCloseModalInfo} value="Address Info" />
 				</AdminUpdateProfile>
 			</ModalPopup>
 
-			<ModalPopup onCloseModalPopup={onCloseModalSecurity} isModalPopupOpen={isModalSecurityOpen}>
+			<ModalPopup
+				onCloseModalPopup={onCloseModalSecurity}
+				isModalPopupOpen={isModalSecurityOpen}
+				width="auto"
+				height="auto"
+			>
 				<AdminSecurityForm onCancelForm={onCloseModalSecurity} />
 			</ModalPopup>
 		</Box>

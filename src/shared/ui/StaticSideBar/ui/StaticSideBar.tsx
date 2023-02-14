@@ -1,55 +1,30 @@
-import { Box, Drawer } from "@mui/material";
+import { Drawer } from "@mui/material";
 import { ReactNode } from "react";
 
 type StaticSideBarProps = {
 	children: ReactNode;
 };
 const StaticSideBar = ({ children }: StaticSideBarProps) => {
-	const drawerWidth = 240;
 	return (
-		<Box
-			component="nav"
+		<Drawer
+			variant="permanent"
 			sx={{
-				flexShrink: { lg: 0 },
-				width: { sm: drawerWidth, xs: 0 },
+				"& .MuiDrawer-paper": {
+					border: "none",
+					boxSizing: "border-box",
+					position: "static",
+					width: "100%",
+				},
+				display: {
+					sm: "block",
+					xs: "none",
+				},
+				height: "100%",
+				width: "100%",
 			}}
 		>
-			{/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-			<Drawer
-				variant="temporary"
-				open={false}
-				ModalProps={{
-					keepMounted: true, // Better open performance on mobile.
-				}}
-				sx={{
-					"& .MuiDrawer-paper": {
-						border: "none",
-						boxSizing: "border-box",
-						width: "70vw",
-					},
-					display: { sm: "none", xs: "block" },
-				}}
-			>
-				{children}
-			</Drawer>
-			<Drawer
-				variant="permanent"
-				sx={{
-					"& .MuiDrawer-paper": {
-						border: "none",
-						boxSizing: "border-box",
-						width: drawerWidth,
-					},
-					display: {
-						sm: "block",
-						xs: "none",
-					},
-				}}
-				open
-			>
-				{children}
-			</Drawer>
-		</Box>
+			{children}
+		</Drawer>
 	);
 };
 

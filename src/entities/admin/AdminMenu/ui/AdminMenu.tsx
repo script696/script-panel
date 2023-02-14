@@ -1,6 +1,6 @@
 import Menu from "@mui/material/Menu";
 import * as React from "react";
-import { Divider, ListItemIcon, MenuItem } from "@mui/material";
+import { Divider, ListItemIcon, MenuItem, Typography } from "@mui/material";
 import Logout from "@mui/icons-material/Logout";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { useNavigate } from "react-router-dom";
@@ -67,16 +67,20 @@ const AdminMenu = ({ anchorEl, isMenuOpen, onCloseMenu }: AdminMenuProps) => {
 		>
 			<MenuItem onClick={handleRedirectToProfile}>
 				<ListItemIcon>
-					<AccountBoxIcon fontSize="small" />
+					<AccountBoxIcon fontSize="small" className="color_contrastText" />
 				</ListItemIcon>
-				Profile
+				<Typography component="span" variant="body1" className="color_contrastText">
+					Profile
+				</Typography>
 			</MenuItem>
 			<Divider />
 			<MenuItem onClick={handleLogout}>
 				<ListItemIcon>
-					<Logout fontSize="small" />
+					<Logout fontSize="small" className="color_contrastText" />
 				</ListItemIcon>
-				Logout
+				<Typography component="span" variant="body1" className="color_contrastText">
+					Logout
+				</Typography>
 			</MenuItem>
 		</Menu>
 	);

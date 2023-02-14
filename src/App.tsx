@@ -5,9 +5,9 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { PROTECTED_ROUTES, PUBLIC_ROUTES } from "./shared/lib/constants/routes";
 import { Admin, Home, Login, PageNotFound, Projects, Registration } from "./pages";
 import Users from "./pages/Users/Users";
-import { checkAuth } from "./app/store/auth/actions";
 import ProtectedRouter from "./shared/ui/ProtectedRouter/ProtectedRouter";
 import AuthRouter from "./shared/ui/AuthRouter/AuthRouter";
+import { checkAuth } from "./app/store/auth/actions";
 
 const App = () => {
 	const dispatch = useDispatch();

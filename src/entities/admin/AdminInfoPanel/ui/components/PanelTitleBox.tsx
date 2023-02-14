@@ -17,7 +17,6 @@ export const PanelTitleBox = ({ title, children }: PanelEditRowProps) => {
 				background: "#fff",
 				borderRadius: "3px",
 				boxSizing: "border-box",
-				height: "20px",
 			}}
 			pl={2}
 		>
