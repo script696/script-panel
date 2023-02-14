@@ -8,7 +8,14 @@ const LoginPromo = () => {
 	const { colorMode } = useAppSelector((state) => state.UiReducer);
 
 	return (
-		<Box height="100%" width="100%" display="flex" justifyContent="center" alignItems="center">
+		<Box
+			height="100%"
+			width="100%"
+			display="flex"
+			justifyContent="center"
+			alignItems="center"
+			position="relative"
+		>
 			<SvgLoader size="22rem" svg={LoginPromoSvg} color={colorMode === "dark" ? "#fff" : "#ddbea9"} />
 		</Box>
 	);

@@ -5,12 +5,12 @@ import TabPanelUnstyled from "@mui/base/TabPanelUnstyled";
 
 import { ModalPopup, useModal } from "shared/ui/ModalPopup";
 
-import AdminSecurityForm from "entities/admin/AdminSecurityForm/ui/AdminSecurityForm";
+import { AdminSecurityForm } from "entities/admin/AdminSecurityForm";
 import { AdminSecurityPanel } from "entities/admin/AdminSecurityPanel";
-import { AdminInfoPanel } from "entities/admin/AdminInfoPanel";
 import { AdminUpdateProfile } from "entities/admin/AdminUpdateProfile";
 import { AdminBasicInfoForm } from "entities/admin/AdminBasicInfoForm";
 import { AdminAddressInfoForm } from "entities/admin/AdminAddressInfoForm";
+import { AdminInfoPanel } from "entities/admin/AdminInfoPanel";
 
 const AdminPanels = () => {
 	const {

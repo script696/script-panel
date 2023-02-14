@@ -7,7 +7,7 @@ import { PUBLIC_ROUTES } from "../../../../shared/lib/constants/routes";
 const RegistrationRedirectToLogin = () => {
 	return (
 		<Grid container alignItems="center" justifyContent="space-between">
-			<Typography component="span" variant="subtitle1">
+			<Typography component="span" variant="subtitle1" className="color_contrastText">
 				Already Registered ?
 			</Typography>
 			<Button

@@ -46,7 +46,7 @@ const RegistrationForm = () => {
 				rowGap={2}
 				p={3}
 			>
-				<Typography component="h2" variant="h3">
+				<Typography component="h2" variant="h5" className="color_contrastText">
 					Registration
 				</Typography>
 				<TextField
@@ -118,7 +118,7 @@ const RegistrationForm = () => {
 					color="primary"
 					disabled={isLoading}
 					loading={isLoading}
-					className="button_login"
+					className="color_secondary"
 					sx={{ textTransform: "none" }}
 				>
 					Register
