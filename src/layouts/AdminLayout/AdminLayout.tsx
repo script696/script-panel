@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { getAdmin } from "app/store/admin/actions";
 import { AuthProtectedHeader } from "widgets/header/AuthProtectedHeader";
 import { Navigation } from "widgets/navigation";
+import { Footer } from "widgets/footer";
 
 type AdminLayoutProps = {
 	children: ReactNode;
@@ -26,9 +27,10 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 				</Box>
 				<Box display="flex" flexDirection="column" flexGrow={1}>
 					<AuthProtectedHeader />
-					<Box component="main" flexGrow={1} px={1}>
+					<Box component="main" flexGrow={1} px={1} sx={{ boxSizing: "border-box" }}>
 						{children}
 					</Box>
+					<Footer classNames={["color_contrastText"]} />
 				</Box>
 			</Box>
 		</Grid>

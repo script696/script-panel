@@ -23,7 +23,7 @@ const ThemeLayout = ({ children }: { children: ReactNode }) => {
 					},
 					html: {
 						fontSize: "16px",
-						overflow: "hidden",
+						// overflow: "hidden",
 						[theme.breakpoints.down("xs")]: {
 							fontSize: "12px",
 						},

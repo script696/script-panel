@@ -69,7 +69,7 @@ const AdminMenu = ({ anchorEl, isMenuOpen, onCloseMenu }: AdminMenuProps) => {
 				<ListItemIcon>
 					<AccountBoxIcon fontSize="small" className="color_contrastText" />
 				</ListItemIcon>
-				<Typography component="span" variant="body1" className="color_contrastText">
+				<Typography component="span" variant="subtitle1" className="color_contrastText">
 					Profile
 				</Typography>
 			</MenuItem>
@@ -78,7 +78,7 @@ const AdminMenu = ({ anchorEl, isMenuOpen, onCloseMenu }: AdminMenuProps) => {
 				<ListItemIcon>
 					<Logout fontSize="small" className="color_contrastText" />
 				</ListItemIcon>
-				<Typography component="span" variant="body1" className="color_contrastText">
+				<Typography component="span" variant="subtitle1" className="color_contrastText">
 					Logout
 				</Typography>
 			</MenuItem>

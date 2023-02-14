@@ -27,6 +27,7 @@ const PublicHeader = ({ classNames }: PublicHeaderProps) => {
 				width="100%"
 				px={1}
 				justifyContent="space-between"
+				boxSizing="border-box"
 			>
 				<Box
 					display="flex"
