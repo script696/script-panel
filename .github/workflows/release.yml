@@ -1,0 +1,1 @@
+name: Deploy project to VPSon:  release:    types:      - createdjobs:  write-to-console:    runs-on: ubuntu-latest    steps:      - run: echo "Hello world!"
