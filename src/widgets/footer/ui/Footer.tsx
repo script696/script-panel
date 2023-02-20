@@ -8,7 +8,15 @@ const Footer = ({ classNames }: FooterProps) => {
 	const classes = classNames ? classNames.join(" ") : "";
 
 	return (
-		<Box component="footer" display="flex" justifyContent="space-between" px={4} py={2}>
+		<Box
+			component="footer"
+			display="flex"
+			justifyContent="space-between"
+			px={4}
+			py={2}
+			width="100%"
+			sx={{ boxSizing: "border-box" }}
+		>
 			<Typography component="p" variant="subtitle1" className={`${classes}`}>
 				© 2023 Nik Semenov, made with love for a better web
 			</Typography>
