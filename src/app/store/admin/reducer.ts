@@ -18,7 +18,6 @@ const initialState: Required<Admin> = {
 	phoneNumber: "",
 	role: "",
 };
-
 const AdminReducer = (state = initialState, action: Actions) => {
 	switch (action.type) {
 		case ActionType.SET_USER:
@@ -26,7 +25,9 @@ const AdminReducer = (state = initialState, action: Actions) => {
 				...state,
 				addressLine: action.payload.addressLine ?? "",
 				apartment: action.payload.apartment ?? "",
-				avatarUrl: action.payload.avatarUrl ? `${BASE_URL}/${action.payload.avatarUrl}` : defaultAvatar3,
+				avatarUrl: action.payload.avatarUrl
+					? `${process.env.REACT_APP_API_URL}/${action.payload.avatarUrl}`
+					: defaultAvatar3,
 				city: action.payload.city ?? "",
 				country: action.payload.country ?? "",
 				dateOfBirth: action.payload.dateOfBirth ?? "",
