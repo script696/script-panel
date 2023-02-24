@@ -19,6 +19,7 @@ function* getAdmin() {
 	yield put(setLoading(true));
 	try {
 		const response: AxiosResponse<GetUserResponse> = yield call(Admin.fetchGetAdmin);
+
 		yield put(setUser(response.data));
 	} catch (error) {
 		const message = getMessageFromError(error);

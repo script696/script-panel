@@ -8,8 +8,9 @@ RUN npm ci --silent
 
 COPY . .
 
-RUN npm run build
+ENV REACT_APP_API_URL=http://1259923-cj57908.tw1.ru
 
+RUN npm run build
 
 FROM nginx:alpine
 

@@ -18,4 +18,9 @@ const USER_ENDPOINTS = {
 	UPDATE_USER: "updateUser",
 };
 
-export { BASE_URL, AUTH_ENDPOINTS, USER_ENDPOINTS };
+const PRODUCTS_ENDPOINTS = {
+	BASE: "product",
+	GET_ALL: "getAll",
+};
+
+export { BASE_URL, AUTH_ENDPOINTS, USER_ENDPOINTS, PRODUCTS_ENDPOINTS };

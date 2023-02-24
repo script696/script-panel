@@ -42,7 +42,7 @@ function* register({ payload: { data, navigate } }: Register) {
 			}),
 		);
 
-		setTimeout(() => navigate(PROTECTED_ROUTES.HOME), 1000);
+		setTimeout(() => navigate(PROTECTED_ROUTES.PRODUCTS), 1000);
 	} catch (error) {
 		const message = getMessageFromError(error);
 		yield put(openSnackBar({ message, snackBarType: "error" }));

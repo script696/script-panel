@@ -1,17 +1,20 @@
 import axios from "axios";
 
-import { AUTH_ENDPOINTS, BASE_URL } from "./constants/api_endpoints";
+import { AUTH_ENDPOINTS } from "./constants/api_endpoints";
 import { ACCESS_TOKEN } from "./constants/app_constants";
 
 const $api = axios.create({
-	baseURL: "http://api.1259923-cj57908.tw1.ru/api",
+	baseURL: `${process.env.REACT_APP_API_URL}/api`,
 	withCredentials: true,
 });
 
 const refresh = async () =>
-	await axios.get<{ accessToken: string }>(`${BASE_URL}/${AUTH_ENDPOINTS.BASE}/${AUTH_ENDPOINTS.REFRESH}`, {
-		withCredentials: true,
-	});
+	await axios.get<{ accessToken: string }>(
+		`${process.env.REACT_APP_API_URL}/${AUTH_ENDPOINTS.BASE}/${AUTH_ENDPOINTS.REFRESH}`,
+		{
+			withCredentials: true,
+		},
+	);
 
 $api.interceptors.request.use(
 	(config) => {
