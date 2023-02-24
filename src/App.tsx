@@ -20,7 +20,7 @@ const App = () => {
 		<>
 			<Routes>
 				<Route element={<ProtectedRouter route={PUBLIC_ROUTES.SIGNIN} />}>
-					<Route path={PROTECTED_ROUTES.HOME} element={<Home />} />
+					<Route path={PROTECTED_ROUTES.PRODUCTS} element={<Home />} />
 					<Route path={PROTECTED_ROUTES.USERS} element={<Users />} />
 					<Route path={PROTECTED_ROUTES.PROJECTS} element={<Projects />} />
 					<Route path={PROTECTED_ROUTES.PROFILE} element={<Admin />} />
@@ -30,7 +30,7 @@ const App = () => {
 					<Route path={PUBLIC_ROUTES.SIGNIN} element={<Login />} />
 				</Route>
 				<Route path={PUBLIC_ROUTES.NOT_FOUND} element={<PageNotFound />} />
-				<Route path="/" element={<Navigate to={PROTECTED_ROUTES.HOME} replace />} />
+				<Route path="/" element={<Navigate to={PROTECTED_ROUTES.PRODUCTS} replace />} />
 				<Route path="*" element={<Navigate to={PUBLIC_ROUTES.NOT_FOUND} replace />} />
 			</Routes>
 		</>

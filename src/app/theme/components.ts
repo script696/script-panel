@@ -172,6 +172,13 @@ const createThemeComponents = (theme: Theme) => ({
 			},
 		},
 	},
+	MuiTable: {
+		styleOverrides: {
+			root: {
+				backgroundColor: theme.palette.primary.dark,
+			},
+		},
+	},
 	MuiTabs: {
 		styleOverrides: {
 			indicator: {

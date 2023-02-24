@@ -5,10 +5,8 @@ import { ACCESS_TOKEN } from "./constants/app_constants";
 
 const $api = axios.create({
 	baseURL: `${process.env.REACT_APP_API_URL}/api`,
-	// baseURL: "http://1259923-cj57908.tw1.ru/api",
 	withCredentials: true,
 });
-console.log(process.env.REACT_APP_API_URL);
 
 const refresh = async () =>
 	await axios.get<{ accessToken: string }>(

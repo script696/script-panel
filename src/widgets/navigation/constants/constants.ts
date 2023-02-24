@@ -7,8 +7,8 @@ import { PROTECTED_ROUTES } from "../../../shared/lib/constants/routes";
 
 const HOME_NAV_ITEM = {
 	icon: HomeIcon,
-	link: PROTECTED_ROUTES.HOME,
-	title: "Home",
+	link: PROTECTED_ROUTES.PRODUCTS,
+	title: "Products",
 };
 const USERS_NAV_ITEM = {
 	icon: Diversity3Icon,

@@ -5,10 +5,12 @@ import UiReducer from "./ui/reducer";
 import RequestsReducer from "./requests/reducer";
 import WidgetsReducer from "./widgets/reducer";
 import AdminReducer from "./admin/reducer";
+import ProductsReducer from "./products/reducer";
 
 const rootReducer = combineReducers({
 	AdminReducer,
 	AuthReducer,
+	ProductsReducer,
 	RequestsReducer,
 	UiReducer,
 	WidgetsReducer,
