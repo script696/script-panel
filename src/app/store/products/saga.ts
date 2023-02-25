@@ -5,14 +5,27 @@ import { setLoading } from "../requests/actions";
 import { getMessageFromError } from "../../../shared/lib/handlers";
 import { openSnackBar } from "../ui/actions";
 
-import { setProductDescription, setProductPublicInfo, setProducts, setProductServiceInfo } from "./actions";
+import { PROTECTED_ROUTES } from "../../../shared/lib/constants/routes";
+
+import {
+	setDeletedProduct,
+	setProduct,
+	setProductDescription,
+	setProductPublicInfo,
+	setProducts,
+	setProductServiceInfo,
+} from "./actions";
 import {
 	ActionType,
+	CreateProduct,
+	DeleteProduct,
 	UpdateProductDescription,
 	UpdateProductPublicInfo,
 	UpdateProductServiceInfo,
 } from "./actionTypes";
 import {
+	CreateProductResponse,
+	DeleteProductResponse,
 	GetAllProductsResponse,
 	UpdateProductDescriptionResponse,
 	UpdateProductPublicInfoPayload,
@@ -35,13 +48,15 @@ function* getAllProducts() {
 }
 function* updateProductDescription({ payload }: UpdateProductDescription) {
 	yield put(setLoading(true));
+	const { onCloseModal, ...rest } = payload;
 	try {
 		const response: AxiosResponse<UpdateProductDescriptionResponse> = yield call(
 			Product.fetchUpdateProductDescription,
-			payload,
+			rest,
 		);
 
 		yield put(setProductDescription(response.data));
+		onCloseModal();
 	} catch (error) {
 		const message = getMessageFromError(error);
 		yield put(openSnackBar({ message, snackBarType: "error" }));
@@ -52,13 +67,15 @@ function* updateProductDescription({ payload }: UpdateProductDescription) {
 
 function* updateProductServiceInfo({ payload }: UpdateProductServiceInfo) {
 	yield put(setLoading(true));
+	const { onCloseModal, ...rest } = payload;
 	try {
 		const response: AxiosResponse<UpdateProductServiceInfoResponse> = yield call(
 			Product.fetchUpdateProductServiceInfo,
-			payload,
+			rest,
 		);
 
 		yield put(setProductServiceInfo(response.data));
+		onCloseModal();
 	} catch (error) {
 		const message = getMessageFromError(error);
 		yield put(openSnackBar({ message, snackBarType: "error" }));
@@ -69,12 +86,42 @@ function* updateProductServiceInfo({ payload }: UpdateProductServiceInfo) {
 
 function* updateProductPublicInfo({ payload }: UpdateProductPublicInfo) {
 	yield put(setLoading(true));
+	const { onCloseModal, ...rest } = payload;
 	try {
 		const response: AxiosResponse<UpdateProductPublicInfoPayload> = yield call(
 			Product.fetchUpdateProductPublicInfo,
-			payload,
+			rest,
 		);
 		yield put(setProductPublicInfo(response.data));
+		onCloseModal();
+	} catch (error) {
+		const message = getMessageFromError(error);
+		yield put(openSnackBar({ message, snackBarType: "error" }));
+	} finally {
+		yield put(setLoading(false));
+	}
+}
+
+function* createProduct({ payload }: CreateProduct) {
+	yield put(setLoading(true));
+	const { navigate, ...rest } = payload;
+	try {
+		const response: AxiosResponse<CreateProductResponse> = yield call(Product.fetchCreateProduct, rest);
+		yield put(setProduct(response.data));
+		navigate(`${PROTECTED_ROUTES.PRODUCTS}/${response.data.id}`, { state: response.data });
+	} catch (error) {
+		const message = getMessageFromError(error);
+		yield put(openSnackBar({ message, snackBarType: "error" }));
+	} finally {
+		yield put(setLoading(false));
+	}
+}
+
+function* deleteProduct({ payload }: DeleteProduct) {
+	yield put(setLoading(true));
+	try {
+		const response: AxiosResponse<DeleteProductResponse> = yield call(Product.fetchDeleteProduct, payload);
+		yield put(setDeletedProduct(response.data));
 	} catch (error) {
 		const message = getMessageFromError(error);
 		yield put(openSnackBar({ message, snackBarType: "error" }));
@@ -88,6 +135,8 @@ const ProductSaga = [
 	takeEvery(ActionType.UPDATE_PRODUCT_DESCRIPTION, updateProductDescription),
 	takeEvery(ActionType.UPDATE_PRODUCT_SERVICE_INFO, updateProductServiceInfo),
 	takeEvery(ActionType.UPDATE_PRODUCT_PUBLIC_INFO, updateProductPublicInfo),
+	takeEvery(ActionType.CREATE_PRODUCT, createProduct),
+	takeEvery(ActionType.DELETE_PRODUCT, deleteProduct),
 ];
 
 export default ProductSaga;

@@ -52,6 +52,21 @@ const ProductsReducer = (state = initialState, action: Actions) => {
 				products: test2,
 			};
 			break;
+		case ActionType.SET_DELETED_PRODUCT:
+			const filterProducts = (arr: Array<Product>) => {
+				return arr.filter(({ id }) => id !== action.payload.id);
+			};
+			state = {
+				...state,
+				products: filterProducts(state.products),
+			};
+			break;
+		case ActionType.SET_PRODUCT:
+			state = {
+				...state,
+				products: [...state.products, action.payload],
+			};
+			break;
 		default:
 			state = { ...state };
 			break;

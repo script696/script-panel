@@ -29,14 +29,14 @@ const Product = () => {
 			<Grid item xs={4}>
 				<Grid
 					className="grid_dark grid_style_box-shadow grid_style_bordered"
-					height={"18rem"}
+					height={"15rem"}
 					sx={{ overflow: "hidden" }}
 				>
 					<ProductGallery />
 				</Grid>
 			</Grid>
 			<Grid item xs={8}>
-				<Grid className="grid_dark grid_style_box-shadow grid_style_bordered" height={"18rem"}>
+				<Grid className="grid_dark grid_style_box-shadow grid_style_bordered" height={"15rem"}>
 					<ProductDescription product={product} />
 				</Grid>
 			</Grid>

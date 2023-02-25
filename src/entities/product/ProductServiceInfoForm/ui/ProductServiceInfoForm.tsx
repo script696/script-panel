@@ -13,7 +13,7 @@ import { Product } from "../../../../app/store/products/types";
 
 type ProductServiceInfoFormProps = {
 	onCancelForm: () => void;
-	product: Product;
+	product: Pick<Product, "amount" | "totalSold">;
 	onSubmit: (values: ServiceInfoForm) => void;
 };
 const ProductServiceInfoForm = ({ onCancelForm, product, onSubmit }: ProductServiceInfoFormProps) => {
@@ -23,7 +23,7 @@ const ProductServiceInfoForm = ({ onCancelForm, product, onSubmit }: ProductServ
 
 	const serviceInfoForm: FormikProps<ServiceInfoForm> = useFormik<ServiceInfoForm>({
 		enableReinitialize: true,
-		initialValues: { amount: product.amount, id: product.id, totalSold: product.totalSold },
+		initialValues: { amount: product.amount, totalSold: product.totalSold },
 		onSubmit: handleSubmitAddressInfoForm,
 		validateOnChange: true,
 		validationSchema: Yup.object(VALIDATION_SCHEMA),
@@ -48,11 +48,12 @@ const ProductServiceInfoForm = ({ onCancelForm, product, onSubmit }: ProductServ
 								size="small"
 								required={isFieldValueRequired}
 								fullWidth
+								type={"number"}
 								id={name}
 								label={label}
 								name={name}
 								autoComplete="auto"
-								disabled={name === "id"}
+								disabled={false}
 								value={serviceInfoForm.values[name]}
 								onChange={serviceInfoForm.handleChange}
 								onBlur={serviceInfoForm.handleBlur}

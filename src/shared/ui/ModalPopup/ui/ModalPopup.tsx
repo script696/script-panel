@@ -48,7 +48,7 @@ const ModalPopup = ({
 			<Box sx={gridModalPopupOpenTemplateStyles} display="flex" flexDirection="column">
 				<Box display="flex" justifyContent="flex-end" mb={1}>
 					<ButtonBase onClick={onCloseModalPopup}>
-						<HighlightOffIcon className="color_contrastText" />
+						<HighlightOffIcon className="color_secondary" />
 					</ButtonBase>
 				</Box>
 				{children}

@@ -18,7 +18,7 @@ const ProductsTable = () => {
 	}, []);
 
 	return (
-		<TableContainer component={Paper}>
+		<TableContainer component={Paper} sx={{ boxSizing: "border-box" }}>
 			<Table aria-label="simple table">
 				<TableHead>
 					<TableRow>

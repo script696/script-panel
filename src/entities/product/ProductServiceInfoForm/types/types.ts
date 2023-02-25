@@ -1,5 +1,4 @@
 export type ServiceInfoForm = {
-	id: number;
 	totalSold: number;
 	amount: number;
 };

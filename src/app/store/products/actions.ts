@@ -1,6 +1,10 @@
 import { ActionType } from "./actionTypes";
 import {
+	CreateProductPayload,
+	DeleteProductPayload,
+	SetDeletedProductPayload,
 	SetProductDescriptionPayload,
+	SetProductPayload,
 	SetProductPublicInfoPayload,
 	SetProductServiceInfoPayload,
 	SetProductsPayload,
@@ -12,6 +16,14 @@ import {
 /* Redux actions */
 export const setProducts = (payload: SetProductsPayload) => {
 	return { payload, type: ActionType.SET_PRODUCTS };
+};
+
+export const setProduct = (payload: SetProductPayload) => {
+	return { payload, type: ActionType.SET_PRODUCT };
+};
+
+export const setDeletedProduct = (payload: SetDeletedProductPayload) => {
+	return { payload, type: ActionType.SET_DELETED_PRODUCT };
 };
 
 export const setProductDescription = (payload: SetProductDescriptionPayload) => {
@@ -41,4 +53,12 @@ export const updateProductServiceInfo = (payload: UpdateProductServiceInfoPayloa
 
 export const updateProductPublicInfo = (payload: UpdateProductPublicInfoPayload) => {
 	return { payload, type: ActionType.UPDATE_PRODUCT_PUBLIC_INFO };
+};
+
+export const createProduct = (payload: CreateProductPayload) => {
+	return { payload, type: ActionType.CREATE_PRODUCT };
+};
+
+export const deleteProduct = (payload: DeleteProductPayload) => {
+	return { payload, type: ActionType.DELETE_PRODUCT };
 };

@@ -20,6 +20,8 @@ const USER_ENDPOINTS = {
 
 const PRODUCTS_ENDPOINTS = {
 	BASE: "product",
+	CREATE_PRODUCT: "create",
+	DELETE_PRODUCT: "delete",
 	GET_ALL: "getAll",
 	UPDATE_DESCRIPTION: "updateDescription",
 	UPDATE_PUBLIC_INFO: "updatePublicInfo",

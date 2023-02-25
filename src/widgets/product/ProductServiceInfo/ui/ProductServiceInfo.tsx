@@ -31,9 +31,10 @@ const ProductServiceInfo = ({ product }: ProductServiceInfoProps) => {
 	const handleSubmitAddressInfoForm = ({ amount, totalSold }: ServiceInfoForm) => {
 		dispatch(
 			updateProductServiceInfo({
-				amount: Number(amount),
+				amount,
 				id: product.id,
-				totalSold: Number(totalSold),
+				onCloseModal: onCloseServiceInfoModal,
+				totalSold,
 			}),
 		);
 	};

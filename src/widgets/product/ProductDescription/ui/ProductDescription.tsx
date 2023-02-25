@@ -13,7 +13,8 @@ import { ProductDescriptionInfoForm } from "entities/product/ProductDescriptionI
 import { useDispatch } from "react-redux";
 
 import { DescriptionInfoForm } from "../../../../entities/product/ProductDescriptionInfoForm/types/types";
-import { updateProductDescription } from "../../../../app/store/products/actions";
+import { deleteProduct, updateProductDescription } from "../../../../app/store/products/actions";
+import ConfirmDeleteModalContent from "../../../../shared/ui/ConfirmDeleteModalContent/ui/ConfirmDeleteModalContent";
 
 type ProductDescriptionProps = {
 	product: Product;
@@ -24,11 +25,23 @@ const ProductDescription = ({ product }: ProductDescriptionProps) => {
 	const {
 		handleCloseModal: onCloseDescriptionInfoModal,
 		handleOpenModal: onOpenDescriptionInfoModal,
-		isModalOpen: isModalSecurityOpen,
+		isModalOpen: isDescriptionInfoModalOpen,
+	} = useModal();
+
+	const {
+		handleCloseModal: onCloseDeleteConfirmModal,
+		handleOpenModal: onOpenDeleteConfirmModal,
+		isModalOpen: isDeleteConfirmOpen,
 	} = useModal();
 
 	const handleSubmitProductDescriptionForm = (values: DescriptionInfoForm) => {
-		dispatch(updateProductDescription({ ...values, id: product.id }));
+		dispatch(
+			updateProductDescription({ ...values, id: product.id, onCloseModal: onCloseDescriptionInfoModal }),
+		);
+	};
+
+	const handleDeleteProduct = () => {
+		dispatch(deleteProduct({ id: product.id }));
 	};
 
 	return (
@@ -38,7 +51,7 @@ const ProductDescription = ({ product }: ProductDescriptionProps) => {
 					<Typography component="span" variant="h3" alignSelf="start">
 						{product.title}
 					</Typography>
-					<Button sx={{ textTransform: "none" }}>
+					<Button sx={{ textTransform: "none" }} onClick={onOpenDeleteConfirmModal}>
 						<DeleteIcon sx={{ fontSize: "1.2rem" }} />
 					</Button>
 				</Box>
@@ -53,7 +66,7 @@ const ProductDescription = ({ product }: ProductDescriptionProps) => {
 			</Box>
 			<ModalPopup
 				onCloseModalPopup={onCloseDescriptionInfoModal}
-				isModalPopupOpen={isModalSecurityOpen}
+				isModalPopupOpen={isDescriptionInfoModalOpen}
 				width="auto"
 				height="auto"
 			>
@@ -61,6 +74,17 @@ const ProductDescription = ({ product }: ProductDescriptionProps) => {
 					onSubmit={handleSubmitProductDescriptionForm}
 					onCancelForm={onCloseDescriptionInfoModal}
 					product={product}
+				/>
+			</ModalPopup>
+			<ModalPopup
+				onCloseModalPopup={onCloseDeleteConfirmModal}
+				isModalPopupOpen={isDeleteConfirmOpen}
+				width="auto"
+				height="auto"
+			>
+				<ConfirmDeleteModalContent
+					onConfirmDelete={handleDeleteProduct}
+					onCloseModal={onCloseDeleteConfirmModal}
 				/>
 			</ModalPopup>
 		</>

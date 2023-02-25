@@ -28,12 +28,13 @@ const ProductPublicInfo = ({ product }: ProductPublicInfoProps) => {
 		isModalOpen: isModalSecurityOpen,
 	} = useModal();
 
-	const handleSubmitPublicInfoForm = (values: PublicInfoForm) => {
+	const handleSubmitPublicInfoForm = ({ discount, price }: PublicInfoForm) => {
 		dispatch(
 			updateProductPublicInfo({
-				discount: Number(values.discount),
+				discount,
 				id: product.id,
-				price: Number(values.price),
+				onCloseModal: onClosePublicInfoModal,
+				price,
 			}),
 		);
 	};

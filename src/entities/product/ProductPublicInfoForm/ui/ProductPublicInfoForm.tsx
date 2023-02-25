@@ -13,7 +13,7 @@ import { Product } from "../../../../app/store/products/types";
 
 type ProductPublicInfoFormProps = {
 	onCancelForm: () => void;
-	product: Product;
+	product: Pick<Product, "price" | "discount">;
 	onSubmit: (values: PublicInfoForm) => void;
 };
 const ProductPublicInfoForm = ({ onCancelForm, product, onSubmit }: ProductPublicInfoFormProps) => {
@@ -49,6 +49,7 @@ const ProductPublicInfoForm = ({ onCancelForm, product, onSubmit }: ProductPubli
 								required={isFieldValueRequired}
 								fullWidth
 								id={name}
+								type="number"
 								label={label}
 								name={name}
 								autoComplete="auto"

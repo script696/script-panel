@@ -9,7 +9,6 @@ const Footer = ({ classNames }: FooterProps) => {
 
 	return (
 		<Box
-			component="footer"
 			display="flex"
 			justifyContent="space-between"
 			px={4}
