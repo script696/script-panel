@@ -7,28 +7,20 @@ import { FormikProps, useFormik } from "formik";
 
 import * as Yup from "yup";
 
-import { useDispatch } from "react-redux";
-
 import { ServiceInfoForm } from "../types/types";
 import { SERVICE_INFO_FORM_FIELDS_DATA, VALIDATION_SCHEMA } from "../constants/constants";
 import { Product } from "../../../../app/store/products/types";
-import { updateProductServiceInfo } from "../../../../app/store/products/actions";
 
 type ProductServiceInfoFormProps = {
 	onCancelForm: () => void;
 	product: Product;
+	onSubmit: (values: ServiceInfoForm) => void;
 };
-const ProductServiceInfoForm = ({ onCancelForm, product }: ProductServiceInfoFormProps) => {
-	const dispatch = useDispatch();
-	const handleSubmitAddressInfoForm = ({ amount, totalSold }: ServiceInfoForm) => {
-		dispatch(
-			updateProductServiceInfo({
-				amount: Number(amount),
-				id: product.id,
-				totalSold: Number(totalSold),
-			}),
-		);
+const ProductServiceInfoForm = ({ onCancelForm, product, onSubmit }: ProductServiceInfoFormProps) => {
+	const handleSubmitAddressInfoForm = (values: ServiceInfoForm) => {
+		onSubmit(values);
 	};
+
 	const serviceInfoForm: FormikProps<ServiceInfoForm> = useFormik<ServiceInfoForm>({
 		enableReinitialize: true,
 		initialValues: { amount: product.amount, id: product.id, totalSold: product.totalSold },

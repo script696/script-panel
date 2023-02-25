@@ -11,17 +11,32 @@ import { Product } from "app/store/products/types";
 
 import { ModalPopup, useModal } from "shared/ui/ModalPopup";
 import { ProductPublicInfoForm } from "entities/product/ProductPublicInfoForm";
+import { useDispatch } from "react-redux";
+
+import { PublicInfoForm } from "../../../../entities/product/ProductPublicInfoForm/types/types";
+import { updateProductPublicInfo } from "../../../../app/store/products/actions";
 
 type ProductPublicInfoProps = {
 	product: Product;
 };
 
 const ProductPublicInfo = ({ product }: ProductPublicInfoProps) => {
+	const dispatch = useDispatch();
 	const {
 		handleCloseModal: onClosePublicInfoModal,
 		handleOpenModal: onOpenPublicInfoModal,
 		isModalOpen: isModalSecurityOpen,
 	} = useModal();
+
+	const handleSubmitPublicInfoForm = (values: PublicInfoForm) => {
+		dispatch(
+			updateProductPublicInfo({
+				discount: Number(values.discount),
+				id: product.id,
+				price: Number(values.price),
+			}),
+		);
+	};
 
 	const { price, discount } = product;
 	const serviceInfo = [
@@ -47,7 +62,11 @@ const ProductPublicInfo = ({ product }: ProductPublicInfoProps) => {
 				width="auto"
 				height="auto"
 			>
-				<ProductPublicInfoForm onCancelForm={onClosePublicInfoModal} product={product} />
+				<ProductPublicInfoForm
+					onCancelForm={onClosePublicInfoModal}
+					product={product}
+					onSubmit={handleSubmitPublicInfoForm}
+				/>
 			</ModalPopup>
 		</>
 	);

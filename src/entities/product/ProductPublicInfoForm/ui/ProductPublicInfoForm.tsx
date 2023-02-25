@@ -7,28 +7,18 @@ import { FormikProps, useFormik } from "formik";
 
 import * as Yup from "yup";
 
-import { useDispatch } from "react-redux";
-
 import { PublicInfoForm } from "../types/types";
 import { PUBLIC_INFO_FORM_FIELDS_DATA, VALIDATION_SCHEMA } from "../constants/constants";
-import { updateProductPublicInfo } from "../../../../app/store/products/actions";
 import { Product } from "../../../../app/store/products/types";
 
 type ProductPublicInfoFormProps = {
 	onCancelForm: () => void;
 	product: Product;
+	onSubmit: (values: PublicInfoForm) => void;
 };
-const ProductPublicInfoForm = ({ onCancelForm, product }: ProductPublicInfoFormProps) => {
-	const dispatch = useDispatch();
-
-	const handleSubmitPublicInfoForm = ({ price, discount }: PublicInfoForm) => {
-		dispatch(
-			updateProductPublicInfo({
-				discount: Number(discount),
-				id: product.id,
-				price: Number(price),
-			}),
-		);
+const ProductPublicInfoForm = ({ onCancelForm, product, onSubmit }: ProductPublicInfoFormProps) => {
+	const handleSubmitPublicInfoForm = (values: PublicInfoForm) => {
+		onSubmit(values);
 	};
 
 	const publicInfoForm: FormikProps<PublicInfoForm> = useFormik<PublicInfoForm>({

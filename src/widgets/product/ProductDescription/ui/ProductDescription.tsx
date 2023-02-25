@@ -10,17 +10,26 @@ import { Product } from "app/store/products/types";
 
 import { ModalPopup, useModal } from "shared/ui/ModalPopup";
 import { ProductDescriptionInfoForm } from "entities/product/ProductDescriptionInfoForm";
+import { useDispatch } from "react-redux";
+
+import { DescriptionInfoForm } from "../../../../entities/product/ProductDescriptionInfoForm/types/types";
+import { updateProductDescription } from "../../../../app/store/products/actions";
 
 type ProductDescriptionProps = {
 	product: Product;
 };
 
 const ProductDescription = ({ product }: ProductDescriptionProps) => {
+	const dispatch = useDispatch();
 	const {
 		handleCloseModal: onCloseDescriptionInfoModal,
 		handleOpenModal: onOpenDescriptionInfoModal,
 		isModalOpen: isModalSecurityOpen,
 	} = useModal();
+
+	const handleSubmitProductDescriptionForm = (values: DescriptionInfoForm) => {
+		dispatch(updateProductDescription({ ...values, id: product.id }));
+	};
 
 	return (
 		<>
@@ -48,7 +57,11 @@ const ProductDescription = ({ product }: ProductDescriptionProps) => {
 				width="auto"
 				height="auto"
 			>
-				<ProductDescriptionInfoForm onCancelForm={onCloseDescriptionInfoModal} product={product} />
+				<ProductDescriptionInfoForm
+					onSubmit={handleSubmitProductDescriptionForm}
+					onCancelForm={onCloseDescriptionInfoModal}
+					product={product}
+				/>
 			</ModalPopup>
 		</>
 	);

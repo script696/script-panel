@@ -29,7 +29,7 @@ class Product {
 	}
 
 	static fetchUpdateProductPublicInfo(data: UpdatePublicInfoDto): Promise<UpdateProductPublicInfoResponse> {
-		return $api.put(`${PRODUCTS_ENDPOINTS.BASE}/${PRODUCTS_ENDPOINTS.UPDATE_SERVICE_INFO}`, data);
+		return $api.put(`${PRODUCTS_ENDPOINTS.BASE}/${PRODUCTS_ENDPOINTS.UPDATE_PUBLIC_INFO}`, data);
 	}
 }
 

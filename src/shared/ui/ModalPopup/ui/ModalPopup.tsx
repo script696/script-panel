@@ -30,6 +30,7 @@ const ModalPopup = ({
 		maxHeight: "90vh",
 		maxWidth: "800px",
 		minHeight: "50vh",
+		minWidth: "60vh",
 		padding: "15px",
 		position: "absolute",
 		top: "50%",

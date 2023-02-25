@@ -11,7 +11,7 @@ import React from "react";
 
 import { PROTECTED_ROUTES } from "shared/lib/constants/routes";
 
-import { useAppSelector } from "../../shared/lib/hooks";
+import { useAppSelector } from "shared/lib/hooks";
 
 import type { Product as ProductType } from "app/store/products/types";
 

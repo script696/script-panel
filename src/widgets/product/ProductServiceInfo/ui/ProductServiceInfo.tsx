@@ -11,17 +11,32 @@ import { Product } from "app/store/products/types";
 
 import { ModalPopup, useModal } from "shared/ui/ModalPopup";
 import { ProductServiceInfoForm } from "entities/product/ProductServiceInfoForm";
+import { useDispatch } from "react-redux";
+
+import { ServiceInfoForm } from "../../../../entities/product/ProductServiceInfoForm/types/types";
+import { updateProductServiceInfo } from "../../../../app/store/products/actions";
 
 type ProductServiceInfoProps = {
 	product: Product;
 };
 
 const ProductServiceInfo = ({ product }: ProductServiceInfoProps) => {
+	const dispatch = useDispatch();
 	const {
 		handleCloseModal: onCloseServiceInfoModal,
 		handleOpenModal: onOpenServiceInfoModal,
 		isModalOpen: isModalSecurityOpen,
 	} = useModal();
+
+	const handleSubmitAddressInfoForm = ({ amount, totalSold }: ServiceInfoForm) => {
+		dispatch(
+			updateProductServiceInfo({
+				amount: Number(amount),
+				id: product.id,
+				totalSold: Number(totalSold),
+			}),
+		);
+	};
 
 	const serviceInfo = [
 		{ text: product.id, title: "Id" },
@@ -47,7 +62,11 @@ const ProductServiceInfo = ({ product }: ProductServiceInfoProps) => {
 				width="auto"
 				height="auto"
 			>
-				<ProductServiceInfoForm onCancelForm={onCloseServiceInfoModal} product={product} />
+				<ProductServiceInfoForm
+					onCancelForm={onCloseServiceInfoModal}
+					product={product}
+					onSubmit={handleSubmitAddressInfoForm}
+				/>
 			</ModalPopup>
 		</>
 	);
