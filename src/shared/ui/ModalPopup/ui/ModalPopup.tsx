@@ -25,10 +25,11 @@ const ModalPopup = ({
 		border: "3px solid #78909C",
 		borderRadius: "10px",
 		boxSizing: "border-box",
-		height: height,
+		height: "20rem",
 		left: "50%",
 		maxHeight: "90vh",
 		maxWidth: "800px",
+		minHeight: "50vh",
 		padding: "15px",
 		position: "absolute",
 		top: "50%",
@@ -44,7 +45,7 @@ const ModalPopup = ({
 			aria-describedby="modal-modal-description"
 		>
 			<Box sx={gridModalPopupOpenTemplateStyles} display="flex" flexDirection="column">
-				<Box display="flex" justifyContent="flex-end">
+				<Box display="flex" justifyContent="flex-end" mb={1}>
 					<ButtonBase onClick={onCloseModalPopup}>
 						<HighlightOffIcon className="color_contrastText" />
 					</ButtonBase>

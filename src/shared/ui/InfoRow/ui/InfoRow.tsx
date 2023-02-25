@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 
 type InfoRowProps = {
 	title: string;
-	text: string;
+	text: string | number;
 };
 
 const InfoRow = ({ title, text }: InfoRowProps) => {

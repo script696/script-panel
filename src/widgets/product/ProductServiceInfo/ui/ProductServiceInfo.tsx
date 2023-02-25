@@ -7,26 +7,51 @@ import { EditButton } from "shared/ui/EditButton";
 
 import { InfoRow } from "shared/ui/InfoRow";
 
-const serviceInfo = [
-	{ text: "nickName", title: "Nickname" },
-	{ text: "Full Name", title: "Full Name" },
-	{ text: "Date of Birth", title: "Date of Birth" },
-	{ text: "Phone Number", title: "Phone Number" },
-];
+import { Product } from "app/store/products/types";
 
-const ProductServiceInfo = () => {
-	const onTurnOnEditMode = () => {};
+import { ModalPopup, useModal } from "shared/ui/ModalPopup";
+import { ProductServiceInfoForm } from "entities/product/ProductServiceInfoForm";
+
+type ProductServiceInfoProps = {
+	data: Product;
+};
+
+const ProductServiceInfo = ({ data }: ProductServiceInfoProps) => {
+	const {
+		handleCloseModal: onCloseServiceInfoModal,
+		handleOpenModal: onOpenServiceInfoModal,
+		isModalOpen: isModalSecurityOpen,
+	} = useModal();
+
+	const { id, totalSold, amount } = data;
+
+	const serviceInfo = [
+		{ text: id, title: "Id" },
+		{ text: totalSold, title: "Total Sold" },
+		{ text: amount, title: "Amount On Warehouse" },
+	];
+
 	return (
-		<Box component="section" p={3}>
-			<Box mb={1}>
-				<PanelTitleBox title="Service Info">
-					<EditButton onClick={onTurnOnEditMode} />
-				</PanelTitleBox>
+		<>
+			<Box component="section" p={3}>
+				<Box mb={1}>
+					<PanelTitleBox title="Service Info">
+						<EditButton onClick={onOpenServiceInfoModal} />
+					</PanelTitleBox>
+				</Box>
+				{serviceInfo.map(({ title, text }) => {
+					return <InfoRow key={title} title={title} text={text || "-"} />;
+				})}
 			</Box>
-			{serviceInfo.map(({ title, text }) => {
-				return <InfoRow key={title} title={title} text={text || "-"} />;
-			})}
-		</Box>
+			<ModalPopup
+				onCloseModalPopup={onCloseServiceInfoModal}
+				isModalPopupOpen={isModalSecurityOpen}
+				width="auto"
+				height="auto"
+			>
+				<ProductServiceInfoForm onCancelForm={onCloseServiceInfoModal} />
+			</ModalPopup>
+		</>
 	);
 };
 

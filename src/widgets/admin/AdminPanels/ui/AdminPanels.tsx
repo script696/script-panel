@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import React from "react";
 
 import TabPanelUnstyled from "@mui/base/TabPanelUnstyled";
@@ -25,7 +24,7 @@ const AdminPanels = () => {
 	} = useModal();
 
 	return (
-		<Box>
+		<>
 			<TabPanelUnstyled value={0}>
 				<AdminMainInfoPanel onTurnOnEditMode={onOpenModalInfo} />
 			</TabPanelUnstyled>
@@ -53,7 +52,7 @@ const AdminPanels = () => {
 			>
 				<AdminSecurityForm onCancelForm={onCloseModalSecurity} />
 			</ModalPopup>
-		</Box>
+		</>
 	);
 };
 

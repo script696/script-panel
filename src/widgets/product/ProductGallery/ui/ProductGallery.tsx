@@ -38,8 +38,8 @@ const ProductGallery = () => {
 			sx={{ "&:hover .button_left": { left: "0" }, "&:hover .button_right": { right: "0" } }}
 		>
 			<Swiper style={{ height: "100%" }} grabCursor>
-				{GALLERY_DATA_MOCK.map(({ url }) => (
-					<SwiperSlide>
+				{GALLERY_DATA_MOCK.map(({ url }, index) => (
+					<SwiperSlide key={index}>
 						<Box display="flex" justifyContent={"center"} alignItems="center" sx={{ height: "100%" }}>
 							<Avatar src={url} variant={"square"} sx={{ height: "100%", width: "100%" }} />
 						</Box>
