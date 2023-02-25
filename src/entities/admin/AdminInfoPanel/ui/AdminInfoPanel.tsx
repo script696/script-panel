@@ -5,9 +5,11 @@ import React from "react";
 
 import { useAppSelector } from "shared/lib/hooks";
 
-import { PanelTitleBox } from "./components/PanelTitleBox";
-import { EditButton } from "./components/EditButton";
-import { ProfileInfoRow } from "./components/ProfileInfoRow";
+import { PanelTitleBox } from "shared/ui/PanelTitleBox";
+
+import { EditButton } from "shared/ui/EditButton";
+
+import { InfoRow } from "shared/ui/InfoRow";
 
 type ProfileInfoProps = {
 	onTurnOnEditMode: () => void;
@@ -45,11 +47,11 @@ const AdminInfoPanel = ({ onTurnOnEditMode }: ProfileInfoProps) => {
 				<EditButton onClick={onTurnOnEditMode} />
 			</PanelTitleBox>
 			{profileBaseData.map(({ title, text }) => {
-				return <ProfileInfoRow key={title} title={title} text={text || "-"} />;
+				return <InfoRow key={title} title={title} text={text || "-"} />;
 			})}
 			<PanelTitleBox title="Address" />
 			{profileAddressData.map(({ title, text }) => {
-				return <ProfileInfoRow key={title} title={title} text={text || "-"} />;
+				return <InfoRow key={title} title={title} text={text || "-"} />;
 			})}
 		</Box>
 	);

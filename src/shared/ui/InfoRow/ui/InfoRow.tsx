@@ -1,12 +1,12 @@
 import { Box, Divider } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
-type ProfileInfoRowProps = {
+type InfoRowProps = {
 	title: string;
 	text: string;
 };
 
-export const ProfileInfoRow = ({ title, text }: ProfileInfoRowProps) => {
+const InfoRow = ({ title, text }: InfoRowProps) => {
 	return (
 		<Box sx={{ width: "100%" }}>
 			<Box display="flex" justifyContent="space-between" alignItems="center" py={1.5} px={2}>
@@ -21,3 +21,4 @@ export const ProfileInfoRow = ({ title, text }: ProfileInfoRowProps) => {
 		</Box>
 	);
 };
+export default InfoRow;

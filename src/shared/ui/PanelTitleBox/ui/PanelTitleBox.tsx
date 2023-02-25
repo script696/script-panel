@@ -8,7 +8,7 @@ type PanelEditRowProps = {
 	children?: ReactNode;
 };
 
-export const PanelTitleBox = ({ title, children }: PanelEditRowProps) => {
+const PanelTitleBox = ({ title, children }: PanelEditRowProps) => {
 	return (
 		<Box
 			display="flex"
@@ -27,3 +27,4 @@ export const PanelTitleBox = ({ title, children }: PanelEditRowProps) => {
 		</Box>
 	);
 };
+export default PanelTitleBox;
