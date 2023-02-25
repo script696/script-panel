@@ -13,22 +13,20 @@ import { ModalPopup, useModal } from "shared/ui/ModalPopup";
 import { ProductServiceInfoForm } from "entities/product/ProductServiceInfoForm";
 
 type ProductServiceInfoProps = {
-	data: Product;
+	product: Product;
 };
 
-const ProductServiceInfo = ({ data }: ProductServiceInfoProps) => {
+const ProductServiceInfo = ({ product }: ProductServiceInfoProps) => {
 	const {
 		handleCloseModal: onCloseServiceInfoModal,
 		handleOpenModal: onOpenServiceInfoModal,
 		isModalOpen: isModalSecurityOpen,
 	} = useModal();
 
-	const { id, totalSold, amount } = data;
-
 	const serviceInfo = [
-		{ text: id, title: "Id" },
-		{ text: totalSold, title: "Total Sold" },
-		{ text: amount, title: "Amount On Warehouse" },
+		{ text: product.id, title: "Id" },
+		{ text: product.totalSold, title: "Total Sold" },
+		{ text: product.amount, title: "Amount On Warehouse" },
 	];
 
 	return (
@@ -49,7 +47,7 @@ const ProductServiceInfo = ({ data }: ProductServiceInfoProps) => {
 				width="auto"
 				height="auto"
 			>
-				<ProductServiceInfoForm onCancelForm={onCloseServiceInfoModal} />
+				<ProductServiceInfoForm onCancelForm={onCloseServiceInfoModal} product={product} />
 			</ModalPopup>
 		</>
 	);

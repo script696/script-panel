@@ -21,6 +21,9 @@ const USER_ENDPOINTS = {
 const PRODUCTS_ENDPOINTS = {
 	BASE: "product",
 	GET_ALL: "getAll",
+	UPDATE_DESCRIPTION: "updateDescription",
+	UPDATE_PUBLIC_INFO: "updateServiceInfo",
+	UPDATE_SERVICE_INFO: "updatePublicInfo",
 };
 
 export { BASE_URL, AUTH_ENDPOINTS, USER_ENDPOINTS, PRODUCTS_ENDPOINTS };

@@ -12,10 +12,10 @@ import { ModalPopup, useModal } from "shared/ui/ModalPopup";
 import { ProductDescriptionInfoForm } from "entities/product/ProductDescriptionInfoForm";
 
 type ProductDescriptionProps = {
-	data: Product;
+	product: Product;
 };
 
-const ProductDescription = ({ data: { title, description } }: ProductDescriptionProps) => {
+const ProductDescription = ({ product }: ProductDescriptionProps) => {
 	const {
 		handleCloseModal: onCloseDescriptionInfoModal,
 		handleOpenModal: onOpenDescriptionInfoModal,
@@ -27,7 +27,7 @@ const ProductDescription = ({ data: { title, description } }: ProductDescription
 			<Box component="section" p={3}>
 				<Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
 					<Typography component="span" variant="h3" alignSelf="start">
-						{title}
+						{product.title}
 					</Typography>
 					<Button sx={{ textTransform: "none" }}>
 						<DeleteIcon sx={{ fontSize: "1.2rem" }} />
@@ -39,7 +39,7 @@ const ProductDescription = ({ data: { title, description } }: ProductDescription
 					</PanelTitleBox>
 				</Box>
 				<Typography component="p" variant="body1" maxWidth={"70%"}>
-					{description}
+					{product.description}
 				</Typography>
 			</Box>
 			<ModalPopup
@@ -48,7 +48,7 @@ const ProductDescription = ({ data: { title, description } }: ProductDescription
 				width="auto"
 				height="auto"
 			>
-				<ProductDescriptionInfoForm onCancelForm={onCloseDescriptionInfoModal} />
+				<ProductDescriptionInfoForm onCancelForm={onCloseDescriptionInfoModal} product={product} />
 			</ModalPopup>
 		</>
 	);

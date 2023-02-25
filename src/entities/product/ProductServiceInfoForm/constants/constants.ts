@@ -3,8 +3,8 @@ import { VALIDATORS } from "shared/lib/constants/validators";
 import { ServiceInfoField } from "../types/types";
 
 export const VALIDATION_SCHEMA = {
-	amount: VALIDATORS.addressLine,
-	totalSold: VALIDATORS.addressLine,
+	amount: VALIDATORS.amount,
+	totalSold: VALIDATORS.totalSold,
 };
 
 export const SERVICE_INFO_FORM_FIELDS_DATA: Array<ServiceInfoField> = [

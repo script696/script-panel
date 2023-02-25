@@ -1,6 +1,6 @@
 export type PublicInfoForm = {
-	price: string;
-	discount: string;
+	price: number;
+	discount: number;
 };
 
 export type PublicInfoField = {

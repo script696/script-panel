@@ -11,12 +11,16 @@ import React from "react";
 
 import { PROTECTED_ROUTES } from "shared/lib/constants/routes";
 
+import { useAppSelector } from "../../shared/lib/hooks";
+
 import type { Product as ProductType } from "app/store/products/types";
 
 const Product = () => {
 	const { state }: { state: ProductType } = useLocation();
+	const { products } = useAppSelector((state) => state.ProductsReducer);
+	const product = products.find((product) => product.id === state.id);
 
-	if (!state?.id) {
+	if (!state?.id || !product) {
 		return <Navigate to={PROTECTED_ROUTES.PRODUCTS} replace />;
 	}
 
@@ -33,17 +37,17 @@ const Product = () => {
 			</Grid>
 			<Grid item xs={8}>
 				<Grid className="grid_dark grid_style_box-shadow grid_style_bordered" height={"18rem"}>
-					<ProductDescription data={state} />
+					<ProductDescription product={product} />
 				</Grid>
 			</Grid>
 			<Grid item xs={6}>
 				<Grid className="grid_dark grid_style_box-shadow grid_style_bordered" minHeight="100%">
-					<ProductServiceInfo data={state} />
+					<ProductServiceInfo product={product} />
 				</Grid>
 			</Grid>
 			<Grid item xs={6}>
 				<Grid className="grid_dark grid_style_box-shadow grid_style_bordered" minHeight="100%">
-					<ProductPublicInfo data={state} />
+					<ProductPublicInfo product={product} />
 				</Grid>
 			</Grid>
 		</Grid>

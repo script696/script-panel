@@ -9,22 +9,21 @@ import { InfoRow } from "shared/ui/InfoRow";
 
 import { Product } from "app/store/products/types";
 
-import { ModalPopup, useModal } from "../../../../shared/ui/ModalPopup";
-import { ProductPublicInfoForm } from "../../../../entities/product/ProductPublicInfoForm";
+import { ModalPopup, useModal } from "shared/ui/ModalPopup";
+import { ProductPublicInfoForm } from "entities/product/ProductPublicInfoForm";
 
 type ProductPublicInfoProps = {
-	data: Product;
+	product: Product;
 };
 
-const ProductPublicInfo = ({ data }: ProductPublicInfoProps) => {
+const ProductPublicInfo = ({ product }: ProductPublicInfoProps) => {
 	const {
 		handleCloseModal: onClosePublicInfoModal,
 		handleOpenModal: onOpenPublicInfoModal,
 		isModalOpen: isModalSecurityOpen,
 	} = useModal();
 
-	const { price, discount } = data;
-
+	const { price, discount } = product;
 	const serviceInfo = [
 		{ text: price, title: "Price" },
 		{ text: discount, title: "Discount" },
@@ -48,7 +47,7 @@ const ProductPublicInfo = ({ data }: ProductPublicInfoProps) => {
 				width="auto"
 				height="auto"
 			>
-				<ProductPublicInfoForm onCancelForm={onClosePublicInfoModal} />
+				<ProductPublicInfoForm onCancelForm={onClosePublicInfoModal} product={product} />
 			</ModalPopup>
 		</>
 	);

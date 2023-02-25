@@ -7,19 +7,27 @@ import { FormikProps, useFormik } from "formik";
 
 import * as Yup from "yup";
 
+import { useDispatch } from "react-redux";
+
 import { DescriptionInfoForm } from "../types/types";
 import { DESCRIPTION_INFO_FORM_FIELDS_DATA, VALIDATION_SCHEMA } from "../constants/constants";
+import { updateProductDescription } from "../../../../app/store/products/actions";
 
+type Product = { title: string; description: string; id: number };
 type ProductDescriptionInfoFormProps = {
 	onCancelForm: () => void;
+	product: Product;
 };
-const ProductDescriptionInfoForm = ({ onCancelForm }: ProductDescriptionInfoFormProps) => {
-	const handleSubmitAddressInfoForm = () => {};
+const ProductDescriptionInfoForm = ({ onCancelForm, product }: ProductDescriptionInfoFormProps) => {
+	const dispatch = useDispatch();
+	const handleSubmitProductDescriptionForm = (values: DescriptionInfoForm) => {
+		dispatch(updateProductDescription({ ...values, id: product.id }));
+	};
 
 	const descriptionInfoForm: FormikProps<DescriptionInfoForm> = useFormik<DescriptionInfoForm>({
 		enableReinitialize: true,
-		initialValues: { description: "", title: "" },
-		onSubmit: handleSubmitAddressInfoForm,
+		initialValues: { description: product.description, title: product.title },
+		onSubmit: handleSubmitProductDescriptionForm,
 		validateOnChange: true,
 		validationSchema: Yup.object(VALIDATION_SCHEMA),
 	});
