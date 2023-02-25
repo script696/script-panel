@@ -1,5 +1,6 @@
 export enum PROTECTED_ROUTES {
 	PRODUCTS = "/products",
+	PRODUCT = "/products/:productId",
 	USERS = "/users",
 	PROFILE = "/profile",
 	PROJECTS = "/projects",
