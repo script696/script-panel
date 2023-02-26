@@ -5,7 +5,7 @@ import { ProductsTopRow } from "widgets/products/ProductsTopRow";
 import React from "react";
 
 import { ModalPopup, useModal } from "../../shared/ui/ModalPopup";
-import ProductCreateFormController from "../../widgets/ProductCreateFormController/ui/ProductCreateFormController";
+import ProductCreateFormController from "../../widgets/product/ProductCreateFormController/ui/ProductCreateFormController";
 import { ProductsTable } from "../../widgets/products/ProductsTable";
 
 const Products = () => {

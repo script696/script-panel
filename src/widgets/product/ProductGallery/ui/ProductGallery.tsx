@@ -35,9 +35,13 @@ const ProductGallery = () => {
 		<Box
 			height="100%"
 			position="relative"
-			sx={{ "&:hover .button_left": { left: "0" }, "&:hover .button_right": { right: "0" } }}
+			sx={{
+				"&:hover .button_center": { opacity: "1" },
+				"&:hover .button_left": { left: "0" },
+				"&:hover .button_right": { right: "0" },
+			}}
 		>
-			<Swiper style={{ height: "100%" }} grabCursor>
+			<Swiper style={{ height: "100%" }} grabCursor onSwiper={(swiper) => console.log(swiper)}>
 				{GALLERY_DATA_MOCK.map(({ url }, index) => (
 					<SwiperSlide key={index}>
 						<Box display="flex" justifyContent={"center"} alignItems="center" sx={{ height: "100%" }}>

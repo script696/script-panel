@@ -8,8 +8,8 @@ import { useDispatch } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 
-import { createProduct } from "../../../app/store/products/actions";
-import { Product } from "../../../app/store/products/types";
+import { createProduct } from "../../../../app/store/products/actions";
+import { Product } from "../../../../app/store/products/types";
 
 const productDescription = { description: "", title: "" };
 const productServiceInfo = { amount: 0, totalSold: 0 };
