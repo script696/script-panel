@@ -1,9 +1,9 @@
 import { Box, Button, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
 
-import { PUBLIC_ROUTES } from "shared/lib/constants/routes";
-
-const ProductsTopRow = () => {
+type ProductsTopRowProps = {
+	onCreateNewProduct: () => void;
+};
+const ProductsTopRow = ({ onCreateNewProduct }: ProductsTopRowProps) => {
 	return (
 		<Box
 			mb={2}
@@ -15,19 +15,14 @@ const ProductsTopRow = () => {
 			sx={{ boxSizing: "border-box" }}
 		>
 			<Box>
-				<Typography component="h2" variant="h3" mb={1}>
+				<Typography className="color_contrastText" component="h2" variant="h3" mb={1}>
 					Products
 				</Typography>
-				<Typography component="span" variant="body1">
+				<Typography className="color_contrastText" component="span" variant="body1">
 					Control your items
 				</Typography>
 			</Box>
-			<Button
-				component={Link}
-				to={PUBLIC_ROUTES.SIGNUP}
-				className="button_login"
-				sx={{ padding: "10px", textTransform: "none" }}
-			>
+			<Button sx={{ padding: "10px", textTransform: "none" }} onClick={onCreateNewProduct}>
 				Create New Product
 			</Button>
 		</Box>

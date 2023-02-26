@@ -83,7 +83,7 @@ const createThemeComponents = (theme: Theme) => ({
 				"&.grid_test": {
 					boxShadow: "0px 0px 15px -1px rgba(34, 60, 80, 0.34)",
 				},
-				width: "100%",
+				// width: "100%",
 			},
 		},
 	},

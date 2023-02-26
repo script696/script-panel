@@ -7,7 +7,7 @@ type EditButtonProps = {
 	onClick: () => void;
 };
 
-export const EditButton = ({ onClick }: EditButtonProps) => {
+const EditButton = ({ onClick }: EditButtonProps) => {
 	return (
 		<Button className="button_styles_none" onClick={onClick}>
 			<Typography component="span" variant="subtitle1" mr={0.5} className="color_secondary">
@@ -17,3 +17,4 @@ export const EditButton = ({ onClick }: EditButtonProps) => {
 		</Button>
 	);
 };
+export default EditButton;

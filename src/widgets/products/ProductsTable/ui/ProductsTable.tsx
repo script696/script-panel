@@ -5,6 +5,9 @@ import { useEffect } from "react";
 
 import { useAppSelector } from "shared/lib/hooks";
 import { getAllProducts } from "app/store/products/actions";
+import { Link } from "react-router-dom";
+
+import { PROTECTED_ROUTES } from "../../../../shared/lib/constants/routes";
 
 const ProductsTable = () => {
 	const dispatch = useDispatch();
@@ -15,7 +18,7 @@ const ProductsTable = () => {
 	}, []);
 
 	return (
-		<TableContainer component={Paper}>
+		<TableContainer component={Paper} sx={{ boxSizing: "border-box" }}>
 			<Table aria-label="simple table">
 				<TableHead>
 					<TableRow>
@@ -27,15 +30,26 @@ const ProductsTable = () => {
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{products?.map(({ id, title, amount, discount, totalSold, price }) => (
-						<TableRow key={id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-							<TableCell align="left">{title}</TableCell>
-							<TableCell align="center">{price}</TableCell>
-							<TableCell align="center">{discount}</TableCell>
-							<TableCell align="center">{amount}</TableCell>
-							<TableCell align="center">{totalSold}</TableCell>
-						</TableRow>
-					))}
+					{products?.map((product) => {
+						const { id, title, price, discount, amount, totalSold } = product;
+						return (
+							<TableRow key={id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+								<TableCell align="left">
+									<Link
+										to={`${PROTECTED_ROUTES.PRODUCTS}/${id}`}
+										state={product}
+										style={{ color: "inherit" }}
+									>
+										{title}
+									</Link>
+								</TableCell>
+								<TableCell align="center">{price}</TableCell>
+								<TableCell align="center">{discount}</TableCell>
+								<TableCell align="center">{amount}</TableCell>
+								<TableCell align="center">{totalSold}</TableCell>
+							</TableRow>
+						);
+					})}
 				</TableBody>
 			</Table>
 		</TableContainer>

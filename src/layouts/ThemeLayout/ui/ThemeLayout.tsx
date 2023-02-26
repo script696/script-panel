@@ -20,10 +20,11 @@ const ThemeLayout = ({ children }: { children: ReactNode }) => {
 					body: {
 						backgroundColor: theme.palette.primary.main,
 						margin: "0",
+						maxWidth: "100vw",
+						overflow: "hidden",
 					},
 					html: {
 						fontSize: "16px",
-						// overflow: "hidden",
 						[theme.breakpoints.down("xs")]: {
 							fontSize: "12px",
 						},

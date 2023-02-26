@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { PROTECTED_ROUTES, PUBLIC_ROUTES } from "./shared/lib/constants/routes";
-import { Admin, Home, Login, PageNotFound, Projects, Registration } from "./pages";
+import { Admin, Login, PageNotFound, Product, Products, Projects, Registration } from "./pages";
 import Users from "./pages/Users/Users";
 import ProtectedRouter from "./shared/ui/ProtectedRouter/ProtectedRouter";
 import AuthRouter from "./shared/ui/AuthRouter/AuthRouter";
@@ -20,7 +20,8 @@ const App = () => {
 		<>
 			<Routes>
 				<Route element={<ProtectedRouter route={PUBLIC_ROUTES.SIGNIN} />}>
-					<Route path={PROTECTED_ROUTES.PRODUCTS} element={<Home />} />
+					<Route path={PROTECTED_ROUTES.PRODUCT} element={<Product />} />
+					<Route path={PROTECTED_ROUTES.PRODUCTS} element={<Products />} />
 					<Route path={PROTECTED_ROUTES.USERS} element={<Users />} />
 					<Route path={PROTECTED_ROUTES.PROJECTS} element={<Projects />} />
 					<Route path={PROTECTED_ROUTES.PROFILE} element={<Admin />} />

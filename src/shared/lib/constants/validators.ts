@@ -8,9 +8,11 @@ export const SUPPORTED_PICTURE_FORMATS = ["jpeg"];
 
 export const VALIDATORS = {
 	addressLine: Yup.string().min(3).max(30),
+	amount: Yup.number(),
 	apartment: Yup.string().min(3).max(30),
 	city: Yup.string().min(3).max(30),
 	country: Yup.string().min(3).max(30),
+	discount: Yup.number().min(0).max(100),
 	email: Yup.string().email().required(),
 	fullName: Yup.string().min(4).max(10),
 	newPasswordPassword: Yup.string().when("newPassword", {
@@ -24,4 +26,10 @@ export const VALIDATORS = {
 		then: Yup.string().oneOf([Yup.ref("password")], "Both password need to be the same"),
 	}),
 	phoneNumber: Yup.string().min(7).max(15),
+	price: Yup.number(),
+	productDescription: Yup.string(),
+	productDiscount: Yup.number().min(3).max(30),
+	productPrice: Yup.number(),
+	productTitle: Yup.string(),
+	totalSold: Yup.number(),
 };

@@ -3,6 +3,7 @@ import { ColorMode } from "./types";
 
 const initialState = {
 	colorMode: (localStorage.getItem("dashboardTheme") as ColorMode) ?? "dark",
+	hasHeaderBackButton: false,
 	isSettingsSidebarOpen: false,
 };
 
