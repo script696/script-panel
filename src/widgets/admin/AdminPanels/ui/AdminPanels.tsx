@@ -2,7 +2,7 @@ import React from "react";
 
 import TabPanelUnstyled from "@mui/base/TabPanelUnstyled";
 
-import { ModalPopup, useModal } from "shared/ui/ModalPopup";
+import { ModalPopup, useModal } from "shared/ui/Modal/ModalBase";
 
 import { AdminSecurityForm } from "entities/admin/AdminSecurityForm";
 import { AdminSecurityPanel } from "entities/admin/AdminSecurityPanel";

@@ -1,5 +1,3 @@
-const BASE_URL = process.env.REACT_APP_BASE_URL;
-
 const AUTH_ENDPOINTS = {
 	BASE: "auth",
 	CHANGE_PASSWORD: "changePassword",
@@ -19,13 +17,15 @@ const USER_ENDPOINTS = {
 };
 
 const PRODUCTS_ENDPOINTS = {
+	ADD_PICTURE: "addPicture",
 	BASE: "product",
 	CREATE_PRODUCT: "create",
-	DELETE_PRODUCT: "delete",
+	DELETE_PRODUCT: "deleteProduct",
 	GET_ALL: "getAll",
+	REMOVE_PICTURE: "removeProductPicture",
 	UPDATE_DESCRIPTION: "updateDescription",
 	UPDATE_PUBLIC_INFO: "updatePublicInfo",
 	UPDATE_SERVICE_INFO: "updateServiceInfo",
 };
 
-export { BASE_URL, AUTH_ENDPOINTS, USER_ENDPOINTS, PRODUCTS_ENDPOINTS };
+export { AUTH_ENDPOINTS, USER_ENDPOINTS, PRODUCTS_ENDPOINTS };

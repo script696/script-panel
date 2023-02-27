@@ -1,7 +1,5 @@
 import defaultAvatar3 from "../../assets/img/avatars/defaultAvatar3.png";
 
-import { BASE_URL } from "../../../shared/api/constants/api_endpoints";
-
 import { Actions, ActionType } from "./actionTypes";
 import { Admin } from "./types";
 
@@ -41,7 +39,7 @@ const AdminReducer = (state = initialState, action: Actions) => {
 		case ActionType.SET_AVATAR:
 			state = {
 				...state,
-				avatarUrl: `${BASE_URL}/${action.payload.avatarUrl}`,
+				avatarUrl: `${process.env.REACT_APP_API_URL}/${action.payload.avatarUrl}`,
 			};
 			break;
 		case ActionType.SET_BASIC_INFO:

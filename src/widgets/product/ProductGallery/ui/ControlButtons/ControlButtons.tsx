@@ -1,12 +1,14 @@
 import { Box, Button, Grid } from "@mui/material";
 import ForwardIcon from "@mui/icons-material/Forward";
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { useSwiper } from "swiper/react";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 
-const ControlButtons = () => {
+type ControlButtonsProps = {
+	onAddPictureToGallery: (e: ChangeEvent<HTMLInputElement>) => void;
+};
+const ControlButtons = ({ onAddPictureToGallery }: ControlButtonsProps) => {
 	const swiper = useSwiper();
-
 	const goNextSlide = () => {
 		swiper.slideNext();
 	};
@@ -28,7 +30,11 @@ const ControlButtons = () => {
 		>
 			<Button
 				className="button_styles_none button_left"
-				sx={{ left: "-100%", position: "relative", transition: "0.4s" }}
+				sx={{
+					left: "-100%",
+					position: "relative",
+					transition: "0.4s",
+				}}
 				onClick={goPrevSlide}
 			>
 				<Grid
@@ -58,11 +64,15 @@ const ControlButtons = () => {
 				>
 					<AddPhotoAlternateIcon className="color_secondary" style={{ transform: "rotate(180deg)" }} />
 				</Grid>
-				<input hidden accept="image/*" multiple type="file" onChange={() => console.log()} />
+				<input hidden accept="image/*" multiple type="file" onChange={onAddPictureToGallery} />
 			</Button>
 			<Button
 				className="button_styles_none button_right"
-				sx={{ position: "relative", right: "-100%", transition: "0.4s" }}
+				sx={{
+					position: "relative",
+					right: "-100%",
+					transition: "0.4s",
+				}}
 				onClick={goNextSlide}
 			>
 				<Grid

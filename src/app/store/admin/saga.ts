@@ -36,7 +36,7 @@ function* updateAvatar({ payload: { data, onCloseModal } }: UpdateAvatar) {
 		yield put(setAvatar(response.data));
 		yield put(
 			openSnackBar({
-				message: "AvatarIconButton has been successfully updated",
+				message: "Avatar has been successfully updated",
 				snackBarType: "success",
 			}),
 		);

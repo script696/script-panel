@@ -12,13 +12,13 @@ const PictureBadge = ({ colorMode }: BadgeProps) => {
 			className="gear"
 			sx={{
 				background: "#fff",
-				border: `2px solid ${colorMode === "dark" ? "#78909C" : "#a49c93"}`,
+				border: `2px solid ${colorMode === "dark" ? "#415a77" : "#4A403A"}`,
 				borderRadius: "50%",
 				height: "200%",
 				width: "200%",
 			}}
 		>
-			<SettingsIcon sx={{ height: "100%", width: "100%" }} className="color_contrastText" />
+			<SettingsIcon sx={{ height: "100%", width: "100%" }} className="color_secondary" />
 		</Box>
 	);
 };

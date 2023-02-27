@@ -32,7 +32,7 @@ const Product = () => {
 					height={"15rem"}
 					sx={{ overflow: "hidden" }}
 				>
-					<ProductGallery />
+					<ProductGallery product={product} />
 				</Grid>
 			</Grid>
 			<Grid item xs={8}>

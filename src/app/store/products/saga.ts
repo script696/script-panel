@@ -9,24 +9,30 @@ import { PROTECTED_ROUTES } from "../../../shared/lib/constants/routes";
 
 import {
 	setDeletedProduct,
+	setPictureToProduct,
 	setProduct,
 	setProductDescription,
 	setProductPublicInfo,
 	setProducts,
 	setProductServiceInfo,
+	setRemovedPictureToProduct,
 } from "./actions";
 import {
 	ActionType,
+	AddPictureToProduct,
 	CreateProduct,
 	DeleteProduct,
+	RemovePictureFromProduct,
 	UpdateProductDescription,
 	UpdateProductPublicInfo,
 	UpdateProductServiceInfo,
 } from "./actionTypes";
 import {
+	AddPictureToProductResponse,
 	CreateProductResponse,
 	DeleteProductResponse,
 	GetAllProductsResponse,
+	RemovePictureFormProductResponse,
 	UpdateProductDescriptionResponse,
 	UpdateProductPublicInfoPayload,
 	UpdateProductServiceInfoResponse,
@@ -56,6 +62,12 @@ function* updateProductDescription({ payload }: UpdateProductDescription) {
 		);
 
 		yield put(setProductDescription(response.data));
+		yield put(
+			openSnackBar({
+				message: "Description has been successfully updated",
+				snackBarType: "success",
+			}),
+		);
 		onCloseModal();
 	} catch (error) {
 		const message = getMessageFromError(error);
@@ -75,6 +87,12 @@ function* updateProductServiceInfo({ payload }: UpdateProductServiceInfo) {
 		);
 
 		yield put(setProductServiceInfo(response.data));
+		yield put(
+			openSnackBar({
+				message: "Service info has been successfully updated",
+				snackBarType: "success",
+			}),
+		);
 		onCloseModal();
 	} catch (error) {
 		const message = getMessageFromError(error);
@@ -93,6 +111,12 @@ function* updateProductPublicInfo({ payload }: UpdateProductPublicInfo) {
 			rest,
 		);
 		yield put(setProductPublicInfo(response.data));
+		yield put(
+			openSnackBar({
+				message: "Public info has been successfully updated",
+				snackBarType: "success",
+			}),
+		);
 		onCloseModal();
 	} catch (error) {
 		const message = getMessageFromError(error);
@@ -130,6 +154,55 @@ function* deleteProduct({ payload }: DeleteProduct) {
 	}
 }
 
+function* addPictureToProduct({ payload }: AddPictureToProduct) {
+	yield put(setLoading(true));
+	const { onCloseModal, ...rest } = payload;
+	try {
+		const response: AxiosResponse<AddPictureToProductResponse> = yield call(
+			Product.fetchAddPictureToProduct,
+			rest,
+		);
+		yield put(setPictureToProduct(response.data));
+		yield put(
+			openSnackBar({
+				message: "Picture has been successfully added to gallery",
+				snackBarType: "success",
+			}),
+		);
+		onCloseModal();
+	} catch (error) {
+		const message = getMessageFromError(error);
+		yield put(openSnackBar({ message, snackBarType: "error" }));
+	} finally {
+		yield put(setLoading(false));
+	}
+}
+
+function* removePictureFromProduct({ payload }: RemovePictureFromProduct) {
+	yield put(setLoading(true));
+	const { onCloseModal, ...rest } = payload;
+	const { productId } = payload;
+	try {
+		const response: AxiosResponse<RemovePictureFormProductResponse> = yield call(
+			Product.fetchRemovePictureFromProduct,
+			rest,
+		);
+		yield put(setRemovedPictureToProduct({ ...response.data, productId }));
+		yield put(
+			openSnackBar({
+				message: "Picture has been successfully removed from gallery",
+				snackBarType: "success",
+			}),
+		);
+		onCloseModal();
+	} catch (error) {
+		const message = getMessageFromError(error);
+		yield put(openSnackBar({ message, snackBarType: "error" }));
+	} finally {
+		yield put(setLoading(false));
+	}
+}
+
 const ProductSaga = [
 	takeEvery(ActionType.GET_ALL_PRODUCTS, getAllProducts),
 	takeEvery(ActionType.UPDATE_PRODUCT_DESCRIPTION, updateProductDescription),
@@ -137,6 +210,8 @@ const ProductSaga = [
 	takeEvery(ActionType.UPDATE_PRODUCT_PUBLIC_INFO, updateProductPublicInfo),
 	takeEvery(ActionType.CREATE_PRODUCT, createProduct),
 	takeEvery(ActionType.DELETE_PRODUCT, deleteProduct),
+	takeEvery(ActionType.ADD_PICTURE_TO_PRODUCT, addPictureToProduct),
+	takeEvery(ActionType.REMOVE_PICTURE_FROM_PRODUCT, removePictureFromProduct),
 ];
 
 export default ProductSaga;

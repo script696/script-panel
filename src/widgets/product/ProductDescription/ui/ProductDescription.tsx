@@ -8,13 +8,14 @@ import { PanelTitleBox } from "shared/ui/PanelTitleBox";
 
 import { Product } from "app/store/products/types";
 
-import { ModalPopup, useModal } from "shared/ui/ModalPopup";
+import { ModalPopup, useModal } from "shared/ui/Modal/ModalBase";
 import { ProductDescriptionInfoForm } from "entities/product/ProductDescriptionInfoForm";
 import { useDispatch } from "react-redux";
 
-import { DescriptionInfoForm } from "../../../../entities/product/ProductDescriptionInfoForm/types/types";
-import { deleteProduct, updateProductDescription } from "../../../../app/store/products/actions";
-import ConfirmDeleteModalContent from "../../../../shared/ui/ConfirmDeleteModalContent/ui/ConfirmDeleteModalContent";
+import { DescriptionInfoForm } from "entities/product/ProductDescriptionInfoForm/types/types";
+import { deleteProduct, updateProductDescription } from "app/store/products/actions";
+import { ConfirmDeleteModalContent } from "shared/ui/Modal/ConfirmDeleteModalContent";
+import { TextFieldsModalContent } from "shared/ui/Modal/TextFieldsModalContent";
 
 type ProductDescriptionProps = {
 	product: Product;
@@ -46,7 +47,7 @@ const ProductDescription = ({ product }: ProductDescriptionProps) => {
 
 	return (
 		<>
-			<Box component="section" p={3}>
+			<Box component="section" p={3} overflow={"scroll"}>
 				<Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
 					<Typography component="span" variant="h3" alignSelf="start">
 						{product.title}
@@ -70,11 +71,12 @@ const ProductDescription = ({ product }: ProductDescriptionProps) => {
 				width="auto"
 				height="auto"
 			>
-				<ProductDescriptionInfoForm
-					onSubmit={handleSubmitProductDescriptionForm}
+				<TextFieldsModalContent
 					onCancelForm={onCloseDescriptionInfoModal}
-					product={product}
-				/>
+					formId="ProductDescriptionInfoForm"
+				>
+					<ProductDescriptionInfoForm onSubmit={handleSubmitProductDescriptionForm} product={product} />
+				</TextFieldsModalContent>
 			</ModalPopup>
 			<ModalPopup
 				onCloseModalPopup={onCloseDeleteConfirmModal}

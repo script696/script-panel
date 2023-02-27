@@ -4,7 +4,7 @@ import { ProductsTopRow } from "widgets/products/ProductsTopRow";
 
 import React from "react";
 
-import { ModalPopup, useModal } from "../../shared/ui/ModalPopup";
+import { ModalPopup, useModal } from "../../shared/ui/Modal/ModalBase";
 import ProductCreateFormController from "../../widgets/product/ProductCreateFormController/ui/ProductCreateFormController";
 import { ProductsTable } from "../../widgets/products/ProductsTable";
 

@@ -1,8 +1,11 @@
 import { ActionType } from "./actionTypes";
 import {
+	AddPictureToProductPayload,
 	CreateProductPayload,
+	RemovePictureFromProductPayload,
 	DeleteProductPayload,
 	SetDeletedProductPayload,
+	SetPictureToProductPayload,
 	SetProductDescriptionPayload,
 	SetProductPayload,
 	SetProductPublicInfoPayload,
@@ -11,6 +14,7 @@ import {
 	UpdateProductDescriptionPayload,
 	UpdateProductPublicInfoPayload,
 	UpdateProductServiceInfoPayload,
+	SetRemovedToProductPayload,
 } from "./types";
 
 /* Redux actions */
@@ -38,6 +42,14 @@ export const setProductPublicInfo = (payload: SetProductPublicInfoPayload) => {
 	return { payload, type: ActionType.SET_PRODUCT_PUBLIC_INFO };
 };
 
+export const setPictureToProduct = (payload: SetPictureToProductPayload) => {
+	return { payload, type: ActionType.SET_PICTURE_TO_PRODUCT };
+};
+
+export const setRemovedPictureToProduct = (payload: SetRemovedToProductPayload) => {
+	return { payload, type: ActionType.SET_REMOVED_PICTURE_TO_PRODUCT };
+};
+
 /* Saga actions */
 export const getAllProducts = () => {
 	return { type: ActionType.GET_ALL_PRODUCTS };
@@ -61,4 +73,12 @@ export const createProduct = (payload: CreateProductPayload) => {
 
 export const deleteProduct = (payload: DeleteProductPayload) => {
 	return { payload, type: ActionType.DELETE_PRODUCT };
+};
+
+export const addPictureToProduct = (payload: AddPictureToProductPayload) => {
+	return { payload, type: ActionType.ADD_PICTURE_TO_PRODUCT };
+};
+
+export const removePictureFromProduct = (payload: RemovePictureFromProductPayload) => {
+	return { payload, type: ActionType.REMOVE_PICTURE_FROM_PRODUCT };
 };

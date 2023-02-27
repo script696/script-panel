@@ -4,15 +4,19 @@ import { LoadingButton } from "@mui/lab";
 
 import React from "react";
 
-import { spinKeyframe } from "../../../lib/constants/animations";
-import PictureBadge from "../../PictureBadge/ui/PictureBadge";
+import { AvatarTypeMap } from "@mui/material/Avatar/Avatar";
+
+import { spinKeyframe } from "../../../../lib/constants/animations";
+import PictureBadge from "../../../PictureBadge/ui/PictureBadge";
 
 type AddPictureModalContentProps = {
 	colorMode: string;
-	picturePreviewUrl: string;
-	handleReadPicture: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	picturePreviewUrl?: string;
+	handleReadPicture?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	handleSubmit: () => void;
 	onCloseModalAvatar: () => void;
+	variant?: AvatarTypeMap["props"]["variant"];
+	submitTitle: string;
 };
 const AddPictureModalContent = ({
 	colorMode = "dark",
@@ -20,6 +24,8 @@ const AddPictureModalContent = ({
 	handleReadPicture,
 	handleSubmit,
 	onCloseModalAvatar,
+	variant = "circular",
+	submitTitle,
 }: AddPictureModalContentProps) => {
 	return (
 		<Box
@@ -43,7 +49,13 @@ const AddPictureModalContent = ({
 					width: "80%",
 				}}
 			>
-				<Button className="button_styles_none" component="label" disabled={false} fullWidth>
+				<Button
+					className="button_styles_none"
+					component="label"
+					disabled={!handleReadPicture}
+					fullWidth
+					sx={{ cursor: handleReadPicture ? "pointer" : "none" }}
+				>
 					<Avatar
 						sx={{
 							border: `2px solid ${colorMode === "dark" ? "#78909C" : "#a49c93"}`,
@@ -55,9 +67,12 @@ const AddPictureModalContent = ({
 						}}
 						alt="userAvatar"
 						src={picturePreviewUrl}
+						variant={variant}
 					/>
 
-					<input hidden accept="image/*" multiple type="file" onChange={handleReadPicture} />
+					{handleReadPicture && (
+						<input hidden accept="image/*" multiple type="file" onChange={handleReadPicture} />
+					)}
 				</Button>
 			</Badge>
 
@@ -71,7 +86,7 @@ const AddPictureModalContent = ({
 					onClick={handleSubmit}
 					sx={{ textTransform: "none", width: "6rem" }}
 				>
-					Change Avatar
+					{submitTitle}
 				</LoadingButton>
 				<Button onClick={onCloseModalAvatar} className="style_ghost" sx={{ width: "6rem" }}>
 					Cancel

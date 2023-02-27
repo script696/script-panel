@@ -8,6 +8,6 @@ export const VALIDATION_SCHEMA = {
 };
 
 export const DESCRIPTION_INFO_FORM_FIELDS_DATA: Array<ServiceInfoField> = [
-	{ isFieldValueRequired: true, label: "Title", name: "title" },
-	{ isFieldValueRequired: true, label: "Description", name: "description" },
+	{ isFieldValueRequired: true, isMultiline: false, label: "Title", name: "title" },
+	{ isFieldValueRequired: true, isMultiline: true, label: "Description", name: "description" },
 ];
