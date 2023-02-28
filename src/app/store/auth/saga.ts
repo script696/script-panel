@@ -19,7 +19,7 @@ function* login({ payload: { data, navigate } }: Login) {
 
 		localStorage.setItem(ACCESS_TOKEN, response.data.accessToken);
 
-		navigate("/home");
+		navigate(PROTECTED_ROUTES.PRODUCTS);
 	} catch (error) {
 		const message = getMessageFromError(error);
 		yield put(openSnackBar({ message, snackBarType: "error" }));
