@@ -13,6 +13,7 @@ const useModal = (): UseModalResult => {
 	const handleOpenModal = () => {
 		setIsModalOpen(true);
 	};
+
 	const handleCloseModal = () => {
 		setIsModalOpen(false);
 	};

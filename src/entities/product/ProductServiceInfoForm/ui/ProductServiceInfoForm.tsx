@@ -1,6 +1,5 @@
-import { Button, Grid, TextField } from "@mui/material";
+import { Grid, TextField } from "@mui/material";
 
-import LoadingButton from "@mui/lab/LoadingButton";
 import React from "react";
 
 import { FormikProps, useFormik } from "formik";
@@ -12,11 +11,10 @@ import { SERVICE_INFO_FORM_FIELDS_DATA, VALIDATION_SCHEMA } from "../constants/c
 import { Product } from "../../../../app/store/products/types";
 
 type ProductServiceInfoFormProps = {
-	onCancelForm: () => void;
 	product: Pick<Product, "amount" | "totalSold">;
 	onSubmit: (values: ServiceInfoForm) => void;
 };
-const ProductServiceInfoForm = ({ onCancelForm, product, onSubmit }: ProductServiceInfoFormProps) => {
+const ProductServiceInfoForm = ({ product, onSubmit }: ProductServiceInfoFormProps) => {
 	const handleSubmitAddressInfoForm = (values: ServiceInfoForm) => {
 		onSubmit(values);
 	};
@@ -31,7 +29,8 @@ const ProductServiceInfoForm = ({ onCancelForm, product, onSubmit }: ProductServ
 
 	return (
 		<Grid
-			height="100%"
+			flexGrow={1}
+			id="ProductServiceInfoForm"
 			container
 			justifyContent="space-between"
 			px={1}
@@ -63,22 +62,6 @@ const ProductServiceInfoForm = ({ onCancelForm, product, onSubmit }: ProductServ
 						</Grid>
 					);
 				})}
-				<Grid item xs={12} container alignItems="center" columnGap={2}>
-					<LoadingButton
-						type="submit"
-						variant="contained"
-						color="inherit"
-						className="color_secondary"
-						disabled={false}
-						loading={false}
-						sx={{ my: 2, textTransform: "none", width: "6rem" }}
-					>
-						Update Service Info
-					</LoadingButton>
-					<Button onClick={onCancelForm} className="style_ghost" sx={{ width: "6rem" }}>
-						Cancel
-					</Button>
-				</Grid>
 			</Grid>
 		</Grid>
 	);

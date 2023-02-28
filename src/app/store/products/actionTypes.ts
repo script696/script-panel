@@ -1,12 +1,16 @@
 import {
+	AddPictureToProductPayload,
 	CreateProductPayload,
 	DeleteProductPayload,
+	RemovePictureFromProductPayload,
 	SetDeletedProductPayload,
+	SetPictureToProductPayload,
 	SetProductDescriptionPayload,
 	SetProductPayload,
 	SetProductPublicInfoPayload,
 	SetProductServiceInfoPayload,
 	SetProductsPayload,
+	SetRemovedToProductPayload,
 	UpdateProductDescriptionPayload,
 	UpdateProductPublicInfoPayload,
 	UpdateProductServiceInfoPayload,
@@ -15,6 +19,10 @@ import {
 export enum ActionType {
 	GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS",
 	SET_PRODUCT = "SET_PRODUCT",
+	SET_PICTURE_TO_PRODUCT = "SET_PICTURE_TO_PRODUCT",
+	SET_REMOVED_PICTURE_TO_PRODUCT = "SET_REMOVED_PICTURE_TO_PRODUCT",
+	ADD_PICTURE_TO_PRODUCT = "ADD_PICTURE_TO_PRODUCT",
+	REMOVE_PICTURE_FROM_PRODUCT = "REMOVE_PICTURE_FROM_PRODUCT",
 	SET_DELETED_PRODUCT = "SET_DELETED_PRODUCT",
 	SET_PRODUCTS = "SET_PRODUCTS",
 	DELETE_PRODUCT = "DELETE_PRODUCT",
@@ -58,6 +66,16 @@ export type SetProductPublicInfo = {
 	payload: SetProductPublicInfoPayload;
 };
 
+export type SetPictureToProduct = {
+	type: ActionType.SET_PICTURE_TO_PRODUCT;
+	payload: SetPictureToProductPayload;
+};
+
+export type SetRemovedPictureToProduct = {
+	type: ActionType.SET_REMOVED_PICTURE_TO_PRODUCT;
+	payload: SetRemovedToProductPayload;
+};
+
 /* Saga action Types */
 export type UpdateProductDescription = {
 	type: ActionType.UPDATE_PRODUCT_DESCRIPTION;
@@ -84,10 +102,22 @@ export type DeleteProduct = {
 	payload: DeleteProductPayload;
 };
 
+export type AddPictureToProduct = {
+	type: ActionType.ADD_PICTURE_TO_PRODUCT;
+	payload: AddPictureToProductPayload;
+};
+
+export type RemovePictureFromProduct = {
+	type: ActionType.REMOVE_PICTURE_FROM_PRODUCT;
+	payload: RemovePictureFromProductPayload;
+};
+
 export type Actions =
 	| SetProducts
 	| SetProductDescription
 	| SetProductServiceInfo
 	| SetProductPublicInfo
 	| SetProduct
-	| SetDeletedProduct;
+	| SetDeletedProduct
+	| SetPictureToProduct
+	| SetRemovedPictureToProduct;

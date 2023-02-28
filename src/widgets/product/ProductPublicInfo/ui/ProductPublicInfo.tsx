@@ -9,12 +9,13 @@ import { InfoRow } from "shared/ui/InfoRow";
 
 import { Product } from "app/store/products/types";
 
-import { ModalPopup, useModal } from "shared/ui/ModalPopup";
+import { ModalPopup, useModal } from "shared/ui/Modal/ModalBase";
 import { ProductPublicInfoForm } from "entities/product/ProductPublicInfoForm";
 import { useDispatch } from "react-redux";
 
 import { PublicInfoForm } from "../../../../entities/product/ProductPublicInfoForm/types/types";
 import { updateProductPublicInfo } from "../../../../app/store/products/actions";
+import { TextFieldsModalContent } from "../../../../shared/ui/Modal/TextFieldsModalContent";
 
 type ProductPublicInfoProps = {
 	product: Product;
@@ -63,11 +64,9 @@ const ProductPublicInfo = ({ product }: ProductPublicInfoProps) => {
 				width="auto"
 				height="auto"
 			>
-				<ProductPublicInfoForm
-					onCancelForm={onClosePublicInfoModal}
-					product={product}
-					onSubmit={handleSubmitPublicInfoForm}
-				/>
+				<TextFieldsModalContent onCancelForm={onClosePublicInfoModal} formId="ProductPublicInfoForm">
+					<ProductPublicInfoForm product={product} onSubmit={handleSubmitPublicInfoForm} />
+				</TextFieldsModalContent>
 			</ModalPopup>
 		</>
 	);

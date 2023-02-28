@@ -7,4 +7,5 @@ export type ServiceInfoField = {
 	label: string;
 	name: keyof DescriptionInfoForm;
 	isFieldValueRequired: boolean;
+	isMultiline: boolean;
 };

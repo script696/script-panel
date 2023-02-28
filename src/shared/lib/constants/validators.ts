@@ -27,7 +27,7 @@ export const VALIDATORS = {
 	}),
 	phoneNumber: Yup.string().min(7).max(15),
 	price: Yup.number(),
-	productDescription: Yup.string(),
+	productDescription: Yup.string().min(40).max(400),
 	productDiscount: Yup.number().min(3).max(30),
 	productPrice: Yup.number(),
 	productTitle: Yup.string(),

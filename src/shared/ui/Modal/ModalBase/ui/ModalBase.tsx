@@ -5,7 +5,7 @@ import { Box, ButtonBase } from "@mui/material";
 
 import React, { ReactNode } from "react";
 
-type ModalPopupProps = {
+type ModalBaseProps = {
 	isModalPopupOpen: boolean;
 	onCloseModalPopup: () => void;
 	children: ReactNode;
@@ -13,19 +13,19 @@ type ModalPopupProps = {
 	height?: string;
 };
 
-const ModalPopup = ({
+const ModalBase = ({
 	children,
 	isModalPopupOpen,
 	onCloseModalPopup,
 	width = "80vh",
 	height = "80vh",
-}: ModalPopupProps) => {
+}: ModalBaseProps) => {
 	const gridModalPopupOpenTemplateStyles = {
 		background: "#fff",
 		border: "3px solid #78909C",
 		borderRadius: "10px",
 		boxSizing: "border-box",
-		height: "20rem",
+		height: height,
 		left: "50%",
 		maxHeight: "90vh",
 		maxWidth: "800px",
@@ -57,4 +57,4 @@ const ModalPopup = ({
 	);
 };
 
-export default ModalPopup;
+export default ModalBase;

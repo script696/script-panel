@@ -1,6 +1,5 @@
-import { Button, Grid, TextField } from "@mui/material";
+import { Box, Grid, TextField } from "@mui/material";
 
-import LoadingButton from "@mui/lab/LoadingButton";
 import React from "react";
 
 import { FormikProps, useFormik } from "formik";
@@ -12,11 +11,10 @@ import { DESCRIPTION_INFO_FORM_FIELDS_DATA, VALIDATION_SCHEMA } from "../constan
 
 type Product = { title: string; description: string; id: number };
 type ProductDescriptionInfoFormProps = {
-	onCancelForm: () => void;
 	product: Pick<Product, "title" | "description">;
 	onSubmit: (values: DescriptionInfoForm) => void;
 };
-const ProductDescriptionInfoForm = ({ onCancelForm, product, onSubmit }: ProductDescriptionInfoFormProps) => {
+const ProductDescriptionInfoForm = ({ product, onSubmit }: ProductDescriptionInfoFormProps) => {
 	const handleSubmitProductDescriptionForm = (values: DescriptionInfoForm) => {
 		onSubmit(values);
 	};
@@ -31,7 +29,8 @@ const ProductDescriptionInfoForm = ({ onCancelForm, product, onSubmit }: Product
 
 	return (
 		<Grid
-			height="100%"
+			flexGrow={1}
+			id="ProductDescriptionInfoForm"
 			container
 			justifyContent="space-between"
 			px={1}
@@ -39,46 +38,30 @@ const ProductDescriptionInfoForm = ({ onCancelForm, product, onSubmit }: Product
 			component="form"
 			onSubmit={descriptionInfoForm.handleSubmit}
 		>
-			<Grid item container spacing={2} py={3}>
-				{DESCRIPTION_INFO_FORM_FIELDS_DATA.map(({ name, label, isFieldValueRequired }) => {
+			<Box display="flex" flexDirection="column" width="100%" rowGap={2} py={3} flexGrow={1} height="100%">
+				{DESCRIPTION_INFO_FORM_FIELDS_DATA.map(({ name, label, isFieldValueRequired, isMultiline }) => {
 					return (
-						<Grid key={name} item xs={6}>
-							<TextField
-								className="style_dark"
-								size="small"
-								required={isFieldValueRequired}
-								fullWidth
-								id={name}
-								label={label}
-								name={name}
-								autoComplete="auto"
-								disabled={false}
-								value={descriptionInfoForm.values[name]}
-								onChange={descriptionInfoForm.handleChange}
-								onBlur={descriptionInfoForm.handleBlur}
-								error={descriptionInfoForm.touched[name] && Boolean(descriptionInfoForm.errors[name])}
-								helperText={descriptionInfoForm.touched[name] && descriptionInfoForm.errors[name]}
-							/>
-						</Grid>
+						<TextField
+							key={name}
+							className="style_dark"
+							size="small"
+							required={isFieldValueRequired}
+							multiline={isMultiline}
+							fullWidth
+							id={name}
+							label={label}
+							name={name}
+							autoComplete="auto"
+							disabled={false}
+							value={descriptionInfoForm.values[name]}
+							onChange={descriptionInfoForm.handleChange}
+							onBlur={descriptionInfoForm.handleBlur}
+							error={descriptionInfoForm.touched[name] && Boolean(descriptionInfoForm.errors[name])}
+							helperText={descriptionInfoForm.touched[name] && descriptionInfoForm.errors[name]}
+						/>
 					);
 				})}
-				<Grid item xs={12} container alignItems="center" columnGap={2}>
-					<LoadingButton
-						type="submit"
-						variant="contained"
-						color="inherit"
-						className="color_secondary"
-						disabled={false}
-						loading={false}
-						sx={{ my: 2, textTransform: "none", width: "6rem" }}
-					>
-						Update Description
-					</LoadingButton>
-					<Button onClick={onCancelForm} className="style_ghost" sx={{ width: "6rem" }}>
-						Cancel
-					</Button>
-				</Grid>
-			</Grid>
+			</Box>
 		</Grid>
 	);
 };

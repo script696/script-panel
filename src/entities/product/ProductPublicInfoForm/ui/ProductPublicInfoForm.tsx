@@ -1,6 +1,5 @@
-import { Button, Grid, TextField } from "@mui/material";
+import { Grid, TextField } from "@mui/material";
 
-import LoadingButton from "@mui/lab/LoadingButton";
 import React from "react";
 
 import { FormikProps, useFormik } from "formik";
@@ -12,11 +11,10 @@ import { PUBLIC_INFO_FORM_FIELDS_DATA, VALIDATION_SCHEMA } from "../constants/co
 import { Product } from "../../../../app/store/products/types";
 
 type ProductPublicInfoFormProps = {
-	onCancelForm: () => void;
 	product: Pick<Product, "price" | "discount">;
 	onSubmit: (values: PublicInfoForm) => void;
 };
-const ProductPublicInfoForm = ({ onCancelForm, product, onSubmit }: ProductPublicInfoFormProps) => {
+const ProductPublicInfoForm = ({ product, onSubmit }: ProductPublicInfoFormProps) => {
 	const handleSubmitPublicInfoForm = (values: PublicInfoForm) => {
 		onSubmit(values);
 	};
@@ -31,7 +29,8 @@ const ProductPublicInfoForm = ({ onCancelForm, product, onSubmit }: ProductPubli
 
 	return (
 		<Grid
-			height="100%"
+			flexGrow={1}
+			id="ProductPublicInfoForm"
 			container
 			justifyContent="space-between"
 			px={1}
@@ -63,22 +62,6 @@ const ProductPublicInfoForm = ({ onCancelForm, product, onSubmit }: ProductPubli
 						</Grid>
 					);
 				})}
-				<Grid item xs={12} container alignItems="center" columnGap={2}>
-					<LoadingButton
-						type="submit"
-						variant="contained"
-						color="inherit"
-						className="color_secondary"
-						disabled={false}
-						loading={false}
-						sx={{ my: 2, textTransform: "none", width: "6rem" }}
-					>
-						Update Public Info
-					</LoadingButton>
-					<Button onClick={onCancelForm} className="style_ghost" sx={{ width: "6rem" }}>
-						Cancel
-					</Button>
-				</Grid>
 			</Grid>
 		</Grid>
 	);

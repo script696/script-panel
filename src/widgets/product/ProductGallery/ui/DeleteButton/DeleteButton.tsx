@@ -2,7 +2,10 @@ import { Box, Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import React from "react";
 
-const DeleteButton = () => {
+type DeleteButtonProps = {
+	onDeletePictureFromGallery: () => void;
+};
+const DeleteButton = ({ onDeletePictureFromGallery }: DeleteButtonProps) => {
 	return (
 		<Box
 			position="absolute"
@@ -14,13 +17,11 @@ const DeleteButton = () => {
 			justifyContent="flex-end"
 		>
 			<Button
+				onClick={onDeletePictureFromGallery}
 				className="button_styles_none button_right"
 				sx={{
 					"&:hover": { opacity: "1" },
 					opacity: "0.7",
-					position: "relative",
-					right: "-100%",
-					transition: "0.4s",
 				}}
 			>
 				<DeleteIcon />

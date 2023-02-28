@@ -8,8 +8,10 @@ import { useDispatch } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 
-import { createProduct } from "../../../app/store/products/actions";
-import { Product } from "../../../app/store/products/types";
+import { TextFieldsModalContent } from "shared/ui/Modal/TextFieldsModalContent";
+
+import { createProduct } from "../../../../app/store/products/actions";
+import { Product } from "../../../../app/store/products/types";
 
 const productDescription = { description: "", title: "" };
 const productServiceInfo = { amount: 0, totalSold: 0 };
@@ -52,31 +54,25 @@ const ProductCreateFormController = ({ onRejectCreateNewProduct }: ProductCreate
 	const currentForm = {
 		description: {
 			element: (
-				<ProductDescriptionInfoForm
-					onCancelForm={onRejectCreateNewProduct}
-					product={productDescription}
-					onSubmit={onSubmitDescriptionInfoForm}
-				/>
+				<TextFieldsModalContent onCancelForm={onRejectCreateNewProduct} formId="ProductDescriptionInfoForm">
+					<ProductDescriptionInfoForm product={productDescription} onSubmit={onSubmitDescriptionInfoForm} />
+				</TextFieldsModalContent>
 			),
 			index: 0,
 		},
 		publicInfo: {
 			element: (
-				<ProductPublicInfoForm
-					onCancelForm={onRejectCreateNewProduct}
-					product={productPublicInfo}
-					onSubmit={onSubmitPublicInfoForm}
-				/>
+				<TextFieldsModalContent onCancelForm={onRejectCreateNewProduct} formId="ProductPublicInfoForm">
+					<ProductPublicInfoForm product={productPublicInfo} onSubmit={onSubmitPublicInfoForm} />
+				</TextFieldsModalContent>
 			),
 			index: 1,
 		},
 		serviceInfo: {
 			element: (
-				<ProductServiceInfoForm
-					onCancelForm={onRejectCreateNewProduct}
-					product={productServiceInfo}
-					onSubmit={onSubmitServiceInfoForm}
-				/>
+				<TextFieldsModalContent onCancelForm={onRejectCreateNewProduct} formId="ProductServiceInfoForm">
+					<ProductServiceInfoForm product={productServiceInfo} onSubmit={onSubmitServiceInfoForm} />
+				</TextFieldsModalContent>
 			),
 			index: 2,
 		},

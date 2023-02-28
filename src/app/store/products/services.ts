@@ -2,9 +2,11 @@ import $api from "shared/api/api";
 import { PRODUCTS_ENDPOINTS } from "shared/api/constants/api_endpoints";
 
 import {
+	AddPictureToProductResponse,
 	CreateProductResponse,
 	DeleteProductResponse,
 	GetAllProductsResponse,
+	RemovePictureFormProductResponse,
 	UpdateProductDescriptionResponse,
 	UpdateProductPublicInfoResponse,
 	UpdateProductServiceInfoResponse,
@@ -14,6 +16,8 @@ import { UpdateServiceInfoDto } from "./productDto/UpdateServiceInfoDto";
 import { UpdatePublicInfoDto } from "./productDto/UpdatePublicInfoDto";
 import { CreateProductDto } from "./productDto/CreateProductDto";
 import { DeleteProductDto } from "./productDto/DeleteProductDto";
+import { AddPictureToProductDto } from "./productDto/AddPictureToProductDto";
+import { RemovePictureFromProductDto } from "./productDto/RemovePictureFromProductDto";
 
 class Product {
 	static fetchAllProducts(): Promise<GetAllProductsResponse> {
@@ -42,6 +46,18 @@ class Product {
 
 	static fetchDeleteProduct(data: DeleteProductDto): Promise<DeleteProductResponse> {
 		return $api.post(`${PRODUCTS_ENDPOINTS.BASE}/${PRODUCTS_ENDPOINTS.DELETE_PRODUCT}`, data);
+	}
+
+	static fetchAddPictureToProduct(data: AddPictureToProductDto): Promise<AddPictureToProductResponse> {
+		return $api.post(`${PRODUCTS_ENDPOINTS.BASE}/${PRODUCTS_ENDPOINTS.ADD_PICTURE}`, data, {
+			headers: { "Content-Type": "multipart/form-data" },
+		});
+	}
+
+	static fetchRemovePictureFromProduct(
+		data: RemovePictureFromProductDto,
+	): Promise<RemovePictureFormProductResponse> {
+		return $api.post(`${PRODUCTS_ENDPOINTS.BASE}/${PRODUCTS_ENDPOINTS.REMOVE_PICTURE}`, data);
 	}
 }
 

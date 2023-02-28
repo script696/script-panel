@@ -110,6 +110,16 @@ const createThemeComponents = (theme: Theme) => ({
 		},
 	},
 
+	MuiStepLabel: {
+		styleOverrides: {
+			label: {
+				"&.Mui-active": {
+					color: theme.palette.text.secondary,
+				},
+				color: theme.palette.text.primary,
+			},
+		},
+	},
 	MuiSvgIcon: {
 		styleOverrides: {
 			root: {
@@ -155,6 +165,7 @@ const createThemeComponents = (theme: Theme) => ({
 			},
 		},
 	},
+
 	MuiTab: {
 		styleOverrides: {
 			root: {
@@ -164,7 +175,6 @@ const createThemeComponents = (theme: Theme) => ({
 			},
 		},
 	},
-
 	MuiTabPanel: {
 		styleOverrides: {
 			root: {
@@ -194,9 +204,6 @@ const createThemeComponents = (theme: Theme) => ({
 		styleOverrides: {
 			root: {
 				"& input": {
-					"& .style_dark": {
-						color: "green",
-					},
 					"& fieldset": {
 						borderColor: theme.palette.primary.light,
 					},
@@ -226,7 +233,7 @@ const createThemeComponents = (theme: Theme) => ({
 					"&:hover fieldset": {
 						borderColor: theme.palette.primary.dark,
 					},
-					color: theme.palette.primary.contrastText,
+					color: theme.palette.text.secondary,
 				},
 				"&.style_dark input": { color: theme.palette.text.secondary },
 				"&.style_dark label": { color: theme.palette.text.secondary },

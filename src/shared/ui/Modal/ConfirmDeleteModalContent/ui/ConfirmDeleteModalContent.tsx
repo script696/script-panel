@@ -10,13 +10,12 @@ type ConfirmDeleteModalProps = {
 };
 const ConfirmDeleteModalContent = ({ onCloseModal, onConfirmDelete }: ConfirmDeleteModalProps) => {
 	return (
-		<Box display="flex" flexDirection="column" height="100%">
-			<Box display="flex" justifyContent="center" alignItems="center" height="100%">
+		<Box display="flex" flexDirection="column" flexGrow={1}>
+			<Box display="flex" justifyContent="center" alignItems="center" flexGrow={1}>
 				<Typography component="p" variant="h4" className="color_secondary" textAlign="center">
 					Are you sure you want to delete?
 				</Typography>
 			</Box>
-			<Box flexGrow={1} />
 			<Box display="flex" justifyContent="center" alignItems="center" columnGap={2}>
 				<LoadingButton
 					onClick={onConfirmDelete}
