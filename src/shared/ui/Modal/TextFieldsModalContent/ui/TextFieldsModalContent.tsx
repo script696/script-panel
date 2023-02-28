@@ -10,7 +10,7 @@ type TextFieldsModalContentProps = {
 };
 const TextFieldsModalContent = ({ children, onCancelForm, formId }: TextFieldsModalContentProps) => {
 	return (
-		<Box display="flex" flexDirection="column" height="100%" justifyContent={"space-between"}>
+		<Box display="flex" flexDirection="column" height="100%" justifyContent={"space-between"} flexGrow={1}>
 			{children}
 			<Box display={"flex"} justifyContent="center" alignItems="center" width="100%" columnGap="2rem">
 				<LoadingButton

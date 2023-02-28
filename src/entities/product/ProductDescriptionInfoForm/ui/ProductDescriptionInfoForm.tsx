@@ -29,16 +29,16 @@ const ProductDescriptionInfoForm = ({ product, onSubmit }: ProductDescriptionInf
 
 	return (
 		<Grid
+			flexGrow={1}
 			id="ProductDescriptionInfoForm"
 			container
-			height="100%"
 			justifyContent="space-between"
 			px={1}
 			className="grid_test grid_style_bordered"
 			component="form"
 			onSubmit={descriptionInfoForm.handleSubmit}
 		>
-			<Box display="flex" flexDirection="column" width="100%" rowGap={2} py={3}>
+			<Box display="flex" flexDirection="column" width="100%" rowGap={2} py={3} flexGrow={1} height="100%">
 				{DESCRIPTION_INFO_FORM_FIELDS_DATA.map(({ name, label, isFieldValueRequired, isMultiline }) => {
 					return (
 						<TextField

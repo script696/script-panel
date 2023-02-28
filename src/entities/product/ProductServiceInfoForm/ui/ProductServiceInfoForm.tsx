@@ -29,8 +29,8 @@ const ProductServiceInfoForm = ({ product, onSubmit }: ProductServiceInfoFormPro
 
 	return (
 		<Grid
+			flexGrow={1}
 			id="ProductServiceInfoForm"
-			height="100%"
 			container
 			justifyContent="space-between"
 			px={1}

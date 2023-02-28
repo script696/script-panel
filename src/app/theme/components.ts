@@ -110,6 +110,16 @@ const createThemeComponents = (theme: Theme) => ({
 		},
 	},
 
+	MuiStepLabel: {
+		styleOverrides: {
+			label: {
+				"&.Mui-active": {
+					color: theme.palette.text.secondary,
+				},
+				color: theme.palette.text.primary,
+			},
+		},
+	},
 	MuiSvgIcon: {
 		styleOverrides: {
 			root: {
@@ -155,6 +165,7 @@ const createThemeComponents = (theme: Theme) => ({
 			},
 		},
 	},
+
 	MuiTab: {
 		styleOverrides: {
 			root: {
@@ -164,7 +175,6 @@ const createThemeComponents = (theme: Theme) => ({
 			},
 		},
 	},
-
 	MuiTabPanel: {
 		styleOverrides: {
 			root: {
@@ -230,7 +240,6 @@ const createThemeComponents = (theme: Theme) => ({
 			},
 		},
 	},
-
 	MuiTypography: {
 		styleOverrides: {
 			root: {

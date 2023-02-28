@@ -37,7 +37,6 @@ const ProductCreateFormController = ({ onRejectCreateNewProduct }: ProductCreate
 	const [currentStage, setCurrentStage] = useState<keyof typeof currentForm>("description");
 
 	const onSubmitDescriptionInfoForm = ({ title, description }: { title: string; description: string }) => {
-		console.log("here");
 		setProductData((prevState) => ({ ...prevState, description, title }));
 		setCurrentStage("publicInfo");
 	};

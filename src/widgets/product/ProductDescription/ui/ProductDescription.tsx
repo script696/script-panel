@@ -14,8 +14,9 @@ import { useDispatch } from "react-redux";
 
 import { DescriptionInfoForm } from "entities/product/ProductDescriptionInfoForm/types/types";
 import { deleteProduct, updateProductDescription } from "app/store/products/actions";
-import { ConfirmDeleteModalContent } from "shared/ui/Modal/ConfirmDeleteModalContent";
 import { TextFieldsModalContent } from "shared/ui/Modal/TextFieldsModalContent";
+
+import { ConfirmDeleteModalContent } from "shared/ui/Modal/ConfirmDeleteModalContent";
 
 type ProductDescriptionProps = {
 	product: Product;

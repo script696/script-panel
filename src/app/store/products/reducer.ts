@@ -14,7 +14,7 @@ const ProductsReducer = (state = initialState, action: Actions) => {
 			};
 			break;
 		case ActionType.SET_PRODUCT_DESCRIPTION:
-			const updatedProducts = state.products.reduce<Array<Product>>((acc, product) => {
+			const productsWithUpdatedDescription = state.products.reduce<Array<Product>>((acc, product) => {
 				if (product.id !== action.payload.id) {
 					return [...acc, product];
 				}
@@ -23,11 +23,11 @@ const ProductsReducer = (state = initialState, action: Actions) => {
 
 			state = {
 				...state,
-				products: updatedProducts,
+				products: productsWithUpdatedDescription,
 			};
 			break;
 		case ActionType.SET_PRODUCT_SERVICE_INFO:
-			const test = state.products.reduce<Array<Product>>((acc, product) => {
+			const productsWithUpdatedServiceInfo = state.products.reduce<Array<Product>>((acc, product) => {
 				if (product.id !== action.payload.id) {
 					return [...acc, product];
 				}
@@ -36,11 +36,11 @@ const ProductsReducer = (state = initialState, action: Actions) => {
 
 			state = {
 				...state,
-				products: test,
+				products: productsWithUpdatedServiceInfo,
 			};
 			break;
 		case ActionType.SET_PRODUCT_PUBLIC_INFO:
-			const test2 = state.products.reduce<Array<Product>>((acc, product) => {
+			const productsWithUpdatedPublicInfo = state.products.reduce<Array<Product>>((acc, product) => {
 				if (product.id !== action.payload.id) {
 					return [...acc, product];
 				}
@@ -49,7 +49,7 @@ const ProductsReducer = (state = initialState, action: Actions) => {
 
 			state = {
 				...state,
-				products: test2,
+				products: productsWithUpdatedPublicInfo,
 			};
 			break;
 		case ActionType.SET_DELETED_PRODUCT:
@@ -69,7 +69,7 @@ const ProductsReducer = (state = initialState, action: Actions) => {
 			break;
 
 		case ActionType.SET_PICTURE_TO_PRODUCT:
-			const test3 = state.products.reduce<Array<Product>>((acc, product) => {
+			const productsWithNewPicture = state.products.reduce<Array<Product>>((acc, product) => {
 				if (product.id !== action.payload.productId) {
 					return [...acc, product];
 				}
@@ -86,11 +86,11 @@ const ProductsReducer = (state = initialState, action: Actions) => {
 
 			state = {
 				...state,
-				products: test3,
+				products: productsWithNewPicture,
 			};
 			break;
 		case ActionType.SET_REMOVED_PICTURE_TO_PRODUCT:
-			const test4 = state.products.reduce<Array<Product>>((acc, product) => {
+			const productsWithoutRemovedPicture = state.products.reduce<Array<Product>>((acc, product) => {
 				if (product.id !== action.payload.productId || !product.pictures) {
 					return [...acc, product];
 				}
@@ -101,7 +101,7 @@ const ProductsReducer = (state = initialState, action: Actions) => {
 			}, []);
 			state = {
 				...state,
-				products: test4,
+				products: productsWithoutRemovedPicture,
 			};
 			break;
 		default:
