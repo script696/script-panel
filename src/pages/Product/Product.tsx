@@ -25,18 +25,18 @@ const Product = () => {
 	}
 
 	return (
-		<Grid container spacing={2} py={2}>
-			<Grid item xs={4}>
+		<Grid container spacing={2} py={2} sx={{ boxSizing: "border-box" }} height={"100%"}>
+			<Grid item xs={3}>
 				<Grid
 					className="grid_dark grid_style_box-shadow grid_style_bordered"
-					height={"15rem"}
 					sx={{ overflow: "hidden" }}
+					height={"100%"}
 				>
 					<ProductGallery product={product} />
 				</Grid>
 			</Grid>
-			<Grid item xs={8}>
-				<Grid className="grid_dark grid_style_box-shadow grid_style_bordered" height={"15rem"}>
+			<Grid item xs={9}>
+				<Grid className="grid_dark grid_style_box-shadow grid_style_bordered" height={"100%"}>
 					<ProductDescription product={product} />
 				</Grid>
 			</Grid>
