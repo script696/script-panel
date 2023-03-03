@@ -44,3 +44,4 @@ export type AddPictureToProductPayload = { picture: File; productId: number } & 
 export type SetPictureToProductPayload = { pictureUrl: string; productId: number };
 export type RemovePictureFromProductPayload = { pictureUrl: string; productId: number } & ModalEvent;
 export type SetRemovedToProductPayload = { pictureUrl: string; productId: number };
+export type GetAllProductsPayload = { userId: string };

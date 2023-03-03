@@ -2,6 +2,7 @@ import { Actions, ActionType } from "./actionTypes";
 
 const initialState = {
 	isUserAuth: false,
+	userId: "",
 };
 
 const AuthReducer = (state = initialState, action: Actions) => {
@@ -9,7 +10,8 @@ const AuthReducer = (state = initialState, action: Actions) => {
 		case ActionType.SET_AUTH:
 			state = {
 				...state,
-				isUserAuth: action.payload,
+				isUserAuth: action.payload.isAuth,
+				userId: action.payload.userId,
 			};
 			break;
 		default:

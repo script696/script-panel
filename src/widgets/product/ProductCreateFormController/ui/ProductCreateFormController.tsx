@@ -87,7 +87,7 @@ const ProductCreateFormController = ({ onRejectCreateNewProduct }: ProductCreate
 	}, [createFlowFinished]);
 
 	return (
-		<Box display="flex" flexDirection="column" rowGap={2} height="100%">
+		<Box display="flex" flexDirection="column" rowGap={2} flexGrow={1}>
 			<Typography
 				component="h2"
 				variant="h4"

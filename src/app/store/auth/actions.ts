@@ -1,5 +1,11 @@
 import { ActionType } from "./actionTypes";
-import { ChangePasswordPayload, LoginPayload, RegisterPayload, SignOutPayload } from "./types";
+import {
+	ChangePasswordPayload,
+	LoginPayload,
+	RegisterPayload,
+	SetAuthPayload,
+	SignOutPayload,
+} from "./types";
 
 export const login = (payload: LoginPayload) => {
 	return {
@@ -17,6 +23,10 @@ export const registerUser = (payload: RegisterPayload) => {
 
 export const signOut = (payload: SignOutPayload) => {
 	return { payload, type: ActionType.LOGOUT };
+};
+
+export const setAuth = (payload: SetAuthPayload) => {
+	return { payload, type: ActionType.SET_AUTH };
 };
 
 export const changePassword = (payload: ChangePasswordPayload) => {

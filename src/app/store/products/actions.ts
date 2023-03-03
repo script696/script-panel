@@ -15,6 +15,7 @@ import {
 	UpdateProductPublicInfoPayload,
 	UpdateProductServiceInfoPayload,
 	SetRemovedToProductPayload,
+	GetAllProductsPayload,
 } from "./types";
 
 /* Redux actions */
@@ -51,8 +52,8 @@ export const setRemovedPictureToProduct = (payload: SetRemovedToProductPayload) 
 };
 
 /* Saga actions */
-export const getAllProducts = () => {
-	return { type: ActionType.GET_ALL_PRODUCTS };
+export const getAllProducts = (payload: GetAllProductsPayload) => {
+	return { payload, type: ActionType.GET_ALL_PRODUCTS };
 };
 
 export const updateProductDescription = (payload: UpdateProductDescriptionPayload) => {
