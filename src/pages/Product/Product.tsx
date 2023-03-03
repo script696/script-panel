@@ -39,12 +39,8 @@ const Product = () => {
 			height={"100%"}
 			py={2}
 		>
-			<Box gridArea="gallery">
-				<Grid
-					className="grid_dark grid_style_box-shadow grid_style_bordered"
-					height="100%"
-					style={{ overflow: "hidden" }}
-				>
+			<Box gridArea="gallery" overflow="hidden">
+				<Grid className="grid_dark grid_style_box-shadow grid_style_bordered" height="100%" overflow="hidden">
 					<ProductGallery product={product} />
 				</Grid>
 			</Box>

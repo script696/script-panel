@@ -97,6 +97,8 @@ function* checkAuth() {
 	try {
 		const response: AxiosResponse<CheckAuthResponse> = yield call(Auth.fetchCheckAuth);
 		localStorage.setItem(ACCESS_TOKEN, response.data.accessToken);
+
+		yield put(setAuth({ isAuth: true, userId: response.data.userId }));
 	} catch (error) {
 		localStorage.removeItem(ACCESS_TOKEN);
 	} finally {

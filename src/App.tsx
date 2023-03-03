@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -12,7 +12,7 @@ import { checkAuth } from "./app/store/auth/actions";
 const App = () => {
 	const dispatch = useDispatch();
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		dispatch(checkAuth());
 	}, []);
 
