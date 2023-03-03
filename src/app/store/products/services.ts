@@ -18,10 +18,11 @@ import { CreateProductDto } from "./productDto/CreateProductDto";
 import { DeleteProductDto } from "./productDto/DeleteProductDto";
 import { AddPictureToProductDto } from "./productDto/AddPictureToProductDto";
 import { RemovePictureFromProductDto } from "./productDto/RemovePictureFromProductDto";
+import { GetAllProductsDto } from "./productDto/GetAllProductsDto";
 
 class Product {
-	static fetchAllProducts(): Promise<GetAllProductsResponse> {
-		return $api.get(`${PRODUCTS_ENDPOINTS.BASE}/${PRODUCTS_ENDPOINTS.GET_ALL}`);
+	static fetchAllProducts(data: GetAllProductsDto): Promise<GetAllProductsResponse> {
+		return $api.get(`${PRODUCTS_ENDPOINTS.BASE}/${PRODUCTS_ENDPOINTS.GET_ALL}`, { params: data });
 	}
 
 	static fetchUpdateProductDescription(

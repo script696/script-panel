@@ -18,7 +18,6 @@ type ProfileInfoProps = {
 const AdminInfoPanel = ({ onTurnOnEditMode }: ProfileInfoProps) => {
 	const { nickName, apartment, dateOfBirth, addressLine, fullName, phoneNumber, country, city } =
 		useAppSelector((state) => state.AdminReducer);
-
 	const profileBaseData = [
 		{ text: nickName, title: "Nickname" },
 		{ text: fullName, title: "Full Name" },

@@ -22,6 +22,7 @@ import {
 	AddPictureToProduct,
 	CreateProduct,
 	DeleteProduct,
+	GetAllProducts,
 	RemovePictureFromProduct,
 	UpdateProductDescription,
 	UpdateProductPublicInfo,
@@ -39,10 +40,10 @@ import {
 } from "./types";
 import Product from "./services";
 
-function* getAllProducts() {
+function* getAllProducts({ payload }: GetAllProducts) {
 	yield put(setLoading(true));
 	try {
-		const response: AxiosResponse<GetAllProductsResponse> = yield call(Product.fetchAllProducts);
+		const response: AxiosResponse<GetAllProductsResponse> = yield call(Product.fetchAllProducts, payload);
 
 		yield put(setProducts(response.data));
 	} catch (error) {

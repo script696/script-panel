@@ -10,6 +10,7 @@ import { PROTECTED_ROUTES, PUBLIC_ROUTES } from "../../../shared/lib/constants/r
 import Auth from "./services";
 import { ActionType, ChangePassword, Login, Register, SignOut } from "./actionTypes";
 import { CheckAuthResponse, LoginResponse, RegisterResponse } from "./types";
+import { setAuth } from "./actions";
 
 function* login({ payload: { data, navigate } }: Login) {
 	yield put(setLoading(true));
@@ -18,6 +19,8 @@ function* login({ payload: { data, navigate } }: Login) {
 		const response: AxiosResponse<LoginResponse> = yield call(Auth.fetchLogin, data);
 
 		localStorage.setItem(ACCESS_TOKEN, response.data.accessToken);
+
+		yield put(setAuth({ isAuth: true, userId: response.data.userId }));
 
 		navigate(PROTECTED_ROUTES.PRODUCTS);
 	} catch (error) {
@@ -34,6 +37,8 @@ function* register({ payload: { data, navigate } }: Register) {
 		const response: AxiosResponse<RegisterResponse> = yield call(Auth.fetchRegister, data);
 
 		localStorage.setItem(ACCESS_TOKEN, response.data.accessToken);
+
+		yield put(setAuth({ isAuth: true, userId: response.data.userId }));
 
 		yield put(
 			openSnackBar({

@@ -2,7 +2,7 @@ import {
 	ChangePasswordPayload,
 	LoginPayload,
 	RegisterPayload,
-	SetUserAuthPayload,
+	SetAuthPayload,
 	SignOutPayload,
 } from "./types";
 
@@ -22,7 +22,7 @@ export type Login = {
 
 export type SetUserAuth = {
 	type: ActionType.SET_AUTH;
-	payload: SetUserAuthPayload;
+	payload: SetAuthPayload;
 };
 
 export type Register = {

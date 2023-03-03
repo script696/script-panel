@@ -45,7 +45,7 @@ const AdminReducer = (state = initialState, action: Actions) => {
 		case ActionType.SET_BASIC_INFO:
 			state = {
 				...state,
-				dateOfBirth: action.payload.fullName ?? "",
+				dateOfBirth: action.payload.dateOfBirth ?? "",
 				fullName: action.payload.fullName ?? "",
 				nickName: action.payload.nickName,
 				phoneNumber: action.payload.phoneNumber ?? "",

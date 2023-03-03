@@ -12,9 +12,9 @@ import { PROTECTED_ROUTES } from "../../../../shared/lib/constants/routes";
 const ProductsTable = () => {
 	const dispatch = useDispatch();
 	const { products } = useAppSelector((state) => state.ProductsReducer);
-
+	const { userId } = useAppSelector((state) => state.AuthReducer);
 	useEffect(() => {
-		dispatch(getAllProducts());
+		dispatch(getAllProducts({ userId }));
 	}, []);
 
 	return (

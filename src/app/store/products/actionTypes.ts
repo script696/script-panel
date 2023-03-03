@@ -2,6 +2,7 @@ import {
 	AddPictureToProductPayload,
 	CreateProductPayload,
 	DeleteProductPayload,
+	GetAllProductsPayload,
 	RemovePictureFromProductPayload,
 	SetDeletedProductPayload,
 	SetPictureToProductPayload,
@@ -77,6 +78,11 @@ export type SetRemovedPictureToProduct = {
 };
 
 /* Saga action Types */
+export type GetAllProducts = {
+	type: ActionType.GET_ALL_PRODUCTS;
+	payload: GetAllProductsPayload;
+};
+
 export type UpdateProductDescription = {
 	type: ActionType.UPDATE_PRODUCT_DESCRIPTION;
 	payload: UpdateProductDescriptionPayload;

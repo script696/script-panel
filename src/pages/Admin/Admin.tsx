@@ -26,7 +26,13 @@ const Admin = () => {
 					<Divider />
 					<ProfileTabsList currentTabId={tabIndex} />
 				</Grid>
-				<Grid component="section" item md={8} className="grid_dark grid_style_box-shadow grid_style_bordered">
+				<Grid
+					width="100%"
+					component="section"
+					item
+					md={8}
+					className="grid_dark grid_style_box-shadow grid_style_bordered"
+				>
 					<ProfileInformationPanel />
 				</Grid>
 			</Grid>

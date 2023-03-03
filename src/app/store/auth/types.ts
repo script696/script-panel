@@ -6,6 +6,7 @@ import { ChangePasswordDto } from "./authDto/changePasswordDto";
 
 type Auth = {
 	accessToken: string;
+	userId: string;
 };
 
 export type LoginResponse = Auth;
@@ -34,4 +35,4 @@ export type ChangePasswordPayload = {
 	onCloseModal: () => void;
 };
 
-export type SetUserAuthPayload = boolean;
+export type SetAuthPayload = { isAuth: boolean; userId: string };
