@@ -90,6 +90,7 @@ const ProductGallery = ({ product }: ProductGalleryProps) => {
 					"&:hover .button_left": { left: "0" },
 					"&:hover .button_right": { right: "0" },
 				}}
+				overflow="hidden"
 			>
 				<Swiper
 					style={{ height: "100%" }}
