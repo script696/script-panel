@@ -11,7 +11,7 @@ import { ThemeLayout } from "./layouts/ThemeLayout";
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
 	<Provider store={store}>
-		<BrowserRouter>
+		<BrowserRouter basename="/admin">
 			<ThemeLayout>
 				<AppLayout>
 					<App />
