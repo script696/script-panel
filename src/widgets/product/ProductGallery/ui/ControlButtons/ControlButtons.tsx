@@ -17,6 +17,15 @@ const ControlButtons = ({ onAddPictureToGallery }: ControlButtonsProps) => {
 		swiper.slidePrev();
 	};
 
+	/**
+	 * Функция сбрасывает value эвента при выборе файла
+	 * Без этой функции при повторном выборе одного и того же файла эвент не срабатывает
+	 * @param e
+	 */
+	const resetInputEventValue = (e: any) => {
+		e.target.value = "";
+	};
+
 	return (
 		<Box
 			overflow="hidden"
@@ -64,7 +73,13 @@ const ControlButtons = ({ onAddPictureToGallery }: ControlButtonsProps) => {
 				>
 					<AddPhotoAlternateIcon className="color_secondary" style={{ transform: "rotate(180deg)" }} />
 				</Grid>
-				<input hidden accept="image/*" multiple type="file" onChange={onAddPictureToGallery} />
+				<input
+					hidden
+					accept="image/*"
+					type="file"
+					onChange={onAddPictureToGallery}
+					onClick={resetInputEventValue}
+				/>
 			</Button>
 			<Button
 				className="button_styles_none button_right"

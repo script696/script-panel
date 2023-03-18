@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef } from "react";
+import React, { ChangeEvent } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -13,7 +13,7 @@ import { ModalPopup, useModal } from "../../../../shared/ui/Modal/ModalBase";
 
 import { useAppSelector, useFileReader } from "../../../../shared/lib/hooks";
 
-import { addPictureToProduct, removePictureFromProduct } from "../../../../app/store/products/actions";
+import { addPictureToProduct } from "../../../../app/store/products/actions";
 
 import { SUPPORTED_PICTURE_FORMATS } from "../../../../shared/lib/constants/validators";
 
@@ -22,6 +22,8 @@ import { Product } from "../../../../app/store/products/types";
 import ConfirmDeleteModalContent from "../../../../shared/ui/Modal/ConfirmDeleteModalContent/ui/ConfirmDeleteModalContent";
 
 import defaultGalleryImg from "../assets/defaultImage.svg";
+
+import { useDeleteGalleryImage } from "../hooks/useDeleteGalleryImage";
 
 import ControlButtons from "./ControlButtons/ControlButtons";
 import DeleteButton from "./DeleteButton/DeleteButton";
@@ -48,6 +50,12 @@ const ProductGallery = ({ product }: ProductGalleryProps) => {
 		isModalOpen: isDeletePictureModalOpen,
 	} = useModal();
 
+	const { handleClickDeleteBasket, onDeletePictureFromGallery } = useDeleteGalleryImage({
+		onCloseDeletePictureModal,
+		onOpenDeletePictureModal,
+		product,
+	});
+
 	const handleAddPictureToGallery = (e: ChangeEvent<HTMLInputElement>) => {
 		handleReadPicture(e);
 		onOpenAddPictureModal();
@@ -62,22 +70,6 @@ const ProductGallery = ({ product }: ProductGalleryProps) => {
 		dispatch(addPictureToProduct(data));
 	};
 
-	const currentImageUrl = useRef<string | undefined>(product.pictures?.[0]);
-
-	const getCurrentSlideUrl = (index: number) => {
-		currentImageUrl.current = product.pictures?.[index];
-	};
-
-	const onDeletePictureFromGallery = () => {
-		if (!currentImageUrl.current) return;
-		dispatch(
-			removePictureFromProduct({
-				onCloseModal: onCloseDeletePictureModal,
-				pictureUrl: currentImageUrl.current,
-				productId: product.id,
-			}),
-		);
-	};
 	const isProductGalleryNotEmpty = product.pictures?.length;
 
 	return (
@@ -92,11 +84,7 @@ const ProductGallery = ({ product }: ProductGalleryProps) => {
 				}}
 				overflow="hidden"
 			>
-				<Swiper
-					style={{ height: "100%" }}
-					grabCursor
-					onRealIndexChange={(element) => getCurrentSlideUrl(element.activeIndex)}
-				>
+				<Swiper style={{ height: "100%" }} grabCursor>
 					{isProductGalleryNotEmpty ? (
 						product.pictures?.map((url, index) => {
 							return (
@@ -119,8 +107,8 @@ const ProductGallery = ({ product }: ProductGalleryProps) => {
 						</SwiperSlide>
 					)}
 					<ControlButtons onAddPictureToGallery={handleAddPictureToGallery} />
+					{isProductGalleryNotEmpty && <DeleteButton onDeletePictureFromGallery={handleClickDeleteBasket} />}
 				</Swiper>
-				{isProductGalleryNotEmpty && <DeleteButton onDeletePictureFromGallery={onOpenDeletePictureModal} />}
 			</Box>
 			<ModalPopup isModalPopupOpen={isAddPictureModalOpen} onCloseModalPopup={onCloseAddPictureModal}>
 				<AddPictureModalContent
