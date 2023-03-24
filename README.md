@@ -1,46 +1,108 @@
-# Getting Started with Create React App
+<h1 align="center">Script-panel</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+![Main](https://downloader.disk.yandex.ru/preview/1a6ad9a898dda0d20aed3d91148ffe117f8c1ad3901b0923e67e66ecdaad6f66/641d794b/ieJXhbMS06OmsS4BtepOSRkT9oQAlTM9nu1JbAI3nFktzVyShr0onTdy4OfTEG1lZcev_y7w7NxTr_bb1L3kYw%3D%3D?uid=0&filename=2023-03-24_09-15-54.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+> Административная панель управления е-commerce магазином в телеграм.
+> 
+> Перейти к приложению по ссылке [_Script-Panel_](http://www.script-panel.ru).
 
-In the project directory, you can run:
+## Навигация
+* [О проекте](#О-проекте)
+* [Сценарии](#Сценарии)
+* [Использованные технологии](#Использованные-технологии)
+* [Реализованные возможности](#Реализованные-возможности)
+* [Скриншоты](#Скриншоты)
+* [Как это использовать](#Как-это-использовать)
+* [Статус проекта](#Статус-проекта)
+* [Контакты](#Контакты)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## О проекте
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Первоначальной идеей, обуславливающей разработку данного проекта, было создание
+Web-App приложения для Телеграм
 
-### `npm test`
+В качестве Web приложения был выбран e-commerce online shop, так как, на данный момент, ниша 
+интернет магазинов в TG полностью свободна.\
+Для управления магазином, очевидно, нужна была административная панель, что и послужило причиной разработки
+данного продукта
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Комментарии к проекту
+- Проект выполнен на React с необходимым дополнительным окружением
+- Выполнен деплой проекта на VPS
+- Применен CI/CD с использованием GitHub workflows с автоматическим запуском тестов и деплоем 
+на VPS. Flow деплоя описан в [Repo](https://github.com/script696/script-deploy) 
+- В качестве средства доставки приложения используется Docker контейнер
+- Статика приложения раздается с помощью nginx
+- Для сохранения консистентности кода применены линтеры Prettier & EsLint
+  
+## Сценарии
 
-### `npm run build`
+- предприниматель (далее user), желающий открыть магазин в телеграм, обращается к поставщику данного продукта
+и приобретает бота
+- под user создается сам бот и аккаунт для доступа к данной административной панели
+- user имеет возможность зайти под своими кредами и управлять товарами в своем магазине
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> Telegram Bot не входит рамки данного проекта, но вы можете перейти и ознакомиться с ним
+> 
+> к репозиторию на github [Repo](https://github.com/script696/script-shop).
+> 
+> к боту в телеграм [Bot](https://t.me/script696_bot).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Использованные технологии
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- Typescript
+- Material UI
+- Redux
+- Saga
+- Feature Sliced Design
+- Formik
+- Docker
+- nginx
+- Prettier
+- EsLint
+- Axios
 
-### `npm run eject`
+## Реализованные возможности
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Регистрация и авторизация новых пользователей
+- Управление цветовой темой приложения
+- Редактирование данных пользователя
+- Просмотр списка всех товаров магазина
+- Создание/редактирование/удаление товаров каждым пользователем
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Скриншоты
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Main](https://downloader.disk.yandex.ru/preview/d971f2dbb11ba7dcc9dd8fae74458fe8f1641cbc8648f315647155dae53258fb/641d881d/2PEkD4WNhIBbU9fi5k_2qORVAyTvv86RAs5ecuKP58WQ441ZSjRIHlItVCHtz3GfCXhUCi9zaRycNlwO-gEbkQ%3D%3D?uid=0&filename=2023-03-24_10-15-40.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+![Main](https://downloader.disk.yandex.ru/preview/ab417005a62470a28cf8cb5b80570b0282fae86aec3fadca33ecacf0286131a4/641d8852/fJW-XOkgx8gCBxpdsZTk-3kPsFB71iFzC6LdTgo5XALFBsnviMINf5BP5tUN6wPUSMVx4o9OE6dSHKlWMBGDkA%3D%3D?uid=0&filename=2023-03-24_10-16-09.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+![Main](https://downloader.disk.yandex.ru/preview/8a974b92c771778b0f386524a3bb50e7c7225bc52feb69c12b795865cff6b1cf/641d88bb/LoOXKyG16_UGVdt_H8aiZtIWUU1dFNWgCkwBQ3yFp_Ryc6kjJH8v6I5cweWQxHVqcuMRnp8pRR8uvBqiZfPtkw%3D%3D?uid=0&filename=2023-03-24_10-16-59.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Как это использовать
 
-## Learn More
+На данный момент реализована возможность управления одним ботом через пользователя script696
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Откройте бота в Телеграм по ссылке [Bot](https://t.me/script696_bot) 
+- В чате вы увидите появившееся сообщение с двумя кнопками - 'Open Shop' и 'Open Dashboard'
+- Нажмите на кнопку 'Open Shop' - откроется демо версия магазина Script Shop
+- Нажмите на правую кнопку 'Open Dashboard' и перейдите к админ панели
+- На странице логина при нажатии на кнопку 'Login' выполнится редирект на страницу панели
+- Попробуйте добавить свой товар или отредактировать существующие
+- Обновите магазин в Телеграм нажав на три точки в правом верхнем углу и вы увидите внесенные изменения
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> Пожалуйста, не удаляйте все товары и ведите себя хорошо =)
+> 
+> Приложения админ панели и бота находятся в разработке, какой-то функционал может не работать
+> или присутствовать различные баги
+> 
+> Напишите мне, если найдете один из них, спасибо!
+
+## Статус проекта
+
+В разработке
+
+## Контакты
+
+Если вам понравился мой проект и вы хотели бы принять участие в его разработке/
+у вас есть идеи по улучшению или хотели бы принять участие в тестировании как пользователь,/
+пожалуйста, свяжитесь со мной в [Telegram](https://t.me/script696)
